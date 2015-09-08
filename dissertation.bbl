@@ -1,0 +1,219 @@
+\begin{thebibliography}{10}
+
+\bibitem{pereira2010social}
+R.~Pereira, M.~C.~C. Baranauskas, and S.~R.~P. da~Silva, ``Social software
+  building blocks: Revisiting the honeycomb framework,'' in {\em Information
+  Society (i-Society), 2010 International Conference on}, pp.~253--258, IEEE,
+  2010.
+
+\bibitem{shirky2005group}
+C.~Shirky, ``A group is its own worst enemy,'' in {\em The Best Software
+  Writing I}, pp.~183--209, Springer, 2005.
+
+\bibitem{klamma2007social}
+R.~Klamma, M.~A. Chatti, E.~Duval, H.~Hummel, E.~T. Hvannberg, M.~Kravcik,
+  E.~Law, A.~Naeve, and P.~Scott, ``Social software for life-long learning,''
+  2007.
+
+\bibitem{kolko2007mobile}
+B.~E. Kolko, E.~Johnson, and E.~Rose, ``Mobile social software for the
+  developing world,'' in {\em Online Communities and Social Computing},
+  pp.~385--394, Springer, 2007.
+
+\bibitem{wiley2008tagging}
+D.~L. Wiley, ``Tagging: People-powered metadata for the social web,'' 2008.
+
+\bibitem{chatti2007future}
+M.~A. Chatti, M.~Jarke, and D.~Frosch-Wilke, ``The future of e-learning: a
+  shift to knowledge networking and social software,'' {\em International
+  journal of knowledge and learning}, vol.~3, no.~4, pp.~404--420, 2007.
+
+\bibitem{smith2007social}
+G.~Smith, ``Social software building blocks,'' {\em Retrieved November},
+  vol.~5, p.~2010, 2007.
+
+\bibitem{fogg2002persuasive}
+B.~J. Fogg, ``Persuasive technology: using computers to change what we think
+  and do,'' {\em Ubiquity}, vol.~2002, no.~December, p.~5, 2002.
+
+\bibitem{oinas2009persuasive}
+H.~Oinas-Kukkonen and M.~Harjumaa, ``Persuasive systems design: Key issues,
+  process model, and system features,'' {\em Communications of the Association
+  for Information Systems}, vol.~24, no.~1, p.~28, 2009.
+
+\bibitem{oinas2008towards}
+H.~Oinas-Kukkonen and M.~Harjumaa, ``Towards deeper understanding of persuasion
+  in software and information systems,'' in {\em Advances in Computer-Human
+  Interaction, 2008 First International Conference on}, pp.~200--205, IEEE,
+  2008.
+
+\bibitem{mavrodiev2013quantifying}
+P.~Mavrodiev, C.~J. Tessone, and F.~Schweitzer, ``Quantifying the effects of
+  social influence,'' {\em Scientific reports}, vol.~3, 2013.
+
+\bibitem{guadagno2010preference}
+R.~E. Guadagno and R.~B. Cialdini, ``Preference for consistency and social
+  influence: A review of current research findings,'' {\em Social Influence},
+  vol.~5, no.~3, pp.~152--163, 2010.
+
+\bibitem{oduor2014persuasive}
+M.~Oduor, T.~Alah{\"a}iv{\"a}l{\"a}, and H.~Oinas-Kukkonen, ``Persuasive
+  software design patterns for social influence,'' {\em Personal and Ubiquitous
+  Computing}, vol.~18, no.~7, pp.~1689--1704, 2014.
+
+\bibitem{bandura1977social}
+A.~Bandura and D.~C. McClelland, ``Social learning theory,'' 1977.
+
+\bibitem{zajonc1965social}
+R.~B. Zajonc {\em et~al.}, {\em Social facilitation}.
+\newblock Research Center for Group Dynamics, Institute for Social Research,
+  University of Michigan, 1965.
+
+\bibitem{cialdini1993influence}
+R.~B. Cialdini, ``Influence: The psychology of persuasion,'' 1993.
+
+\bibitem{malone1987making}
+T.~W. Malone and M.~R. Lepper, ``Making learning fun: A taxonomy of intrinsic
+  motivations for learning,'' {\em Aptitude, learning, and instruction},
+  vol.~3, no.~1987, pp.~223--253, 1987.
+
+\bibitem{stibe2012exploring}
+A.~Stibe, H.~Oinas-Kukkonen, and B.~White, ``Exploring the effects of social
+  influence on user behavior targeted to feedback sharing,'' in {\em
+  Proceedings of the IADIS WWW/Internet Conference (ICWI), Madrid, Spain},
+  2012.
+
+\bibitem{forestier2012roles}
+M.~Forestier, A.~Stavrianou, J.~Velcin, and D.~A. Zighed, ``Roles in social
+  networks: Methodologies and research issues,'' {\em Web Intelligence and
+  Agent Systems}, vol.~10, no.~1, pp.~117--133, 2012.
+
+\bibitem{borgatti1992notions}
+S.~P. Borgatti and M.~G. Everett, ``Notions of position in social network
+  analysis,'' {\em Sociological methodology}, vol.~22, no.~1, pp.~1--35, 1992.
+
+\bibitem{nadel1957theory}
+S.~Nadel, ``The theory of social structure.,'' 1957.
+
+\bibitem{borgatti1993two}
+S.~P. Borgatti and M.~G. Everett, ``Two algorithms for computing regular
+  equivalence,'' {\em Social Networks}, vol.~15, no.~4, pp.~361--376, 1993.
+
+\bibitem{breiger1975algorithm}
+R.~L. Breiger, S.~A. Boorman, and P.~Arabie, ``An algorithm for clustering
+  relational data with applications to social network analysis and comparison
+  with multidimensional scaling,'' {\em Journal of Mathematical Psychology},
+  vol.~12, no.~3, pp.~328--383, 1975.
+
+\bibitem{steyvers2004probabilistic}
+M.~Steyvers, P.~Smyth, M.~Rosen-Zvi, and T.~Griffiths, ``Probabilistic
+  author-topic models for information discovery,'' in {\em Proceedings of the
+  tenth ACM SIGKDD international conference on Knowledge discovery and data
+  mining}, pp.~306--315, ACM, 2004.
+
+\bibitem{mccallum2007topic}
+A.~McCallum, X.~Wang, and A.~Corrada-Emmanuel, ``Topic and role discovery in
+  social networks with experiments on enron and academic email.,'' {\em J.
+  Artif. Intell. Res.(JAIR)}, vol.~30, pp.~249--272, 2007.
+
+\bibitem{daud2009generalized}
+A.~Daud, J.~Li, L.~Zhou, and F.~Muhammad, ``A generalized topic modeling
+  approach for maven search,'' in {\em Advances in Data and Web Management},
+  pp.~138--149, Springer, 2009.
+
+\bibitem{zhang2007expertise}
+J.~Zhang, M.~S. Ackerman, and L.~Adamic, ``Expertise networks in online
+  communities: structure and algorithms,'' in {\em Proceedings of the 16th
+  international conference on World Wide Web}, pp.~221--230, ACM, 2007.
+
+\bibitem{agarwal2008identifying}
+N.~Agarwal, H.~Liu, L.~Tang, and P.~S. Yu, ``Identifying the influential
+  bloggers in a community,'' in {\em Proceedings of the 2008 International
+  Conference on Web Search and Data Mining}, pp.~207--218, ACM, 2008.
+
+\bibitem{vavilis2014reference}
+S.~Vavilis, M.~Petkovi{\'c}, and N.~Zannone, ``A reference model for reputation
+  systems,'' {\em Decision Support Systems}, vol.~61, pp.~147--154, 2014.
+
+\bibitem{liu2010evaluation}
+L.~Liu, M.~Munro, and W.~Song, ``Evaluation of collecting reviews in
+  centralized online reputation systems.,'' 2010.
+
+\bibitem{dencheva2011dynamic}
+S.~Dencheva, C.~R. Prause, and W.~Prinz, ``Dynamic self-moderation in a
+  corporate wiki to improve participation and contribution quality,'' in {\em
+  ECSCW 2011: Proceedings of the 12th European Conference on Computer Supported
+  Cooperative Work, 24-28 September 2011, Aarhus Denmark}, pp.~1--20, Springer,
+  2011.
+
+\bibitem{prause2008approach}
+C.~R. Prause and S.~Apelt, ``An approach for continuous inspection of source
+  code,'' in {\em Proceedings of the 6th international workshop on Software
+  quality}, pp.~17--22, ACM, 2008.
+
+\bibitem{liu2012systematic}
+L.~Liu and M.~Munro, ``Systematic analysis of centralized online reputation
+  systems,'' {\em Decision support systems}, vol.~52, no.~2, pp.~438--449,
+  2012.
+
+\bibitem{golder2006usage}
+S.~A. Golder and B.~A. Huberman, ``Usage patterns of collaborative tagging
+  systems,'' {\em Journal of information science}, vol.~32, no.~2,
+  pp.~198--208, 2006.
+
+\bibitem{tanaka1991object}
+J.~W. Tanaka and M.~Taylor, ``Object categories and expertise: Is the basic
+  level in the eye of the beholder?,'' {\em Cognitive psychology}, vol.~23,
+  no.~3, pp.~457--482, 1991.
+
+\bibitem{coates2005two}
+T.~Coates, ``Two cultures of fauxonomies collide,'' {\em http://www.
+  plasticbag. org/archives/2005/06/two\_cultures\_of\_fauxonomies\_collide/.
+  Last access: May}, vol.~8, p.~2008, 2005.
+
+\bibitem{hovy2013collaboratively}
+E.~Hovy, R.~Navigli, and S.~P. Ponzetto, ``Collaboratively built
+  semi-structured content and artificial intelligence: The story so far,'' {\em
+  Artificial Intelligence}, vol.~194, pp.~2--27, 2013.
+
+\bibitem{domingos2007toward}
+P.~Domingos, ``Toward knowledge-rich data mining,'' {\em Data Mining and
+  Knowledge Discovery}, vol.~15, no.~1, pp.~21--28, 2007.
+
+\bibitem{wong2012ontology}
+W.~Wong, W.~Liu, and M.~Bennamoun, ``Ontology learning from text: A look back
+  and into the future,'' {\em ACM Computing Surveys (CSUR)}, vol.~44, no.~4,
+  p.~20, 2012.
+
+\bibitem{gruber1993translation}
+T.~R. Gruber, ``A translation approach to portable ontology specifications,''
+  {\em Knowledge acquisition}, vol.~5, no.~2, pp.~199--220, 1993.
+
+\bibitem{tang2009towards}
+J.~Tang, H.-f. Leung, Q.~Luo, D.~Chen, and J.~Gong, ``Towards ontology learning
+  from folksonomies.,'' in {\em IJCAI}, vol.~9, pp.~2089--2094, 2009.
+
+\bibitem{kotis2011automated}
+K.~Kotis and A.~Papasalouros, ``Automated learning of social ontologies,'' {\em
+  Ontology Learning and Knowledge Discovery Using the Web: Challenges and
+  Recent Advances}, 2011.
+
+\bibitem{mika2007ontologies}
+P.~Mika, ``Ontologies are us: A unified model of social networks and
+  semantics,'' {\em Web Semantics: Science, Services and Agents on the World
+  Wide Web}, vol.~5, no.~1, pp.~5--15, 2007.
+
+\bibitem{weichselbraun2010augmenting}
+A.~Weichselbraun, G.~Wohlgenannt, and A.~Scharl, ``Augmenting lightweight
+  domain ontologies with social evidence sources,'' in {\em Database and Expert
+  Systems Applications (DEXA), 2010 Workshop on}, pp.~193--197, IEEE, 2010.
+
+\bibitem{bass2003software}
+L.~Bass, P.~Clements, and R.~Kazman, {\em Software Architecture in Practice}.
+\newblock SEI series in software engineering, Addison-Wesley, 2003.
+
+\bibitem{clements2003documenting}
+P.~Clements, {\em Documenting Software Architectures: Views and Beyond}.
+\newblock SEI series in software engineering, Addison-Wesley, 2003.
+
+\end{thebibliography}

@@ -1,0 +1,63 @@
+This is BibTeX, Version 0.99d (TeX Live 2014/dev)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: dissertation.aux
+A level-1 auxiliary file: cover.aux
+A level-1 auxiliary file: chapters/introduction.aux
+A level-1 auxiliary file: chapters/problemDescription.aux
+A level-1 auxiliary file: chapters/objectives.aux
+A level-1 auxiliary file: chapters/relatedWork.aux
+A level-1 auxiliary file: chapters/solutionProposal.aux
+A level-1 auxiliary file: chapters/saconcepts.aux
+A level-1 auxiliary file: chapters/architecture.aux
+A level-1 auxiliary file: chapters/evaluation.aux
+A level-1 auxiliary file: chapters/conclusion.aux
+The style file: ieeetr.bst
+A level-1 auxiliary file: appendix/appendixa.aux
+Database file #1: bibliography/dissertation.bib
+Warning--empty journal in klamma2007social
+Warning--empty journal in bandura1977social
+Warning--empty journal in cialdini1993influence
+Warning--empty journal in nadel1957theory
+Warning--empty journal in liu2010evaluation
+You've used 46 entries,
+            1876 wiz_defined-function locations,
+            749 strings with 11654 characters,
+and the built_in function-call counts, 12811 in all, are:
+= -- 1302
+> -- 426
+< -- 0
++ -- 161
+- -- 115
+* -- 873
+:= -- 1748
+add.period$ -- 49
+call.type$ -- 46
+change.case$ -- 43
+chr.to.int$ -- 0
+cite$ -- 51
+duplicate$ -- 699
+empty$ -- 1265
+format.name$ -- 115
+if$ -- 3167
+int.to.chr$ -- 0
+int.to.str$ -- 46
+missing$ -- 48
+newline$ -- 144
+num.names$ -- 46
+pop$ -- 167
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 469
+stack$ -- 0
+substring$ -- 902
+swap$ -- 282
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 5
+while$ -- 138
+width$ -- 48
+write$ -- 455
+(There were 5 warnings)

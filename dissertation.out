@@ -1,0 +1,31 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [0][-]{chapter.2}{Problem Description}{}% 2
+\BOOKMARK [0][-]{chapter.3}{Objectives}{}% 3
+\BOOKMARK [0][-]{chapter.4}{Related Work}{}% 4
+\BOOKMARK [1][-]{subsection.4.0.1}{Honeycomb Framework}{chapter.4}% 5
+\BOOKMARK [2][-]{subsection.4.0.2}{Persuasive Software Design Patterns}{subsection.4.0.1}% 6
+\BOOKMARK [3][-]{section*.5}{Social Learning and Facilitation \(SLF\):}{subsection.4.0.2}% 7
+\BOOKMARK [3][-]{section*.6}{Competition \(COM\):}{subsection.4.0.2}% 8
+\BOOKMARK [3][-]{section*.7}{Cooperation \(COO\)}{subsection.4.0.2}% 9
+\BOOKMARK [3][-]{section*.8}{Recognition \(REC\)}{subsection.4.0.2}% 10
+\BOOKMARK [2][-]{subsection.4.0.3}{Roles in Social Networks}{subsection.4.0.1}% 11
+\BOOKMARK [2][-]{subsection.4.0.4}{Reputation Systems}{subsection.4.0.1}% 12
+\BOOKMARK [3][-]{section*.9}{Motivation:}{subsection.4.0.4}% 13
+\BOOKMARK [3][-]{section*.10}{Requirements and Features:}{subsection.4.0.4}% 14
+\BOOKMARK [3][-]{section*.11}{Components of a Reputation System}{subsection.4.0.4}% 15
+\BOOKMARK [2][-]{subsection.4.0.5}{Collaborative Tagging}{subsection.4.0.1}% 16
+\BOOKMARK [2][-]{subsection.4.0.6}{Semi-Structured Content}{subsection.4.0.1}% 17
+\BOOKMARK [2][-]{subsection.4.0.7}{Ontology Learning}{subsection.4.0.1}% 18
+\BOOKMARK [0][-]{chapter.5}{Solution}{}% 19
+\BOOKMARK [0][-]{chapter.6}{Software Architectures Concepts}{}% 20
+\BOOKMARK [1][-]{section.6.1}{Scenarios}{chapter.6}% 21
+\BOOKMARK [1][-]{section.6.2}{Views}{chapter.6}% 22
+\BOOKMARK [0][-]{chapter.7}{Architecture}{}% 23
+\BOOKMARK [1][-]{section.7.1}{Model}{chapter.7}% 24
+\BOOKMARK [1][-]{section.7.2}{Controllers}{chapter.7}% 25
+\BOOKMARK [2][-]{subsection.7.2.1}{Annotation Controller}{section.7.2}% 26
+\BOOKMARK [2][-]{subsection.7.2.2}{Document Controller}{section.7.2}% 27
+\BOOKMARK [2][-]{subsection.7.2.3}{Scenario Controller}{section.7.2}% 28
+\BOOKMARK [0][-]{chapter.8}{Evaluation}{}% 29
+\BOOKMARK [0][-]{chapter.9}{Conclusion}{}% 30
+\BOOKMARK [0][-]{appendix.A}{Appendix chapter}{}% 31

@@ -1,0 +1,52 @@
+%!TEX root = ../dissertation.tex
+
+\chapter{Architecture}
+\label{chapter:architecture}
+
+The application developed follows a Model-View-Controller architecture
+
+
+
+
+
+\section{Model}
+The Model describes the main entities of the system.
+Inserir figura.
+
+The Document is one of the most important entities of the Domain Model, because it aggregates all the concepts elicited during text analysis. Annotations are first added to the document before being linked to other domain entities, and all SA concepts discovered through reading are connected either directly or indirectly to this entity.
+
+
+
+Annotations are constituted by a user comment, a tag and a selection of text from the document. Therefore, annotations are always linked to the document from which they were created.
+
+
+
+\section{Controllers}
+
+\subsection{Annotation Controller}
+The Annotation Controller provides a way to manage the annotations added to a document. It communicates with the Domain Model to create, remove or update Annotations. The particularity of this controller is that it provides a REST API, which is used to retrieve a JSON representation of the annotations stored in the model and display it along with the document text. 
+The endpoints provided by this controller are described in Table \ref{table:endpoints}.
+\begin{table}
+\begin{tabular}{ | l | l | l |p{7.7cm}|}
+    \hline
+    Name & Method & Endpoint & Description \\ \hline
+    Index & GET & ../store/annotations & \parbox[t]{8cm}{Returns the set of annotations associated with a \\specific document }\\ \hline
+    Read & GET & ../store/annotations/id & Returns the annotation with the specific id \\ \hline
+    Create & POST & ../store/annotations & \parbox[t]{8cm}{Creates a new annotation, stores it in the model, \\and redirects to the Read endpoint} \\ \hline
+    Update & PUT & ../store/annotations/id & \parbox[t]{8cm}{Updates the annotation with the given id and \\redirects to the Read endpoint} \\ \hline
+    Delete & DELETE & ../store/annotations/id & \parbox[t]{8cm}{Removes the annotation with the given id. The \\response is a HTTP/1.0 204 NO CONTENT.} \\ \hline
+  \end{tabular}
+  \caption{REST API provided by the Annotation Controller}
+  \label{table:endpoints}
+\end{table}
+
+
+\subsection{Document Controller}
+The Document Controller handles the requests to view, add or remove a document from the system.
+
+\subsection{Scenario Controller}
+The Scenario Controller handles the construction of templates for Scenarios. All requests to create a new scenario, link document annotations to a specific scenario or delete a scenario are handled in this controller.
+
+
+
+

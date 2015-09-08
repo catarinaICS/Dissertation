@@ -1,0 +1,47 @@
+\chapter{Software Architectures Concepts}
+\label{chapter:concepts}
+Before describing the architecture of the developed solution, it is necessary to provide a small introduction to the most important concepts from the Software Architectures course.
+\section{Scenarios}
+
+A scenario is used to capture and express quality requirements of a system. It consists of six parts \cite{bass2003software}:
+\begin{itemize}
+\item \textbf{Source of Stimulus:} Some entity (a human, a computer or any other actuator) that generates the stimulus;
+\item \textbf{Stimulus:} A condition that arrives at the system;
+\item \textbf{Environment:} The system condition when the stimulus occurs;
+\item \textbf{Artifact:} Part of the system that was stimulated;
+\item \textbf{Response:} Activity undertaken after the arrival of the stimulus;
+\item \textbf{Response Measure:} when the response occurs, it should be measurable in some way, so the requirement can be tested;
+\end{itemize}
+
+Tactics are design decisions used to achieve the quality requirements expressed by the scenarios.
+
+\section{Views}
+A view is a representation of a set of system elements and the relationships associated with them \cite{clements2003documenting}. This set of elements and relationships is constrained by viewtypes.
+
+A Viewtype defines the element types and relationship types used to describe the architecture of a software system from a particular perspective\cite{clements2003documenting}. Viewtypes refine into styles.
+
+An architectural style is a specialization of element and relation types, together with a set of constraints on how they can be used\cite{clements2003documenting}.
+
+Views can fall into three viewtype categories\cite{clements2003documenting}:
+\begin{itemize}
+\item \textbf{Module Viewtype:} document the system principal units of implementation. 
+
+The elements of this viewtype are the \textit{Modules}, which is are implementation units. 
+
+Relationships between modules can be of type \textit{``Is-part-of''}, which defines a part-whole relationship, \textit{``Depends on''}, which defines dependency relations, and \textit{``Is-a''}, which defines a generalization/specialization relationship.
+
+\item \textbf{Component \& Connector Viewtype:} document the system units of execution. 
+
+The elements are the Components, which are the principal processing units and data stores, and the Connectors, which are pathways of interaction between components. 
+
+The relationships can be of type \textit{``Attachment''}, which associate components to connectors, and \textit{``Interface''} Delegation, which associates component ports to other ports from an ``internal architecture''- and similarly for the connector.
+
+\item \textbf{Allocation Viewtype:} document the relationships between a system's software and its development and execution environments. 
+
+The elements are the \textit{Software Element} and the \textit{Environmental Element}. 
+
+The relationships are of type \textit{``Allocated-to''}, which means that a software element is allocated to an environmental element. 
+\end{itemize}
+
+
+
