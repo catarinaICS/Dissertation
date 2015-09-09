@@ -216,4 +216,14 @@ L.~Bass, P.~Clements, and R.~Kazman, {\em Software Architecture in Practice}.
 P.~Clements, {\em Documenting Software Architectures: Views and Beyond}.
 \newblock SEI series in software engineering, Addison-Wesley, 2003.
 
+\bibitem{krasner1988description}
+G.~E. Krasner, S.~T. Pope, {\em et~al.}, ``A description of the
+  model-view-controller user interface paradigm in the smalltalk-80 system,''
+  {\em Journal of object oriented programming}, vol.~1, no.~3, pp.~26--49,
+  1988.
+
+\bibitem{reenskaug2009dci}
+T.~Reenskaug and J.~Coplien, ``The dci architecture: A new vision of
+  object-oriented programming. artima developer,'' 2009.
+
 \end{thebibliography}
