@@ -27,10 +27,10 @@
 \contentsline {section}{\numberline {6.2}Views}{23}{section.6.2}
 \contentsline {chapter}{\numberline {7}Architecture}{25}{chapter.7}
 \contentsline {section}{\numberline {7.1}Model}{25}{section.7.1}
-\contentsline {section}{\numberline {7.2}Controllers}{27}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Annotation Controller}{27}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Document Controller}{27}{subsection.7.2.2}
-\contentsline {subsection}{\numberline {7.2.3}Scenario Controller}{27}{subsection.7.2.3}
-\contentsline {chapter}{\numberline {8}Evaluation}{28}{chapter.8}
-\contentsline {chapter}{\numberline {9}Conclusion}{29}{chapter.9}
-\contentsline {chapter}{\numberline {A}Appendix chapter}{33}{appendix.A}
+\contentsline {section}{\numberline {7.2}Controllers}{26}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Annotation Controller}{26}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Document Controller}{26}{subsection.7.2.2}
+\contentsline {subsection}{\numberline {7.2.3}Scenario Controller}{28}{subsection.7.2.3}
+\contentsline {chapter}{\numberline {8}Evaluation}{29}{chapter.8}
+\contentsline {chapter}{\numberline {9}Conclusion}{30}{chapter.9}
+\contentsline {chapter}{\numberline {A}Appendix chapter}{34}{appendix.A}

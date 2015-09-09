@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2015.4.6)  9 SEP 2015 19:19
+This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2015.4.6)  9 SEP 2015 23:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -952,8 +952,6 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 23.
 Missing character: There is no Ã in font phvr7t!
 Missing character: There is no ³ in font phvr7t!
-Missing character: There is no Ã in font phvr7t!
-Missing character: There is no ³ in font phvr7t!
 [1
 
 \openout3 = `dissertation.ist'.
@@ -1130,7 +1128,7 @@ om-po-nent ports to other ports from an ``in-ter-nal architecture''-
  (./chapters/architecture.tex
 Chapter 7.
 
-Overfull \hbox (3.00099pt too wide) in paragraph at lines 86--86
+Overfull \hbox (3.00099pt too wide) in paragraph at lines 122--122
  [][][][]\OT1/phv/b/n/10 ResponseMeasure 
  []
 
@@ -1138,32 +1136,32 @@ Overfull \hbox (3.00099pt too wide) in paragraph at lines 86--86
 
 
 
-] [26]
-Overfull \hbox (8.53592pt too wide) in paragraph at lines 132--132
+]
+Overfull \hbox (8.53592pt too wide) in paragraph at lines 148--148
 []|[]| 
  []
 
 
-Overfull \hbox (8.53592pt too wide) in paragraph at lines 134--134
+Overfull \hbox (8.53592pt too wide) in paragraph at lines 150--150
 []|[]| 
  []
 
 
-Overfull \hbox (8.53592pt too wide) in paragraph at lines 135--135
+Overfull \hbox (8.53592pt too wide) in paragraph at lines 151--151
 []|[]| 
  []
 
 
-Overfull \hbox (8.53592pt too wide) in paragraph at lines 136--136
+Overfull \hbox (8.53592pt too wide) in paragraph at lines 152--152
 []|[]| 
  []
 
-) [27]
+[26] [27]) [28]
 \openout2 = `chapters/evaluation.aux'.
 
  (./chapters/evaluation.tex
 Chapter 8.
-) [28
+) [29
 
 
 
@@ -1172,25 +1170,25 @@ Chapter 8.
 
  (./chapters/conclusion.tex
 Chapter 9.
-) [29
+) [30
 
 
 
-]) (./dissertation.bbl [30
+]) (./dissertation.bbl [31
 
 
-] [31]
+] [32]
 Underfull \hbox (badness 10000) in paragraph at lines 170--173
 []\OT1/phv/m/n/10 T. Coates, ``Two cul-tures of faux-onomies col-lide,'' \OT1/p
 hv/m/sl/10 http://www. plas-ticbag.
  []
 
-) [32]
+) [33]
 \openout2 = `appendix/appendixa.aux'.
 
  (./appendix/appendixa.tex
 Appendix A.
-) [33
+) [34
 
 
 ]
@@ -1213,13 +1211,13 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 74.
  ) 
 Here is how much of TeX's memory you used:
- 20155 strings out of 495034
- 357017 string characters out of 6181678
- 506822 words of memory out of 5000000
- 22695 multiletter control sequences out of 15000+600000
+ 20148 strings out of 495034
+ 356861 string characters out of 6181678
+ 508898 words of memory out of 5000000
+ 22686 multiletter control sequences out of 15000+600000
  21722 words of font info for 38 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 56i,13n,64p,1718b,797s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,13n,64p,1718b,785s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/
@@ -1227,10 +1225,10 @@ fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/he
 lvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro
 8a.pfb>
-Output written on dissertation.pdf (36 pages, 278872 bytes).
+Output written on dissertation.pdf (37 pages, 279754 bytes).
 PDF statistics:
- 519 PDF objects out of 1000 (max. 8388607)
- 469 compressed objects within 5 object streams
- 127 named destinations out of 1000 (max. 500000)
+ 529 PDF objects out of 1000 (max. 8388607)
+ 478 compressed objects within 5 object streams
+ 129 named destinations out of 1000 (max. 500000)
  266 words of extra memory for PDF output out of 10000 (max. 10000000)
 

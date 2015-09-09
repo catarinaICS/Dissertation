@@ -13,19 +13,26 @@ This architecture is composed of three elements \cite{krasner1988description}:
 \end{itemize}
 
 The standard interaction cycle in this architecture is the following \cite{krasner1988description,reenskaug2009dci}:
+\begin{itemize}
+\item A user interacting with the application sends a request to the Controller.
 
-A user interacting with the application sends a request to the Controller.
+\item The Controller communicates with the Model to apply the desired changes.
 
-The Controller communicates with the Model to apply the desired changes.
+\item The Model is updated.
 
-The Model is updated.
+\item The Controller notifies the corresponding View so it can be updated with the new version of the Model.
+\end{itemize}
 
-The Controller notifies the corresponding View so it can be updated with the new version of the Model.
 
 \section{Model}
+The Document is one of the most important entities of the Domain Model, because it aggregates all the concepts elicited during text analysis. 
+
+Annotations are first added to the document before being linked to other domain entities, and all Software Architectures concepts discovered through reading are connected either directly or indirectly to this entity.
+
+These annotations are constituted by a user comment, a tag and a selection of text from the document. Upon creation, an Annotation is associated with the corresponding Document and the User that created it. Figure \ref{figure:domainModel1} show these relations. The Annotation entity stores a String ``annotation'', which is a JSON representation of the annotation as it is used by the view.
+
 \begin{figure}
 \centering
-
 \renewcommand {\umltextcolor}{black}
 \renewcommand {\umlfillcolor}{none}
 \renewcommand {\umldrawcolor}{black}
@@ -37,85 +44,94 @@ The Controller notifies the corresponding View so it can be updated with the new
 	\attribute { content : String }
 \end{class}
 
-\begin{class}[text width=3.5cm ]{Annotation}{0,-4}
+\begin{class}[text width=3.5cm ]{Annotation}{-2,-5}
 	\attribute { annotation : String }
 	\attribute { tag : String }
 \end{class}
 
-\begin{class}[text width=3cm ]{Scenario}{5,5}
-	\attribute { name : String}
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}
-
-\association {Scenario}{}{0..1}{Annotation}{}{0..*}
-
-\begin{class}[text width=3cm ]{SrcOfStimulus}{7,-1.5}
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}	
-
-\association {Scenario}{}{1}{SrcOfStimulus}{}{0..1}
-
-
-
-\begin{class}[text width=3cm ]{Stimulus}{5.5,-6.5}
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}
-
-\association {Scenario}{}{1}{Stimulus}{0..1}{}
-\begin{class}[text width=3cm ]{Artifact}{5.5,-7.5}
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}
-
-\begin{class}[text width=3cm ]{Environment}{5.5,-9.5}
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}
-
-\begin{class}[text width=3cm ]{Response}{5.5,-11.5}
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}
-
-\begin{class}[text width=3cm ]{ResponseMeasure}{5.5,-13.5}
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}
-
-\begin{class}[text width=3.5cm ]{User}{-5,-8}
+\begin{class}[text width=3.5cm ]{User}{-6,0}
 	\attribute { username : String }
 	\attribute { password : String }
 	\attribute { firstName : String }
 	\attribute { lastName : String}
 	\attribute { type : String}
 \end{class}
+\association {Document}{document}{1}{Annotation}{annotations}{0..*}
+\association {User}{owner}{1}{Annotation}{}{0..*}
 
-\begin{class}[text width=3cm ]{Module}{-5,-1}
+\end{tikzpicture}
+\caption{Domain Model: Document and Annotations}
+\label{figure:domainModel1}
+\end{figure} 
+
+After creation, it can also be associated with one of the model entities that represent Software Architectures concepts, such as the Scenario and its elements, the Module or the View. 
+
+As explained in Chapter \ref{chapter:concepts}, the Scenario contains a set of elements and a set of Tactics to achieve the quality requirement. This is clearly visible in the Model, where the elements - Source of Stimulus, Stimulus, Artifact, Environment, Response, Response Measure and the Tactics - are all associated with a Scenario. It does not make sense to have either of these elements without a Scenario, hence the 1 cardinality in the association between the scenario elements and the Scenario entity. Scenarios are associated to the corresponding document.
+
+\begin{figure}
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+
+\begin{tikzpicture}
+\begin{class}[text width=3cm ]{Document}{9,-7.5}
+	\attribute { title : String }
+	\attribute { url : String }
+	\attribute { content : String }
+\end{class}
+
+\begin{class}[text width=3.5cm ]{Annotation}{6,-1.5}
+	\attribute { annotation : String }
+	\attribute { tag : String }
+\end{class}
+\begin{class}[text width=3cm ]{Scenario}{5,-7.5}
 	\attribute { name : String}
 	\attribute { identifier : String }
 	\attribute { text : String }
 \end{class}
 
-\begin{class}[text width=3cm ]{View}{-5,-4}
-	\attribute { name : String}
-	\attribute { viewtype : String }
-	\attribute { style : String }
+\begin{class}[text width=3cm ]{SrcOfStimulus}{0,-1.5}
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}	
+
+\begin{class}[text width=3cm ]{Stimulus}{0,-3.5}
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}
+
+\begin{class}[text width=3cm ]{Artifact}{0,-5.5}
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}
+
+\begin{class}[text width=3cm ]{Environment}{0,-7.5}
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}
+
+\begin{class}[text width=3cm ]{Response}{0,-9.5}
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}
+
+\begin{class}[text width=3cm ]{ResponseMeasure}{0,-11.5}
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}
+
+\begin{class}[text width=3cm ]{Tactic}{0,-13.5}
+	\attribute { identifier : String }
 	\attribute { text : String }
 \end{class}
 
 \end{tikzpicture}
-\caption{Domain Model}
-\label{figure:domainModel}
+\caption{Domain Model: Scenarios}
+\label{figure:domainModel2}
 \end{figure}
-(FALTA LINKAR A FIGURA AQUI)
-The Document is one of the most important entities of the Domain Model, because it aggregates all the concepts elicited during text analysis. Annotations are first added to the document before being linked to other domain entities, and all Software Architectures concepts discovered through reading are connected either directly or indirectly to this entity.
 
-Annotations are constituted by a user comment, a tag and a selection of text from the document. Upon creation, an Annotation is associated with the corresponding Document and the User that created it. After creation, it can also be associated with one of the model entities that represent Software Architectures concepts, such as the Scenario and its elements, the Module or the View. 
 
-As explained in Chapter \ref{chapter:concepts}, the Scenario contains a set of elements and a set o	f Tactics to achieve the quality requirement. This is clearly visible in the Model, where the elements - Source of Stimulus, Stimulus, Artifact, Environment, Response, Response Measure and the Tactics - are all associated with a Scenario. It does not make sense to have either of these elements without a Scenario, hence the 1 cardinality in the association between the scenario elements and the Scenario entity. Scenarios are associated to the corresponding document.
 
 A View belongs, as mentioned in Chapter \ref{chapter:concepts}, to a certain viewtype, which is refined by a specific style. 
 A View from the Module Viewtype contains Modules and the relationships between them. The Modules are created by associating annotations with them. After creation, a View may associate these Modules with itself.  
