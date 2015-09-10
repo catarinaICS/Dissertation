@@ -66,7 +66,7 @@ These annotations are constituted by a user comment, a tag and a selection of te
 
 After creation, it can also be associated with one of the model entities that represent Software Architectures concepts, such as the Scenario and its elements, the Module or the View. 
 
-As explained in Chapter \ref{chapter:concepts}, the Scenario contains a set of elements and a set of Tactics to achieve the quality requirement. This is clearly visible in the Model, where the elements - Source of Stimulus, Stimulus, Artifact, Environment, Response, Response Measure and the Tactics - are all associated with a Scenario. It does not make sense to have either of these elements without a Scenario, hence the 1 cardinality in the association between the scenario elements and the Scenario entity. Scenarios are associated to the corresponding document.
+As explained in Chapter \ref{chapter:concepts}, the Scenario contains a set of elements and a set of Tactics to achieve the quality requirement. Figure \ref{figure:domainModel2} shows how Scenarios and their elements are present in the Model. All elements - Source of Stimulus, Stimulus, Artifact, Environment, Response, Response Measure and the Tactics - are with a single Scenario. It does not make sense to have either of these elements without a Scenario, hence the 1 cardinality in the association between the scenario elements and the Scenario entity. Figure \ref{figure:domainModel2} also shows how Scenarios are associated to the corresponding document.
 
 \begin{figure}
 \centering
@@ -75,17 +75,13 @@ As explained in Chapter \ref{chapter:concepts}, the Scenario contains a set of e
 \renewcommand {\umldrawcolor}{black}
 
 \begin{tikzpicture}
-\begin{class}[text width=3cm ]{Document}{9,-7.5}
+\begin{class}[text width=3cm ]{Document}{9,-2.5}
 	\attribute { title : String }
 	\attribute { url : String }
 	\attribute { content : String }
 \end{class}
 
-\begin{class}[text width=3.5cm ]{Annotation}{6,-1.5}
-	\attribute { annotation : String }
-	\attribute { tag : String }
-\end{class}
-\begin{class}[text width=3cm ]{Scenario}{5,-7.5}
+\begin{class}[text width=3cm ]{Scenario}{9,-7.5}
 	\attribute { name : String}
 	\attribute { identifier : String }
 	\attribute { text : String }
@@ -126,15 +122,171 @@ As explained in Chapter \ref{chapter:concepts}, the Scenario contains a set of e
 	\attribute { text : String }
 \end{class}
 
+\association {Scenario}{}{1}{SrcOfStimulus}{}{0..1}
+\association {Scenario}{}{1}{Stimulus}{}{0..1}
+\association {Scenario}{}{1}{Artifact}{}{0..1}
+\association {Scenario}{}{1}{Environment}{}{0..1}
+\association {Scenario}{}{1}{Response}{}{0..1}
+\association {Scenario}{}{1}{ResponseMeasure}{}{0..1}
+\association {Scenario}{}{1}{Tactic}{}{*}
+\association {Scenario}{}{*}{Document}{}{0..1}
+
 \end{tikzpicture}
 \caption{Domain Model: Scenarios}
 \label{figure:domainModel2}
 \end{figure}
 
+To facilitate programming, all Scenario elements are a subclass of a ``ScenarioElement'' class, as seen in the example in Figure \ref{figure:domainModel3}. This class contains a series of methods that are common to all the Scenario Elements.
+
+\begin{figure}
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+
+\begin{tikzpicture}
+
+\begin{class}[text width=3cm ]{ScenarioElement}{0,0}
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}
+
+\begin{class}[text width=3cm ]{SrcOfStimulus}{0,-3}
+	\inherit{ScenarioElement}
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}	
+	
+\end{tikzpicture}
+\caption{Domain Model: Scenario Elements}
+\label{figure:domainModel3}
+\end{figure}
+
+As mentioned before, annotations can also be associated with Scenarios and Scenario Elements. This can be seen in Figure \ref{figure:domainModel4}.
+
+\begin{figure}
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+
+\begin{tikzpicture}
+\begin{class}[text width=3.5cm ]{Annotation}{0,0}
+	\attribute { annotation : String }
+	\attribute { tag : String }
+\end{class}
+\begin{class}[text width=3cm ]{ScenarioElement}{-2,-4}
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}
+
+\begin{class}[text width=3cm ]{Scenario}{2,-4}
+	\attribute { name : String }
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}	
+\association {Scenario}{}{0..1}{Annotation}{}{*}
+\association {ScenarioElement}{}{0..1}{Annotation}{}{*}
+\end{tikzpicture}
+\caption{Domain Model: Scenarios and Scenario Elements and their relation with Annotations}
+\label{figure:domainModel4}
+\end{figure}
+
+Figure \ref{figure:domainModel5} shows how Views and Modules relate with the Document. A View belongs, as mentioned in Chapter \ref{chapter:concepts}, to a certain viewtype, which is refined by a specific style. These details are present in the entity attributes. Views are associated with the corresponding Document after creation.
+A View from the Module Viewtype contains Modules and the relationships between them. 
+These Modules are created in a similar way as Scenarios or Views, and associated with the Document. Afterwards, they can be associated with Views.
+
+\begin{figure}
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+\begin{tikzpicture}
+\begin{class}[text width=3.5cm ]{View}{0,0}
+	\attribute { name : String }
+	\attribute { viewtype : String }
+	\attribute { style : String }
+	\attribute { text : String }
+\end{class}
+\begin{class}[text width=3cm ]{Module}{-3,-4}
+	\attribute { name : String }
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}
+
+\begin{class}[text width=3cm ]{Document}{3,-4}
+	\attribute { title : String }
+	\attribute { url : String }
+	\attribute { content : String }
+\end{class}	
+\association {View}{}{*}{Document}{}{0..1}
+\association {Module}{}{*}{Document}{}{0..1}
+\association {Module}{}{*}{View}{}{*}
+
+\end{tikzpicture}
+
+\caption{Domain Model: Views and Modules}
+\label{figure:domainModel5}
+\end{figure}
+
+Similarly to other entities, both the Module and View can have associated annotations, as seen in Figure \ref{figure:domainModel6}.
+
+\begin{figure}
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+\begin{tikzpicture}
+\begin{class}[text width=3.5cm ]{View}{0,0}
+	\attribute { name : String }
+	\attribute { viewtype : String }
+	\attribute { style : String }
+	\attribute { text : String }
+\end{class}
+\begin{class}[text width=3cm ]{Module}{-3,-4}
+	\attribute { name : String }
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}
+
+\begin{class}[text width=3cm ]{Annotation}{3,-4}
+	\attribute { annotation : String }
+	\attribute { tag : String }
+
+\end{class}	
+\association {View}{}{0..1}{Annotation}{}{*}
+\association {Module}{}{0..1}{Annotation}{}{*}
+\association {Module}{}{*}{View}{}{*}
+
+\end{tikzpicture}
+
+\caption{Domain Model: Views and Modules relationship with Annotations}
+\label{figure:domainModel6}
+\end{figure}
+
+\begin{figure}
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+\begin{tikzpicture}
+
+\begin{class}[text width=3cm ]{Module}{-3,-4}
+	\attribute { name : String }
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}
+	
+%\association {Module}{}{0..1}{Module}{}{*}
+\draw [umlcd style] (Module) -- (-3,-7) -- (0,-7) -- (0,-4.95) -- (Module);
 
 
-A View belongs, as mentioned in Chapter \ref{chapter:concepts}, to a certain viewtype, which is refined by a specific style. 
-A View from the Module Viewtype contains Modules and the relationships between them. The Modules are created by associating annotations with them. After creation, a View may associate these Modules with itself.  
+
+\end{tikzpicture}
+
+\caption{Domain Model: Module relationships (INCOMPLETO)}
+\label{figure:domainModel6}
+\end{figure}
 
 \section{Controllers}
 
