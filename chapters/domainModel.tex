@@ -1,9 +1,21 @@
-\chapter{Software Architectures Concepts}
-\label{chapter:concepts}
-Before describing the architecture of the developed solution, it is necessary to provide a small introduction to the most important concepts from the Software Architectures course.
-\section{Scenarios}
+\chapter{Domain Model}
+\label{chapter:domainModel}
 
-A scenario is used to capture and express quality requirements of a system. It consists of six parts \cite{bass2003software}:
+\section{Concepts}
+Before describing the domain model of the developed solution, it is necessary to provide a small introduction to the most important concepts from the Software Architectures course.
+\subsection{Scenarios}
+A scenario is used to capture and express quality requirements of a system. These quality requirements are:
+\begin{itemize}
+\item Availability;
+\item Interoperability;
+\item Modifiability;
+\item Performance;
+\item Security;
+\item Testability;
+\item Usability;
+\end{itemize}
+
+A scenario consists of six parts \cite{bass2003software}:
 \begin{itemize}
 \item \textbf{Source of Stimulus:} Some entity (a human, a computer or any other actuator) that generates the stimulus;
 \item \textbf{Stimulus:} A condition that arrives at the system;
@@ -13,9 +25,9 @@ A scenario is used to capture and express quality requirements of a system. It c
 \item \textbf{Response Measure:} when the response occurs, it should be measurable in some way, so the requirement can be tested;
 \end{itemize}
 
-Tactics are design decisions used to achieve the quality requirements expressed by the scenarios.
+Each Scenario uses a set of Tactics, which are design decisions used to achieve the quality requirements expressed in them.
 
-\section{Views}
+\subsection{Views}
 A view is a representation of a set of system elements and the relationships associated with them \cite{clements2003documenting}. This set of elements and relationships is constrained by viewtypes.
 
 A Viewtype defines the element types and relationship types used to describe the architecture of a software system from a particular perspective\cite{clements2003documenting}. Viewtypes refine into styles.

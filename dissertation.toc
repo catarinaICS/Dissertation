@@ -22,9 +22,10 @@
 \contentsline {subsection}{\numberline {4.0.6}Semi-Structured Content}{19}{subsection.4.0.6}
 \contentsline {subsection}{\numberline {4.0.7}Ontology Learning}{20}{subsection.4.0.7}
 \contentsline {chapter}{\numberline {5}Solution}{22}{chapter.5}
-\contentsline {chapter}{\numberline {6}Software Architectures Concepts}{23}{chapter.6}
-\contentsline {section}{\numberline {6.1}Scenarios}{23}{section.6.1}
-\contentsline {section}{\numberline {6.2}Views}{23}{section.6.2}
+\contentsline {chapter}{\numberline {6}Domain Model}{23}{chapter.6}
+\contentsline {section}{\numberline {6.1}Concepts}{23}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Scenarios}{23}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Views}{24}{subsection.6.1.2}
 \contentsline {chapter}{\numberline {7}Architecture}{25}{chapter.7}
 \contentsline {section}{\numberline {7.1}Model}{25}{section.7.1}
 \contentsline {section}{\numberline {7.2}Controllers}{26}{section.7.2}

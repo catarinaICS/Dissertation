@@ -17,15 +17,16 @@
 \BOOKMARK [2][-]{subsection.4.0.6}{Semi-Structured Content}{subsection.4.0.1}% 17
 \BOOKMARK [2][-]{subsection.4.0.7}{Ontology Learning}{subsection.4.0.1}% 18
 \BOOKMARK [0][-]{chapter.5}{Solution}{}% 19
-\BOOKMARK [0][-]{chapter.6}{Software Architectures Concepts}{}% 20
-\BOOKMARK [1][-]{section.6.1}{Scenarios}{chapter.6}% 21
-\BOOKMARK [1][-]{section.6.2}{Views}{chapter.6}% 22
-\BOOKMARK [0][-]{chapter.7}{Architecture}{}% 23
-\BOOKMARK [1][-]{section.7.1}{Model}{chapter.7}% 24
-\BOOKMARK [1][-]{section.7.2}{Controllers}{chapter.7}% 25
-\BOOKMARK [2][-]{subsection.7.2.1}{Annotation Controller}{section.7.2}% 26
-\BOOKMARK [2][-]{subsection.7.2.2}{Document Controller}{section.7.2}% 27
-\BOOKMARK [2][-]{subsection.7.2.3}{Scenario Controller}{section.7.2}% 28
-\BOOKMARK [0][-]{chapter.8}{Evaluation}{}% 29
-\BOOKMARK [0][-]{chapter.9}{Conclusion}{}% 30
-\BOOKMARK [0][-]{appendix.A}{Appendix chapter}{}% 31
+\BOOKMARK [0][-]{chapter.6}{Domain Model}{}% 20
+\BOOKMARK [1][-]{section.6.1}{Concepts}{chapter.6}% 21
+\BOOKMARK [2][-]{subsection.6.1.1}{Scenarios}{section.6.1}% 22
+\BOOKMARK [2][-]{subsection.6.1.2}{Views}{section.6.1}% 23
+\BOOKMARK [0][-]{chapter.7}{Architecture}{}% 24
+\BOOKMARK [1][-]{section.7.1}{Model}{chapter.7}% 25
+\BOOKMARK [1][-]{section.7.2}{Controllers}{chapter.7}% 26
+\BOOKMARK [2][-]{subsection.7.2.1}{Annotation Controller}{section.7.2}% 27
+\BOOKMARK [2][-]{subsection.7.2.2}{Document Controller}{section.7.2}% 28
+\BOOKMARK [2][-]{subsection.7.2.3}{Scenario Controller}{section.7.2}% 29
+\BOOKMARK [0][-]{chapter.8}{Evaluation}{}% 30
+\BOOKMARK [0][-]{chapter.9}{Conclusion}{}% 31
+\BOOKMARK [0][-]{appendix.A}{Appendix chapter}{}% 32
