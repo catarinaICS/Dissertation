@@ -7,20 +7,20 @@
 \contentsline {chapter}{\numberline {2}Problem Description}{7}{chapter.2}
 \contentsline {chapter}{\numberline {3}Objectives}{8}{chapter.3}
 \contentsline {chapter}{\numberline {4}Related Work}{9}{chapter.4}
-\contentsline {subsection}{\numberline {4.0.1}Honeycomb Framework}{9}{subsection.4.0.1}
-\contentsline {subsection}{\numberline {4.0.2}Persuasive Software Design Patterns}{11}{subsection.4.0.2}
-\contentsline {subsubsection}{Social Learning and Facilitation (SLF):}{12}{section*.5}
-\contentsline {subsubsection}{Competition (COM):}{12}{section*.6}
-\contentsline {subsubsection}{Cooperation (COO)}{13}{section*.7}
-\contentsline {subsubsection}{Recognition (REC)}{13}{section*.8}
-\contentsline {subsection}{\numberline {4.0.3}Roles in Social Networks}{14}{subsection.4.0.3}
-\contentsline {subsection}{\numberline {4.0.4}Reputation Systems}{14}{subsection.4.0.4}
-\contentsline {subsubsection}{Motivation:}{15}{section*.9}
-\contentsline {subsubsection}{Requirements and Features:}{15}{section*.10}
-\contentsline {subsubsection}{Components of a Reputation System}{16}{section*.11}
-\contentsline {subsection}{\numberline {4.0.5}Collaborative Tagging}{18}{subsection.4.0.5}
-\contentsline {subsection}{\numberline {4.0.6}Semi-Structured Content}{19}{subsection.4.0.6}
-\contentsline {subsection}{\numberline {4.0.7}Ontology Learning}{20}{subsection.4.0.7}
+\contentsline {section}{\numberline {4.1}Honeycomb Framework}{9}{section.4.1}
+\contentsline {section}{\numberline {4.2}Persuasive Software Design Patterns}{11}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Social Learning and Facilitation (SLF):}{12}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Competition (COM):}{12}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Cooperation (COO)}{13}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Recognition (REC)}{13}{subsection.4.2.4}
+\contentsline {section}{\numberline {4.3}Roles in Social Networks}{14}{section.4.3}
+\contentsline {section}{\numberline {4.4}Reputation Systems}{15}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Motivation:}{15}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Requirements and Features:}{15}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Components of a Reputation System}{16}{subsection.4.4.3}
+\contentsline {section}{\numberline {4.5}Collaborative Tagging}{18}{section.4.5}
+\contentsline {section}{\numberline {4.6}Semi-Structured Content}{19}{section.4.6}
+\contentsline {section}{\numberline {4.7}Ontology Learning}{21}{section.4.7}
 \contentsline {chapter}{\numberline {5}Solution}{22}{chapter.5}
 \contentsline {chapter}{\numberline {6}Domain Model}{23}{chapter.6}
 \contentsline {section}{\numberline {6.1}Concepts}{23}{section.6.1}

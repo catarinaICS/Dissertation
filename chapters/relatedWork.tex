@@ -23,7 +23,7 @@ The next subsections provide an overview on the state-of-the-art of two main asp
 \end{itemize}
 
 
-\subsection{Honeycomb Framework}
+\section{Honeycomb Framework}
 The term ``Social Software'' is used in very different contexts \cite{pereira2010social}, and therefore, there are different definitions for it, given by different authors \cite{shirky2005group,klamma2007social,kolko2007mobile,wiley2008tagging,chatti2007future}. 
 
 The definition of Social Software as ``systems that allow people, in their particularities and diversity, to communicate (interact, collaborate, exchange ideas and information) mediating and facilitating any kind of social relationship and favoring the emergence of a collective wisdom and a bottom-up organization'' \cite{pereira2010social} applies to our collaborative platform, in the sense that it should allow a large number of students, with different personalities and opinions, to ask questions to their colleagues, give opinions, receive feedback, etc, in order to correctly identify the architectural elements in a description of a software system, and therefore reach a complete and correct analysis of that system. 
@@ -74,7 +74,7 @@ This way, groups can share documents, links, etc., that are important for comple
 However, it could be added, as a feature, a visible list of people online (logged in the platform) – similar to the ones present in many discussion forums.
 \end{itemize}
 
-\subsection{Persuasive Software Design Patterns}
+\section{Persuasive Software Design Patterns}
 The term ``persuasive technology'' is used to describe computer systems that have an impact on user's thoughts and may even lead to changes in their behavior \cite{fogg2002persuasive,oinas2009persuasive}.
 
 There are three different possible outcomes for a persuasive system:
@@ -103,7 +103,7 @@ While some students will want to start contributing to the platform right away, 
 
 Four design patterns are proposed for persuasive systems, in order to introduce social influence in software features: Social Learning and Facilitation (SLF), Competition (COM), Cooperation (COO) and Recognition (REC) \cite{oduor2014persuasive}. 
 
-\subsubsection{Social Learning and Facilitation (SLF):}
+\subsection{Social Learning and Facilitation (SLF):}
 
 The concept of Observational Learning, introduced by the Social Learning Theory, states that people's behavior and skills are augmented through the act of observing others \cite{bandura1977social}, whilst the concept of Social Facilitation states that people's awareness of being observed/evaluated by others also has an influence on their behaviors \cite{zajonc1965social}. Therefore, the Social Learning and Facilitation pattern has the main purpose of enabling and enhancing the design of software features that allow to visualize the presence of other people, with the motivation that it is easier for individuals to pursue their goals if there is a clear awareness of other people pursuing the same goal and facing the same issues \cite{oduor2014persuasive}. 
 
@@ -113,14 +113,14 @@ Considering that the users of the platform will be students, the Social Learning
 
 The Social Facilitation comes in the sense that moderation is necessary: while students are encouraged to contribute and ask questions in order to learn, they should strive to add relevant comments and ask relevant questions, as their contributions are seen by everyone.
 
-\subsubsection{Competition (COM):}
+\subsection{Competition (COM):}
 Human beings have a natural drive for competition. Therefore, it can be used as a social support guideline, to motivate users to adopt attitudes and behaviors \cite{oinas2009persuasive}. The Competition pattern has the main purpose of using competitive elements, such as ranks, scores and levels, that allow users to compare their performance with others, and adjust their target goals based on these. However, as some people might see competition as a motivational factor for improvement, other people may see it as a source of anxiety – therefore, participation in a competition must always be voluntary \cite{oduor2014persuasive}.
 
 Adding competitive elements to a social system will, as said above, trigger the human being's natural drive for competition. Adding a score for each student and a rank hierarchy based on the range of scores will start a hopefully healthy competition between students. Each contribution should have a positive score, given either by the teacher or by the colleagues. Less correct contributions should have a lower score, but positive nonetheless. When a student adds something to the platform, it means that he is making an effort to apply the concepts learned in the classes. As said before, not all students can do this correctly at first, and therefore if one of them specifies an incorrect scenario, for example, it shouldn't have a negative score: trying and failing is a way of learning. In addition, when another student adds a contribution to correct his colleagues, he is also gaining score points, and therefore, increasing the competition.
 
 Even this kind of competition, that is supposed to be healthy and motivating, can be a source of anxiety for some people. Therefore, it should be optional for students to be assigned a score and receiving points, or even to show their identity when contributing (add anonymity to the platform). 
 
-\subsubsection{Cooperation (COO)}
+\subsection{Cooperation (COO)}
 Besides competition, reciprocity is also another human beings' natural drive \cite{cialdini1993influence,malone1987making}, and cooperation between people has been proven to cause positive impact on user behaviors \cite{stibe2012exploring}. The Cooperation pattern has the main purpose of providing software features that allow users to engage in mutual goals and provide ways for them, supporting each other in reaching their goals. The motivation for this pattern is that it is easier to cooperate if there is a clear awareness of what needs to be done, what other people are doing, and how far they are in achieving their goals. Group discussion supports these needs and encourages giving and receiving support on the matter. However, some people prefer to perform alone, and therefore cooperation must not be forced \cite{oduor2014persuasive}. 
 
 The students that will use this platform will be working towards a main goal: correctly understanding and correlating what was learned in the Software Architectures classes with real examples of software systems. But concerning the analysis of a single software system, there are several concepts and structures to identify on a single description. Students may be having some trouble identifying these elements, and therefore the system must provide a way of defining goals. A goal, for example, could be ``Add a new scenario for Availability''. 
@@ -128,7 +128,7 @@ The students that will use this platform will be working towards a main goal: co
 The goals system should work similarly to a discussion forum: Students can add, delete or change goals (changing the description or the title, for example), and for each goal it is possible to send messages to discuss it and ask or answer questions. As discussion around the goal progresses, students collaborate with each other by answering questions asked by their colleagues or correcting what some other student wrote before. Discussions can converge, then, to a correct identification of architectural elements in the platform. A goal should be able to be marked as ``in progress'' or ``complete'', to indicate that discussions around that goal are still in progress or have finished. 
 Goals can also be split in sub-goals – if the discussion around a single goal becomes too big and complex, it might be wise to be able to split the discussion in sub-goals, each with its own discussion – so that when all sub-goals are complete, the main goal will also be nearly or fully complete. 
 
-\subsubsection{Recognition (REC)}
+\subsection{Recognition (REC)}
 
 In addition to competition and cooperation, recognition is introduced as another interpersonal motivational factor. This happens because people take pleasure in having their efforts recognized and appreciated by others, in order to feel fulfilled for their achievements \cite{malone1987making}. 
 The Recognition pattern has the purpose of providing software features that enable users to get recognition from their peers. The motivation for this pattern is that users, when working towards a goal, they sometimes need a reason to focus on that same goal. Having their efforts recognized may be a good reason to keep the good work, and therefore systems should provide opportunities for public recognition of top achievers \cite{oduor2014persuasive}. 
@@ -139,7 +139,7 @@ Since the system should have a score system, this score should be used as a way 
 
 Recognition is then achieved when students see their names in the spotlight. In addition to that, there may be some (hopefully healthy) competition for a spot in the Top 10 - as all, or at least most students will want to have their names on the spotlight.
 
-\subsection{Roles in Social Networks}
+\section{Roles in Social Networks}
 A survey on the state-of-the-art regarding identification of roles in social networks (\cite{forestier2012roles}) starts by stating the difference between a ``role'' and a ``position'', by giving a definition for both of these concepts:
 \begin{itemize}
 \item A \textit{position} is a ``well-defined place'' of an individual in a social structure, and is usually associated with certain attitudes, mental health, knowledge, etc., of individuals \cite{forestier2012roles,borgatti1992notions}.
@@ -167,7 +167,7 @@ The methodologies for identification of explicit roles in a social network \cite
 
 A methodology similar to the ones described for identification of experts \cite{zhang2007expertise} could possibly be added to the platform. By analyzing user interactions and the ratings saved in the reputation system, a role similar to ``expert'' could be assigned to some students – to identify the ones that do the most relevant contributions to the platform. Students with the role of ``experts'' could have some responsibilities assigned to them, in order to help other students understanding and applying the concepts. However, given the small number of users in the platform, the number of interactions to analyze may not be enough to do a correct inference.
 
-\subsection{Reputation Systems}
+\section{Reputation Systems}
 \label{repsys}
 Reputation systems are of extreme importance for certain kinds of applications, namely e-commerce websites (Amazon, eBay, etc.). In these websites, buyers and sellers execute money transactions and therefore, the reputation of a seller will denote the degree of trust that possible buyers will have in them \cite{vavilis2014reference}.
 
@@ -175,7 +175,7 @@ Most of the existing literature focuses on these types of applications, and anal
 
 For the platform to develop, reputation does not play such an important role as it does for e-commerce and similar applications. For this context, reputation will add a motivational component to the platform: Students rate their colleagues' contributions and ratings are aggregated to calculate a reputation score for each student. Students should strive for getting and keeping a high reputation score. Contributions to the platform include parts of the description that are identified as semantically significant for the software architecture, elements added to the semi-structure, questions and answers added to the Q\&A section, comments added (in the discussion forums, or to the elements added).
 
-\subsubsection{Motivation:}
+\subsection{Motivation:}
 
 A study was conducted \cite{dencheva2011dynamic}, concerning the lack of participation in Moknowpedia, a Wiki system: People were not motivated enough to overcome any obstacles (lack of time, lack of a structure for the article, etc.) and start contributing to the wiki. A reputation system was added to the wiki in order to solve these problems and improve both content quality and quantity. The system used MediaWiki, a widely used wiki software, and CollabReview, a Java-based web application for reputation management \cite{prause2008approach}. 
 
@@ -183,7 +183,7 @@ Results show an increase of 62\% in the number of article revisions and an incre
 
 This shows the importance of a reputation system in a collaborative system, even if its role is only motivational, and given the similarities between Moknowpedia and the platform to develop (small number of users with similar backgrounds), it is expected that the presence of a reputation system in the platform leads to significant numbers of contributions.
 	
-\subsubsection{Requirements and Features:}
+\subsection{Requirements and Features:}
 
 A framework for analysis of reputation systems is proposed in \cite{vavilis2014reference}, where the general requirements for reputation systems are elicited and the corresponding features needed for their fulfillment. Since these requirements try to include all possible kinds of contexts for reputation systems, not all requirements apply to all systems. Given the context of the platform, the following requirements are identified for its reputation system:
 
@@ -210,7 +210,7 @@ To satisfy the identified requirements, the reputation system should implement t
 \item \textbf{F3 (Origin/Target):} To prevent students from self-rating themselves and to control malicious ratings (for example, a student with a lower reputation score could assign lower ratings to their colleagues' participation in order to lower their scores), the origin and the target (students) of each rating given should be identified in the system. By comparing origin and target self-ratings are prevented, and by assigning a weight proportional to the origin's reputation score (a rating given by a student with a lower reputation score will have a smaller weight when processing) malicious users are controlled.
 \end{itemize}
 
-\subsubsection{Components of a Reputation System}
+\subsection{Components of a Reputation System}
 In \cite{liu2012systematic,liu2010evaluation}, reputation systems are divided in four components and it is defined a set of criteria for evaluation:
 
 \begin{itemize}
@@ -276,7 +276,7 @@ O3 (Timeliness) concerns how the reputation system shows the evolution of reputa
 
 \end{enumerate} %fim de componentes do sistemas de reputacao
 
-\subsection{Collaborative Tagging}
+\section{Collaborative Tagging}
 Collaborative tagging is the practice of allowing anyone to freely attach keywords or tags to content \cite{golder2006usage}.
 
 While in some document repositories or digital libraries there is an authority responsible for assigning and organizing documents by keywords, in collaborative tagging anyone is able to freely attach keywords or tags to the contents. This is very useful when there is no authority for organizing content or simply there is too much content for a single authority to organize: It is the case of the web \cite{golder2006usage}.
@@ -294,7 +294,7 @@ For that, and to avoid problems of word semantics, tags added to the text of the
 It will be possible to elicit relationships between tags in the text (for example, two tags X and Y added to two different parts of the text might have some kind of relationship like is-tactic-for-scenario(X,Y)), which will then facilitate the construction of semi-structured contents.
 
 
-\subsection{Semi-Structured Content}
+\section{Semi-Structured Content}
 Knowledge can be obtained from many different resources, ranging from unstructured (for example, language models obtained from plain text) to structured ones (for example, ontologies) \cite{hovy2013collaboratively}.
 
 Unstructured resources are as simple as collections of text, images and other media contents. Thanks to the Web, it is possible to collect huge amounts of unstructured information such as raw text, which allowed major advances in the Natural Language Processing field. However, unstructured knowledge has its limitations: the resources do not provide all the knowledge necessary for complex inference chains \cite{domingos2007toward} and the information is not ontologized – not included within a semantic network of unambiguously defined concepts and their semantic relations \cite{hovy2013collaboratively}.
@@ -324,7 +324,7 @@ As students discuss and correct each others' work, the semi-structure extraction
 
 
 	
-\subsection{Ontology Learning}
+\section{Ontology Learning}
 Research on Ontology learning from text has evolved over the years and there are several open challenges for this field \cite{wong2012ontology}. Ontologies are defined as ``effectively formal and explicit specifications in the form of concepts and relations of shared conceptualizations'' \cite{gruber1993translation}, and can be thought of as a directed graph, with concepts as nodes and relations as edges.
  
 Techniques for ontology learning can be classified in statistics-based, linguistics-based, logic-based or hybrid. Over the years there was also an increased interest in techniques for ontology learning from social data. Existant literature investigates the problem of ontology learning from user-defined tags \cite{tang2009towards}, discusses the requirements for automatic ontology learning from social data \cite{kotis2011automated}, presents a tripartite ontology model \cite{mika2007ontologies}, and describes an approach to complement corpus-based ontology learning with tags \cite{weichselbraun2010augmenting}.
