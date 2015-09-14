@@ -2,6 +2,7 @@
 \label{chapter:domainModel}
 
 \section{Concepts}
+\label{section:SAConcepts}
 Before describing the domain model of the developed solution, it is necessary to provide a small introduction to the most important concepts from the Software Architectures course.
 \subsection{Scenarios}
 A scenario is used to capture and express quality requirements of a system. These quality requirements are:
@@ -25,16 +26,16 @@ A scenario consists of six parts \cite{bass2003software}:
 \item \textbf{Response Measure:} when the response occurs, it should be measurable in some way, so the requirement can be tested;
 \end{itemize}
 
-Each Scenario uses a set of Tactics, which are design decisions used to achieve the quality requirements expressed in them.
+Each Scenario uses a set of Tactics, which are design decisions used to achieve the quality requirements expressed in them. Each quality requirement has a set of commonly used tactics.
 
 \subsection{Views}
 A view is a representation of a set of system elements and the relationships associated with them \cite{clements2003documenting}. This set of elements and relationships is constrained by viewtypes.
 
-A Viewtype defines the element types and relationship types used to describe the architecture of a software system from a particular perspective\cite{clements2003documenting}. Viewtypes refine into styles.
+A Viewtype defines the element types and relationship types used to describe the architecture of a software system from a particular perspective. Viewtypes refine into styles.
 
-An architectural style is a specialization of element and relation types, together with a set of constraints on how they can be used\cite{clements2003documenting}.
+An architectural style is a specialization of element and relation types, together with a set of constraints on how they can be used.
 
-Views can fall into three viewtype categories\cite{clements2003documenting}:
+Views can fall into three viewtype categories:
 \begin{itemize}
 \item \textbf{Module Viewtype:} document the system principal units of implementation. 
 
@@ -54,6 +55,99 @@ The elements are the \textit{Software Element} and the \textit{Environmental Ele
 
 The relationships are of type \textit{``Allocated-to''}, which means that a software element is allocated to an environmental element. 
 \end{itemize}
+
+\section{Model}
+\label{section:model}
+Figure \ref{figure:abstractDomainModel} shows the concepts and relations described in Section \ref{section:SAConcepts} in a Domain Model Diagram. 
+
+The scenario elements are represented as model entities, and the Scenario entity is associated with them. A Scenario has a single Source of Stimulus or Response, hence the ``0..1'' cardinality. Similarly, each scenario element can only be associated with a single scenario, and therefore there is a ``1'' cardinality in the diagram. Each Scenario captures a single Quality Requirement and has a set of Tactics. As mentioned, each quality requirement has a set of commonly used tactics for its achievement.
+
+A View is associated with a Viewtype, which refines into a style. The View contains a set of style-specific elements, which are related to eachother via style-specific relationships.
+
+The Scenario, View and Style-Specific Element entities are considered the main concepts of the domain, and they all have a dedicated template, as it will be described in the next section. These templates will contain the relationships between these main concepts and the other concepts in the domain model.
+
+\begin{figure}
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+
+\begin{tikzpicture}
+\begin{class}[text width=2cm ]{Concept}{10,-2.5}
+\end{class}
+
+\begin{class}[text width=3cm ]{Source Of Stimulus}{0,0.5}
+
+\end{class}
+\begin{class}[text width=2cm ]{Stimulus}{0,-1}
+%\inherit{ScenarioElement}
+\end{class}
+\begin{class}[text width=2cm ]{Artifact}{0,-2}
+%\inherit{ScenarioElement}
+\end{class}
+\begin{class}[text width=2.5cm ]{Environment}{0,-3}
+%\inherit{ScenarioElement}
+\end{class}
+\begin{class}[text width=2cm ]{Response}{0,-4}
+%\inherit{ScenarioElement}
+\end{class}
+\begin{class}[text width=3.3cm ]{Response Measure}{0,-5}
+\end{class}
+\begin{class}[text width=2cm ]{Scenario}{4.5,-2.5}
+\inherit{Concept}
+\end{class}
+\begin{class}[text width=3cm ]{Quality Requirement}{0,3}
+\end{class}
+\begin{class}[text width=2cm ]{Tactic}{5,2}
+\end{class}
+
+\begin{class}[text width=2cm ]{View}{4,-7}
+\inherit{Concept}
+\end{class}
+\begin{class}[text width=2cm ]{Viewtype}{0,-7}
+\end{class}
+\begin{class}[text width=2cm ]{Style}{0,-9}
+\end{class}
+\begin{class}[text width=3cm ]{Style-Specific Relationship}{-3,-12}
+\end{class}
+
+\begin{class}[text width=3cm ]{Style-Specific Element}{3,-12}
+\inherit{Concept}
+\end{class}
+
+\association{Source Of Stimulus}{}{0..1}{Scenario}{}{1}
+\association{Stimulus}{}{0..1}{Scenario}{}{1}
+\association{Artifact}{}{0..1}{Scenario}{}{1}
+\association{Environment}{}{0..1}{Scenario}{}{1}
+\association{Response}{}{0..1}{Scenario}{}{1}
+\association{Response Measure}{}{0..1}{Scenario}{}{1}
+\association{Quality Requirement}{}{1}{Scenario}{}{*}
+\association{Quality Requirement}{}{1}{Tactic}{}{*}
+\association{Scenario}{}{*}{Tactic}{}{*}
+\association{View}{}{*}{Viewtype}{}{1}
+\association{Viewtype}{}{1}{Style}{}{*}
+\association{View}{}{*}{Style}{}{1}
+\association{Style}{}{1}{Style-Specific Element}{}{*}
+\association{Style}{}{1}{Style-Specific Relationship}{}{*}
+\association{View}{}{*}{Style-Specific Element}{}{*}
+
+\draw [umlcd style] (-1.38,-12.3133) -- (1.38,-12.3133) node[near end, above]{*}
+node[near start, above]{*};
+
+\draw [umlcd style] (-1.38,-12.6266) -- (1.38,-12.6266) node[near end, below]{*}
+node[near start, below]{*};
+
+\end{tikzpicture}
+\label{figure:abstractDomainModel}
+\caption{Domain Model showing the Software Architectures concepts and how they are related}
+\end{figure}
+
+\section{Templates}
+The structured representation of the Software Architectures concepts described in Sections \ref{section:SAConcepts} and \ref{section:model} is represented in the developed solution by using specific templates for these concepts.
+
+Although we can elicit a wide set of concepts, it does not make sense to have a template for each and every one of them. It is easier to see the relations between concepts if they are in the same template. This is the case of the Scenarios. It makes sense to see all the elements of a Scenario together, so it is possible to see, for example, who/what generated the stimulus and what part of the system was stimulated. Therefore, the Scenario is considered one of the main concepts, and it has its own dedicated template, in which are present the quality attribute, the elements and the tactics. 
+
+The Views and their elements are also another case of main concepts. It makes sense to aggregate all the system elements and their relationships from a view in a separate template, representing the part of the system being described in that view. However, since a single element can be present in more than one view, it also makes sense to have a specific template for the elements, so their individual properties can be seen.
 
 
 

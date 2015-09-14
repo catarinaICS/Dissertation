@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2015.4.6)  12 SEP 2015 12:36
+This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2015.4.6)  14 SEP 2015 22:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -822,7 +822,8 @@ Package glossaries Info: Writing glossary file dissertation.acn on input line 2
 (./dissertation.aux (./cover.aux) (./chapters/introduction.aux)
 (./chapters/problemDescription.aux) (./chapters/objectives.aux)
 (./chapters/relatedWork.aux) (./chapters/solutionProposal.aux)
-(./chapters/domainModel.aux) (./chapters/architecture.aux
+(./chapters/domainModel.aux) (./chapters/architecture.aux)
+(./chapters/implementation.aux
 
 LaTeX Warning: Label `figure:domainModel6' multiply defined.
 
@@ -938,7 +939,7 @@ Dictionary: glossaries-dictionary, Language: English
 \openout2 = `cover.aux'.
 
 
-(./cover.tex <images/Logo_IST_color.jpg, id=135, 2128.95375pt x 853.1875pt>
+(./cover.tex <images/Logo_IST_color.jpg, id=147, 2128.95375pt x 853.1875pt>
 File: images/Logo_IST_color.jpg Graphic file (type jpg)
 
 <use images/Logo_IST_color.jpg>
@@ -965,8 +966,13 @@ go_IST_color.jpg>]) (./acknowledgments/acknowledgments.tex
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 4.
 )
-(./abstract/abstract-en.tex [2
+(./acknowledgments/citation.tex [2
 
+
+]
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 5.
+) (./abstract/abstract-en.tex [3
 
 ]
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
@@ -987,14 +993,19 @@ with the same identifier (name{page.2}) has been already used, duplicate ignore
 d
 <to be read again> 
                    \relax 
-l.37 ...rline {A}Appendix chapter}{35}{appendix.A}
+l.38 ...{\numberline {9}Evaluation}{33}{chapter.9}
                                                    [2
 
 ])
 \tf@toc=\write8
 \openout8 = `dissertation.toc'.
 
- [3] (./dissertation.lot)
+pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.56 \listoftables
+                   [3] (./dissertation.lot)
 \tf@lot=\write9
 \openout9 = `dissertation.lot'.
 
@@ -1016,7 +1027,7 @@ Chapter 1.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <20.74> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 3.
 
-LaTeX Warning: Reference `objectives' on page 6 undefined on input line 9.
+LaTeX Warning: Reference `objectives' on page 6 undefined on input line 12.
 
 ) [6
 
@@ -1068,8 +1079,6 @@ Missing character: There is no â in font phvr7t!
 Missing character: There is no € in font phvr7t!
 Missing character: There is no “ in font phvr7t!
 [10]
-LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 66.
 Missing character: There is no â in font phvr7t!
 Missing character: There is no € in font phvr7t!
 Missing character: There is no “ in font phvr7t!
@@ -1120,35 +1129,35 @@ Chapter 6.
 
 
 ]
-Overfull \hbox (5.70242pt too wide) in paragraph at lines 49--50
+Overfull \hbox (5.70242pt too wide) in paragraph at lines 50--51
 \OT1/phv/m/sl/10 ter-face'' \OT1/phv/m/n/10 Del-e-ga-tion, which as-so-ciates c
 om-po-nent ports to other ports from an ``in-ter-nal architecture''-
  []
 
-) [24]
+[24] [25]) [26]
 \openout2 = `chapters/architecture.aux'.
 
  (./chapters/architecture.tex
 Chapter 7.
+) [27
 
-LaTeX Warning: Reference `chapter:concepts' on page 25 undefined on input line 
-69.
 
+
+]
+\openout2 = `chapters/implementation.aux'.
+
+ (./chapters/implementation.tex
+Chapter 8.
 
 Overfull \hbox (3.00099pt too wide) in paragraph at lines 118--118
  [][][][]\OT1/phv/b/n/10 ResponseMeasure 
  []
 
-[25
+[28
 
 
 
 ]
-
-LaTeX Warning: Reference `chapter:concepts' on page 26 undefined on input line 
-195.
-
-
 Overfull \hbox (8.53592pt too wide) in paragraph at lines 300--300
 []|[]| 
  []
@@ -1168,12 +1177,12 @@ Overfull \hbox (8.53592pt too wide) in paragraph at lines 304--304
 []|[]| 
  []
 
-[26] [27] [28]) [29]
+) [29] [30] [31] [32]
 \openout2 = `chapters/evaluation.aux'.
 
  (./chapters/evaluation.tex
-Chapter 8.
-) [30
+Chapter 9.
+) [33
 
 
 
@@ -1181,26 +1190,26 @@ Chapter 8.
 \openout2 = `chapters/conclusion.aux'.
 
  (./chapters/conclusion.tex
-Chapter 9.
-) [31
+Chapter 10.
+) [34
 
 
 
-]) (./dissertation.bbl [32
+]) (./dissertation.bbl [35
 
 
-] [33]
+] [36]
 Underfull \hbox (badness 10000) in paragraph at lines 170--173
 []\OT1/phv/m/n/10 T. Coates, ``Two cul-tures of faux-onomies col-lide,'' \OT1/p
 hv/m/sl/10 http://www. plas-ticbag.
  []
 
-) [34]
+) [37]
 \openout2 = `appendix/appendixa.aux'.
 
  (./appendix/appendixa.tex
 Appendix A.
-) [35
+) [38
 
 
 ]
@@ -1210,12 +1219,12 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 74.
 (./chapters/problemDescription.aux) (./chapters/objectives.aux)
 (./chapters/relatedWork.aux) (./chapters/solutionProposal.aux)
 (./chapters/domainModel.aux) (./chapters/architecture.aux)
-(./chapters/evaluation.aux) (./chapters/conclusion.aux)
-(./appendix/appendixa.aux))
+(./chapters/implementation.aux) (./chapters/evaluation.aux)
+(./chapters/conclusion.aux) (./appendix/appendixa.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 74.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 74.
 Package rerunfilecheck Info: File `dissertation.out' has not changed.
-(rerunfilecheck)             Checksum: F1916E27D450B27AF0BC72883EBA0717;2014.
+(rerunfilecheck)             Checksum: 4C6FB79851043B0B32EEBF85BF9FB339;2182.
 
 
 LaTeX Warning: There were undefined references.
@@ -1226,13 +1235,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 74.
  ) 
 Here is how much of TeX's memory you used:
- 20194 strings out of 495034
- 357789 string characters out of 6181678
- 536756 words of memory out of 5000000
- 22725 multiletter control sequences out of 15000+600000
+ 20278 strings out of 495034
+ 359678 string characters out of 6181678
+ 539347 words of memory out of 5000000
+ 22792 multiletter control sequences out of 15000+600000
  21722 words of font info for 38 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 56i,13n,64p,1718b,786s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,13n,64p,1718b,784s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/
@@ -1240,10 +1249,10 @@ fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/he
 lvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro
 8a.pfb>
-Output written on dissertation.pdf (38 pages, 285178 bytes).
+Output written on dissertation.pdf (42 pages, 292952 bytes).
 PDF statistics:
- 554 PDF objects out of 1000 (max. 8388607)
- 501 compressed objects within 6 object streams
- 136 named destinations out of 1000 (max. 500000)
- 274 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 591 PDF objects out of 1000 (max. 8388607)
+ 534 compressed objects within 6 object streams
+ 144 named destinations out of 1000 (max. 500000)
+ 298 words of extra memory for PDF output out of 10000 (max. 10000000)
 
