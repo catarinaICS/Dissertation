@@ -2,6 +2,143 @@
 
 \chapter{Architecture Analysis}
 \label{chapter:architecture}
+Chapter \ref{chapter:domainModel} introduced the domain model of the Software Architectures concepts present in the developed solution, and the templates in which they are included.
+
+In this chapter, it is shown how these templates are filled with information extracted from a software description article.
+
+The next sections will present two entities from the system: the Document and the Annotation. These entities have a major role in the identification of Software Architectures concepts from the domain model, and the enrichment of the templates for those concepts. 
+
+\section{Document}
+\label{section:document}
+
+The Document entity in this system corresponds to an article which describes a software system and is read and analysed in the practical classes of the Software Architectures course. This entity saves the article text and its source, so it can be parsed locally in the application
+
+Figure \ref{figure:documentEntity} shows the Document entity in the system. The ``title'' attribute corresponds to the title of the article, the ``url'' saves the article's original URL, and the ``content'' saves the article's contents.
+
+\begin{figure}[h]
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+
+\begin{tikzpicture}
+\begin{class}[text width=3cm ]{Document}{0,0}
+	\attribute { title : String }
+	\attribute { url : String }
+	\attribute { content : String }
+\end{class}
+\end{tikzpicture}
+\caption{The Document Entity}
+\label{figure:documentEntity}
+\end{figure}
+
+As the main purpose of this application is to create a structured representation of the document using the templates described in Section \ref{section:templates}, the instances of the main concepts, from which the templates will be generated, must be associated to the Document, as shown in Figure \ref{figure:documentConcept}. A concept describes a part of one and only one document, hence the '1' cardinality.  
+
+\begin{figure}[h]
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+
+\begin{tikzpicture}
+\begin{class}[text width=3cm ]{Concept}{3,-4}
+	\attribute{}
+\end{class}
+
+\begin{class}[text width=3cm ]{Document}{0,0}
+	\attribute { title : String }
+	\attribute { url : String }
+	\attribute { content : String }
+\end{class}
+
+\association{Document}{}{1}{Concept}{}{*}
+\end{tikzpicture}
+\caption{Association between Document and Concept entities}
+\label{figure:documentConcept}
+\end{figure}
+
+\section{Annotation}
+\label{section:annotation}
+
+The concept of ``Annotation'' was brought to this application by the AnnotatorJS \footnote{http://annotatorjs.org/}, which is a javascript library used in the developed application and its use will be described later.
+
+An annotation consists of a portion of text selected from the article, enriched with a tag and other information. This selected text can correspond partially or totally to the specification of a Software Architecture concept. For example, the description of the Source of Stimulus of a Scenario may be found in a single paragraph of the article, or in a set of single sentences scattered along the whole article. 
+
+Figure \ref{figure:annotationEntity} shows the Annotation entity in the system. The ``annotation'' field saves a Json representation of the annotation data such as the quote from the text and the given tag. The ``tag'' field stores the tag given to the annotation. This tag corresponds to a Software Architectures concept, such as ``Stimulus'' or ``Module''.
+
+\begin{figure}[h]
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+
+\begin{tikzpicture}
+\begin{class}[text width=4cm ]{Annotation}{0,0}
+	\attribute { annotation : String }
+	\attribute { tag : String }
+\end{class}
+\end{tikzpicture}
+\caption{The Annotation Entity}
+\label{figure:annotationEntity}
+\end{figure}
+
+Annotations are added to the system by selecting a portion of text in the parsed document and setting it as an annotation. Therefore, an annotation belongs to one, and only one document. Figure \ref{figure:documentAnnotation} shows the association between the Annotation and Document entities which reflects the mentioned constraints.
+
+\begin{figure}[h]
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+
+\begin{tikzpicture}
+\begin{class}[text width=4cm ]{Annotation}{2,-5}
+	\attribute { annotation : String }
+	\attribute { tag : String }
+\end{class}
+
+\begin{class}[text width=3cm ]{Document}{0,0}
+	\attribute { title : String }
+	\attribute { url : String }
+	\attribute { content : String }
+\end{class}
+
+\association{Document}{}{1}{Annotation}{}{*}
+\end{tikzpicture}
+\caption{Association between Document and Annotation entities}
+\label{figure:documentAnnotation}
+\end{figure}
+
+Annotations are used to enrich the templates described in Section \ref{section:templates}. Associating the annotations with the respective instances of the concepts allows for that enrichment. All the concepts, not only the main ones, can have associated annotations.
+
+As mentioned in the previous section, an annotation can partially or fully describe a concept, therefore a concept can be associated with multiple annotations. 
+
+Figure \ref{figure:annotationConcept} shows the association between the Source of Stimulus and the Annotation entities as an example, as all the concepts in the domain model of Figure \ref{figure:abstractDomainModel} have a similar association.
+
+\begin{figure}[h]
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+
+\begin{tikzpicture}
+\begin{class}[text width=4cm ]{Annotation}{0,0}
+	\attribute { annotation : String }
+	\attribute { tag : String }
+\end{class}
+
+\begin{class}[text width=3cm ]{Source Of Stimulus}{4,-4}
+	\attribute{}
+\end{class}
+
+\association{Source Of Stimulus}{}{0..1}{Annotation}{}{*}
+\end{tikzpicture}
+\caption{Association between Source Of Stimulus and Annotation entities}
+\label{figure:annotationConcept}
+\end{figure}
+
+\section{Template Flow}
+\label{section:templateFlow}
+
 
 
 
