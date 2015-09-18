@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2015.4.6)  17 SEP 2015 19:08
+This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2015.4.6)  18 SEP 2015 15:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -939,7 +939,7 @@ Dictionary: glossaries-dictionary, Language: English
 \openout2 = `cover.aux'.
 
 
-(./cover.tex <images/Logo_IST_color.jpg, id=155, 2128.95375pt x 853.1875pt>
+(./cover.tex <images/Logo_IST_color.jpg, id=159, 2128.95375pt x 853.1875pt>
 File: images/Logo_IST_color.jpg Graphic file (type jpg)
 
 <use images/Logo_IST_color.jpg>
@@ -993,7 +993,7 @@ with the same identifier (name{page.2}) has been already used, duplicate ignore
 d
 <to be read again> 
                    \relax 
-l.39 ...Scenario Controller}{36}{subsection.8.2.3}
+l.39 ...Document Controller}{34}{subsection.8.2.2}
                                                    [2
 
 ])
@@ -1134,21 +1134,21 @@ Overfull \hbox (5.70242pt too wide) in paragraph at lines 50--51
 om-po-nent ports to other ports from an ``in-ter-nal architecture''-
  []
 
-[24] <images/scenarioTemplate.png, id=487, 1371.1225pt x 770.88pt>
+[24] <images/scenarioTemplate.png, id=492, 1371.1225pt x 770.88pt>
 File: images/scenarioTemplate.png Graphic file (type png)
 
 <use images/scenarioTemplate.png>
 Package pdftex.def Info: images/scenarioTemplate.png used on input line 155.
 (pdftex.def)             Requested size: 426.79134pt x 239.94662pt.
 
-<images/moduleTemplate.png, id=490, 1371.1225pt x 770.88pt>
+<images/moduleTemplate.png, id=495, 1371.1225pt x 770.88pt>
 File: images/moduleTemplate.png Graphic file (type png)
 
 <use images/moduleTemplate.png>
 Package pdftex.def Info: images/moduleTemplate.png used on input line 168.
 (pdftex.def)             Requested size: 426.79134pt x 239.94662pt.
 
-<images/viewTemplate.png, id=491, 1371.1225pt x 770.88pt>
+<images/viewTemplate.png, id=496, 1371.1225pt x 770.88pt>
 File: images/viewTemplate.png Graphic file (type png)
 
 <use images/viewTemplate.png>
@@ -1168,23 +1168,18 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-] [30]) [31]
+] [30] [31]) [32]
 \openout2 = `chapters/implementation.aux'.
 
  (./chapters/implementation.tex
 Chapter 8.
-
-Overfull \hbox (3.00099pt too wide) in paragraph at lines 118--118
- [][][][]\OT1/phv/b/n/10 ResponseMeasure 
- []
-
-[32
+[33
 
 
 
 ]
-Overfull \hbox (8.53592pt too wide) in paragraph at lines 300--300
-[]|[]| 
+Overfull \hbox (3.00099pt too wide) in paragraph at lines 120--120
+ [][][][]\OT1/phv/b/n/10 ResponseMeasure 
  []
 
 
@@ -1193,21 +1188,26 @@ Overfull \hbox (8.53592pt too wide) in paragraph at lines 302--302
  []
 
 
-Overfull \hbox (8.53592pt too wide) in paragraph at lines 303--303
-[]|[]| 
- []
-
-
 Overfull \hbox (8.53592pt too wide) in paragraph at lines 304--304
 []|[]| 
  []
 
-) [33] [34] [35] [36]
+
+Overfull \hbox (8.53592pt too wide) in paragraph at lines 305--305
+[]|[]| 
+ []
+
+
+Overfull \hbox (8.53592pt too wide) in paragraph at lines 306--306
+[]|[]| 
+ []
+
+) [34] [35] [36] [37]
 \openout2 = `chapters/evaluation.aux'.
 
  (./chapters/evaluation.tex
 Chapter 9.
-) [37
+) [38
 
 
 
@@ -1216,25 +1216,25 @@ Chapter 9.
 
  (./chapters/conclusion.tex
 Chapter 10.
-) [38
+) [39
 
 
 
-]) (./dissertation.bbl [39
+]) (./dissertation.bbl [40
 
 
-] [40]
+] [41]
 Underfull \hbox (badness 10000) in paragraph at lines 170--173
 []\OT1/phv/m/n/10 T. Coates, ``Two cul-tures of faux-onomies col-lide,'' \OT1/p
 hv/m/sl/10 http://www. plas-ticbag.
  []
 
-) [41]
+) [42]
 \openout2 = `appendix/appendixa.aux'.
 
  (./appendix/appendixa.tex
 Appendix A.
-) [42
+) [43
 
 
 ]
@@ -1249,7 +1249,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 74.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 74.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 74.
 Package rerunfilecheck Info: File `dissertation.out' has not changed.
-(rerunfilecheck)             Checksum: 0E064F69B2D3A2D0B4E15E64D6FD25B6;2294.
+(rerunfilecheck)             Checksum: CC88293DD6DE1374675093B2E4A5430A;2355.
 
 
 LaTeX Warning: There were undefined references.
@@ -1260,10 +1260,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 74.
  ) 
 Here is how much of TeX's memory you used:
- 20341 strings out of 495034
- 360764 string characters out of 6181678
- 541697 words of memory out of 5000000
- 22827 multiletter control sequences out of 15000+600000
+ 20351 strings out of 495034
+ 360858 string characters out of 6181678
+ 540837 words of memory out of 5000000
+ 22829 multiletter control sequences out of 15000+600000
  29275 words of font info for 52 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  56i,13n,64p,1718b,784s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1277,10 +1277,10 @@ nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helv
 etic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a
 .pfb>
-Output written on dissertation.pdf (46 pages, 433361 bytes).
+Output written on dissertation.pdf (47 pages, 435234 bytes).
 PDF statistics:
- 655 PDF objects out of 1000 (max. 8388607)
- 591 compressed objects within 6 object streams
- 159 named destinations out of 1000 (max. 500000)
- 329 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 673 PDF objects out of 1000 (max. 8388607)
+ 607 compressed objects within 7 object streams
+ 167 named destinations out of 1000 (max. 500000)
+ 337 words of extra memory for PDF output out of 10000 (max. 10000000)
 

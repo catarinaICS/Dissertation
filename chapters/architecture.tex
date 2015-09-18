@@ -136,8 +136,31 @@ Figure \ref{figure:annotationConcept} shows the association between the Source o
 \label{figure:annotationConcept}
 \end{figure}
 
-\section{Template Flow}
-\label{section:templateFlow}
+\section{Interface Flow}
+\label{section:interfaceFlow}
+
+The associations between the entities described in the previous sections are created after a set of interactions with the system. These interactions are:
+
+\begin{enumerate}
+\item After navigation to the document page, a portion of text is selected. The AnnotatorJS interface is prompted, and the user selects a tag to describe the selected text;
+
+\item Upon submission, an instance of ``Annotation'' is created and associated with the instance of the document;
+
+\item By mouse hovering over the highlighted text, another AnnotatorJS interface is prompted, and the user can associate this annotation to a domain entity by clicking ``Add this annotation to the structured representation'';
+
+\item Upon clicking the link, a modal window is shown and, according to the tag given to the annotation, the user can select either an existant Scenario, View or Module to add this annotation to, or create a new instance. 
+
+Initially there are no created instances, and upon creation the instance is associated with the document. When a new Scenario is created, their elements are instantiated as well;
+
+\item After selection, the annotation is associated with the selected element. In the case of Scenarios, if the annotation describes any of the scenario elements, it will be associated with the instance of the corresponding element. 
+
+For example, an annotation tagged as ``Stimulus'' will be associated with the instance of the Stimulus entity that is associated with the selected Scenario.
+
+\item The user is then redirected to the template of the selected element. Inside the template, the user can delete the annotation, move it to other element, delete the element itself. 
+
+In the Scenario template the user can also add Tactics, in the Module template the user can add relations with other Modules, and in the View template the user can add elements to the view.
+\end{enumerate}
+
 
 
 

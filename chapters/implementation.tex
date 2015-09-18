@@ -23,9 +23,11 @@ The standard interaction cycle in this architecture is the following \cite{krasn
 \item The Controller notifies the corresponding View so it can be updated with the new version of the Model.
 \end{itemize}
 
+The next sections will describe the solution implementation based on these three elements.
+
 
 \section{Model}
-The Document is one of the most important entities of the Domain Model, because it aggregates all the concepts elicited during text analysis. 
+As seen in Chapter \ref{chapter:architecture}, the Document is one of the most important entities, because it aggregates all the annotations created over the text and all the Software Architectures concepts elicited.
 
 Annotations are first added to the document before being linked to other domain entities, and all Software Architectures concepts discovered through reading are connected either directly or indirectly to this entity.
 
@@ -66,7 +68,7 @@ These annotations are constituted by a user comment, a tag and a selection of te
 
 After creation, it can also be associated with one of the model entities that represent Software Architectures concepts, such as the Scenario and its elements, the Module or the View. 
 
-As explained in Chapter \ref{chapter:domainModel}, the Scenario contains a set of elements and a set of Tactics to achieve the quality requirement. Figure \ref{figure:domainModel2} shows how Scenarios and their elements are present in the Model. All elements - Source of Stimulus, Stimulus, Artifact, Environment, Response, Response Measure and the Tactics - are with a single Scenario. It does not make sense to have either of these elements without a Scenario, hence the 1 cardinality in the association between the scenario elements and the Scenario entity. Figure \ref{figure:domainModel2} also shows how Scenarios are associated to the corresponding document.
+As explained in Chapter \ref{chapter:domainModel}, the Scenario contains a set of elements and a set of Tactics to achieve the quality requirement. Figure \ref{figure:domainModel2} shows how Scenarios and their elements are present in the Model. All elements - Source of Stimulus, Stimulus, Artifact, Environment, Response, Response Measure and the Tactics - are associated with a single Scenario. It does not make sense to have either of these elements without a Scenario, hence the 1 cardinality in the association between the scenario elements and the Scenario entity. Figure \ref{figure:domainModel2} also shows how Scenarios are associated to the corresponding document.
 
 \begin{figure}
 \centering
