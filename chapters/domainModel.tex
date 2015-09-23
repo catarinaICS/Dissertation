@@ -7,13 +7,13 @@ Before describing the domain model of the developed solution, it is necessary to
 \subsection{Scenarios}
 A scenario is used to capture and express the quality requirements of a system. The considered qualities are:
 \begin{itemize}
-\item Availability;
-\item Interoperability;
-\item Modifiability;
-\item Performance;
-\item Security;
-\item Testability;
-\item Usability;
+\item Availability - concerning the uptime of a system;
+\item Interoperability - how easily can the system interoperate with other system;
+\item Modifiability - the cost of changing the system;
+\item Performance - how fast the system responds to events;
+\item Security - resistance to unauthorized usage whilst providing service to legitimate users;
+\item Testability - how easy it is to check system fauls through testing;
+\item Usability - how easy it is for a user to accomplish a task, and the kind of support offered by the system;
 \end{itemize}
 
 A scenario consists of six parts \cite{bass2003software}:
@@ -51,22 +51,16 @@ The relationships can be of type \textit{``Attachment''}, which associate compon
 
 \item \textbf{Allocation Viewtype:} document the relationships between a system's software and its development and execution environments. 
 
-The elements are the \textit{Software Element} and the \textit{Environmental Element}. 
+The elements are the \textit{Software Element} (elements from the Module and Component \& Connector viewtypes) and the \textit{Environmental Element}. 
 
 The relationships are of type \textit{``Allocated-to''}, which means that a software element is allocated to an environmental element. 
 \end{itemize}
 
 \section{Model}
 \label{section:model}
-Figure \ref{figure:abstractDomainModel} shows the concepts and relations described in Section \ref{section:SAConcepts} in a Domain Model Diagram. 
-
-The scenario elements are represented as the model entities 'Source of Stimulus', 'Stimulus', Artifact', 'Environment', 'Response' and 'Response Measure' respectively, and are associated to the Scenario entity. A Scenario can only have at most one instance of each element, hence the ``0..1'' cardinality. Similarly, each scenario element can only be associated with a single scenario, and therefore there is a ``1'' cardinality in the diagram. Each Scenario captures a single Quality Requirement and has a set of Tactics. As mentioned, each quality requirement has a set of commonly used tactics for its achievement.
-
-A View is associated with a Viewtype, which refines into a style. The View contains a set of application-specific elements, which are related to each other via application-specific relationships.
-
-The Scenario, View and Application-Specific Element entities are considered the main concepts of the domain, and they all have a dedicated template, as it will be described in the next section. These templates will contain the relationships between these main concepts and the other concepts in the domain model.
-
-\begin{figure}
+Figure \ref{figure:abstractDomainModel} shows the concepts and relations described in Section \ref{section:SAConcepts} in a Domain Model Diagram.
+ 
+\begin{figure}[h]
 \centering
 \renewcommand {\umltextcolor}{black}
 \renewcommand {\umlfillcolor}{none}
@@ -108,11 +102,37 @@ The Scenario, View and Application-Specific Element entities are considered the 
 \end{class}
 \begin{class}[text width=2cm ]{Style}{0,-9.5}
 \end{class}
-\begin{class}[text width=3cm ]{Application-Specific Relationship}{-3,-12.5}
+\begin{class}[text width=2cm ]{Relation}{-1,-12.5}
 \end{class}
 
-\begin{class}[text width=3cm ]{Application-Specific Element}{3,-12.5}
+\begin{class}[text width=2cm ]{Element}{6,-12.5}
 \inherit{Concept}
+\end{class}
+
+\begin{class}[text width=1.5cm]{Is Part Of}{-4,-14.5}
+\inherit{Relation}
+\end{class}
+
+\draw [umlcd style] (-2.5,-14.90) node {[...]};
+
+\begin{class}[text width=2cm]{Connector}{-1,-14.5}
+\inherit{Relation}
+\end{class}
+
+\begin{class}[text width=2cm]{Allocated To}{1.5,-14.5}
+\inherit{Relation}
+\end{class}
+
+\begin{class}[text width=2cm]{Module}{4,-14.5}
+\inherit{Element}
+\end{class}
+
+\begin{class}[text width=2cm]{Component}{6.5,-14.5}
+\inherit{Element}
+\end{class}
+
+\begin{class}[text width=2.5cm]{Environmental Element}{9.5,-14.5}
+\inherit{Element}
 \end{class}
 
 \association{Source Of Stimulus}{}{0..1}{Scenario}{}{1}
@@ -126,21 +146,24 @@ The Scenario, View and Application-Specific Element entities are considered the 
 \association{Scenario}{}{*}{Tactic}{}{*}
 \association{View}{}{*}{Viewtype}{}{1}
 \association{Viewtype}{}{1}{Style}{}{*}
-\association{View}{}{*}{Style}{}{1}
-\association{Style}{}{1}{Application-Specific Element}{}{*}
-\association{Style}{}{1}{Application-Specific Relationship}{}{*}
-\association{View}{}{*}{Application-Specific Element}{}{*}
+\association{Style}{}{*}{Element}{}{*}
+\association{Style}{}{*}{Relation}{}{*}
+\association{View}{}{*}{Element}{}{*}
+\association{Element}{}{*}{Relation}{}{*}
 
-\draw [umlcd style] (-1.38,-12.8133) -- (1.38,-12.8133) node[near end, above]{*}
-node[near start, above]{*};
-
-\draw [umlcd style] (-1.38,-13.1266) -- (1.38,-13.1266) node[near end, below]{*}
-node[near start, below]{*};
 
 \end{tikzpicture}
 \caption{Domain Model showing the Software Architectures concepts and how they are related}
 \label{figure:abstractDomainModel}
 \end{figure}
+
+The scenario elements are represented as the model entities 'Source of Stimulus', 'Stimulus', Artifact', 'Environment', 'Response' and 'Response Measure' respectively, and are associated to the Scenario entity. A Scenario can only have at most one instance of each element, hence the ``0..1'' cardinality. Similarly, each scenario element can only be associated with a single scenario, and therefore there is a ``1'' cardinality in the diagram. Each Scenario captures a single Quality Requirement and has a set of Tactics. As mentioned, each quality requirement has a set of commonly used tactics for its achievement.
+
+A View is associated with a Viewtype, which refines into a style. The View contains a set of elements, which are related to each other via specific relations.
+
+The Scenario, View and the Element are considered the main concepts of the domain, and they all have a dedicated template, as it will be described in the next section. These templates will contain the relationships between these main concepts and the other concepts in the domain model.
+
+
 
 \section{Templates}
 \label{section:templates}
@@ -150,32 +173,32 @@ Although we can elicit a wide set of concepts, it does not make sense to have a 
 
 This is the case for the Scenarios. It makes sense to see all the elements of a Scenario together, so it is possible to see, for example, who/what generated the stimulus and what part of the system was stimulated. Therefore, the Scenario is considered one of the main concepts, and it has its own dedicated template, in which are present the quality attribute, the elements and the tactics. 
 
-Figure \ref{figure:scenarioTemplate} shows the Scenario template created for the developed solution. All the Scenario elements, the quality requirement and the tactics are present in the template, making it possible to see, as mentioned before, how all these concepts are related.
-\begin{figure}
-\includegraphics[width=15cm]{images/scenarioTemplate}
+Figure \ref{figure:scenarioTemplate} shows a Schema for the Scenario template. All the Scenario elements, the quality requirement and the tactics are present in the template, making it possible to see, as mentioned before, how all these concepts are related.
+
+\begin{figure}[h]
 \centering
-\caption{Template for a Scenario}
+\lstinputlisting[language=HTML, style=customhtml]{scenarioSchema.html}
+\caption{Schema for the Scenario template}
 \label{figure:scenarioTemplate}
 \end{figure}
 
 The Views and their elements are also another case of main concepts. It makes sense to aggregate all the system elements and their relationships from a view in a separate template, representing the part of the system being described in that view. However, since a single element can be present in more than one view, it also makes sense to have a specific template for the elements, so their individual properties can be seen.
 
-Figure \ref{figure:moduleTemplate} shows the template created for the Module, which is a specific system element from the Module Viewtype. Besides the element details, their relationships with other elements (other Modules, in this specific example) are present in the template.
+Figure \ref{figure:moduleTemplate} shows a Schema for the Module template, which is the element from the Module Viewtype. Besides the element details, its relationships with other elements (other Modules, in this specific example) are present in the template.
 
-Figure \ref{figure:viewTemplate} shows the template created for views from the Module Viewtype. Although the template allows inserting a description for the view, its most important feature is the inclusion of other templates in it. As mentioned, a view aggregates a set of system elements and the relationships between them. As there is already a template for the element, the view will include a set of element templates - a template per element, with its respective information.
-
-\begin{figure}
-\includegraphics[width=15cm]{images/moduleTemplate}
+\begin{figure}[h]
 \centering
-\caption{Template for a Module}
+\lstinputlisting[language=HTML, style=customhtml]{moduleSchema.html}
+\caption{Schema for the Module template}
 \label{figure:moduleTemplate}
 \end{figure}
 
-\begin{figure}
-\includegraphics[width=15cm]{images/viewTemplate}
-\centering
-\caption{Template for a View}
-\label{figure:viewTemplate}
-\end{figure}
+Figure \ref{figure:viewTemplate} shows the schema for the Module Viewtype Views template. Although the template allows inserting a description for the view, its most important feature is the inclusion of other templates in it. As mentioned, a view aggregates a set of system elements and the relationships between them. As there is already a template for the element, the view will include a set of element templates - a template per element, with its respective information.
 
+\begin{figure}[h]
+\centering
+\lstinputlisting[language=HTML, style=customhtml]{viewSchema.html}
+\caption{Schema for a Module Viewtype View template}
+\label{figure:moduleTemplate}
+\end{figure}
 

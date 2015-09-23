@@ -1,0 +1,31 @@
+<html>
+<body>
+
+  <div id="Module Identification">
+    <span>Module Name</span>
+  </div>
+
+  <div id="Scenario Details">
+    <span>Scenario Description</span>
+
+    <div id="Scenario Elements">
+      <div id="Source of Stimulus"> Source of Stimulus Description </div>
+
+      <div id="Stimulus"> Stimulus Description </div>
+
+      <div id="Artifact"> Artifact Description </div>
+
+      <div id="Environment"> Environment Description </div>
+
+      <div id="Response"> Response Description </div>
+
+      <div id="Response Measure"> Response Measure Description </div>
+
+      <div id="Tactics">
+        <div> Tactic 1 Description </div>
+        <div> Tactic 2 Description </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

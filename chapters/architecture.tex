@@ -60,8 +60,6 @@ As the main purpose of this application is to create a structured representation
 \section{Annotation}
 \label{section:annotation}
 
-The concept of ``Annotation'' was brought to this application by the AnnotatorJS \footnote{http://annotatorjs.org/}, which is a javascript library used in the developed application and its use will be described later.
-
 An annotation consists of a portion of text selected from the article, enriched with a tag and other information. This selected text can correspond partially or totally to the specification of a Software Architecture concept. For example, the description of the Source of Stimulus of a Scenario may be found in a single paragraph of the article, or in a set of single sentences scattered along the whole article. 
 
 Figure \ref{figure:annotationEntity} shows the Annotation entity in the system. The ``annotation'' field saves a Json representation of the annotation data such as the quote from the text and the given tag. The ``tag'' field stores the tag given to the annotation. This tag corresponds to a Software Architectures concept, such as ``Stimulus'' or ``Module''.
@@ -156,10 +154,41 @@ Initially there are no created instances, and upon creation the instance is asso
 
 For example, an annotation tagged as ``Stimulus'' will be associated with the instance of the Stimulus entity that is associated with the selected Scenario.
 
-\item The user is then redirected to the template of the selected element. Inside the template, the user can delete the annotation, move it to other element, delete the element itself. 
+\item The user is then redirected to the template of the selected element. Inside the template, the user can delete the annotation, move it to other element, delete the element itself and add text descriptions to the template. 
 
 In the Scenario template the user can also add Tactics, in the Module template the user can add relations with other Modules, and in the View template the user can add elements to the view.
 \end{enumerate}
+
+Figures \ref{figure:scenarioTemplate2}, \ref{figure:moduleTemplate2} and \ref{figure:viewTemplate2} show the Schemas presented in Section \ref{section:templates} of Chapter \ref{chapter:domainModel}, now including the annotations and the user text.
+
+\begin{figure}[h]
+\centering
+\lstinputlisting[language=HTML, style=customhtml]{scenarioSchema2.html}
+\caption{Scenario Schema enriched with annotations and user text}
+\label{figure:scenarioTemplate2}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\lstinputlisting[language=HTML, style=customhtml]{moduleSchema2.html}
+\caption{Module Schema enriched with annotations and user text}
+\label{figure:moduleTemplate2}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\lstinputlisting[language=HTML, style=customhtml]{viewSchema2.html}
+\caption{Module Viewtype view Schema enriched with annotations and user text}
+\label{figure:viewTemplate2}
+\end{figure}
+
+
+
+
+
+
+
+
 
 
 

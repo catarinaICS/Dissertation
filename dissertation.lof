@@ -10,23 +10,26 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {6.1}{\ignorespaces Domain Model showing the Software Architectures concepts and how they are related}}{26}{figure.6.1}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Template for a Scenario}}{27}{figure.6.2}
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Template for a Module}}{27}{figure.6.3}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Template for a View}}{28}{figure.6.4}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Schema for the Scenario template}}{27}{figure.6.2}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Schema for the Module template}}{27}{figure.6.3}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Schema for a Module Viewtype View template}}{28}{figure.6.4}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {7.1}{\ignorespaces The Document Entity}}{29}{figure.7.1}
 \contentsline {figure}{\numberline {7.2}{\ignorespaces Association between Document and Concept entities}}{30}{figure.7.2}
 \contentsline {figure}{\numberline {7.3}{\ignorespaces The Annotation Entity}}{30}{figure.7.3}
 \contentsline {figure}{\numberline {7.4}{\ignorespaces Association between Document and Annotation entities}}{30}{figure.7.4}
 \contentsline {figure}{\numberline {7.5}{\ignorespaces Association between Source Of Stimulus and Annotation entities}}{31}{figure.7.5}
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Scenario Schema enriched with annotations and user text}}{33}{figure.7.6}
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Module Schema enriched with annotations and user text}}{34}{figure.7.7}
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Module Viewtype view Schema enriched with annotations and user text}}{34}{figure.7.8}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Domain Model: Document and Annotations}}{34}{figure.8.1}
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Domain Model: Scenarios}}{35}{figure.8.2}
-\contentsline {figure}{\numberline {8.3}{\ignorespaces Domain Model: Scenario Elements}}{35}{figure.8.3}
-\contentsline {figure}{\numberline {8.4}{\ignorespaces Domain Model: Scenarios and Scenario Elements and their relation with Annotations}}{36}{figure.8.4}
-\contentsline {figure}{\numberline {8.5}{\ignorespaces Domain Model: Views and Modules}}{36}{figure.8.5}
-\contentsline {figure}{\numberline {8.6}{\ignorespaces Domain Model: Views and Modules relationship with Annotations}}{36}{figure.8.6}
-\contentsline {figure}{\numberline {8.7}{\ignorespaces Domain Model: Module relationships (INCOMPLETO)}}{37}{figure.8.7}
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Document and Annotations in the implemented Model}}{36}{figure.8.1}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Scenario Representation in the implemented Model}}{37}{figure.8.2}
+\contentsline {figure}{\numberline {8.3}{\ignorespaces The ScenarioElement entity}}{38}{figure.8.3}
+\contentsline {figure}{\numberline {8.4}{\ignorespaces Scenarios and Scenario Elements and their relation with Annotations in the implemented model}}{38}{figure.8.4}
+\contentsline {figure}{\numberline {8.5}{\ignorespaces View and Module in the implemented Model}}{38}{figure.8.5}
+\contentsline {figure}{\numberline {8.6}{\ignorespaces Domain Model: Views and Modules relationship with Annotations}}{39}{figure.8.6}
+\contentsline {figure}{\numberline {8.7}{\ignorespaces Domain Model: Module relationships (INCOMPLETO)}}{39}{figure.8.7}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
