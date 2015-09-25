@@ -36,11 +36,17 @@
 \contentsline {section}{\numberline {8.1}Model}{35}{section.8.1}
 \contentsline {subsection}{\numberline {8.1.1}Annotations}{35}{subsection.8.1.1}
 \contentsline {subsection}{\numberline {8.1.2}Scenarios}{36}{subsection.8.1.2}
-\contentsline {subsection}{\numberline {8.1.3}Views}{36}{subsection.8.1.3}
-\contentsline {section}{\numberline {8.2}Controllers}{37}{section.8.2}
-\contentsline {subsection}{\numberline {8.2.1}Annotation Controller}{37}{subsection.8.2.1}
-\contentsline {subsection}{\numberline {8.2.2}Document Controller}{40}{subsection.8.2.2}
-\contentsline {subsection}{\numberline {8.2.3}Scenario Controller}{40}{subsection.8.2.3}
-\contentsline {chapter}{\numberline {9}Evaluation}{41}{chapter.9}
-\contentsline {chapter}{\numberline {10}Conclusion}{42}{chapter.10}
-\contentsline {chapter}{\numberline {A}Appendix chapter}{46}{appendix.A}
+\contentsline {subsection}{\numberline {8.1.3}Views}{37}{subsection.8.1.3}
+\contentsline {subsection}{\numberline {8.1.4}Modules}{37}{subsection.8.1.4}
+\contentsline {subsubsection}{Is-Part-Of}{40}{section*.6}
+\contentsline {subsubsection}{Uses}{40}{section*.7}
+\contentsline {subsubsection}{Is-A}{40}{section*.8}
+\contentsline {subsubsection}{Crosscuts}{41}{section*.9}
+\contentsline {subsubsection}{One-To-One, One-To-Many, Many-to-Many}{41}{section*.10}
+\contentsline {subsubsection}{Aggregation}{41}{section*.11}
+\contentsline {section}{\numberline {8.2}Controllers}{42}{section.8.2}
+\contentsline {subsection}{\numberline {8.2.1}Annotation Controller}{42}{subsection.8.2.1}
+\contentsline {subsection}{\numberline {8.2.2}Document Controller}{42}{subsection.8.2.2}
+\contentsline {subsection}{\numberline {8.2.3}Scenario Controller}{42}{subsection.8.2.3}
+\contentsline {chapter}{\numberline {9}Evaluation}{44}{chapter.9}
+\contentsline {chapter}{\numberline {10}Conclusion}{45}{chapter.10}

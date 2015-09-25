@@ -34,7 +34,7 @@ The Model of the implemented system is based on the Domain Model presented in ch
 \label{subsection:modelAnnotations}
 As seen in Chapter \ref{chapter:architecture}, the Document is one of the most important entities, because it aggregates all the annotations created over the text and all the Software Architectures concepts elicited.
 
-Similarly to what is shown in figure \ref{figure:documentAnnotation} of chapter \ref{chapter:architecture}, in the implemented model, the Document entity is connected to the Annotation. However, an annotation is created by an user authenticated in the system, and this information is also present in the domain, as shown in figure \ref{figure:modelDocUserAnnot}.
+Similarly to what is shown in figure \ref{figure:documentAnnotation} of chapter \ref{chapter:architecture}, in the implemented model, the Document entity is connected to the Annotation. However, an annotation is created by an user authenticated in the system, and this information is also present in the domain, as shown in figure \ref{figure:modelDocUserAnnot}. The ``User'' entity saves users registered in the system. When a user creates an annotation, it is associated to him.
 
 \begin{figure}
 \centering
@@ -65,7 +65,7 @@ Similarly to what is shown in figure \ref{figure:documentAnnotation} of chapter 
 \association {User}{owner}{1}{Annotation}{}{0..*}
 
 \end{tikzpicture}
-\caption{Document and Annotations in the implemented Model}
+\caption{Document, Annotations and Users in the implemented Model}
 \label{figure:modelDocUserAnnot}
 \end{figure} 
  
@@ -77,7 +77,7 @@ The diagram in section \ref{section:model} shows an association between Tactic a
 
 Regarding the model implemented, a quality requirement instance is associated with the scenario upon its creation, but tactics, which are added to the scenario afterwards, are only associated to that scenario and nothing else. The Quality Requirement and the Tactics are only related in the sense that the quality requirement associated upon scenario creation will define which tactics can be added to the scenario. This will be described further.
 
-The Scenario is a main concept of the domain, and therefore is connected to the Document. The ``identifier'' parameter in the entities stores the name of the concept that corresponds to that entity, and often corresponds to the name of the entity itself. For example, the identifier in all instances of Scenario is ``Scenario'' and the identifier in all instances of ``SrcOfStimulus'' is ``Source Of Stimulus''. This was done to facilitate programming. 
+The Scenario is a main concept of the domain, and therefore is connected to the Document. The ``identifier'' parameter in the entities stores the name of the concept that corresponds to that entity, and often corresponds to the name of the entity itself. For example, the identifier in all instances of Scenario is ``Scenario'' and the identifier in all instances of ``SrcOfStimulus'' is ``Source Of Stimulus''. This was done to facilitate programming. The ``name'' attribute in the Scenario gives it an identification other than just the quality attribute, and the ``text'' attribute corresponds to the description text that can be added to the templates.
 
 \begin{figure}[h]
 \centering
@@ -162,22 +162,22 @@ To facilitate programming, all Scenario elements are a subclass of a ``ScenarioE
 
 \begin{tikzpicture}
 
-\begin{class}[text width=3cm ]{ScenarioElement}{0,0}
+\begin{class}[text width=4cm ]{ScenarioElement}{0,0}
 	\attribute { identifier : String }
 	\attribute { text : String }
 	\operation { getIdentifier() : String }
 	\operation { getText() : String}
 \end{class}
 
-\begin{class}[text width=3cm ]{SrcOfStimulus}{-2.1,-3}
+\begin{class}[text width=3cm ]{SrcOfStimulus}{-2.1,-4}
 	\inherit{ScenarioElement}
 	\attribute { identifier : String }
 	\attribute { text : String }
 \end{class}
 
-\draw [umlcd style] (0,-3.7) node {...};
+\draw [umlcd style] (0,-4.7) node {[...]};
 
-\begin{class}[text width=3cm ]{ResponseMeasure}{2.1,-3}
+\begin{class}[text width=3.5cm ]{ResponseMeasure}{2.2,-4}
 	\inherit{ScenarioElement}
 	\attribute { identifier : String }
 	\attribute { text : String }
@@ -188,7 +188,7 @@ To facilitate programming, all Scenario elements are a subclass of a ``ScenarioE
 \label{figure:modelScenarioElement}
 \end{figure}
 
-As mentioned in Section \ref{section:annotation}, all domain entities have associated annotations. Figure \ref{figure:modelScenariosAnnotations} shows how scenarios and their elements are related with the annotations in the implemented model. This diagram is similar to the one in figure \ref{figure:annotationConcept} and shows the association between the Scenario and ScenarioElement with the Annotation.
+All domain entities have associated annotations, as it was mentioned previously in Section \ref{section:annotation}. Figure \ref{figure:modelScenariosAnnotations} shows how scenarios and their elements are related with the annotations in the implemented model. This diagram is similar to the one in figure \ref{figure:annotationConcept} and shows the association between the Scenario and ScenarioElement with the Annotation.
 
 \begin{figure}
 \centering
@@ -219,13 +219,15 @@ As mentioned in Section \ref{section:annotation}, all domain entities have assoc
 \end{figure}
 
 \subsection{Views}
+\label{subsection:modelViews}
 
+The abstract domain model presented in Figure \ref{figure:abstractDomainModel} of Chapter \ref{chapter:domainModel} shows how a View is related to the Viewtype, the Styles and the elements. A View is considered a main concept in the sense that it has its own dedicated template, and so does the Element.
 
-Figure \ref{figure:domainModel5} shows how Views and Modules relate with the Document. A View belongs, as mentioned in Chapter \ref{chapter:domainModel}, to a certain viewtype, which is refined by a specific style. These details are present in the entity attributes. Views are associated with the corresponding Document after creation.
-A View from the Module Viewtype contains Modules and the relationships between them. 
-These Modules are created in a similar way as Scenarios or Views, and associated with the Document. Afterwards, they can be associated with Views.
+The implemented model supports the inclusion of Module viewtype Views and their respective Modules and relations. Figure \ref{figure:modelViewsAndModules} shows how the model is implemented. The viewtype and style of a view are attributes of the View entity, and are used to guarantee that the correct elements are added to the view. The ``name'' attribute of the View corresponds to a name given by the user when creating the View, and should help its identification, and, as for the Scenario and its elements, the ``text'' attribute corresponds to text that users can add to the template.
 
-\begin{figure}
+Views and Modules are created, as mentioned before, by associating annotations to them, hence the connection between these entities and the Annotation shown in figure \ref{figure:modelViewsModulesAnnotations}. Upon creation, they are also associated with the corresponding Document.
+
+\begin{figure}[h]
 \centering
 \renewcommand {\umltextcolor}{black}
 \renewcommand {\umlfillcolor}{none}
@@ -255,12 +257,10 @@ These Modules are created in a similar way as Scenarios or Views, and associated
 \end{tikzpicture}
 
 \caption{View and Module in the implemented Model}
-\label{figure:domainModel5}
+\label{figure:modelViewsAndModules}
 \end{figure}
 
-Similarly to other entities, both the Module and View can have associated annotations, as seen in Figure \ref{figure:domainModel6}.
-
-\begin{figure}
+\begin{figure}[h]
 \centering
 \renewcommand {\umltextcolor}{black}
 \renewcommand {\umlfillcolor}{none}
@@ -289,32 +289,262 @@ Similarly to other entities, both the Module and View can have associated annota
 
 \end{tikzpicture}
 
-\caption{Domain Model: Views and Modules relationship with Annotations}
-\label{figure:domainModel6}
+\caption{Views and Modules relationship with Annotations in the implemented Model}
+\label{figure:modelViewsModulesAnnotations}
 \end{figure}
 
-\begin{figure}
+\subsection{Modules}
+\label{subsection:modules}
+
+The Modules are the elements of the Module Viewtype Views. As seen in Figure \ref{figure:modelViewsAndModules}, and similarly to the Scenario and the View entities, it has a ``name'' attribute, which provides identification and also gives an idea on what are the Module functions, and a ``text'' attribute, which corresponds to text added to the template.
+
+As seen in the abstract domain model present in Figure \ref{figure:abstractDomainModel} of Chapter \ref{chapter:domainModel}, the elements of a view have a certain type of relationship with each others. There are eight types of relationships between Modules \cite{clements2003documenting}:
+\begin{itemize}
+\item \textit{Is-Part-Of} - a Module can be part of a parent Module; 
+\item \textit{Uses} - a Module depends on the correct functioning of other Modules to satisfy its own requirements;
+\item \textit{Is-A} - a relation of generalization, in which a Module is a generalization, or parent, of other modules; 
+\item \textit{Crosscuts} - an Aspect Module, which implements a crosscutting concern of the system, is bound to a Module that is affected by that crosscutting concern;
+\item \textit{One-To-One, One-To-Many, Many-to-Many} - logical associations between Data Entity Modules, similar to the UML associations;
+\item \textit{Aggregation} - an aggregation relation;
+\end{itemize}
+
+Although the abstract domain model in Figure \ref{figure:abstractDomainModel} contains an entity ``Relation'' to represent how the view elements are connected, in the case of the Modules, these relations have no other information than the Modules connected. Therefore, in the implemented model, there are no entities representing the relationships between modules. Instead, there were defined different associations of the Module entity to itself, in order to represent the different relations.
+
+\subsubsection{Is-Part-Of}
+
+The \textit{Is-Part-Of} relation specifies that a Module can be a Sub-Module of one and only one other Module. Figure \ref{figure:modelIsPartOfRelation} shows how this relation was implemented.
+
+\begin{figure}[h]
 \centering
 \renewcommand {\umltextcolor}{black}
 \renewcommand {\umlfillcolor}{none}
 \renewcommand {\umldrawcolor}{black}
 \begin{tikzpicture}
 
-\begin{class}[text width=3cm ]{Module}{-3,-4}
+\begin{class}[text width=3cm ]{Module}{0,0}
 	\attribute { name : String }
 	\attribute { identifier : String }
 	\attribute { text : String }
 \end{class}
 	
-%\association {Module}{}{0..1}{Module}{}{*}
-\draw [umlcd style] (Module) -- (-3,-7) -- (0,-7) -- (0,-4.95) -- (Module);
-
-
-
+\draw [umlcd style] (Module.south) -- (0,-2.5) -- (2.5,-2.5) -- (2.5,-1) -- (1.61,-1);
+\draw [umlcd style] (-1,-2.2) node {\small parent};
+\draw [umlcd style] (0.5,-2.2) node {\small 0..1};
+\draw [umlcd style] (2.060,-0.5) node {\small child};
+\draw [umlcd style] (2.060, -1.4) node {\small 0..*};
 \end{tikzpicture}
+\caption{Is-Part-Of relation between Modules in the implemented model}
+\label{figure:modelIsPartOfRelation}
+\end{figure}
 
-\caption{Domain Model: Module relationships (INCOMPLETO)}
-\label{figure:domainModel6}
+\subsubsection{Uses}
+
+The \textit{Uses} relation specifies that a Module can depend on the correct functioning of one or more Modules, and one or more Modules can depend on the correct functioning of this Module. Figure \ref{figure:modelUsesRelation} shows how this relation was implemented.
+
+\begin{figure}[h]
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+\begin{tikzpicture}
+
+\begin{class}[text width=3cm ]{Module}{0,0}
+	\attribute { name : String }
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}
+	
+\draw [umlcd style] (Module.south) -- (0,-2.5) -- (2.5,-2.5) -- (2.5,-1) -- (1.61,-1);
+\draw [umlcd style] (-1,-2.2) node {\small uses};
+\draw [umlcd style] (0.5,-2.2) node {\small 0..*};
+\draw [umlcd style] (2.2,-0.5) node {\small usedBy};
+\draw [umlcd style] (2.060, -1.4) node {\small 0..*};
+\end{tikzpicture}
+\caption{Uses relation between Modules in the implemented model}
+
+\label{figure:modelUsesRelation}
+\end{figure}
+
+\subsubsection{Is-A}
+
+The \textit{Is-A} relation specifies that a Module can be a specialization of a more general Module. Figure \ref{figure:modelIsARelation} shows how this relation was implemented. There are no restrictions on multiple inheritance in this relation, so a Module can be a specialization of more than one Module. 
+
+\begin{figure}[h]
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+\begin{tikzpicture}
+
+\begin{class}[text width=3cm ]{Module}{0,0}
+	\attribute { name : String }
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}
+	
+\draw [umlcd style] (Module.south) -- (0,-2.5) -- (2.5,-2.5) -- (2.5,-1) -- (1.61,-1);
+\draw [umlcd style] (-1,-2.2) node {\small isA};
+\draw [umlcd style] (0.5,-2.2) node {\small 0..*};
+\draw [umlcd style] (2.6,-0.5) node {\small superModule};
+\draw [umlcd style] (2.060, -1.4) node {\small 0..*};
+\end{tikzpicture}
+\caption{Uses relation between Modules in the implemented model}
+\label{figure:modelIsARelation}
+\end{figure}
+
+\subsubsection{Crosscuts}
+
+The \textit{Crosscut} relation specifies that an Aspects Module, which implements a crosscutting concern of the system, can be associated with Modules that are affected with that crosscutting concern. Figure \ref{figure:modelCrosscutsRelation} shows how this relation was implemented in the model.
+
+\begin{figure}[h]
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+\begin{tikzpicture}
+
+\begin{class}[text width=3cm ]{Module}{0,0}
+	\attribute { name : String }
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}
+	
+\draw [umlcd style] (Module.south) -- (0,-2.5) -- (2.5,-2.5) -- (2.5,-1) -- (1.61,-1);
+\draw [umlcd style] (-1,-2.2) node {\small crosscuts};
+\draw [umlcd style] (0.5,-2.2) node {\small 0..*};
+\draw [umlcd style] (2.7,-0.5) node {\small crosscuttedBy};
+\draw [umlcd style] (2.060, -1.4) node {\small 0..*};
+\end{tikzpicture}
+\caption{Uses relation between Modules in the implemented model}
+\label{figure:modelCrosscutsRelation}
+\end{figure}
+
+\subsubsection{One-To-One, One-To-Many, Many-to-Many}
+
+The \textit{One-To-One, One-To-Many} and \textit{Many-to-Many} relation specify logical associations between Data Entity Modules, similar to UML associations. Figures \ref{figure:modelOneToOneRelation}, \ref{figure:modelOneToManyRelation} and \ref{figure:modelManyToManyRelation} show how these relations were implemented in the model.
+
+\begin{figure}[h]
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+\begin{tikzpicture}
+
+\begin{class}[text width=3cm ]{Module}{0,0}
+	\attribute { name : String }
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}
+	
+\draw [umlcd style] (Module.south) -- (0,-2.5) -- (2.5,-2.5) -- (2.5,-1) -- (1.61,-1);
+\draw [umlcd style] (-1,-2.2) node {\small oneToOne};
+\draw [umlcd style] (0.5,-2.2) node {\small 0..*};
+\draw [umlcd style] (2.7,-0.5) node {\small oneRelation};
+\draw [umlcd style] (2.060, -1.4) node {\small 0..*};
+\end{tikzpicture}
+\caption{One-To-One relation between Modules in the implemented model}
+\label{figure:modelOneToOneRelation}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+\begin{tikzpicture}
+
+\begin{class}[text width=3cm ]{Module}{0,0}
+	\attribute { name : String }
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}
+	
+\draw [umlcd style] (Module.south) -- (0,-2.5) -- (2.5,-2.5) -- (2.5,-1) -- (1.61,-1);
+\draw [umlcd style] (-1,-2.2) node {\small oneToMany};
+\draw [umlcd style] (0.5,-2.2) node {\small 0..*};
+\draw [umlcd style] (3.15,-0.5) node {\small oneToManyRelations};
+\draw [umlcd style] (2.060, -1.4) node {\small 0..*};
+\end{tikzpicture}
+\caption{One-To-Many relation between Modules in the implemented model}
+\label{figure:modelOneToManyRelation}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+\begin{tikzpicture}
+
+\begin{class}[text width=3cm ]{Module}{0,0}
+	\attribute { name : String }
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}
+	
+\draw [umlcd style] (Module.south) -- (0,-2.5) -- (2.5,-2.5) -- (2.5,-1) -- (1.61,-1);
+\draw [umlcd style] (-1,-2.2) node {\small manyToMany};
+\draw [umlcd style] (0.5,-2.2) node {\small 0..*};
+\draw [umlcd style] (3.25,-0.5) node {\small manyToManyRelations};
+\draw [umlcd style] (2.060, -1.4) node {\small 0..*};
+\end{tikzpicture}
+\caption{Many-To-Many relation between Modules in the implemented model}
+\label{figure:modelManyToManyRelation}
+\end{figure}
+
+\textbf{To note:} the '*' cardinality in these relations means that a Module can have several relations of this type in a Data Model Style view. For example, if a Module instance with name ``Department'' has a ``One-To-Many'' relation with Modules ``Employee'' and ``Room'', it means that a visual representation of these Modules would be the one in figure \ref{figure:modelOneToManyExample}.
+
+\begin{figure}[h]
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+\begin{tikzpicture}
+
+\begin{class}[text width=2.5cm ]{Department}{0,0}
+	\attribute {}
+\end{class}
+
+\begin{class}[text width=2cm ]{Room}{-2.5,-3}
+	\attribute {}
+\end{class}
+
+\begin{class}[text width=2cm ]{Employee}{2.5,-3}
+	\attribute {}
+\end{class}
+
+\association{Department}{}{1}{Room}{}{*}
+\association{Department}{}{1}{Employee}{}{*}
+\end{tikzpicture}
+\caption{Example of the One-To-Many relation between Modules}
+\label{figure:modelOneToManyExample}
+\end{figure}
+
+\subsubsection{Aggregation}
+
+The \textit{Aggregation} relation specifies that a Module can be an aggregator of other Modules. Figure \ref{figure:modelAggregationRelation} shows how this relation is implemented in the system.
+
+\begin{figure}[h]
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+\begin{tikzpicture}
+
+\begin{class}[text width=3cm ]{Module}{0,0}
+	\attribute { name : String }
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}
+	
+\draw [umlcd style] (Module.south) -- (0,-2.5) -- (2.5,-2.5) -- (2.5,-1) -- (1.61,-1);
+\draw [umlcd style] (-1,-2.2) node {\small aggregator};
+\draw [umlcd style] (0.5,-2.2) node {\small 0..*};
+\draw [umlcd style] (2.45,-0.5) node {\small aggregated};
+\draw [umlcd style] (2.060, -1.4) node {\small 0..*};
+\end{tikzpicture}
+\caption{Aggregation relation between Modules in the implemented model}
+\label{figure:modelAggregationRelation}
 \end{figure}
 
 \section{Controllers}
@@ -322,7 +552,7 @@ Similarly to other entities, both the Module and View can have associated annota
 \subsection{Annotation Controller}
 The Annotation Controller provides a way to manage the annotations added to a document. It communicates with the Domain Model to create, remove or update Annotations. The particularity of this controller is that it provides a REST API, which is used to retrieve a JSON representation of the annotations stored in the model and display it along with the document text. 
 The endpoints provided by this controller are described in Table \ref{table:endpoints}.
-\begin{table}
+\begin{table}[h]
 \begin{tabular}{ | l | l | l |p{7.7cm}|}
     \hline
     Name & Method & Endpoint & Description \\ \hline
