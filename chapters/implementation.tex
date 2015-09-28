@@ -445,7 +445,6 @@ The \textit{One-To-One, One-To-Many} and \textit{Many-to-Many} relation specify 
 \caption{One-To-One relation between Modules in the implemented model}
 \label{figure:modelOneToOneRelation}
 \end{figure}
-
 \begin{figure}[h]
 \centering
 \renewcommand {\umltextcolor}{black}
@@ -462,13 +461,12 @@ The \textit{One-To-One, One-To-Many} and \textit{Many-to-Many} relation specify 
 \draw [umlcd style] (Module.south) -- (0,-2.5) -- (2.5,-2.5) -- (2.5,-1) -- (1.61,-1);
 \draw [umlcd style] (-1,-2.2) node {\small oneToMany};
 \draw [umlcd style] (0.5,-2.2) node {\small 0..*};
-\draw [umlcd style] (3.15,-0.5) node {\small oneToManyRelations};
+\draw [umlcd style] (3.15,-0.5) node {\small oneToManyRelation};
 \draw [umlcd style] (2.060, -1.4) node {\small 0..*};
 \end{tikzpicture}
 \caption{One-To-Many relation between Modules in the implemented model}
 \label{figure:modelOneToManyRelation}
 \end{figure}
-
 \begin{figure}[h]
 \centering
 \renewcommand {\umltextcolor}{black}
@@ -485,7 +483,7 @@ The \textit{One-To-One, One-To-Many} and \textit{Many-to-Many} relation specify 
 \draw [umlcd style] (Module.south) -- (0,-2.5) -- (2.5,-2.5) -- (2.5,-1) -- (1.61,-1);
 \draw [umlcd style] (-1,-2.2) node {\small manyToMany};
 \draw [umlcd style] (0.5,-2.2) node {\small 0..*};
-\draw [umlcd style] (3.25,-0.5) node {\small manyToManyRelations};
+\draw [umlcd style] (3.25,-0.5) node {\small manyToManyRelation};
 \draw [umlcd style] (2.060, -1.4) node {\small 0..*};
 \end{tikzpicture}
 \caption{Many-To-Many relation between Modules in the implemented model}
@@ -547,11 +545,35 @@ The \textit{Aggregation} relation specifies that a Module can be an aggregator o
 \label{figure:modelAggregationRelation}
 \end{figure}
 
-\section{Controllers}
+\section{Controller}
+
+This section describes the Controller part of the implemented system. The application developed uses the Spring\footnote{https://spring.io/} Framework, which allows the definition of one or more Java classes to act as Controllers and handle requests.
+
+A Java class is set to be a Controller by annotating it with the \textit{@Controller} annotation, or \textit{@RestController} if the controller's goal is to provide a REST API. Figure \ref{figure:springController} shows an example of a Controller class that handles requests for the url \textit{'/home'} and returns a template that will update the view.
+
+\begin{figure}[h]
+\lstset{style=customjava}
+\begin{lstlisting}
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class MyController {
+
+	@RequestMapping(value="/home")
+	public String home() {
+		return "home";
+	}
+}
+\end{lstlisting}
+\caption{Example of a Controller class defined using the Spring Framework} 
+\label{figure:springController}
+\end{figure}
 
 \subsection{Annotation Controller}
-The Annotation Controller provides a way to manage the annotations added to a document. It communicates with the Domain Model to create, remove or update Annotations. The particularity of this controller is that it provides a REST API, which is used to retrieve a JSON representation of the annotations stored in the model and display it along with the document text. 
+The Annotation Controller provides a way to manage the annotations added to a document. It communicates with the Domain Model to create, remove or update Annotations. This controller is in fact a RestController, which means it provides a REST API, used to retrieve a JSON representation of the annotations stored in the model and display it along with the document text. 
 The endpoints provided by this controller are described in Table \ref{table:endpoints}.
+
 \begin{table}[h]
 \begin{tabular}{ | l | l | l |p{7.7cm}|}
     \hline
@@ -566,9 +588,43 @@ The endpoints provided by this controller are described in Table \ref{table:endp
   \label{table:endpoints}
 \end{table}
 
+The ``INDEX'' endpoint has the particularity of iterating through all the Annotations in the system. If the annotation is associated to another domain entity besides the Document (for example, a Scenario, or a Module), information about the domain entity will be added to the annotation body, and will be shown in the interface. This way, it is possible to have some information about the domain entity even before checking its template.
 
 \subsection{Document Controller}
 The Document Controller handles the requests to view, add or remove a document from the system.
 
+Adding and removing documents from the system is a feature that only Teachers are authorized to use. The controller receives a POST request containing the URL to the article. The Java library JSoup\footnote{http://jsoup.org/} extracts the HTML from the given URL and the controller processes it and stores a Document in the database. Processing of the extracted HTML includes turning relative URLs into absolute ones for href and src attributes.
+The Controller will also check if the database already contains a document with the given URL before adding a new entry. 
+
+When a teacher removes a Document from the system, all Annotations, Scenarios, Modules and Views associated with that Document are removed from the system as well.
+
+Upon Document visualization, there are three other operations handled by this controller:
+\begin{itemize}
+\item When a user wants to associate an Annotation with a domain entity such as a Scenario, a request is sent to the Document Controller containing information about the annotation unique ID and its tag. Based on the tag, the controller then redirects to another controller, which will provide means for the user to add and/or select an entity to associate with the annotation.
+
+\item When visualizing the Annotation information in the document, it is possible to navigate to the template of the entity to which this annotation is associated by clicking in a link. A request is then sent to the Document Controller, which again checks the Annotation tag, and redirects to the correct Controller.
+
+\item The Document interface also allows the user to navigate to the structured representation of the document, which is an aggregation of all the templates of all the entities added to the system. When the link to navigate to the structured representation is clicked, a request is sent to the Controller, which retrieves information about Scenarios, Views and Elements to be presented to the user.  
+\end{itemize}
+
+ 
 \subsection{Scenario Controller}
-The Scenario Controller handles the construction of templates for Scenarios. All requests to create a new scenario, link document annotations to a specific scenario or delete a scenario are handled in this controller.
+
+The Scenario Controller provides means to add and remove Scenarios from the document and link or unlink annotations from a Scenario or its elements.
+
+A Scenario is created when a user wants to link an Annotation to a Scenario and is prompted the interface to add a new or choose an existing one. When the Controller receives the request to add a new Scenario, it does not only adds a new Scenario to the database, but also adds a new SrcOfStimulus, Stimulus, Artifact, Environment, Response and ResponseMeasure to the databse, all associated with the newly created Scenario. 
+
+When the user chooses which Scenario to link the Annotation with, the Controller receives a request containing both the unique ID of the Scenario and the unique ID of the Annotation. With these IDs, it can verify the tag associated with the Annotation, and add the Annotation either to the Scenario or to the corresponding element. For example, if the tag associated with the Annotation is ``Source Of Stimulus'', then it will be linked to the ``SrcOfStimulus'' instance that is associated with the Scenario with the specified ID.
+
+A Scenario is initially created without any tactics. These are added in the Scenario Template, and their creation is handled by the Scenario Controller. Upon receiving the corresponding request, a new ``Tactic'' is added to the database containing the tactic's name, and is associated with the corresponding Scenario. When an Annotation with the tag ``Tactic'' is added to a Scenario, it is associated with the ``Scenario'' entity. Inside the template, these annotations can be associated with the added tactics, and this change is also handled by the Scenario Controller. 
+
+When user text is added to a Scenario or one of its elements, a request is sent to this Controller. It will then update the Model accordingly and show the updated Model in the corresponding View.
+
+\subsection{Module Controller}
+
+Similarly to the Scenario Controller, the Module Controller handles the creation and deletion of Modules, which are the elements of Module Viewtype Views. It also handles the linkage of Annotations to existent Modules and the addition of user text to a Module.
+
+As explained in Chapter \ref{chapter:domainModel}, the Elements of a View are related to each others, and in Section \ref{section:model}, we can see that, since the relations between Modules have no information other than the Modules involved, they are implemented as different associations of the ``Module'' entity to itself. The Module Controller handles adding and removing other Modules to/from the possible relations. The requests are unique for each relation, meaning the request to add a Module to the \textit{Uses} relation of a certain Module will be in the form \textit{/setModuleUses/...} and the request to add \textit{One-To-One} relations with other Modules to a certain Module will be in the form \textit{/setModuleOneToOne/...}. Each request modifies the corresponding association accordingly. 
+
+...
+ 

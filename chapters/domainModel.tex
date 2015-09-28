@@ -12,7 +12,7 @@ A scenario is used to capture and express the quality requirements of a system. 
 \item Modifiability - the cost of changing the system;
 \item Performance - how fast the system responds to events;
 \item Security - resistance to unauthorized usage whilst providing service to legitimate users;
-\item Testability - how easy it is to check system fauls through testing;
+\item Testability - how easy it is to check system faults through testing;
 \item Usability - how easy it is for a user to accomplish a task, and the kind of support offered by the system;
 \end{itemize}
 
@@ -67,7 +67,7 @@ Figure \ref{figure:abstractDomainModel} shows the concepts and relations describ
 \renewcommand {\umldrawcolor}{black}
 
 \begin{tikzpicture}
-\begin{class}[text width=2cm ]{Concept}{10,-2.5}
+\begin{class}[text width=2cm ]{Concept}{10,-9}
 \end{class}
 
 \begin{class}[text width=3cm ]{Source Of Stimulus}{0,0}
@@ -103,6 +103,7 @@ Figure \ref{figure:abstractDomainModel} shows the concepts and relations describ
 \begin{class}[text width=2cm ]{Style}{0,-9.5}
 \end{class}
 \begin{class}[text width=2cm ]{Relation}{-1,-12.5}
+\inherit{Concept}
 \end{class}
 
 \begin{class}[text width=2cm ]{Element}{6,-12.5}
@@ -152,6 +153,7 @@ Figure \ref{figure:abstractDomainModel} shows the concepts and relations describ
 \association{Element}{}{*}{Relation}{}{*}
 
 
+
 \end{tikzpicture}
 \caption{Domain Model showing the Software Architectures concepts and how they are related}
 \label{figure:abstractDomainModel}
@@ -161,9 +163,7 @@ The scenario elements are represented as the model entities 'Source of Stimulus'
 
 A View is associated with a Viewtype, which refines into a style. The View contains a set of elements, which are related to each other via specific relations.
 
-The Scenario, View and the Element are considered the main concepts of the domain, and they all have a dedicated template, as it will be described in the next section. These templates will contain the relationships between these main concepts and the other concepts in the domain model.
-
-
+The Scenario, View, Element and Relation are considered the main concepts of the domain, and they have a dedicated template in the developed solution, as it will be described in the next section. These templates will contain information about the concept and how it is related with other concepts in the domain model.
 
 \section{Templates}
 \label{section:templates}
