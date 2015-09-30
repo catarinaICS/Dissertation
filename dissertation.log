@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2015.4.6)  28 SEP 2015 18:31
+This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2015.4.6)  30 SEP 2015 16:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -836,12 +836,12 @@ Package: listings 2013/08/26 1.5b (Carsten Heinz)
 \openout5 = `dissertation.glo'.
 
 Package glossaries Info: Writing glossary file dissertation.glo on input line 5
-3.
+0.
 \glo@acronym@file=\write6
 \openout6 = `dissertation.acn'.
 
 Package glossaries Info: Writing glossary file dissertation.acn on input line 5
-3.
+0.
 
 (./glossary/glossary.tex) (./acronyms/acronyms.tex) (./dissertation.aux
 (./cover.aux) (./chapters/introduction.aux) (./chapters/problemDescription.aux)
@@ -855,21 +855,21 @@ LaTeX Warning: Label `section:model' multiply defined.
 (./chapters/conclusion.aux))
 \openout1 = `dissertation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 76.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 73.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
@@ -937,7 +937,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box71
-Package hyperref Info: Link coloring OFF on input line 76.
+Package hyperref Info: Link coloring OFF on input line 73.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -947,9 +947,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count183
 )
-LaTeX Info: Redefining \ref on input line 76.
-LaTeX Info: Redefining \pageref on input line 76.
-LaTeX Info: Redefining \nameref on input line 76.
+LaTeX Info: Redefining \ref on input line 73.
+LaTeX Info: Redefining \pageref on input line 73.
+LaTeX Info: Redefining \nameref on input line 73.
 
 (./dissertation.out) (./dissertation.out)
 \@outlinefile=\write7
@@ -965,7 +965,7 @@ Dictionary: glossaries-dictionary, Language: English
 \openout2 = `cover.aux'.
 
 
-(./cover.tex <images/Logo_IST_color.jpg, id=199, 2128.95375pt x 853.1875pt>
+(./cover.tex <images/Logo_IST_color.jpg, id=203, 2128.95375pt x 853.1875pt>
 File: images/Logo_IST_color.jpg Graphic file (type jpg)
 
 <use images/Logo_IST_color.jpg>
@@ -1019,7 +1019,7 @@ with the same identifier (name{page.2}) has been already used, duplicate ignore
 d
 <to be read again> 
                    \relax 
-l.39 ...erline {8.1.3}Views}{37}{subsection.8.1.3}
+l.39 ...erline {8.1.3}Views}{36}{subsection.8.1.3}
                                                    [2
 
 ])
@@ -1030,7 +1030,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.89 \listoftables
+l.86 \listoftables
                    [3] (./dissertation.lot)
 \tf@lot=\write9
 \openout9 = `dissertation.lot'.
@@ -1161,13 +1161,13 @@ Chapter 6.
 
 
 ]
-Overfull \hbox (5.70242pt too wide) in paragraph at lines 50--51
+Overfull \hbox (5.70242pt too wide) in paragraph at lines 51--52
 \OT1/phv/m/sl/10 ter-face'' \OT1/phv/m/n/10 Del-e-ga-tion, which as-so-ciates c
 om-po-nent ports to other ports from an ``in-ter-nal architecture''-
  []
 
 
-Overfull \hbox (3.73277pt too wide) in paragraph at lines 157--158
+Overfull \hbox (3.73277pt too wide) in paragraph at lines 158--159
  [][] 
  []
 
@@ -1181,7 +1181,7 @@ File: lstlang1.sty 2013/08/26 1.5b listings language file
 File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 180.
+nput line 181.
 
 (./scenarioSchema.html
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <8> not available
@@ -1203,14 +1203,20 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
  (./chapters/architecture.tex
 Chapter 7.
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 49.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[29
+
+Underfull \vbox (badness 2662) has occurred while \output is active []
+
+ [29
 
 
 
-] [30] (./scenarioSchema2.html) [31]
+]
+[30] (./scenarioSchema2.html)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1222,39 +1228,25 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [32] [33] [34]
+) [31] [32] [33]
 \openout2 = `chapters/implementation.aux'.
 
  (./chapters/implementation.tex
 Chapter 8.
-[35
+[34
 
 
 
 ]
-Overfull \hbox (9.6606pt too wide) in paragraph at lines 103--103
- [][][][]\OT1/phv/b/n/10 QualityRequirement 
+Underfull \hbox (badness 1668) in paragraph at lines 66--66
+ [][][][]\OT1/phv/b/n/8 User 
  []
 
-
-Overfull \hbox (3.00099pt too wide) in paragraph at lines 133--133
- [][][][]\OT1/phv/b/n/10 ResponseMeasure 
- []
-
+[35] [36] [37]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [36]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[37] [38] [39] [40]
+[38]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1265,9 +1257,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \vbox (badness 1259) has occurred while \output is active []
+LaTeX Warning: `h' float specifier changed to `ht'.
 
- [41]
+
+Underfull \vbox (badness 1668) has occurred while \output is active []
+
+ [39]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
@@ -1275,31 +1270,31 @@ File: lstlang1.sty 2013/08/26 1.5b listings language file
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (8.53592pt too wide) in paragraph at lines 581--581
+Overfull \hbox (8.53592pt too wide) in paragraph at lines 517--517
 []|[]| 
  []
 
 
-Overfull \hbox (8.53592pt too wide) in paragraph at lines 583--583
+Overfull \hbox (8.53592pt too wide) in paragraph at lines 519--519
 []|[]| 
  []
 
 
-Overfull \hbox (8.53592pt too wide) in paragraph at lines 584--584
+Overfull \hbox (8.53592pt too wide) in paragraph at lines 520--520
 []|[]| 
  []
 
 
-Overfull \hbox (8.53592pt too wide) in paragraph at lines 585--585
+Overfull \hbox (8.53592pt too wide) in paragraph at lines 521--521
 []|[]| 
  []
 
-[42] [43]) [44]
+[40] [41]) [42] [43]
 \openout2 = `chapters/evaluation.aux'.
 
  (./chapters/evaluation.tex
 Chapter 9.
-) [45
+) [44
 
 
 
@@ -1308,7 +1303,7 @@ Chapter 9.
 
  (./chapters/futureWork.tex
 Chapter 10.
-) [46
+) [45
 
 
 
@@ -1317,33 +1312,33 @@ Chapter 10.
 
  (./chapters/conclusion.tex
 Chapter 11.
-) [47
+) [46
 
 
 
-]) (./dissertation.bbl [48
+]) (./dissertation.bbl [47
 
 
-] [49]
+] [48]
 Underfull \hbox (badness 10000) in paragraph at lines 170--173
 []\OT1/phv/m/n/10 T. Coates, ``Two cul-tures of faux-onomies col-lide,'' \OT1/p
 hv/m/sl/10 http://www. plas-ticbag.
  []
 
-)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 107.
+[49])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 104.
  [50]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 107.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 104.
  (./dissertation.aux (./cover.aux) (./chapters/introduction.aux)
 (./chapters/problemDescription.aux) (./chapters/objectives.aux)
 (./chapters/relatedWork.aux) (./chapters/solutionProposal.aux)
 (./chapters/domainModel.aux) (./chapters/architecture.aux)
 (./chapters/implementation.aux) (./chapters/evaluation.aux)
 (./chapters/futureWork.aux) (./chapters/conclusion.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 107.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 107.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 104.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 104.
 Package rerunfilecheck Info: File `dissertation.out' has not changed.
-(rerunfilecheck)             Checksum: E3D50D6F248911A7B6F3C3429528D0D1;2992.
+(rerunfilecheck)             Checksum: 9D29206E402BC0B48D1B948293811E52;3063.
 
 
 LaTeX Warning: There were undefined references.
@@ -1351,14 +1346,14 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 107.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 104.
  ) 
 Here is how much of TeX's memory you used:
- 22255 strings out of 495034
- 388309 string characters out of 6181678
- 636012 words of memory out of 5000000
- 24444 multiletter control sequences out of 15000+600000
- 31203 words of font info for 55 fonts, out of 8000000 for 9000
+ 22261 strings out of 495034
+ 388428 string characters out of 6181678
+ 640454 words of memory out of 5000000
+ 24448 multiletter control sequences out of 15000+600000
+ 32836 words of font info for 57 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  56i,12n,94p,1718b,1399s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.3} has been referenced but does not exi
@@ -1377,10 +1372,10 @@ nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uh
 vr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on dissertation.pdf (54 pages, 343119 bytes).
+Output written on dissertation.pdf (54 pages, 343945 bytes).
 PDF statistics:
- 1082 PDF objects out of 1200 (max. 8388607)
- 1007 compressed objects within 11 object streams
- 419 named destinations out of 1000 (max. 500000)
- 402 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1092 PDF objects out of 1200 (max. 8388607)
+ 1017 compressed objects within 11 object streams
+ 420 named destinations out of 1000 (max. 500000)
+ 410 words of extra memory for PDF output out of 10000 (max. 10000000)
 

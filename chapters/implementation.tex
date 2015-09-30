@@ -30,11 +30,13 @@ The next sections will describe the solution implementation based on these three
 \label{section:model}
 The Model of the implemented system is based on the Domain Model presented in chapter \ref{chapter:domainModel}, but a few modifications were made to facilitate programming.
 
+The developed application uses the F\'{e}nix Framework, which allows the creation of a transactional and persistent domain model for applications \cite{cachopo2006combining,cachopo2007development}. The domain model is specified in the Domain Modeling Language, which is a domain-specific language created for this framework. The framework completely hides the database from the programmer, who can focus on the application development in Java. 
+
 \subsection{Annotations}
 \label{subsection:modelAnnotations}
 As seen in Chapter \ref{chapter:architecture}, the Document is one of the most important entities, because it aggregates all the annotations created over the text and all the Software Architectures concepts elicited.
 
-Similarly to what is shown in figure \ref{figure:documentAnnotation} of chapter \ref{chapter:architecture}, in the implemented model, the Document entity is connected to the Annotation. However, an annotation is created by an user authenticated in the system, and this information is also present in the domain, as shown in figure \ref{figure:modelDocUserAnnot}. The ``User'' entity saves users registered in the system. When a user creates an annotation, it is associated to him.
+Similarly to what is shown in Figure \ref{figure:documentAnnotationConcepts} of Chapter \ref{chapter:architecture}, in the implemented model, the Document entity is connected to the Annotation. However, an annotation is created by an user authenticated in the system, and this information is also present in the domain, as shown in figure \ref{figure:modelDocUserAnnot}. The ``User'' entity saves users registered in the system. When a user creates an annotation, it is associated to him.
 
 \begin{figure}
 \centering
@@ -43,6 +45,7 @@ Similarly to what is shown in figure \ref{figure:documentAnnotation} of chapter 
 \renewcommand {\umldrawcolor}{black}
 
 \begin{tikzpicture}
+\tikzstyle{every node}=[font=\footnotesize]
 \begin{class}[text width=3cm ]{Document}{0,0}
 	\attribute { title : String }
 	\attribute { url : String }
@@ -71,13 +74,13 @@ Similarly to what is shown in figure \ref{figure:documentAnnotation} of chapter 
  
 \subsection{Scenarios}
 \label{subsection:modelScenarios}
-Figure \ref{figure:modelScenarios} shows how scenarios are represented in the implemented model. This diagram is similar to what is shown in figure \ref{figure:abstractDomainModel}, with a small difference regarding the Scenario Quality Requirement and Tactics. 
+The Scenario is a main concept of the domain, and therefore is connected to the Document, as seen in Figure \ref{figure:documentConcept}. 
 
-The diagram in section \ref{section:model} shows an association between Tactic and Quality Requirement, in the sense that there are a set of tactics used to achieve that quality requirement. 
+Scenarios are represented in the implemented model in a very similar way to what is shown in Figure \ref{figure:abstractDomainModel}. However, there is a difference in the implemented model regarding how Quality Requirements and Tactics are represented.
 
-Regarding the model implemented, a quality requirement instance is associated with the scenario upon its creation, but tactics, which are added to the scenario afterwards, are only associated to that scenario and nothing else. The Quality Requirement and the Tactics are only related in the sense that the quality requirement associated upon scenario creation will define which tactics can be added to the scenario. This will be described further.
+In Figure \ref{figure:abstractDomainModel},  it is shown an association between Scenario and Quality Requirement, Scenario and Tactic and Tactic and Quality Requirement. The meaning of these associations is to represent what is explained in Section \ref{subsection:SAConceptsScenarios}: A Scenario has a Quality Requirement from a set of pre-existent ones, and a set of Tactics also from a set of existent ones, which are specific for the Quality Requirement.
 
-The Scenario is a main concept of the domain, and therefore is connected to the Document. The ``identifier'' parameter in the entities stores the name of the concept that corresponds to that entity, and often corresponds to the name of the entity itself. For example, the identifier in all instances of Scenario is ``Scenario'' and the identifier in all instances of ``SrcOfStimulus'' is ``Source Of Stimulus''. This was done to facilitate programming. The ``name'' attribute in the Scenario gives it an identification other than just the quality attribute, and the ``text'' attribute corresponds to the description text that can be added to the templates.
+However, in the implemented model, there are no pre-existent Tactics nor Quality Requirements. The existent Quality Requirements and their specific Tactics are specified in a Java class, which returns them as necessary. Figure \ref{figure:modelQRTactics} shows the Scenario, Tactic and Quality Requirement entities, and how they are related in the implemented model.
 
 \begin{figure}[h]
 \centering
@@ -86,101 +89,60 @@ The Scenario is a main concept of the domain, and therefore is connected to the 
 \renewcommand {\umldrawcolor}{black}
 
 \begin{tikzpicture}
-\begin{class}[text width=3cm ]{Document}{9,-2.5}
-	\attribute { title : String }
-	\attribute { url : String }
-	\attribute { content : String }
-\end{class}
-
-\begin{class}[text width=3cm ]{Scenario}{9,-7.5}
+\tikzstyle{every node}=[font=\footnotesize]
+\begin{class}[text width=3cm ]{Scenario}{0,0}
 	\attribute { name : String}
 	\attribute { identifier : String }
 	\attribute { text : String }
 \end{class}
 
-\begin{class}[text width=3cm ]{QualityRequirement}{9,-13.5}
+\begin{class}[text width=3cm ]{QualityRequirement}{-5,0}
 	\attribute { name : String}
 \end{class}
 
-\begin{class}[text width=3cm ]{SrcOfStimulus}{0,-1.5}
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}	
-
-\begin{class}[text width=3cm ]{Stimulus}{0,-3.5}
+\begin{class}[text width=3cm ]{Tactic}{-5,-2}
 	\attribute { identifier : String }
 	\attribute { text : String }
 \end{class}
 
-\begin{class}[text width=3cm ]{Artifact}{0,-5.5}
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}
-
-\begin{class}[text width=3cm ]{Environment}{0,-7.5}
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}
-
-\begin{class}[text width=3cm ]{Response}{0,-9.5}
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}
-
-\begin{class}[text width=3cm ]{ResponseMeasure}{0,-11.5}
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}
-
-\begin{class}[text width=3cm ]{Tactic}{0,-13.5}
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}
-
-\association {Scenario}{}{1}{SrcOfStimulus}{}{0..1}
-\association {Scenario}{}{1}{Stimulus}{}{0..1}
-\association {Scenario}{}{1}{Artifact}{}{0..1}
-\association {Scenario}{}{1}{Environment}{}{0..1}
-\association {Scenario}{}{1}{Response}{}{0..1}
-\association {Scenario}{}{1}{ResponseMeasure}{}{0..1}
 \association {Scenario}{}{1}{Tactic}{}{*}
-\association {Scenario}{}{*}{Document}{}{0..1}
-\association {Scenario}{}{*}{QualityRequirement}{}{0..1}
+\association {Scenario}{}{0..1}{QualityRequirement}{}{0..1}
 
 \end{tikzpicture}
-\caption{Scenario Representation in the implemented Model}
-\label{figure:modelScenarios}
+\caption{Quality Requirements and Tactics detail in the implemented Model}
+\label{figure:modelQRTactics}
 \end{figure}
 
-To facilitate programming, all Scenario elements are a subclass of a ``ScenarioElement'' class, as seen in the example in Figure \ref{figure:modelScenarioElement}. This class contains a series of methods that are common to all the Scenario Elements. A few of those methods are shown in the figure. However, this class is not associated with the Scenario entity. Its purpose is only to facilitate programming by aggregating common methods. 
+To create a Scenario, it is necessary to select a Quality Requirement from a list, which is retrieved from the class mentioned. When the Scenario is created, a new Quality Requirement is also created, with the selected one stored into the ``name'' attribute, and associated with that Scenario. Inside the Scenario template, Tactics can be added. To add a tactic it is necessary to select it from a list of specific tactics for the quality requirement. That list is, again, retrieved from the class mentioned before. When a specific tactic is selected, a new Tactic is created in the model with the specific tactic name stored in the ``identifier'' attribute. Given these implementation details, there was no need to create the association between Tactic and QualityRequirement nor to have a Quality Requirement associated with many Scenarios.
 
-\begin{figure}
+To facilitate programming, all Scenario elements are a subclass of a ``ScenarioElement'' class, as seen in the example in Figure \ref{figure:modelScenarioElement}. This superclass aggregates all the methods common to the Scenario elements, making it easier to perform actions such as updating the text, associating annotations or presenting the elements in a view. A few of those methods are shown in the figure. However, this class is not associated with the Scenario entity. Its purpose is only to facilitate programming by aggregating common methods. 
+
+\begin{figure}[h]
 \centering
 \renewcommand {\umltextcolor}{black}
 \renewcommand {\umlfillcolor}{none}
 \renewcommand {\umldrawcolor}{black}
 
 \begin{tikzpicture}
-
-\begin{class}[text width=4cm ]{ScenarioElement}{0,0}
+\tikzstyle{every node}=[font=\footnotesize]
+\begin{class}[text width=3cm ]{ScenarioElement}{0,0}
 	\attribute { identifier : String }
 	\attribute { text : String }
 	\operation { getIdentifier() : String }
 	\operation { getText() : String}
+	\operation { (...)}
 \end{class}
 
-\begin{class}[text width=3cm ]{SrcOfStimulus}{-2.1,-4}
+\begin{class}[text width=2.5cm ]{SrcOfStimulus}{-2.1,-4}
 	\inherit{ScenarioElement}
-	\attribute { identifier : String }
-	\attribute { text : String }
+	\attribute{}
 \end{class}
 
-\draw [umlcd style] (0,-4.7) node {[...]};
+\draw [umlcd style] (0,-4.3) node {[...]};
 
-\begin{class}[text width=3.5cm ]{ResponseMeasure}{2.2,-4}
+\begin{class}[text width=3cm ]{ResponseMeasure}{2.2,-4}
 	\inherit{ScenarioElement}
-	\attribute { identifier : String }
-	\attribute { text : String }
+	\attribute{}
 \end{class}		
 	
 \end{tikzpicture}
@@ -188,35 +150,9 @@ To facilitate programming, all Scenario elements are a subclass of a ``ScenarioE
 \label{figure:modelScenarioElement}
 \end{figure}
 
-All domain entities have associated annotations, as it was mentioned previously in Section \ref{section:annotation}. Figure \ref{figure:modelScenariosAnnotations} shows how scenarios and their elements are related with the annotations in the implemented model. This diagram is similar to the one in figure \ref{figure:annotationConcept} and shows the association between the Scenario and ScenarioElement with the Annotation.
+The ``identifier'' parameter of the entities, seen in  Figures \ref{figure:modelQRTactics} and \ref{figure:modelScenarioElement} stores the name of the concept that corresponds to that entity, and often corresponds to the name of the entity itself. For example, the identifier in all instances of Scenario is ``Scenario'' and the identifier in all instances of ``SrcOfStimulus'' is ``Source Of Stimulus''. This was done to facilitate certain programming issues such as getting the concept name from a ``ScenarioElement'' instance. The ``name'' attribute in the Scenario gives it an identification other than just the quality attribute, and the ``text'' attribute in the Scenario and ScenarioElement corresponds to the description text that can be added to the templates.
 
-\begin{figure}
-\centering
-\renewcommand {\umltextcolor}{black}
-\renewcommand {\umlfillcolor}{none}
-\renewcommand {\umldrawcolor}{black}
-
-\begin{tikzpicture}
-\begin{class}[text width=3.5cm ]{Annotation}{0,0}
-	\attribute { annotation : String }
-	\attribute { tag : String }
-\end{class}
-\begin{class}[text width=3cm ]{ScenarioElement}{-2,-4}
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}
-
-\begin{class}[text width=3cm ]{Scenario}{2,-4}
-	\attribute { name : String }
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}	
-\association {Scenario}{}{0..1}{Annotation}{}{*}
-\association {ScenarioElement}{}{0..1}{Annotation}{}{*}
-\end{tikzpicture}
-\caption{Scenarios and Scenario Elements and their relation with Annotations in the implemented model}
-\label{figure:modelScenariosAnnotations}
-\end{figure}
+All domain entities have associated annotations, as it was mentioned previously in Section \ref{section:annotation}. The implemented model is similar to what is shown in Figure \ref{figure:documentAnnotationConcepts}, with the Scenario and ScenarioElement entities being associated with the Annotation.
 
 \subsection{Views}
 \label{subsection:modelViews}

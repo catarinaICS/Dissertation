@@ -226,4 +226,14 @@ G.~E. Krasner, S.~T. Pope, {\em et~al.}, ``A description of the
 T.~Reenskaug and J.~Coplien, ``The dci architecture: A new vision of
   object-oriented programming. artima developer,'' 2009.
 
+\bibitem{cachopo2006combining}
+J.~Cachopo and A.~Rito-Silva, ``Combining software transactional memory with a
+  domain modeling language to simplify web application development,'' in {\em
+  Proceedings of the 6th international conference on Web engineering},
+  pp.~297--304, ACM, 2006.
+
+\bibitem{cachopo2007development}
+J.~M.~P. Cachopo, {\em Development of Rich Domain Models with Atomic Actions}.
+\newblock PhD thesis, Universidade T{\'e}cnica de Lisboa, 2007.
+
 \end{thebibliography}

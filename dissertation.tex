@@ -19,10 +19,6 @@
 \usepackage{listings}
 
 \lstdefinestyle{customhtml}{
-  %belowcaptionskip=1\baselineskip,
-  %breaklines=true,
-  %frame=L,
-  %xleftmargin=\parindent,
   language=HTML,
   showstringspaces=false,
   basicstyle=\footnotesize\ttfamily,
@@ -36,12 +32,13 @@
 \definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
 \definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
 \definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+\definecolor{javaStringBlue}{rgb}{0.1647,0,1}
 
 \lstdefinestyle{customjava}{
 language=Java,
 basicstyle=\footnotesize\ttfamily,
 keywordstyle=\color{javapurple}\bfseries,
-stringstyle=\color{javared},
+stringstyle=\color{javaStringBlue},
 commentstyle=\color{javagreen},
 morecomment=[s][\color{javadocblue}]{/**}{*/},
 tabsize=4,

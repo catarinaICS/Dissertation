@@ -6,7 +6,9 @@ Chapter \ref{chapter:domainModel} introduced the domain model of the Software Ar
 
 In this chapter, it is shown how these templates are filled with information extracted from a software description article.
 
-The next sections will present two entities from the system: the Document and the Annotation. These entities have a major role in the identification of Software Architectures concepts from the domain model, and the enrichment of the templates for those concepts. 
+The next sections will present two entities from the system: the Document and the Annotation. These entities have a major role in the identification of Software Architectures concepts from the domain model, and the enrichment of the templates for those concepts.
+
+Section \ref{section:templates} will introduce the idea of templates, which are used to represent concepts from the domain model in the developed system. 
 
 \section{Document}
 \label{section:document}
@@ -32,7 +34,7 @@ Figure \ref{figure:documentEntity} shows the Document entity in the system. The 
 \label{figure:documentEntity}
 \end{figure}
 
-As the main purpose of this application is to create a structured representation of the document using the templates described in Section \ref{section:templates}, the instances of the main concepts, from which the templates will be generated, must be associated to the Document, as shown in Figure \ref{figure:documentConcept}. A concept describes a part of one and only one document, hence the '1' cardinality.  
+As the main purpose of this application is to create a structured representation of the document using the templates described in Section \ref{section:templates}, the instances of the main concepts, from which the templates will be generated, must be associated to the Document, as shown in Figure \ref{figure:documentConcept}. This way, generating a structured representation of the document is as easy as extracting the main concepts that are connected to it and including their respecive templates in the structured representation. A concept describes a part of one and only one document, hence the '1' cardinality.  
 
 \begin{figure}[h]
 \centering
@@ -41,6 +43,7 @@ As the main purpose of this application is to create a structured representation
 \renewcommand {\umldrawcolor}{black}
 
 \begin{tikzpicture}
+\tikzstyle{every node}=[font=\footnotesize]
 \begin{class}[text width=3cm ]{Concept}{3,-4}
 	\attribute{}
 \end{class}
@@ -80,7 +83,7 @@ Figure \ref{figure:annotationEntity} shows the Annotation entity in the system. 
 \label{figure:annotationEntity}
 \end{figure}
 
-Annotations are added to the system by selecting a portion of text in the parsed document and setting it as an annotation. Therefore, an annotation belongs to one, and only one document. Figure \ref{figure:documentAnnotation} shows the association between the Annotation and Document entities which reflects the mentioned constraints.
+Annotations are added to the system by selecting a portion of text in the parsed document and setting it as an annotation. Therefore, an annotation belongs to one, and only one document. In Figure \ref{figure:documentAnnotationConcepts} it is possible to see the association between the Annotation and Document entities, which reflects the mentioned constraints.
 
 \begin{figure}[h]
 \centering
@@ -89,50 +92,48 @@ Annotations are added to the system by selecting a portion of text in the parsed
 \renewcommand {\umldrawcolor}{black}
 
 \begin{tikzpicture}
-\begin{class}[text width=4cm ]{Annotation}{2,-5}
-	\attribute { annotation : String }
-	\attribute { tag : String }
-\end{class}
+\tikzstyle{every node}=[font=\footnotesize]
 
-\begin{class}[text width=3cm ]{Document}{0,0}
+\begin{class}[text width=2cm ]{Document}{0,0}
 	\attribute { title : String }
 	\attribute { url : String }
 	\attribute { content : String }
 \end{class}
 
-\association{Document}{}{1}{Annotation}{}{*}
+\begin{class}[text width=3cm ]{Annotation}{-1,-3}
+	\attribute { annotation : String }
+	\attribute { tag : String }
+\end{class}
+
+\begin{class}[text width=2cm ]{Concept}{4,-0.5}
+	\attribute{}
+\end{class}
+
+\begin{class}[text width=2cm ]{Scenario}{4,-3}
+	\inherit{Concept}
+	\attribute{}
+\end{class}
+
+\begin{class}[text width=3cm ]{Source Of Stimulus}{5,-5}
+	\attribute{}
+\end{class}
+
+\association{Document}{}{1}{Concept}{}{*}
+\association{Document}{}{0..1}{Annotation}{}{*}
+\association{Concept}{}{0..1}{Annotation}{}{*}
+\association{Scenario}{}{1}{Source Of Stimulus}{}{*}
+\association{Source Of Stimulus}{}{0..1}{Annotation}{}{*}
+
 \end{tikzpicture}
-\caption{Association between Document and Annotation entities}
-\label{figure:documentAnnotation}
+\caption{Associations between Document, Annotation and the domain model concepts}
+\label{figure:documentAnnotationConcepts}
 \end{figure}
 
 Annotations are used to enrich the templates described in Section \ref{section:templates}. Associating the annotations with the respective instances of the concepts allows for that enrichment. All the concepts, not only the main ones, can have associated annotations.
 
 As mentioned in the previous section, an annotation can partially or fully describe a concept, therefore a concept can be associated with multiple annotations. 
 
-Figure \ref{figure:annotationConcept} shows the association between the Source of Stimulus and the Annotation entities as an example, as all the concepts in the domain model of Figure \ref{figure:abstractDomainModel} have a similar association.
-
-\begin{figure}[h]
-\centering
-\renewcommand {\umltextcolor}{black}
-\renewcommand {\umlfillcolor}{none}
-\renewcommand {\umldrawcolor}{black}
-
-\begin{tikzpicture}
-\begin{class}[text width=4cm ]{Annotation}{0,0}
-	\attribute { annotation : String }
-	\attribute { tag : String }
-\end{class}
-
-\begin{class}[text width=3cm ]{Source Of Stimulus}{4,-4}
-	\attribute{}
-\end{class}
-
-\association{Source Of Stimulus}{}{0..1}{Annotation}{}{*}
-\end{tikzpicture}
-\caption{Association between Source Of Stimulus and Annotation entities}
-\label{figure:annotationConcept}
-\end{figure}
+Figure \ref{figure:documentAnnotationConcepts} shows how the Annotation is associated with the domain concepts. There is an association not only with the main concepts of the domain model, but also all the other concepts represented in \ref{figure:abstractDomainModel}. The figure exemplifies these associations with only the Scenario and the Source of Stimulus, but all the other concepts have similar associations.  
 
 \section{Interface Flow}
 \label{section:interfaceFlow}
@@ -181,18 +182,3 @@ Figures \ref{figure:scenarioTemplate2}, \ref{figure:moduleTemplate2} and \ref{fi
 \caption{Module Viewtype view Schema enriched with annotations and user text}
 \label{figure:viewTemplate2}
 \end{figure}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
