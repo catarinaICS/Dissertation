@@ -401,28 +401,56 @@ A View is, as the Scenario, the Element and the Relation, considered a main conc
 
 In the abstract domain model of Figure \ref{figure:abstractDomainModel} the View is associated with the Viewtype entity which, in turn, is associated with a Style entity. Similar to what was explained for the Scenarios with the Quality Requirements and Tactics, the abstract domain model assumes there are a set of pre-defined Viewtype entities, each associated with a pre-defined set of Styles. 
 
-In the implemented domain model, however, there are no pre-defined Styles nor Viewtypes. When a view is added to the system, a viewtype must be chosen, and it is stored in the ``viewtype'' attribute. This attribute is used to distinguish what kind of elements can be added to the view. For example, if the ``viewtype'' attribute of a View is set to ``Module Viewtype'', then only Modules are added to that View. The styles in a view are not explicitly stated, but they are implicit in the elements that are added to the View. For example, a Module Vewtype View containing a set of Modules with ``uses'' relations between each others implies that there is a \textit{Uses} style in the view, and Component \& Connector Viewtype View containing Components attached to Connectors with a certain style implies that that style is present in the view. 
+In the implemented domain model, however, there are no pre-defined Styles nor Viewtypes. When a view is added to the system, a viewtype must be chosen, and it is stored in the ``viewtype'' attribute. This attribute is used to distinguish what kind of elements can be added to the view. For example, if the ``viewtype'' attribute of a View is set to ``Module Viewtype'', then only Modules are added to that View. 
+
+The styles of a view are not explicitly stated, but they are implicit by the elements that are added to the View. For example, a Module Viewtype View containing a set of Modules with ``uses'' relations between each others implies that there is a \textit{Uses} style in the view, and a Component \& Connector Viewtype View containing Components attached to Connectors with a certain style implies that that style is present in the view. This verification is done by the Controller, as described in Subsection \ref{substection:viewController}.
+
+A View is composed by a set of Elements, as seen in Figure \ref{figure:abstractDomainModel}. In the implemented domain model, the View has a similar association with the Module, Component and Connector entities. Figure \ref{figure:modelviewelements} shows how these relations are implemented in the Domain Modeling Language.
+
+\begin{figure}[h]
+\lstset{style=customjava}
+\begin{lstlisting}
+relation viewHasModules {
+	View playsRole view { multiplicity 0..*; }
+	Module playsRole module { multiplicity 0..*;}
+}
+
+relation viewHasComponents {
+	Component playsRole component { multiplicity 0..*; }
+	View playsRole view { multiplicity 0..*; }
+}
+
+relation viewHasConnectors {
+	Connector playsRole connector { multiplicity 0..*; }
+	View playsRole view { multiplicity 0..*; }
+}
+\end{lstlisting}
+\caption{Relation between View and the view elements: Module, Component and Connector}
+\label{figure:modelviewelements}
+\end{figure}
+
+A View is created by associating an Annotation with it and, as it is a main concept, it is associated with the respective Document, as demonstrated in the example in Figure \ref{figure:documentAnnotationConcepts}.
 
 \section{Controller}
 
 This section describes the Controller part of the implemented system. The application developed uses the Spring\footnote{https://spring.io/} Framework, which allows the definition of one or more Java classes to act as Controllers and handle requests.
 
-A Java class is set to be a Controller by annotating it with the \textit{@Controller} annotation, or \textit{@RestController} if the controller's goal is to provide a REST API. Figure \ref{figure:springController} shows an example of a Controller class that handles requests for the url \textit{'/home'} and returns a template that will update the view.
+A Java class is set to be a Controller by annotating it with the \textit{@Controller} annotation, or \textit{@RestController} if the controller's goal is to provide a REST API. Figure \ref{figure:springController} shows an example from the Document Controller described in \ref{subsection:documentController} that handles requests for the URL \textit{'/selectDoc/{id}'}, retrieves a Document from the domain model and adds it and its ID as attributes so the template will be able to use them. The template ``docTemplate'' will be then showed to the user.
 
 \begin{figure}[h]
 \lstset{style=customjava}
 \begin{lstlisting}
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 @Controller
-public class MyController {
-
-	@RequestMapping(value="/home")
-	public String home() {
-		return "home";
+public class DocumentController {
+	// ...
+	@RequestMapping(value = "/selectDoc/{id}", method = RequestMethod.GET)
+	public String showDocument(@PathVariable String id, Model m) throws IOException {
+		m.addAttribute("docId", id);
+		Document d = FenixFramework.getDomainObject(id);
+		m.addAttribute("doc", d);
+		return "docTemplate";
 	}
-}
+}	
 \end{lstlisting}
 \caption{Example of a Controller class defined using the Spring Framework} 
 \label{figure:springController}
@@ -449,6 +477,7 @@ The endpoints provided by this controller are described in Table \ref{table:endp
 The ``INDEX'' endpoint has the particularity of iterating through all the Annotations in the system. If the annotation is associated to another domain entity besides the Document (for example, a Scenario, or a Module), information about the domain entity will be added to the annotation body, and will be shown in the interface. This way, it is possible to have some information about the domain entity even before checking its template.
 
 \subsection{Document Controller}
+\label{subsection:documentController}
 The Document Controller handles the requests to view, add or remove a document from the system.
 
 Adding and removing documents from the system is a feature that only Teachers are authorized to use. The controller receives a POST request containing the URL to the article. The Java library JSoup\footnote{http://jsoup.org/} extracts the HTML from the given URL and the controller processes it and stores a Document in the database. Processing of the extracted HTML includes turning relative URLs into absolute ones for href and src attributes.
@@ -485,4 +514,7 @@ Similarly to the Scenario Controller, the Module Controller handles the creation
 As explained in Chapter \ref{chapter:domainModel}, the Elements of a View are related to each others, and in Section \ref{section:model}, we can see that, since the relations between Modules have no information other than the Modules involved, they are implemented as different associations of the ``Module'' entity to itself. The Module Controller handles adding and removing other Modules to/from the possible relations. The requests are unique for each relation, meaning the request to add a Module to the \textit{Uses} relation of a certain Module will be in the form \textit{/setModuleUses/...} and the request to add \textit{One-To-One} relations with other Modules to a certain Module will be in the form \textit{/setModuleOneToOne/...}. Each request modifies the corresponding association accordingly. 
 
 ...
- 
+\subsection{Component and Connector Controllers}
+
+\subsection{View Controller}
+\label{substection:viewController}
