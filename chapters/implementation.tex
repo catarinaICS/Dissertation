@@ -64,8 +64,8 @@ Similarly to what is shown in Figure \ref{figure:documentAnnotationConcepts} of 
 	\attribute { lastName : String}
 	\attribute { type : String}
 \end{class}
-\association {Document}{document}{1}{Annotation}{annotations}{0..*}
-\association {User}{owner}{1}{Annotation}{}{0..*}
+\association {Document}{document}{1}{Annotation}{annotation}{0..*}
+\association {User}{owner}{1}{Annotation}{annotation}{0..*}
 
 \end{tikzpicture}
 \caption{Document, Annotations and Users in the implemented Model}
@@ -154,296 +154,138 @@ The ``identifier'' parameter of the entities, seen in  Figures \ref{figure:model
 
 All domain entities have associated annotations, as it was mentioned previously in Section \ref{section:annotation}. The implemented model is similar to what is shown in Figure \ref{figure:documentAnnotationConcepts}, with the Scenario and ScenarioElement entities being associated with the Annotation.
 
-\subsection{Views}
-\label{subsection:modelViews}
-
-The abstract domain model presented in Figure \ref{figure:abstractDomainModel} of Chapter \ref{chapter:domainModel} shows how a View is related to the Viewtype, the Styles and the elements. A View is considered a main concept in the sense that it has its own dedicated template, and so does the Element.
-
-The implemented model supports the inclusion of Module viewtype Views and their respective Modules and relations. Figure \ref{figure:modelViewsAndModules} shows how the model is implemented. The viewtype and style of a view are attributes of the View entity, and are used to guarantee that the correct elements are added to the view. The ``name'' attribute of the View corresponds to a name given by the user when creating the View, and should help its identification, and, as for the Scenario and its elements, the ``text'' attribute corresponds to text that users can add to the template.
-
-Views and Modules are created, as mentioned before, by associating annotations to them, hence the connection between these entities and the Annotation shown in figure \ref{figure:modelViewsModulesAnnotations}. Upon creation, they are also associated with the corresponding Document.
-
-\begin{figure}[h]
-\centering
-\renewcommand {\umltextcolor}{black}
-\renewcommand {\umlfillcolor}{none}
-\renewcommand {\umldrawcolor}{black}
-\begin{tikzpicture}
-\begin{class}[text width=3.5cm ]{View}{0,0}
-	\attribute { name : String }
-	\attribute { viewtype : String }
-	\attribute { style : String }
-	\attribute { text : String }
-\end{class}
-\begin{class}[text width=3cm ]{Module}{-3,-4}
-	\attribute { name : String }
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}
-
-\begin{class}[text width=3cm ]{Document}{3,-4}
-	\attribute { title : String }
-	\attribute { url : String }
-	\attribute { content : String }
-\end{class}	
-\association {View}{}{*}{Document}{}{0..1}
-\association {Module}{}{*}{Document}{}{0..1}
-\association {Module}{}{*}{View}{}{*}
-
-\end{tikzpicture}
-
-\caption{View and Module in the implemented Model}
-\label{figure:modelViewsAndModules}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\renewcommand {\umltextcolor}{black}
-\renewcommand {\umlfillcolor}{none}
-\renewcommand {\umldrawcolor}{black}
-\begin{tikzpicture}
-\begin{class}[text width=3.5cm ]{View}{0,0}
-	\attribute { name : String }
-	\attribute { viewtype : String }
-	\attribute { style : String }
-	\attribute { text : String }
-\end{class}
-\begin{class}[text width=3cm ]{Module}{-3,-4}
-	\attribute { name : String }
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}
-
-\begin{class}[text width=3cm ]{Annotation}{3,-4}
-	\attribute { annotation : String }
-	\attribute { tag : String }
-
-\end{class}	
-\association {View}{}{0..1}{Annotation}{}{*}
-\association {Module}{}{0..1}{Annotation}{}{*}
-\association {Module}{}{*}{View}{}{*}
-
-\end{tikzpicture}
-
-\caption{Views and Modules relationship with Annotations in the implemented Model}
-\label{figure:modelViewsModulesAnnotations}
-\end{figure}
 
 \subsection{Modules}
 \label{subsection:modules}
 
-The Modules are the elements of the Module Viewtype Views. As seen in Figure \ref{figure:modelViewsAndModules}, and similarly to the Scenario and the View entities, it has a ``name'' attribute, which provides identification and also gives an idea on what are the Module functions, and a ``text'' attribute, which corresponds to text added to the template.
-
-As seen in the abstract domain model present in Figure \ref{figure:abstractDomainModel} of Chapter \ref{chapter:domainModel}, the elements of a view have a certain type of relationship with each others. There are eight types of relationships between Modules \cite{clements2003documenting}:
-\begin{itemize}
-\item \textit{Is-Part-Of} - a Module can be part of a parent Module; 
-\item \textit{Uses} - a Module depends on the correct functioning of other Modules to satisfy its own requirements;
-\item \textit{Is-A} - a relation of generalization, in which a Module is a generalization, or parent, of other modules; 
-\item \textit{Crosscuts} - an Aspect Module, which implements a crosscutting concern of the system, is bound to a Module that is affected by that crosscutting concern;
-\item \textit{One-To-One, One-To-Many, Many-to-Many} - logical associations between Data Entity Modules, similar to the UML associations;
-\item \textit{Aggregation} - an aggregation relation;
-\end{itemize}
-
-Although the abstract domain model in Figure \ref{figure:abstractDomainModel} contains an entity ``Relation'' to represent how the view elements are connected, in the case of the Modules, these relations have no other information than the Modules connected. Therefore, in the implemented model, there are no entities representing the relationships between modules. Instead, there were defined different associations of the Module entity to itself, in order to represent the different relations.
-
-\subsubsection{Is-Part-Of}
-
-The \textit{Is-Part-Of} relation specifies that a Module can be a Sub-Module of one and only one other Module. Figure \ref{figure:modelIsPartOfRelation} shows how this relation was implemented.
+The Modules are the elements of the Module Viewtype Views. Figure \ref{figure:modelModule} shows how a Module is represented in the implemented model.
 
 \begin{figure}[h]
 \centering
 \renewcommand {\umltextcolor}{black}
 \renewcommand {\umlfillcolor}{none}
 \renewcommand {\umldrawcolor}{black}
-\begin{tikzpicture}
 
+\begin{tikzpicture}
 \begin{class}[text width=3cm ]{Module}{0,0}
-	\attribute { name : String }
+	\attribute { name : String }	
 	\attribute { identifier : String }
 	\attribute { text : String }
-\end{class}
-	
-\draw [umlcd style] (Module.south) -- (0,-2.5) -- (2.5,-2.5) -- (2.5,-1) -- (1.61,-1);
-\draw [umlcd style] (-1,-2.2) node {\small parent};
-\draw [umlcd style] (0.5,-2.2) node {\small 0..1};
-\draw [umlcd style] (2.060,-0.5) node {\small child};
-\draw [umlcd style] (2.060, -1.4) node {\small 0..*};
+\end{class}			
 \end{tikzpicture}
+\caption{The Module entity}
+\label{figure:modelModule}
+\end{figure}
+
+The Module entity has a ``name'' attribute, which provides identification and also gives an idea on what are the Module functions, an ``identifier'', as explained in the previous section, and a ``text'' attribute, which corresponds to text added to the template.
+
+As it is one of the main concepts of the system, the Module is associated with the corresponding document upon its creation as demonstrated in the example in Figure \ref{figure:documentAnnotationConcepts}. The Module is also associated with the set of Annotations that describe it.
+
+As seen in the abstract domain model present in Figure \ref{figure:abstractDomainModel} of Chapter \ref{chapter:domainModel}, the elements of a view have a certain type of relationship with each others. Although the abstract domain model in Figure \ref{figure:abstractDomainModel} contains an entity ``Relation'' to represent how the view elements are connected, in the case of the Modules, these relations have no other information than the Modules connected. 
+
+Therefore, in the implemented model, there are no entities representing the relationships between modules. Instead, there were defined different associations of the Module entity to itself, in order to represent the different relations.
+
+Each Module Viewtype Style specifies relation types refined from the ones presented in \ref{subsection:domainModelViews}. There are, then, eight types of relations between Modules\cite{clements2003documenting} defined in the Domain Modeling Language:
+\begin{itemize}
+\item \textit{Is-Part-Of} - a Module can be part of one and only one parent Module. Figure \ref{figure:modelIsPartOfRelation} shows how this relation was implemented. A Module can have only one other Module set as parent, but can have many children Modules;
+\begin{figure}[h]
+\centering
+\lstset{style=customjava}
+\begin{lstlisting}
+relation moduleIsPartOfModule {
+	Module playsRole parent{ multiplicity 0..1; }
+	
+	Module playsRole child{ multiplicity 0..*; }
+}
+\end{lstlisting}
 \caption{Is-Part-Of relation between Modules in the implemented model}
 \label{figure:modelIsPartOfRelation}
 \end{figure}
 
-\subsubsection{Uses}
-
-The \textit{Uses} relation specifies that a Module can depend on the correct functioning of one or more Modules, and one or more Modules can depend on the correct functioning of this Module. Figure \ref{figure:modelUsesRelation} shows how this relation was implemented.
-
+\item \textit{Uses} - a specialization of the \textit{depends-on} relation, where a Module depends on the correct functioning of other Modules to satisfy its own requirements. The implementation is shown in Figure \ref{figure:modelUsesRelation}. A Module can use and be used by many other Modules;
 \begin{figure}[h]
-\centering
-\renewcommand {\umltextcolor}{black}
-\renewcommand {\umlfillcolor}{none}
-\renewcommand {\umldrawcolor}{black}
-\begin{tikzpicture}
-
-\begin{class}[text width=3cm ]{Module}{0,0}
-	\attribute { name : String }
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}
+\lstset{style=customjava}
+\begin{lstlisting}
+relation moduleUsesModule {
+	Module playsRole uses{ multiplicity 0..*; }
 	
-\draw [umlcd style] (Module.south) -- (0,-2.5) -- (2.5,-2.5) -- (2.5,-1) -- (1.61,-1);
-\draw [umlcd style] (-1,-2.2) node {\small uses};
-\draw [umlcd style] (0.5,-2.2) node {\small 0..*};
-\draw [umlcd style] (2.2,-0.5) node {\small usedBy};
-\draw [umlcd style] (2.060, -1.4) node {\small 0..*};
-\end{tikzpicture}
+	Module playsRole usedBy{ multiplicity 0..*; }
+}
+\end{lstlisting}
 \caption{Uses relation between Modules in the implemented model}
-
 \label{figure:modelUsesRelation}
 \end{figure}
 
-\subsubsection{Is-A}
-
-The \textit{Is-A} relation specifies that a Module can be a specialization of a more general Module. Figure \ref{figure:modelIsARelation} shows how this relation was implemented. There are no restrictions on multiple inheritance in this relation, so a Module can be a specialization of more than one Module. 
-
+\item \textit{Is-A} - a relation of generalization, in which a Module is a generalization, or parent, of other modules. Implementation is shown in Figure \ref{figure:modelIsARelation}; 
 \begin{figure}[h]
-\centering
-\renewcommand {\umltextcolor}{black}
-\renewcommand {\umlfillcolor}{none}
-\renewcommand {\umldrawcolor}{black}
-\begin{tikzpicture}
-
-\begin{class}[text width=3cm ]{Module}{0,0}
-	\attribute { name : String }
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}
+\lstset{style=customjava}
+\begin{lstlisting}
+relation moduleIsAModule {
+	Module playsRole isA { multiplicity 0..*; }
 	
-\draw [umlcd style] (Module.south) -- (0,-2.5) -- (2.5,-2.5) -- (2.5,-1) -- (1.61,-1);
-\draw [umlcd style] (-1,-2.2) node {\small isA};
-\draw [umlcd style] (0.5,-2.2) node {\small 0..*};
-\draw [umlcd style] (2.6,-0.5) node {\small superModule};
-\draw [umlcd style] (2.060, -1.4) node {\small 0..*};
-\end{tikzpicture}
+	Module playsRole superModule { multiplicity 0..*; }
+}
+\end{lstlisting}
 \caption{Uses relation between Modules in the implemented model}
 \label{figure:modelIsARelation}
 \end{figure}
 
-\subsubsection{Crosscuts}
-
-The \textit{Crosscut} relation specifies that an Aspects Module, which implements a crosscutting concern of the system, can be associated with Modules that are affected with that crosscutting concern. Figure \ref{figure:modelCrosscutsRelation} shows how this relation was implemented in the model.
+\item \textit{Crosscuts} - an Aspect Module, which implements a crosscutting concern of the system, is bound to a Module that is affected by that crosscutting concern. Implementation is shown in Figure \ref{figure:modelCrosscutsRelation};
 
 \begin{figure}[h]
-\centering
-\renewcommand {\umltextcolor}{black}
-\renewcommand {\umlfillcolor}{none}
-\renewcommand {\umldrawcolor}{black}
-\begin{tikzpicture}
-
-\begin{class}[text width=3cm ]{Module}{0,0}
-	\attribute { name : String }
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}
+\lstset{style=customjava}
+\begin{lstlisting}
+relation moduleCrosscutsModule {
+	Module playsRole crossCuts { multiplicity 0..*; }
 	
-\draw [umlcd style] (Module.south) -- (0,-2.5) -- (2.5,-2.5) -- (2.5,-1) -- (1.61,-1);
-\draw [umlcd style] (-1,-2.2) node {\small crosscuts};
-\draw [umlcd style] (0.5,-2.2) node {\small 0..*};
-\draw [umlcd style] (2.7,-0.5) node {\small crosscuttedBy};
-\draw [umlcd style] (2.060, -1.4) node {\small 0..*};
-\end{tikzpicture}
+	Module playsRole crossCuttedBy { multiplicity 0..*; }
+}
+\end{lstlisting}
 \caption{Uses relation between Modules in the implemented model}
 \label{figure:modelCrosscutsRelation}
 \end{figure}
 
-\subsubsection{One-To-One, One-To-Many, Many-to-Many}
-
-The \textit{One-To-One, One-To-Many} and \textit{Many-to-Many} relation specify logical associations between Data Entity Modules, similar to UML associations. Figures \ref{figure:modelOneToOneRelation}, \ref{figure:modelOneToManyRelation} and \ref{figure:modelManyToManyRelation} show how these relations were implemented in the model.
+\item \textit{One-To-One, One-To-Many, Many-to-Many} - logical associations between Data Entity Modules, similar to the UML associations. Implementation of these relations is shown in Figure \ref{figure:modelDataModelRelations}.
 
 \begin{figure}[h]
-\centering
-\renewcommand {\umltextcolor}{black}
-\renewcommand {\umlfillcolor}{none}
-\renewcommand {\umldrawcolor}{black}
-\begin{tikzpicture}
+\lstset{style=customjava}
+\begin{lstlisting}
+relation moduleOneToOneModule {
+	Module playsRole oneToOne {	multiplicity 0..*; }
+	Module playsRole oneRelation { multiplicity 0..*; }
+}
 
-\begin{class}[text width=3cm ]{Module}{0,0}
-	\attribute { name : String }
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}
-	
-\draw [umlcd style] (Module.south) -- (0,-2.5) -- (2.5,-2.5) -- (2.5,-1) -- (1.61,-1);
-\draw [umlcd style] (-1,-2.2) node {\small oneToOne};
-\draw [umlcd style] (0.5,-2.2) node {\small 0..*};
-\draw [umlcd style] (2.7,-0.5) node {\small oneRelation};
-\draw [umlcd style] (2.060, -1.4) node {\small 0..*};
-\end{tikzpicture}
-\caption{One-To-One relation between Modules in the implemented model}
-\label{figure:modelOneToOneRelation}
-\end{figure}
-\begin{figure}[h]
-\centering
-\renewcommand {\umltextcolor}{black}
-\renewcommand {\umlfillcolor}{none}
-\renewcommand {\umldrawcolor}{black}
-\begin{tikzpicture}
+relation moduleOneToManyModule {
+	Module playsRole oneToMany { multiplicity 0..*; }
+	Module playsRole oneToManyRelations { multiplicity 0..*; }
+}
 
-\begin{class}[text width=3cm ]{Module}{0,0}
-	\attribute { name : String }
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}
-	
-\draw [umlcd style] (Module.south) -- (0,-2.5) -- (2.5,-2.5) -- (2.5,-1) -- (1.61,-1);
-\draw [umlcd style] (-1,-2.2) node {\small oneToMany};
-\draw [umlcd style] (0.5,-2.2) node {\small 0..*};
-\draw [umlcd style] (3.15,-0.5) node {\small oneToManyRelation};
-\draw [umlcd style] (2.060, -1.4) node {\small 0..*};
-\end{tikzpicture}
-\caption{One-To-Many relation between Modules in the implemented model}
-\label{figure:modelOneToManyRelation}
-\end{figure}
-\begin{figure}[h]
-\centering
-\renewcommand {\umltextcolor}{black}
-\renewcommand {\umlfillcolor}{none}
-\renewcommand {\umldrawcolor}{black}
-\begin{tikzpicture}
-
-\begin{class}[text width=3cm ]{Module}{0,0}
-	\attribute { name : String }
-	\attribute { identifier : String }
-	\attribute { text : String }
-\end{class}
-	
-\draw [umlcd style] (Module.south) -- (0,-2.5) -- (2.5,-2.5) -- (2.5,-1) -- (1.61,-1);
-\draw [umlcd style] (-1,-2.2) node {\small manyToMany};
-\draw [umlcd style] (0.5,-2.2) node {\small 0..*};
-\draw [umlcd style] (3.25,-0.5) node {\small manyToManyRelation};
-\draw [umlcd style] (2.060, -1.4) node {\small 0..*};
-\end{tikzpicture}
-\caption{Many-To-Many relation between Modules in the implemented model}
-\label{figure:modelManyToManyRelation}
+relation moduleManyToManyModule {
+	Module playsRole manyToMany { multiplicity 0..*; }
+	Module playsRole manyToManyRelations { multiplicity 0..*; }
+}
+\end{lstlisting}
+\caption{One-to-One, One-To-Many and Many-To-Many relation between Modules in the implemented model}
+\label{figure:modelDataModelRelations}
 \end{figure}
 
-\textbf{To note:} the '*' cardinality in these relations means that a Module can have several relations of this type in a Data Model Style view. For example, if a Module instance with name ``Department'' has a ``One-To-Many'' relation with Modules ``Employee'' and ``Room'', it means that a visual representation of these Modules would be the one in figure \ref{figure:modelOneToManyExample}.
-
+\textbf{To note:} the '0..*' cardinality in the one-to-one, one-to-many and many-to-many relations means that a Module can have several relations of this type in a Data Model Style view. For example, if a Module instance with name ``Department'' has a ``One-To-Many'' relation with Modules ``Employee'' and ``Room'', it means that a visual representation of these Modules would be the one in figure \ref{figure:modelOneToManyExample}.
 \begin{figure}[h]
 \centering
 \renewcommand {\umltextcolor}{black}
 \renewcommand {\umlfillcolor}{none}
 \renewcommand {\umldrawcolor}{black}
 \begin{tikzpicture}
-
+\tikzstyle{every node}=[font=\footnotesize]
 \begin{class}[text width=2.5cm ]{Department}{0,0}
 	\attribute {}
 \end{class}
 
-\begin{class}[text width=2cm ]{Room}{-2.5,-3}
+\begin{class}[text width=2cm ]{Room}{-2.5,-2}
 	\attribute {}
 \end{class}
 
-\begin{class}[text width=2cm ]{Employee}{2.5,-3}
+\begin{class}[text width=2cm ]{Employee}{2.5,-2}
 	\attribute {}
 \end{class}
 
@@ -454,9 +296,27 @@ The \textit{One-To-One, One-To-Many} and \textit{Many-to-Many} relation specify 
 \label{figure:modelOneToManyExample}
 \end{figure}
 
-\subsubsection{Aggregation}
+\item \textit{Aggregation} - an aggregation relation. Figure \ref{figure:modelAggregationRelation} shows how this relation is implemented. A Module can be an aggregator of other several Modules, and be aggregated by many others;
 
-The \textit{Aggregation} relation specifies that a Module can be an aggregator of other Modules. Figure \ref{figure:modelAggregationRelation} shows how this relation is implemented in the system.
+\begin{figure}[h]
+\centering
+\lstset{style=customjava}
+\begin{lstlisting}
+relation moduleAggregatesModule {
+	Module playsRole aggregator { multiplicity 0..*; }
+	
+	Module playsRole aggregated { multiplicity 0..*; }
+}
+\end{lstlisting}
+\caption{Aggregation relation between Modules in the implemented model}
+\label{figure:modelAggregationRelation}
+\end{figure}
+
+\end{itemize}
+
+\subsection{Components and Connectors}
+\label{subsection:modelComponentsConnectors}
+Components and Connectors are the elements of the Component \& Connector Viewtype Views. Figure \ref{figure:modelComponentConnector} shows how these concepts are represented in the implemented model.
 
 \begin{figure}[h]
 \centering
@@ -464,22 +324,84 @@ The \textit{Aggregation} relation specifies that a Module can be an aggregator o
 \renewcommand {\umlfillcolor}{none}
 \renewcommand {\umldrawcolor}{black}
 \begin{tikzpicture}
-
-\begin{class}[text width=3cm ]{Module}{0,0}
-	\attribute { name : String }
-	\attribute { identifier : String }
-	\attribute { text : String }
+\tikzstyle{every node}=[font=\footnotesize]
+\begin{class}[text width=2cm ]{Component}{0,0}
+	\attribute {name : String}
+	\attribute {text : String}
 \end{class}
-	
-\draw [umlcd style] (Module.south) -- (0,-2.5) -- (2.5,-2.5) -- (2.5,-1) -- (1.61,-1);
-\draw [umlcd style] (-1,-2.2) node {\small aggregator};
-\draw [umlcd style] (0.5,-2.2) node {\small 0..*};
-\draw [umlcd style] (2.45,-0.5) node {\small aggregated};
-\draw [umlcd style] (2.060, -1.4) node {\small 0..*};
+
+\begin{class}[text width=2cm ]{Connector}{3,0}
+	\attribute {name : String}
+	\attribute {style : String}
+	\attribute {text : String}
+\end{class}
+
+\begin{class}[text width=2cm ]{Port}{0,-3}
+	\attribute {name : String}
+	\attribute {text : String}
+\end{class}
+
+\begin{class}[text width=2cm ]{Role}{3,-3}
+	\attribute {name : String}
+	\attribute {text : String}
+\end{class}
+
+\association{Component}{}{0..1}{Port}{}{*}
+\association{Connector}{}{0..1}{Role}{}{*}
+
 \end{tikzpicture}
-\caption{Aggregation relation between Modules in the implemented model}
-\label{figure:modelAggregationRelation}
+\caption{Component and Connector entities in the implemented model}
+\label{figure:modelComponentConnector}
 \end{figure}
+ 
+A Component has a set of Ports, and a Connector as a set of Roles. The Ports of a Component are connected to the Roles of a Connector by the \textit{Attachment} relation explained in Section \ref{section:SAConcepts} of Chapter \ref{chapter:domainModel}. The implementation of this relation will be explained further on. The ``name'' and ``text'' attributes in the entities correspond to the identification name of the entity and the descriptive text that can be added, respectively. The ``style'' attribute in the Connector refers to the Component \& Connector styles. Each style has a unique type of connector. Specifying the style of a connector will make it easier to figure which Components will attach to it.
+
+The Component and Connector are main concepts of the system, and therefore are associated with the corresponding document upon creation. They and their respective Ports and Roles are also associated to a set of Annotations that describe them. The associations of the Component and Connector to the Document and Annotation are similar to the ones in the example of Figure \ref{figure:documentAnnotationConcepts}.
+
+Components are related with Connectors by the \textit{Attachment} relation. A Component has, as mentioned, a set of ports, and these ports can be attached to roles of Connectors.
+
+Similar to the Module relations, the \textit{Attachment} relation in the implemented model has no more information than the Port and Role involved. Therefore, it did not make sense to create an entity to represent this relation. Instead, a new relation between the Port and Role entity is created in the Domain Modeling language, as shown in Figure \ref{figure:modelAttachmentRelation}.
+
+\begin{figure}[h]
+\lstset{style=customjava}
+\begin{lstlisting}
+relation portIsAttachedToRole {
+	Port playsRole port { multiplicity 0..1; }
+	
+	Role playsRole role { multiplicity 0..1; }
+}
+\end{lstlisting}
+\caption{Attachment relation between Component Ports and Connector Roles in the implemented model}
+\label{figure:modelAttachmentRelation}
+\end{figure}
+
+
+\subsection{Views}
+\label{subsection:modelViews}
+
+The abstract domain model presented in Figure \ref{figure:abstractDomainModel} of Chapter \ref{chapter:domainModel} shows how a View is related to the Viewtype, the Styles and the elements. 
+
+A View is, as the Scenario, the Element and the Relation, considered a main concept, and therefore has its own dedicated template. Figure \ref{figure:modelView} shows how the View is represented in the implemented model.
+
+\begin{figure}[h]
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+\begin{tikzpicture}
+\begin{class}[text width=3cm ]{View}{0,0}
+	\attribute {name : String}
+	\attribute {viewtype : String}
+	\attribute {text : String}
+\end{class}
+\end{tikzpicture}
+\caption{View entity in the implemented model}
+\label{figure:modelView}
+\end{figure}
+
+In the abstract domain model of Figure \ref{figure:abstractDomainModel} the View is associated with the Viewtype entity which, in turn, is associated with a Style entity. Similar to what was explained for the Scenarios with the Quality Requirements and Tactics, the abstract domain model assumes there are a set of pre-defined Viewtype entities, each associated with a pre-defined set of Styles. 
+
+In the implemented domain model, however, there are no pre-defined Styles nor Viewtypes. When a view is added to the system, a viewtype must be chosen, and it is stored in the ``viewtype'' attribute. This attribute is used to distinguish what kind of elements can be added to the view. For example, if the ``viewtype'' attribute of a View is set to ``Module Viewtype'', then only Modules are added to that View. The styles in a view are not explicitly stated, but they are implicit in the elements that are added to the View. For example, a Module Vewtype View containing a set of Modules with ``uses'' relations between each others implies that there is a \textit{Uses} style in the view, and Component \& Connector Viewtype View containing Components attached to Connectors with a certain style implies that that style is present in the view. 
 
 \section{Controller}
 

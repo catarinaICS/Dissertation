@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2015.4.6)  30 SEP 2015 16:25
+This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2015.4.6)  2 OCT 2015 18:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -965,7 +965,7 @@ Dictionary: glossaries-dictionary, Language: English
 \openout2 = `cover.aux'.
 
 
-(./cover.tex <images/Logo_IST_color.jpg, id=203, 2128.95375pt x 853.1875pt>
+(./cover.tex <images/Logo_IST_color.jpg, id=183, 2128.95375pt x 853.1875pt>
 File: images/Logo_IST_color.jpg Graphic file (type jpg)
 
 <use images/Logo_IST_color.jpg>
@@ -1019,7 +1019,7 @@ with the same identifier (name{page.2}) has been already used, duplicate ignore
 d
 <to be read again> 
                    \relax 
-l.39 ...erline {8.1.3}Views}{36}{subsection.8.1.3}
+l.39 ...line {8.1.3}Modules}{35}{subsection.8.1.3}
                                                    [2
 
 ])
@@ -1161,36 +1161,34 @@ Chapter 6.
 
 
 ]
-Overfull \hbox (5.70242pt too wide) in paragraph at lines 51--52
+Overfull \hbox (5.70242pt too wide) in paragraph at lines 54--55
 \OT1/phv/m/sl/10 ter-face'' \OT1/phv/m/n/10 Del-e-ga-tion, which as-so-ciates c
 om-po-nent ports to other ports from an ``in-ter-nal architecture''-
  []
 
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 76.
 
-Overfull \hbox (3.73277pt too wide) in paragraph at lines 158--159
+Overfull \hbox (10.84596pt too wide) in paragraph at lines 165--166
  [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[24] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+[24] [25] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 181.
+nput line 188.
 
 (./scenarioSchema.html
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <8> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 1.
-)
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-(./moduleSchema.html)
+) (./moduleSchema.html)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1198,25 +1196,20 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [25] [26] [27] [28]
+) [26] [27]
 \openout2 = `chapters/architecture.aux'.
 
  (./chapters/architecture.tex
 Chapter 7.
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 49.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \vbox (badness 2662) has occurred while \output is active []
-
- [29
+[28
 
 
 
 ]
-[30] (./scenarioSchema2.html)
+Underfull \vbox (badness 4792) has occurred while \output is active []
+
+ [29]
+(./scenarioSchema2.html)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1228,12 +1221,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [31] [32] [33]
+) [30] [31] [32]
 \openout2 = `chapters/implementation.aux'.
 
  (./chapters/implementation.tex
 Chapter 8.
-[34
+[33
 
 
 
@@ -1242,59 +1235,49 @@ Underfull \hbox (badness 1668) in paragraph at lines 66--66
  [][][][]\OT1/phv/b/n/8 User 
  []
 
-[35] [36] [37]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[38]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \vbox (badness 1668) has occurred while \output is active []
-
- [39]
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+[34] [35] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[36]
 
-Overfull \hbox (8.53592pt too wide) in paragraph at lines 517--517
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[37]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[38]
+Overfull \hbox (8.53592pt too wide) in paragraph at lines 439--439
 []|[]| 
  []
 
 
-Overfull \hbox (8.53592pt too wide) in paragraph at lines 519--519
+Overfull \hbox (8.53592pt too wide) in paragraph at lines 441--441
 []|[]| 
  []
 
 
-Overfull \hbox (8.53592pt too wide) in paragraph at lines 520--520
+Overfull \hbox (8.53592pt too wide) in paragraph at lines 442--442
 []|[]| 
  []
 
 
-Overfull \hbox (8.53592pt too wide) in paragraph at lines 521--521
+Overfull \hbox (8.53592pt too wide) in paragraph at lines 443--443
 []|[]| 
  []
 
-[40] [41]) [42] [43]
+[39] [40]) [41]
 \openout2 = `chapters/evaluation.aux'.
 
  (./chapters/evaluation.tex
 Chapter 9.
-) [44
+) [42
 
 
 
@@ -1303,7 +1286,7 @@ Chapter 9.
 
  (./chapters/futureWork.tex
 Chapter 10.
-) [45
+) [43
 
 
 
@@ -1312,22 +1295,22 @@ Chapter 10.
 
  (./chapters/conclusion.tex
 Chapter 11.
-) [46
+) [44
 
 
 
-]) (./dissertation.bbl [47
+]) (./dissertation.bbl [45
 
 
-] [48]
+] [46]
 Underfull \hbox (badness 10000) in paragraph at lines 170--173
 []\OT1/phv/m/n/10 T. Coates, ``Two cul-tures of faux-onomies col-lide,'' \OT1/p
 hv/m/sl/10 http://www. plas-ticbag.
  []
 
-[49])
+[47])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 104.
- [50]
+ [48]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 104.
  (./dissertation.aux (./cover.aux) (./chapters/introduction.aux)
 (./chapters/problemDescription.aux) (./chapters/objectives.aux)
@@ -1338,7 +1321,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 104.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 104.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 104.
 Package rerunfilecheck Info: File `dissertation.out' has not changed.
-(rerunfilecheck)             Checksum: 9D29206E402BC0B48D1B948293811E52;3063.
+(rerunfilecheck)             Checksum: 444714275851C1C64D51CF8806461F8D;2747.
 
 
 LaTeX Warning: There were undefined references.
@@ -1349,11 +1332,11 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 104.
  ) 
 Here is how much of TeX's memory you used:
- 22261 strings out of 495034
- 388428 string characters out of 6181678
- 640454 words of memory out of 5000000
- 24448 multiletter control sequences out of 15000+600000
- 32836 words of font info for 57 fonts, out of 8000000 for 9000
+ 22344 strings out of 495034
+ 389826 string characters out of 6181678
+ 633919 words of memory out of 5000000
+ 24488 multiletter control sequences out of 15000+600000
+ 31076 words of font info for 55 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  56i,12n,94p,1718b,1399s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.3} has been referenced but does not exi
@@ -1372,10 +1355,10 @@ nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uh
 vr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on dissertation.pdf (54 pages, 343945 bytes).
+Output written on dissertation.pdf (52 pages, 345407 bytes).
 PDF statistics:
- 1092 PDF objects out of 1200 (max. 8388607)
- 1017 compressed objects within 11 object streams
- 420 named destinations out of 1000 (max. 500000)
- 410 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1129 PDF objects out of 1200 (max. 8388607)
+ 1056 compressed objects within 11 object streams
+ 464 named destinations out of 1000 (max. 500000)
+ 370 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,9 +1,11 @@
 \chapter{Domain Model}
 \label{chapter:domainModel}
+To understand the architectural and implementation decisions taken during the solution development, it is necessary to understand the Software Architectures Domain Model. Section \ref{section:SAConcepts} lists and describes the concepts talked in the Software Architectures classes, Section \ref{section:model} presents an abstract domain model where it is possible to see how these concepts relate and Section \ref{section:templates} gives an idea on how the information from the domain model can be represented in templates.
 
 \section{Concepts}
 \label{section:SAConcepts}
 Before describing the domain model of the developed solution, it is necessary to provide a small introduction to the most important concepts from the Software Architectures course.
+ 
 \subsection{Scenarios}
 \label{subsection:SAConceptsScenarios}
 A scenario is used to capture and express the quality requirements of a system. The considered qualities are:
@@ -30,6 +32,7 @@ A scenario consists of six parts \cite{bass2003software}:
 Each Scenario uses a set of Tactics, which are design decisions used to achieve the quality requirements expressed in them. Each quality requirement has a set of commonly used tactics. For example, to assure the Security of a system, tactics such as detecting service denial or message delays (to detect attacks), or revoking access to the system (to react to an attack) are used.
 
 \subsection{Views}
+\label{subsection:domainModelViews}
 A view is a representation of a set of system elements and the relationships associated with them \cite{clements2003documenting}. This set of elements and relationships is constrained by viewtypes.
 
 A Viewtype defines the element types and relationship types used to describe the architecture of a software system from a particular perspective. Viewtypes refine into styles.
@@ -68,7 +71,8 @@ Figure \ref{figure:abstractDomainModel} shows the concepts and relations describ
 \renewcommand {\umldrawcolor}{black}
 
 \begin{tikzpicture}
-\begin{class}[text width=2cm]{Concept}{10,-9}
+\tikzstyle{every node}=[font=\footnotesize]
+\begin{class}[text width=2cm]{Concept}{10,-4.5}
 \end{class}
 
 \begin{class}[text width=3cm ]{Source Of Stimulus}{0,0}
@@ -101,39 +105,42 @@ Figure \ref{figure:abstractDomainModel} shows the concepts and relations describ
 \end{class}
 \begin{class}[text width=2cm ]{Viewtype}{0,-7}
 \end{class}
-\begin{class}[text width=2cm ]{Style}{0,-9.5}
+\begin{class}[text width=2cm ]{Style}{-1,-8.5}
 \end{class}
-\begin{class}[text width=2cm ]{Relation}{-1,-12.5}
+\begin{class}[text width=2cm ]{Relation}{-2,-10}
+\end{class}
+
+\begin{class}[text width=2cm ]{Element}{5,-10}
 \inherit{Concept}
 \end{class}
 
-\begin{class}[text width=2cm ]{Element}{6,-12.5}
-\inherit{Concept}
-\end{class}
-
-\begin{class}[text width=1.5cm]{Is Part Of}{-4,-14.5}
+\begin{class}[text width=1.5cm]{Is Part Of}{-4,-11.5}
 \inherit{Relation}
 \end{class}
 
-\draw [umlcd style] (-2.5,-14.90) node {[...]};
+\draw [umlcd style] (-2.5,-11.90) node {[...]};
 
-\begin{class}[text width=2cm]{Connector}{-1,-14.5}
+\begin{class}[text width=2cm]{Attachment}{-1,-11.5}
 \inherit{Relation}
 \end{class}
 
-\begin{class}[text width=2cm]{Allocated To}{1.5,-14.5}
+\begin{class}[text width=2cm]{Allocated To}{1.5,-11.5}
 \inherit{Relation}
 \end{class}
 
-\begin{class}[text width=2cm]{Module}{4,-14.5}
+\begin{class}[text width=2cm]{Module}{4,-11.5}
 \inherit{Element}
 \end{class}
 
-\begin{class}[text width=2cm]{Component}{6.5,-14.5}
+\begin{class}[text width=2cm]{Component}{6.5,-11.5}
 \inherit{Element}
 \end{class}
 
-\begin{class}[text width=2.5cm]{Environmental Element}{9.5,-14.5}
+\begin{class}[text width=2.5cm]{Environmental Element}{9.5,-11.5}
+\inherit{Element}
+\end{class}
+
+\begin{class}[text width=2.5cm]{Connector}{10,-10}
 \inherit{Element}
 \end{class}
 
@@ -164,7 +171,7 @@ The scenario elements are represented as the model entities 'Source of Stimulus'
 
 A View is associated with a Viewtype, which refines into a style. The View contains a set of elements, which are related to each other via specific relations.
 
-The Scenario, View, Element and Relation are considered the main concepts of the domain, and they have a dedicated template in the developed solution, as it will be described in the next section. These templates will contain information about the concept and how it is related with other concepts in the domain model.
+The Scenario, View and Element are considered the main concepts of the domain, and they have a dedicated template in the developed solution, as it will be described in the next section. These templates will contain information about the concept and how it is related with other concepts in the domain model.
 
 \section{Templates}
 \label{section:templates}

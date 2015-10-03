@@ -9,34 +9,34 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Domain Model showing the Software Architectures concepts and how they are related}}{26}{figure.6.1}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Schema for the Scenario template}}{27}{figure.6.2}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Domain Model showing the Software Architectures concepts and how they are related}}{25}{figure.6.1}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Schema for the Scenario template}}{26}{figure.6.2}
 \contentsline {figure}{\numberline {6.3}{\ignorespaces Schema for the Module template}}{27}{figure.6.3}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Schema for a Module Viewtype View template}}{28}{figure.6.4}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Schema for a Module Viewtype View template}}{27}{figure.6.4}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces The Document Entity}}{29}{figure.7.1}
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Association between Document and Concept entities}}{30}{figure.7.2}
-\contentsline {figure}{\numberline {7.3}{\ignorespaces The Annotation Entity}}{30}{figure.7.3}
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Associations between Document, Annotation and the domain model concepts}}{30}{figure.7.4}
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Scenario Schema enriched with annotations and user text}}{32}{figure.7.5}
-\contentsline {figure}{\numberline {7.6}{\ignorespaces Module Schema enriched with annotations and user text}}{33}{figure.7.6}
-\contentsline {figure}{\numberline {7.7}{\ignorespaces Module Viewtype view Schema enriched with annotations and user text}}{33}{figure.7.7}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces The Document Entity}}{28}{figure.7.1}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Association between Document and Concept entities}}{28}{figure.7.2}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces The Annotation Entity}}{29}{figure.7.3}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Associations between Document, Annotation and the domain model concepts}}{29}{figure.7.4}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Scenario Schema enriched with annotations and user text}}{31}{figure.7.5}
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Module Schema enriched with annotations and user text}}{32}{figure.7.6}
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Module Viewtype view Schema enriched with annotations and user text}}{32}{figure.7.7}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Document, Annotations and Users in the implemented Model}}{35}{figure.8.1}
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Quality Requirements and Tactics detail in the implemented Model}}{35}{figure.8.2}
-\contentsline {figure}{\numberline {8.3}{\ignorespaces The ScenarioElement entity}}{36}{figure.8.3}
-\contentsline {figure}{\numberline {8.4}{\ignorespaces View and Module in the implemented Model}}{37}{figure.8.4}
-\contentsline {figure}{\numberline {8.5}{\ignorespaces Views and Modules relationship with Annotations in the implemented Model}}{37}{figure.8.5}
-\contentsline {figure}{\numberline {8.6}{\ignorespaces Is-Part-Of relation between Modules in the implemented model}}{38}{figure.8.6}
-\contentsline {figure}{\numberline {8.7}{\ignorespaces Uses relation between Modules in the implemented model}}{38}{figure.8.7}
-\contentsline {figure}{\numberline {8.8}{\ignorespaces Uses relation between Modules in the implemented model}}{39}{figure.8.8}
-\contentsline {figure}{\numberline {8.9}{\ignorespaces Uses relation between Modules in the implemented model}}{39}{figure.8.9}
-\contentsline {figure}{\numberline {8.10}{\ignorespaces One-To-One relation between Modules in the implemented model}}{39}{figure.8.10}
-\contentsline {figure}{\numberline {8.11}{\ignorespaces One-To-Many relation between Modules in the implemented model}}{40}{figure.8.11}
-\contentsline {figure}{\numberline {8.12}{\ignorespaces Many-To-Many relation between Modules in the implemented model}}{40}{figure.8.12}
-\contentsline {figure}{\numberline {8.13}{\ignorespaces Example of the One-To-Many relation between Modules}}{41}{figure.8.13}
-\contentsline {figure}{\numberline {8.14}{\ignorespaces Aggregation relation between Modules in the implemented model}}{41}{figure.8.14}
-\contentsline {figure}{\numberline {8.15}{\ignorespaces Example of a Controller class defined using the Spring Framework}}{42}{figure.8.15}
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Document, Annotations and Users in the implemented Model}}{34}{figure.8.1}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Quality Requirements and Tactics detail in the implemented Model}}{34}{figure.8.2}
+\contentsline {figure}{\numberline {8.3}{\ignorespaces The ScenarioElement entity}}{35}{figure.8.3}
+\contentsline {figure}{\numberline {8.4}{\ignorespaces The Module entity}}{35}{figure.8.4}
+\contentsline {figure}{\numberline {8.5}{\ignorespaces Is-Part-Of relation between Modules in the implemented model}}{36}{figure.8.5}
+\contentsline {figure}{\numberline {8.6}{\ignorespaces Uses relation between Modules in the implemented model}}{36}{figure.8.6}
+\contentsline {figure}{\numberline {8.7}{\ignorespaces Uses relation between Modules in the implemented model}}{36}{figure.8.7}
+\contentsline {figure}{\numberline {8.8}{\ignorespaces Uses relation between Modules in the implemented model}}{37}{figure.8.8}
+\contentsline {figure}{\numberline {8.9}{\ignorespaces One-to-One, One-To-Many and Many-To-Many relation between Modules in the implemented model}}{37}{figure.8.9}
+\contentsline {figure}{\numberline {8.10}{\ignorespaces Example of the One-To-Many relation between Modules}}{37}{figure.8.10}
+\contentsline {figure}{\numberline {8.11}{\ignorespaces Aggregation relation between Modules in the implemented model}}{38}{figure.8.11}
+\contentsline {figure}{\numberline {8.12}{\ignorespaces Component and Connector entities in the implemented model}}{38}{figure.8.12}
+\contentsline {figure}{\numberline {8.13}{\ignorespaces Attachment relation between Component Ports and Connector Roles in the implemented model}}{38}{figure.8.13}
+\contentsline {figure}{\numberline {8.14}{\ignorespaces View entity in the implemented model}}{39}{figure.8.14}
+\contentsline {figure}{\numberline {8.15}{\ignorespaces Example of a Controller class defined using the Spring Framework}}{39}{figure.8.15}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
