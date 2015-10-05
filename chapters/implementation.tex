@@ -435,7 +435,7 @@ A View is created by associating an Annotation with it and, as it is a main conc
 
 This section describes the Controller part of the implemented system. The application developed uses the Spring\footnote{https://spring.io/} Framework, which allows the definition of one or more Java classes to act as Controllers and handle requests.
 
-A Java class is set to be a Controller by annotating it with the \textit{@Controller} annotation, or \textit{@RestController} if the controller's goal is to provide a REST API. Figure \ref{figure:springController} shows an example from the Document Controller described in \ref{subsection:documentController} that handles requests for the URL \textit{'/selectDoc/{id}'}, retrieves a Document from the domain model and adds it and its ID as attributes so the template will be able to use them. The template ``docTemplate'' will be then showed to the user.
+A Java class is set to be a Controller by annotating it with the \textit{@Controller} annotation, or \textit{@RestController} if the controller's goal is to provide a REST API. Figure \ref{figure:springController} shows an example from the Document Controller described in \ref{subsection:documentController}, with a method that handles requests for the URL \textit{'/selectDoc/{id}'}. Method \textit{showDocument()} retrieves the Document from the domain model with the specified \textit{id} and adds it and the \textit{id} itself as Model attributes, so the template will be able to use them. The template ``docTemplate'' will be then showed to the user.
 
 \begin{figure}[h]
 \lstset{style=customjava}
@@ -457,55 +457,278 @@ public class DocumentController {
 \end{figure}
 
 \subsection{Annotation Controller}
-The Annotation Controller provides a way to manage the annotations added to a document. It communicates with the Domain Model to create, remove or update Annotations. This controller is in fact a RestController, which means it provides a REST API, used to retrieve a JSON representation of the annotations stored in the model and display it along with the document text. 
+The AnnotationController class provides a way to manage the annotations added to a document. It communicates with the Domain Model to create, remove or update Annotations. This controller is in fact a RestController, which means it provides a REST API, used to retrieve a JSON representation of the annotations stored in the model and display it along with the document text. 
 The endpoints provided by this controller are described in Table \ref{table:endpoints}.
-
+	
 \begin{table}[h]
-\begin{tabular}{ | l | l | l |p{7.7cm}|}
+\begin{tabular}{ | c | m{1.5cm} | m{3.5cm} |m{7.7cm}|}
     \hline
-    Name & Method & Endpoint & Description \\ \hline
-    Index & GET & ../store/annotations & \parbox[t]{8cm}{Returns the set of annotations associated with a \\specific document }\\ \hline
-    Read & GET & ../store/annotations/id & Returns the annotation with the specific id \\ \hline
-    Create & POST & ../store/annotations & \parbox[t]{8cm}{Creates a new annotation, stores it in the model, \\and redirects to the Read endpoint} \\ \hline
-    Update & PUT & ../store/annotations/id & \parbox[t]{8cm}{Updates the annotation with the given id and \\redirects to the Read endpoint} \\ \hline
-    Delete & DELETE & ../store/annotations/id & \parbox[t]{8cm}{Removes the annotation with the given id. The \\response is a HTTP/1.0 204 NO CONTENT.} \\ \hline
+    \textbf{Name} & \textbf{Request} \textbf{Method }& \textbf{Endpoint} & \textbf{Description}\\ \hline
+	INDEX & GET & \parbox[c][1.5cm]{3.5cm}{/selectDoc/\{docId\}/\\store/annotations} & \parbox[c]{8cm}{Returns the set of annotations associated with the \\document with id \textit{docId} }\\ \hline
+   	READ & GET & \parbox[c][1.5cm]{3.5cm}{/selectDoc/\{docId\}/\\store/annotations/\{id\}} & Returns the annotation with the specific \textit{id} \\ \hline
+    CREATE & POST & \parbox[c]{3.5cm}{/selectDoc/\{docId\}/\\store/annotations} & \parbox[c][1.5cm]{8cm}{Creates a new annotation, stores it in the model \\associated with the document with id \textit{docId}, \\ and redirects to the Read endpoint} \\ \hline
+    UPDATE & PUT & \parbox[c][1.5cm]{3.5cm}{/selectDoc/\{docId\}/\\store/annotations/\{id\}} & \parbox[c]{8cm}{Updates the annotation with the given \textit{id} and \\redirects to the READ endpoint} \\ \hline
+    DELETE & DELETE & \parbox[t]{3.5cm}{/selectDoc/\{docId\}/\\store/annotations/\{id\}} & \parbox[c][2cm]{8cm}{Removes the association between the \\ annotation with the given id and the document \\ with id \textit{docId}. The response is a HTTP/1.0 204 \\ NO CONTENT.} \\ \hline
   \end{tabular}
   \caption{REST API provided by the Annotation Controller}
   \label{table:endpoints}
 \end{table}
 
-The ``INDEX'' endpoint has the particularity of iterating through all the Annotations in the system. If the annotation is associated to another domain entity besides the Document (for example, a Scenario, or a Module), information about the domain entity will be added to the annotation body, and will be shown in the interface. This way, it is possible to have some information about the domain entity even before checking its template.
+The \textbf{INDEX} endpoint has the particularity of iterating through all the Annotations in the system. If the annotation is associated to another domain entity besides the Document (for example, a Scenario, or a Module), information about the domain entity will be added to the annotation body, and will be shown in the interface. This way, it is possible to have some information about the domain entity even before checking its template. 
+
+Figure \ref{figure:annotationControllerIndex} shows an example of how information is added to the annotation in the \textit{INDEX} endpoint. The method \textit{getAnnotations()}, which receives the requests for this endpoint, iterates over the annotations associated with the document with id \textit{docId}, parses the JSON of each annotation into an instance of the AnnotationJS class, checks which domain element is associated with the annotation and adds information accordingly to the field ``text'' of the annotation. The example in the figure shows how information about the viewtype is added to annotations connected with a View. The list of all retrieved AnnotationJS instances is then parsed into a JSON string and sent as response.
+
+\begin{figure}[h]
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/selectDoc/{docId}/store/annotations", 
+	method = RequestMethod.GET)
+	
+	public String getAnnotations(@PathVariable String docId) {
+		Document d = FenixFramework.getDomainObject(docId);
+		List<AnnotationJ> anns = new ArrayList<AnnotationJ>();
+		Gson g = new Gson();
+		for(Annotation a : d.getAnnotationSet()) {
+			AnnotationJ ann = g.fromJson(a.getAnnotation(), AnnotationJ.class);
+			if(a.isViewAnnotation() && a.getView() != null) {
+				View v = a.getView();
+				ann.setText("View: " + v.getViewtype());
+			}
+
+			//...
+			
+			anns.add(ann);
+		}
+		String resp = g.toJson(anns);
+		return resp;
+	}		
+\end{lstlisting}
+\caption{Example of how the INDEX endpoint adds information to the annotation body}
+\label{figure:annotationControllerIndex}
+\end{figure}
 
 \subsection{Document Controller}
 \label{subsection:documentController}
-The Document Controller handles the requests to view, add or remove a document from the system.
+The DocumentController class handles the requests to view, add or remove a document from the system.
 
 Adding and removing documents from the system is a feature that only Teachers are authorized to use. The controller receives a POST request containing the URL to the article. The Java library JSoup\footnote{http://jsoup.org/} extracts the HTML from the given URL and the controller processes it and stores a Document in the database. Processing of the extracted HTML includes turning relative URLs into absolute ones for href and src attributes.
 The Controller will also check if the database already contains a document with the given URL before adding a new entry. 
 
-When a teacher removes a Document from the system, all Annotations, Scenarios, Modules and Views associated with that Document are removed from the system as well.
+When a teacher removes a Document from the system, all Annotations and Domain Model entities associated with that Document such as Scenarios or Views are removed from the system as well.
 
 Upon Document visualization, there are three other operations handled by this controller:
+
 \begin{itemize}
 \item When a user wants to associate an Annotation with a domain entity such as a Scenario, a request is sent to the Document Controller containing information about the annotation unique ID and its tag. Based on the tag, the controller then redirects to another controller, which will provide means for the user to add and/or select an entity to associate with the annotation.
 
-\item When visualizing the Annotation information in the document, it is possible to navigate to the template of the entity to which this annotation is associated by clicking in a link. A request is then sent to the Document Controller, which again checks the Annotation tag, and redirects to the correct Controller.
+The reason for this redirect is the existent of a logic division of the Controllers. Each Controller class handles a set of requests related with a certain entity of the domain model. The AnnotationController class handles operations over Annotations, the ScenarioController handles operations over Scenarios and their elements, etc. 
 
-\item The Document interface also allows the user to navigate to the structured representation of the document, which is an aggregation of all the templates of all the entities added to the system. When the link to navigate to the structured representation is clicked, a request is sent to the Controller, which retrieves information about Scenarios, Views and Elements to be presented to the user.  
+Therefore, it's only logical to redirect this request to the Controller that handles operations over the respective domain entity. Figure \ref{figure:documentControllerLinkAnnotation} shows the method in DocumentController that performs the redirect.
+
+\begin{figure}[h]
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/addAnnotationToStructure/{docId}/{annotationId}/{tag}")
+	public RedirectView addAnnotationModal(@PathVariable String docId,
+			@PathVariable String annotationId, @PathVariable String tag) {
+		RedirectView rv = null;
+		if (Utils.allScenarioConcepts().contains(tag)) {
+			rv= new RedirectView("/addAnnotationToScenarioStructure/" + docId + "/"
+					+ annotationId);
+		} else if (tag.contains("Module")) {
+			rv = new RedirectView("/addAnnotationToModuleTemplate/" + docId + "/"
+					+ annotationId);
+		}else if (tag.contains("View")) {
+			rv = new RedirectView("/addAnnotationToViewTemplate/" + docId + "/"
+					+ annotationId);
+		}else if (tag.contains("Component")) {
+			rv = new RedirectView("/addAnnotationToComponentTemplate/" + docId + "/"
+					+ annotationId);
+		}else if (tag.contains("Connector")) {
+			rv = new RedirectView("/addAnnotationToConnectorTemplate/" + docId + "/"
+					+ annotationId);
+		}
+		return rv;
+	}	
+\end{lstlisting}
+\caption{Redirecting requests to associate annotations with domain entities in the DocumentController}
+\label{figure:documentControllerLinkAnnotation}
+\end{figure}
+
+\item When visualizing the Annotation information in the document, it is possible to navigate to the template of the entity to which this annotation is associated by clicking in a link. A request is then sent to the Document Controller, which again checks the Annotation tag, and redirects to the correct Controller. Figure \ref{figure:documentControllerViewTemplate} shows the DocumentController class method which performs the redirect according to the annotation tag.
+
+\begin{figure}[h]
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping("/viewTemplate/{docId}/{connectedId}/{annotationId}")
+	public RedirectView viewTemplate(@PathVariable String docId,
+			@PathVariable String connectedId, @PathVariable String annotationId) {
+		Annotation a = FenixFramework.getDomainObject(annotationId);
+		RedirectView rv = new RedirectView();
+		if(a.isScenarioAnnotation()) {
+			rv.setUrl("/viewScenario/"+docId+"/"+connectedId+"#"+annotationId);
+		}else if( a.getTag().contains("Module")) {
+			rv.setUrl("/viewModule/"+docId+"/"+connectedId+"#"+annotationId);
+		}else if(a.getTag().contains("View")) {
+			rv.setUrl("/viewView/"+docId+"/"+connectedId+"#"+annotationId);
+		}else if(a.getTag().contains("Component")) {
+			rv.setUrl("/viewComponent/"+docId+"/"+connectedId+"#"+annotationId);
+		}else if(a.getTag().contains("Connector")) {
+			rv.setUrl("/viewConnector/"+docId+"/"+connectedId+"#"+annotationId);
+		}
+		return rv;
+	}	
+\end{lstlisting}
+\caption{Redirecting a request to visualize an entity template in the DocumentController}
+\label{figure:documentControllerViewTemplate}
+\end{figure}
+
+\item The Document interface also allows the user to navigate to the structured representation of the document, which is an aggregation of all the templates of all the entities added to the system. When the link to navigate to the structured representation is clicked, a request is sent to the Controller, which retrieves information about Scenarios, Views and Elements to be presented to the user. 
+
+Figure \ref{figure:documentControllerStructuredRepresentation} shows the method \textit{viewStructuredRepresentation()}, which handles the request to see the Structured Representation of the Document. This method retrieves all the main elements from the database (scenarios, views, modules, components and connectors) and adds them as model attributes, so they can be used by the template. The template ``structuredRepresentation'' is then returned and showed to the user.
+
+\begin{figure}[h]
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping("/viewStructuredRepresentation/{docId}")
+	public String viewStructuredRepresentation(@PathVariable String docId,
+			Model m) {
+		Document d = FenixFramework.getDomainObject(docId);
+		m.addAttribute("scenarios", d.getScenarioSet());
+		m.addAttribute("views", d.getViewSet());
+		m.addAttribute("modules", d.getModuleSet());
+		m.addAttribute("components", d.getComponentSet());
+		m.addAttribute("connectors", d.getConnectorSet());
+		m.addAttribute("docId", docId);
+		m.addAttribute("title", d.getTitle());
+		return "structuredRepresentation";
+	}
+\end{lstlisting}
+\caption{Retrieving the Structured Representation template in the DocumentController}
+\label{figure:documentControllerStructuredRepresentation}
+\end{figure}
 \end{itemize}
 
- 
 \subsection{Scenario Controller}
 
 The Scenario Controller provides means to add and remove Scenarios from the document and link or unlink annotations from a Scenario or its elements.
 
 A Scenario is created when a user wants to link an Annotation to a Scenario and is prompted the interface to add a new or choose an existing one. When the Controller receives the request to add a new Scenario, it does not only adds a new Scenario to the database, but also adds a new SrcOfStimulus, Stimulus, Artifact, Environment, Response and ResponseMeasure to the databse, all associated with the newly created Scenario. 
 
-When the user chooses which Scenario to link the Annotation with, the Controller receives a request containing both the unique ID of the Scenario and the unique ID of the Annotation. With these IDs, it can verify the tag associated with the Annotation, and add the Annotation either to the Scenario or to the corresponding element. For example, if the tag associated with the Annotation is ``Source Of Stimulus'', then it will be linked to the ``SrcOfStimulus'' instance that is associated with the Scenario with the specified ID.
+Figure \ref{figure:scenarioControllerNewScenario} shows the method \textit{addNewScenario}, which handles the request for adding a new Scenario to the Document and calls the method \textit{addScenarioToDocument()}, which creates the new Scenario with the given name, creates and associates with it the selected Quality Requirement and the Scenario elements and associates it with the respective document.
 
-A Scenario is initially created without any tactics. These are added in the Scenario Template, and their creation is handled by the Scenario Controller. Upon receiving the corresponding request, a new ``Tactic'' is added to the database containing the tactic's name, and is associated with the corresponding Scenario. When an Annotation with the tag ``Tactic'' is added to a Scenario, it is associated with the ``Scenario'' entity. Inside the template, these annotations can be associated with the added tactics, and this change is also handled by the Scenario Controller. 
+\begin{figure}[h]
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/addNewScenario/{docId}/{annotationId}/
+	{scenarioName}/{qualityRequirement}")
+	public RedirectView addNewScenario(@PathVariable String docId,
+			@PathVariable String annotationId, @PathVariable String scenarioName, 
+			@PathVariable String qualityRequirement,@RequestParam String move) {
+		Document d = FenixFramework.getDomainObject(docId);
+		addScenarioToDocument(d,qualityRequirement ,scenarioName);		
+		//...
+	}
+	
+		@Atomic(mode = TxMode.WRITE)
+	private void addScenarioToDocument(Document d, String qualityRequirement, String scenarioName) {
+		Scenario s = new Scenario();
+		s.setName(scenarioName);
+		s.setIdentifier("Scenario");
+		QualityRequirement qr = new QualityRequirement();
+		qr.setName(qualityRequirement);
+		s.setQualityRequirement(qr);
+		SrcOfStimulus src = new SrcOfStimulus();
+		src.setIdentifier("Source Of Stimulus");
+		//...
+		ResponseMeasure rm = new ResponseMeasure();
+		rm.setIdentifier("Response Measure");
+		s.setSrcOfStimulus(src);
+		//...
+		s.setResponseMeasure(rm);
+		d.addScenario(s);
+	}	
+\end{lstlisting}
+\caption{Creating a new Scenario in ScenarioController}
+\label{figure:scenarioControllerNewScenario}
+\end{figure}
+
+When the user chooses which Scenario to link the Annotation with, the Controller receives a request containing both the unique ID of the Scenario and the unique ID of the Annotation. With these IDs, it can verify the tag associated with the Annotation, and add the Annotation either to the Scenario or to the corresponding element. 
+
+For example, if the tag associated with the Annotation is ``Source Of Stimulus'', then it will be linked to the ``SrcOfStimulus'' instance that is associated with the Scenario with the specified ID.
+
+Figure \ref{figure:scenarioControllerLinkAnnotation} shows the method \textit{addAnnotationToScenario()}, which associates an Annotation with a Scenario or one of its elements accordingly.
+
+\begin{figure}[h]
+\lstset{style=customjava}
+\begin{lstlisting}
+	@Atomic(mode = TxMode.WRITE)
+	private void addAnnotationToScenario(Scenario s, Annotation a) {
+		String tag = a.getTag();
+		if (tag.equals("Scenario Description") || tag.equals("Tactic")) {
+			updateAnnotation(s.getExternalId(), a);
+			s.addAnnotation(a);
+		}
+		if (s.getElements().get(tag) != null) {
+			ScenarioElement em = s.getElements().get(tag);
+			updateAnnotation(s.getExternalId(), a);
+			em.addAnnotation(a);
+		}
+	}	
+\end{lstlisting}
+\caption{Associating an Annotation with a Scenario in ScenarioController}
+\label{figure:scenarioControllerLinkAnnotation}
+\end{figure}
+
+A Scenario is initially created without any tactics. These are added in the Scenario Template, and their creation is handled by the Scenario Controller. Upon receiving the corresponding request, a new ``Tactic'' is added to the database containing the tactic's name, and is associated with the corresponding Scenario. When an Annotation with the tag ``Tactic'' is added to a Scenario, it is initially associated with the ``Scenario'' entity, as it can be seen in Figure \ref{figure:scenarioControllerLinkAnnotation}. Inside the template, these annotations can be associated with the added tactics. Figure \ref{figure:scenarioControllerLinkToTactic} shows how a request to associate an Annotation with a specific Tactic is handled. To note, in the \textit{linkAnnotationToTactic()} method, the association between the Scenario and the Annotation is removed to create the new association with the Tactic.
+
+\begin{figure}[h]
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/linkToTactic/{docId}/{scenarioId}/{tacticId}/{annotationId}")
+	public RedirectView addAnnotationToTactic(@PathVariable String docId,
+			@PathVariable String scenarioId, @PathVariable String tacticId,
+			@PathVariable String annotationId) {
+		//...
+		linkAnnotationToTactic(s, t, a);
+		//...
+	}
+	
+	@Atomic(mode = TxMode.WRITE)
+	private void linkAnnotationToTactic(Scenario s, Tactic t, Annotation a) {
+		s.removeAnnotation(a);
+		t.addAnnotation(a);
+	}
+\end{lstlisting}
+\caption{Associating an Annotation with a specific Tactic in ScenarioController}
+\label{figure:scenarioControllerLinkToTactic}
+\end{figure}
 
 When user text is added to a Scenario or one of its elements, a request is sent to this Controller. It will then update the Model accordingly and show the updated Model in the corresponding View.
+
+Figure \ref{figure:scenarioControllerText} shows how the Scenario \textit{text} field is updated. The methods for updating the Scenario elements (including Tactics) are very similar to the example in the Figure.
+
+\begin{figure}[h]
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/setScenarioText/{docId}/{scenarioId}", method = RequestMethod.POST)
+	public RedirectView setScenarioText(@RequestParam String text,
+			@PathVariable String docId, @PathVariable String scenarioId) {
+		Scenario scen = FenixFramework.getDomainObject(scenarioId);
+		updateText(scen, text);
+		RedirectView rv = new RedirectView("/viewScenario/" + docId + "/"
+				+ scenarioId + "#" + scen.getName() );
+		return rv;
+	}
+	
+	@Atomic(mode=TxMode.WRITE)
+	private void updateText(Scenario scen, String text) {
+		scen.setText(text);
+	}	
+\end{lstlisting}
+\caption{Updating the Scenario text in the ScenarioController}
+\label{figure:scenarioControllerText}
+\end{figure}
 
 \subsection{Module Controller}
 

@@ -3,49 +3,49 @@
 \select@language {english}
 \select@language {portuguese}
 \select@language {english}
-\contentsline {chapter}{\numberline {1}Introduction}{6}{chapter.1}
-\contentsline {chapter}{\numberline {2}Problem Description}{7}{chapter.2}
-\contentsline {chapter}{\numberline {3}Objectives}{8}{chapter.3}
-\contentsline {chapter}{\numberline {4}Related Work}{9}{chapter.4}
-\contentsline {section}{\numberline {4.1}Honeycomb Framework}{9}{section.4.1}
-\contentsline {section}{\numberline {4.2}Persuasive Software Design Patterns}{11}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Social Learning and Facilitation (SLF):}{12}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Competition (COM):}{12}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Cooperation (COO)}{13}{subsection.4.2.3}
-\contentsline {subsection}{\numberline {4.2.4}Recognition (REC)}{13}{subsection.4.2.4}
-\contentsline {section}{\numberline {4.3}Roles in Social Networks}{14}{section.4.3}
-\contentsline {section}{\numberline {4.4}Reputation Systems}{15}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Motivation:}{15}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Requirements and Features:}{15}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Components of a Reputation System}{16}{subsection.4.4.3}
-\contentsline {section}{\numberline {4.5}Collaborative Tagging}{18}{section.4.5}
-\contentsline {section}{\numberline {4.6}Semi-Structured Content}{19}{section.4.6}
-\contentsline {section}{\numberline {4.7}Ontology Learning}{21}{section.4.7}
-\contentsline {chapter}{\numberline {5}Solution}{22}{chapter.5}
-\contentsline {chapter}{\numberline {6}Domain Model}{23}{chapter.6}
-\contentsline {section}{\numberline {6.1}Concepts}{23}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Scenarios}{23}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Views}{24}{subsection.6.1.2}
-\contentsline {section}{\numberline {6.2}Model}{24}{section.6.2}
-\contentsline {section}{\numberline {6.3}Templates}{25}{section.6.3}
-\contentsline {chapter}{\numberline {7}Architecture Analysis}{28}{chapter.7}
-\contentsline {section}{\numberline {7.1}Document}{28}{section.7.1}
-\contentsline {section}{\numberline {7.2}Annotation}{29}{section.7.2}
-\contentsline {section}{\numberline {7.3}Interface Flow}{30}{section.7.3}
-\contentsline {chapter}{\numberline {8}Implementation}{33}{chapter.8}
-\contentsline {section}{\numberline {8.1}Model}{33}{section.8.1}
-\contentsline {subsection}{\numberline {8.1.1}Annotations}{33}{subsection.8.1.1}
-\contentsline {subsection}{\numberline {8.1.2}Scenarios}{34}{subsection.8.1.2}
-\contentsline {subsection}{\numberline {8.1.3}Modules}{35}{subsection.8.1.3}
-\contentsline {subsection}{\numberline {8.1.4}Components and Connectors}{37}{subsection.8.1.4}
-\contentsline {subsection}{\numberline {8.1.5}Views}{38}{subsection.8.1.5}
-\contentsline {section}{\numberline {8.2}Controller}{39}{section.8.2}
-\contentsline {subsection}{\numberline {8.2.1}Annotation Controller}{40}{subsection.8.2.1}
-\contentsline {subsection}{\numberline {8.2.2}Document Controller}{40}{subsection.8.2.2}
-\contentsline {subsection}{\numberline {8.2.3}Scenario Controller}{41}{subsection.8.2.3}
-\contentsline {subsection}{\numberline {8.2.4}Module Controller}{41}{subsection.8.2.4}
-\contentsline {subsection}{\numberline {8.2.5}Component and Connector Controllers}{42}{subsection.8.2.5}
-\contentsline {subsection}{\numberline {8.2.6}View Controller}{42}{subsection.8.2.6}
-\contentsline {chapter}{\numberline {9}Evaluation}{43}{chapter.9}
-\contentsline {chapter}{\numberline {10}Future Work}{44}{chapter.10}
-\contentsline {chapter}{\numberline {11}Conclusion}{45}{chapter.11}
+\contentsline {chapter}{\numberline {1}Introduction}{7}{chapter.1}
+\contentsline {chapter}{\numberline {2}Problem Description}{8}{chapter.2}
+\contentsline {chapter}{\numberline {3}Objectives}{9}{chapter.3}
+\contentsline {chapter}{\numberline {4}Related Work}{10}{chapter.4}
+\contentsline {section}{\numberline {4.1}Honeycomb Framework}{10}{section.4.1}
+\contentsline {section}{\numberline {4.2}Persuasive Software Design Patterns}{12}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Social Learning and Facilitation (SLF):}{13}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Competition (COM):}{13}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Cooperation (COO)}{14}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Recognition (REC)}{14}{subsection.4.2.4}
+\contentsline {section}{\numberline {4.3}Roles in Social Networks}{15}{section.4.3}
+\contentsline {section}{\numberline {4.4}Reputation Systems}{16}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Motivation:}{16}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Requirements and Features:}{16}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Components of a Reputation System}{17}{subsection.4.4.3}
+\contentsline {section}{\numberline {4.5}Collaborative Tagging}{19}{section.4.5}
+\contentsline {section}{\numberline {4.6}Semi-Structured Content}{20}{section.4.6}
+\contentsline {section}{\numberline {4.7}Ontology Learning}{22}{section.4.7}
+\contentsline {chapter}{\numberline {5}Solution}{23}{chapter.5}
+\contentsline {chapter}{\numberline {6}Domain Model}{24}{chapter.6}
+\contentsline {section}{\numberline {6.1}Concepts}{24}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Scenarios}{24}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Views}{25}{subsection.6.1.2}
+\contentsline {section}{\numberline {6.2}Model}{25}{section.6.2}
+\contentsline {section}{\numberline {6.3}Templates}{26}{section.6.3}
+\contentsline {chapter}{\numberline {7}Architecture Analysis}{29}{chapter.7}
+\contentsline {section}{\numberline {7.1}Document}{29}{section.7.1}
+\contentsline {section}{\numberline {7.2}Annotation}{30}{section.7.2}
+\contentsline {section}{\numberline {7.3}Interface Flow}{31}{section.7.3}
+\contentsline {chapter}{\numberline {8}Implementation}{34}{chapter.8}
+\contentsline {section}{\numberline {8.1}Model}{34}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}Annotations}{34}{subsection.8.1.1}
+\contentsline {subsection}{\numberline {8.1.2}Scenarios}{35}{subsection.8.1.2}
+\contentsline {subsection}{\numberline {8.1.3}Modules}{36}{subsection.8.1.3}
+\contentsline {subsection}{\numberline {8.1.4}Components and Connectors}{38}{subsection.8.1.4}
+\contentsline {subsection}{\numberline {8.1.5}Views}{39}{subsection.8.1.5}
+\contentsline {section}{\numberline {8.2}Controller}{40}{section.8.2}
+\contentsline {subsection}{\numberline {8.2.1}Annotation Controller}{41}{subsection.8.2.1}
+\contentsline {subsection}{\numberline {8.2.2}Document Controller}{42}{subsection.8.2.2}
+\contentsline {subsection}{\numberline {8.2.3}Scenario Controller}{44}{subsection.8.2.3}
+\contentsline {subsection}{\numberline {8.2.4}Module Controller}{45}{subsection.8.2.4}
+\contentsline {subsection}{\numberline {8.2.5}Component and Connector Controllers}{46}{subsection.8.2.5}
+\contentsline {subsection}{\numberline {8.2.6}View Controller}{46}{subsection.8.2.6}
+\contentsline {chapter}{\numberline {9}Evaluation}{47}{chapter.9}
+\contentsline {chapter}{\numberline {10}Future Work}{48}{chapter.10}
+\contentsline {chapter}{\numberline {11}Conclusion}{49}{chapter.11}
