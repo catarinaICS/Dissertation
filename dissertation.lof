@@ -42,10 +42,14 @@
 \contentsline {figure}{\numberline {8.18}{\ignorespaces Redirecting requests to associate annotations with domain entities in the DocumentController}}{43}{figure.8.18}
 \contentsline {figure}{\numberline {8.19}{\ignorespaces Redirecting a request to visualize an entity template in the DocumentController}}{43}{figure.8.19}
 \contentsline {figure}{\numberline {8.20}{\ignorespaces Retrieving the Structured Representation template in the DocumentController}}{44}{figure.8.20}
-\contentsline {figure}{\numberline {8.21}{\ignorespaces Creating a new Scenario in ScenarioController}}{45}{figure.8.21}
+\contentsline {figure}{\numberline {8.21}{\ignorespaces Creating a new Scenario in ScenarioController}}{44}{figure.8.21}
 \contentsline {figure}{\numberline {8.22}{\ignorespaces Associating an Annotation with a Scenario in ScenarioController}}{45}{figure.8.22}
-\contentsline {figure}{\numberline {8.23}{\ignorespaces Associating an Annotation with a specific Tactic in ScenarioController}}{46}{figure.8.23}
+\contentsline {figure}{\numberline {8.23}{\ignorespaces Associating an Annotation with a specific Tactic in ScenarioController}}{45}{figure.8.23}
 \contentsline {figure}{\numberline {8.24}{\ignorespaces Updating the Scenario text in the ScenarioController}}{46}{figure.8.24}
+\contentsline {figure}{\numberline {8.25}{\ignorespaces Example of adding a ``Is-Part-Of'' relation between two modules}}{46}{figure.8.25}
+\contentsline {figure}{\numberline {8.26}{\ignorespaces Adding Ports to a Component in ComponentController}}{47}{figure.8.26}
+\contentsline {figure}{\numberline {8.27}{\ignorespaces Associating an Annotation with a Port in the ComponentController}}{47}{figure.8.27}
+\contentsline {figure}{\numberline {8.28}{\ignorespaces Attachment of Component Ports to Connector Roles in the ComponentController}}{48}{figure.8.28}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

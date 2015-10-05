@@ -611,25 +611,20 @@ Figure \ref{figure:documentControllerStructuredRepresentation} shows the method 
 
 \subsection{Scenario Controller}
 
-The Scenario Controller provides means to add and remove Scenarios from the document and link or unlink annotations from a Scenario or its elements.
-
-A Scenario is created when a user wants to link an Annotation to a Scenario and is prompted the interface to add a new or choose an existing one. When the Controller receives the request to add a new Scenario, it does not only adds a new Scenario to the database, but also adds a new SrcOfStimulus, Stimulus, Artifact, Environment, Response and ResponseMeasure to the databse, all associated with the newly created Scenario. 
-
-Figure \ref{figure:scenarioControllerNewScenario} shows the method \textit{addNewScenario}, which handles the request for adding a new Scenario to the Document and calls the method \textit{addScenarioToDocument()}, which creates the new Scenario with the given name, creates and associates with it the selected Quality Requirement and the Scenario elements and associates it with the respective document.
+The Scenario Controller provides means to add and remove Scenarios from the document and link or unlink annotations from a Scenario or its elements.A Scenario is created when a user wants to link an Annotation to a Scenario and is prompted the interface to add a new or choose an existing one. When the Controller receives the request to add a new Scenario, it does not only adds a new Scenario to the database, but also adds a new SrcOfStimulus, Stimulus, Artifact, Environment, Response and ResponseMeasure to the databse, all associated with the newly created Scenario. 
 
 \begin{figure}[h]
 \lstset{style=customjava}
 \begin{lstlisting}
-	@RequestMapping(value = "/addNewScenario/{docId}/{annotationId}/
-	{scenarioName}/{qualityRequirement}")
-	public RedirectView addNewScenario(@PathVariable String docId,
-			@PathVariable String annotationId, @PathVariable String scenarioName, 
+	@RequestMapping(value = "/addNewScenario/{docId}/{annotationId}/{scenarioName}/
+	{qualityRequirement}")
+	public RedirectView addNewScenario(@PathVariable String docId, 
+	@PathVariable String annotationId, @PathVariable String scenarioName, 
 			@PathVariable String qualityRequirement,@RequestParam String move) {
 		Document d = FenixFramework.getDomainObject(docId);
 		addScenarioToDocument(d,qualityRequirement ,scenarioName);		
 		//...
 	}
-	
 		@Atomic(mode = TxMode.WRITE)
 	private void addScenarioToDocument(Document d, String qualityRequirement, String scenarioName) {
 		Scenario s = new Scenario();
@@ -652,6 +647,8 @@ Figure \ref{figure:scenarioControllerNewScenario} shows the method \textit{addNe
 \caption{Creating a new Scenario in ScenarioController}
 \label{figure:scenarioControllerNewScenario}
 \end{figure}
+
+Figure \ref{figure:scenarioControllerNewScenario} shows the method \textit{addNewScenario}, which handles the request for adding a new Scenario to the Document and calls the method \textit{addScenarioToDocument()}, which creates the new Scenario with the given name, creates and associates with it the selected Quality Requirement and the Scenario elements and associates it with the respective document.
 
 When the user chooses which Scenario to link the Annotation with, the Controller receives a request containing both the unique ID of the Scenario and the unique ID of the Annotation. With these IDs, it can verify the tag associated with the Annotation, and add the Annotation either to the Scenario or to the corresponding element. 
 
@@ -680,7 +677,9 @@ Figure \ref{figure:scenarioControllerLinkAnnotation} shows the method \textit{ad
 \label{figure:scenarioControllerLinkAnnotation}
 \end{figure}
 
-A Scenario is initially created without any tactics. These are added in the Scenario Template, and their creation is handled by the Scenario Controller. Upon receiving the corresponding request, a new ``Tactic'' is added to the database containing the tactic's name, and is associated with the corresponding Scenario. When an Annotation with the tag ``Tactic'' is added to a Scenario, it is initially associated with the ``Scenario'' entity, as it can be seen in Figure \ref{figure:scenarioControllerLinkAnnotation}. Inside the template, these annotations can be associated with the added tactics. Figure \ref{figure:scenarioControllerLinkToTactic} shows how a request to associate an Annotation with a specific Tactic is handled. To note, in the \textit{linkAnnotationToTactic()} method, the association between the Scenario and the Annotation is removed to create the new association with the Tactic.
+A Scenario is initially created without any tactics. These are added in the Scenario Template, and their creation is handled by the Scenario Controller. Upon receiving the corresponding request, a new ``Tactic'' is added to the database containing the tactic's name, and is associated with the corresponding Scenario. When an Annotation with the tag ``Tactic'' is added to a Scenario, it is initially associated with the ``Scenario'' entity, as it can be seen in Figure \ref{figure:scenarioControllerLinkAnnotation}. 
+
+Inside the template, these annotations can be associated with the added tactics. Figure \ref{figure:scenarioControllerLinkToTactic} shows how a request to associate an Annotation with a specific Tactic is handled. To note, in the \textit{linkAnnotationToTactic()} method, the association between the Scenario and the Annotation is removed to create the new association with the Tactic.
 
 \begin{figure}[h]
 \lstset{style=customjava}
@@ -732,12 +731,123 @@ Figure \ref{figure:scenarioControllerText} shows how the Scenario \textit{text} 
 
 \subsection{Module Controller}
 
-Similarly to the Scenario Controller, the Module Controller handles the creation and deletion of Modules, which are the elements of Module Viewtype Views. It also handles the linkage of Annotations to existent Modules and the addition of user text to a Module.
+Similarly to the Scenario Controller, the Module Controller handles the creation and deletion of Modules, which are the elements of Module Viewtype Views. It also handles the linkage of Annotations to existent Modules and the addition of user text to a Module. 
 
-As explained in Chapter \ref{chapter:domainModel}, the Elements of a View are related to each others, and in Section \ref{section:model}, we can see that, since the relations between Modules have no information other than the Modules involved, they are implemented as different associations of the ``Module'' entity to itself. The Module Controller handles adding and removing other Modules to/from the possible relations. The requests are unique for each relation, meaning the request to add a Module to the \textit{Uses} relation of a certain Module will be in the form \textit{/setModuleUses/...} and the request to add \textit{One-To-One} relations with other Modules to a certain Module will be in the form \textit{/setModuleOneToOne/...}. Each request modifies the corresponding association accordingly. 
+The implementation of the methods that handle these operations is similar to the implementation done in the Scenario Controller. But unlike the Scenario, the Module has no other elements, therefore creating a Module only creates a Module in the database, and annotations are always linked to that Module.
 
-...
+As explained in Chapter \ref{chapter:domainModel}, the Elements of a View are related to each others, and in the Subsection \ref{subsection:modules}, we can see that, since the relations between Modules have no information other than the Modules involved, they are represented in the model as different associations of the ``Module'' entity to itself. 
+
+The Module Controller handles adding and removing other Modules to/from the possible relations. The requests are unique for each relation, meaning the request to add a Module to the \textit{Uses} relation of a certain Module will be in the form \textit{/setModuleUses/...} and the request to add \textit{One-To-One} relations with other Modules to a certain Module will be in the form \textit{/setModuleOneToOne/...}. Each request modifies the corresponding association accordingly.
+\begin{figure}[h]
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/setModuleParent/{docId}/{moduleId}/{parentId}")
+	public RedirectView addModuleParent(@PathVariable String moduleId,
+			@PathVariable String parentId, @PathVariable String docId) {
+		Module mod = FenixFramework.getDomainObject(moduleId);
+		Module parent = FenixFramework.getDomainObject(parentId);
+		addParent(mod, parent);
+		RedirectView rv = new RedirectView("/viewModule/" + docId + "/"
+				+ moduleId+"#isPartOf");
+		return rv;
+	}
+	@Atomic(mode = TxMode.WRITE)
+	private void addParent(Module mod, Module parent) {
+		mod.setParent(parent);
+	}	
+\end{lstlisting}
+\caption{Example of adding a ``Is-Part-Of'' relation between two modules}
+\label{figure:ModuleControllerIsPartOf}
+\end{figure} 
+
+Figure \ref{figure:ModuleControllerIsPartOf} shows how the ModuleController class adds a ``Is-Part-Of'' relation between two modules. Inside a Module template it is possible to select another Module to be the parent and associate them with a ``Is-Part-Of'' relation. The \textit{addModuleParent()} method handles the request to create this association. The request contains the \textit{id} of the module in which the relation will be created, and the \textit{id} of the Module chosen to be the parent. After setting the relation, the user is redirected to the Module template.
+
 \subsection{Component and Connector Controllers}
+
+Components and Connectors are the elements of the Component \& Connector Viewtype Views. The ComponentController and ConnectorController classes handle the creation and deletion of Components and Connectors from the system. The two classes have very similar methods.
+
+A Component has a set of Ports, which can be attached to Connector Roles. Adding and removing Ports to a component is very similar to the methods implemented to adding and removing tactics from a Scenario. Initially a Component has no Ports, and these can be created inside the Component template, as shown in Figure \ref{figure:ComponentControllerAddingPorts}. 
+\begin{figure}[h]
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/addPortToComponent/{docId}/{componentId}/{portName}")
+	public RedirectView addPortToComponent(@PathVariable String docId,
+			@PathVariable String componentId, @PathVariable String portName) {
+		Component comp = FenixFramework.getDomainObject(componentId);
+		addPortToComponent(comp, portName);
+		RedirectView rv = new RedirectView("/viewComponent/" + docId + "/"
+				+ componentId + "#" + comp.getName());
+		return rv;
+	}
+
+	@Atomic(mode = TxMode.WRITE)
+	private void addPortToComponent(Component comp, String portName) {
+		Port p = new Port();
+		p.setName(portName);
+		comp.addPort(p);
+	}
+\end{lstlisting}
+\caption{Adding Ports to a Component in ComponentController}
+\label{figure:ComponentControllerAddingPorts}
+\end{figure}
+
+Annotations with the tag ``Component Port'' are initially associated with the Module, but can be associated with a specific port, as seen in Figure \ref{figure:ComponentControllerLinkToPort}. 
+
+\begin{figure}[h]
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/moveAnnotationToPort/{docId}/{componentId}/{portId}/{annotationId}")
+	public RedirectView moveAnnotationToPort(@PathVariable String docId,
+			@PathVariable String componentId, @PathVariable String portId,
+			@PathVariable String annotationId) {
+		Component comp = FenixFramework.getDomainObject(componentId);
+		Port p = FenixFramework.getDomainObject(portId);
+		Annotation a = FenixFramework.getDomainObject(annotationId);
+		moveAnnotationToPort(comp, p, a);
+		RedirectView rv = new RedirectView("/viewComponent/" + docId + "/"
+				+ componentId + "#" + comp.getName());
+		return rv;
+	}
+	
+	@Atomic(mode = TxMode.WRITE)
+	private void moveAnnotationToPort(Component comp, Port p, Annotation a) {
+		comp.removeAnnotation(a);
+		p.addAnnotation(a);
+
+	}	
+\end{lstlisting}
+\caption{Associating an Annotation with a Port in the ComponentController}
+\label{figure:ComponentControllerLinkToPort}
+\end{figure}
+
+The Connector has a set of Roles, which are attached to the Component Ports. The implementation of the Roles in a Connector is similar to the implementation of the Ports: Initially a Connector has no Roles, which can be added inside the template, and annotations can be associated with the created Roles. The methods for creating Roles and linking annotations to them in the ConnectorController class are very similar to the ones represented in the Figures \ref{figure:ComponentControllerAddingPorts} and \ref{figure:ComponentControllerLinkToPort}, but the requests are sent to \textit{/addRoleToConnector} and \textit{/moveAnnotationToRole/} and instead of Component and Port instances there are Connectors and Roles.
+
+As mentioned in Section \ref{subsection:modelComponentsConnectors}, component ports can be associated with the connector roles by a relation of \textit{attachment}. Inside a Component template, it is possible to attach each of the ports to a Role from an existent Connector.
+
+Figure \ref{figure:ComponentControllerAttachment} shows how an attachment relation is created between a Port and a Role.
+
+\begin{figure}[h]
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/attachPortToConnectorRole/{docId}/{portId}/{roleId}")
+	public RedirectView attachPortToRole(@PathVariable String docId,
+			@PathVariable String portId, @PathVariable String roleId) {
+		Port p = FenixFramework.getDomainObject(portId);
+		Role r = FenixFramework.getDomainObject(roleId);
+		attachPortToRole(p,r);
+		RedirectView rv = new RedirectView("/viewComponent/" + docId + "/"
+				+ p.getComponent().getExternalId() + "#" + p.getName());
+		return rv;
+	}
+	
+	@Atomic(mode=TxMode.WRITE)
+	private void attachPortToRole(Port p, Role r) {
+		p.setRole(r);
+	}
+\end{lstlisting}
+\caption{Attachment of Component Ports to Connector Roles in the ComponentController}
+\label{figure:ComponentControllerAttachment}
+\end{figure}
 
 \subsection{View Controller}
 \label{substection:viewController}
