@@ -944,7 +944,7 @@ A POST request is sent to \textit{/addModulesToView/\{docId\}/\{viewId\}}, conta
 
 \section{Views}
 \label{section:Views}
-This section describes how the information from the Model is displayed to the user. The developed application uses Thymeleaf\footnote{http://www.thymeleaf.org/}, a Java template engine for displaying dynamic templates. Tymeleaf can be fully integrated with the Spring Framework. In each template, it is possible to use the Thymeleaf syntax to access and display the Model Attributes added by the Controllers. 
+This section describes how the information from the Model is displayed to the user. The developed application uses Thymeleaf\footnote{http://www.thymeleaf.org/}, a Java template engine for displaying dynamic templates. Tymeleaf can be fully integrated with the Spring Framework and in each template, it is possible to use the its syntax to access and display the Model Attributes added by the Controllers. 
 
 \subsection{Concepts Templates}
 It was developed an unique template for each of the main Concepts of the Domain Model: The View, Scenario, Module, Component and Connector.
@@ -992,7 +992,7 @@ The \textit{th:text} is a Thymeleaf attribute which sets the text of the HTML el
 \label{figure:ScenarioTemplateAnnotations}
 \end{figure}
 
-\item Other information about the concept, if there is any. In the Module template, it is necessary to show the relations of that Module with other Modules. Figure \ref{} shows how this Module information is implemented for the ``Is-Part-Of'' relation. As a Module can only have a ``Is-Part-Of'' relation with one other Module, there is a verification if the relation already exists. If it doesn't, a link to open a Modal window is available in the template (...)
+\item Other information about the concept, if there is any. In the Module template, it is necessary to show the relations of that Module with other Modules. Figure \ref{figure:ModuleTemplateRelation} shows how this Module information is implemented for the ``Is-Part-Of'' relation. As a Module can only have a ``Is-Part-Of'' relation with one other Module, there is a verification if the relation already exists. If it does not, a link to open a modal window is available in the template. This modal window will list the other Modules available and allow the user to select one of them to be associated.
 \begin{figure}[h]
 \lstset{style=customhtml}
 \begin{lstlisting}
