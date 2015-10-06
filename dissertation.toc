@@ -46,6 +46,8 @@
 \contentsline {subsection}{\numberline {8.2.4}Module Controller}{46}{subsection.8.2.4}
 \contentsline {subsection}{\numberline {8.2.5}Component and Connector Controllers}{47}{subsection.8.2.5}
 \contentsline {subsection}{\numberline {8.2.6}View Controller}{48}{subsection.8.2.6}
-\contentsline {chapter}{\numberline {9}Evaluation}{49}{chapter.9}
-\contentsline {chapter}{\numberline {10}Future Work}{50}{chapter.10}
-\contentsline {chapter}{\numberline {11}Conclusion}{51}{chapter.11}
+\contentsline {section}{\numberline {8.3}Views}{50}{section.8.3}
+\contentsline {subsection}{\numberline {8.3.1}Concepts Templates}{50}{subsection.8.3.1}
+\contentsline {chapter}{\numberline {9}Evaluation}{52}{chapter.9}
+\contentsline {chapter}{\numberline {10}Future Work}{53}{chapter.10}
+\contentsline {chapter}{\numberline {11}Conclusion}{54}{chapter.11}

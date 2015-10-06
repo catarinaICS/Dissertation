@@ -50,6 +50,12 @@
 \contentsline {figure}{\numberline {8.26}{\ignorespaces Adding Ports to a Component in ComponentController}}{47}{figure.8.26}
 \contentsline {figure}{\numberline {8.27}{\ignorespaces Associating an Annotation with a Port in the ComponentController}}{47}{figure.8.27}
 \contentsline {figure}{\numberline {8.28}{\ignorespaces Attachment of Component Ports to Connector Roles in the ComponentController}}{48}{figure.8.28}
+\contentsline {figure}{\numberline {8.29}{\ignorespaces Adding a new View in the ViewController}}{48}{figure.8.29}
+\contentsline {figure}{\numberline {8.30}{\ignorespaces Request to see a View's Template in the ViewController}}{49}{figure.8.30}
+\contentsline {figure}{\numberline {8.31}{\ignorespaces How Modules are added to a View in ViewController}}{49}{figure.8.31}
+\contentsline {figure}{\numberline {8.32}{\ignorespaces Header with the Scenario name and Quality Requirement in the Scenario Template}}{50}{figure.8.32}
+\contentsline {figure}{\numberline {8.33}{\ignorespaces Annotations represented in the Scenario Template}}{51}{figure.8.33}
+\contentsline {figure}{\numberline {8.34}{\ignorespaces Description text display and edition tools in the Scenario Template}}{51}{figure.8.34}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -851,3 +851,228 @@ Figure \ref{figure:ComponentControllerAttachment} shows how an attachment relati
 
 \subsection{View Controller}
 \label{substection:viewController}
+
+The ViewController class handles the creation and deletion of Views from two possible Viewtypes: Module and Component \& Connector. 
+
+Similar to the other domain entities, a new View is created when the user wants to associate an annotation with the tag ``View'' with a domain entity. Figure \ref{figure:ViewControllerAddModuleViewtype} shows how a request to add a new Module Viewtype View is handled.
+
+\begin{figure}[h]
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/addNewView/{docId}/{annotationId}/Module Viewtype/{viewName}")
+	public RedirectView addNewModuleViewTypeView(@PathVariable String docId,
+			@PathVariable String annotationId, @PathVariable String viewName,
+			@RequestParam String move) {
+		Document d = FenixFramework.getDomainObject(docId);
+		addModuleViewtypeToDocument(d, viewName, "Module Viewtype");
+		RedirectView rv = new RedirectView();
+		if (move.equals("yes")) {
+			rv.setUrl("/moveAnnotationView/" + docId + "/" + annotationId);
+		} else {
+			rv.setUrl("/addAnnotationToViewTemplate/" + docId + "/"
+					+ annotationId);
+		}
+		return rv;
+	}
+\end{lstlisting}
+\caption{Adding a new View in the ViewController}
+\label{figure:ViewControllerAddModuleViewtype}
+\end{figure}
+
+As there are two possible viewtypes for the views added to the application, the ViewController distinguishes between two different templates when receiving a request to view the View's template: One for views from the Module Viewtype, to which only Modules can be added, and one for views from the Component \& Connector Viewtype, to which only Components and Connectors can be added. This distinction is done inside the method \textit{viewViewTemplate()} of the ViewController class. 
+
+Figure \ref{figure:ViewControllerViewTemplates} shows how the method checks the \textit{viewtype} attribute of a View object to add the correct attributes to the template model and return the correct template. The controller adds the existent Modules, Component and Connectors as template model attributes so the template can show them to the user who wants to add elements to a view. The set of existent Views is also added as attribute, to show in case the user wishes to move an annotation to other view. The UsedIds instance added as attribute is a class containing an empty \textit{List$<$String$>$}, which will be used to save the \textit{ids} of the elements selected to add to a view. 
+
+\begin{figure}[h]
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/viewView/{docId}/{viewId}")
+	public String viewViewTemplate(Model m, @PathVariable String docId,
+			@PathVariable String viewId) {
+		m.addAttribute("docId", docId);
+		View v = FenixFramework.getDomainObject(viewId);
+		Document d = FenixFramework.getDomainObject(docId);
+		if(v.getViewtype().equals("Module Viewtype")) {
+			m.addAttribute("view", v);
+			m.addAttribute("views", d.getViewSet());
+			m.addAttribute("modules", d.getModuleSet());
+			m.addAttribute("used", new UsedIds());
+			return "viewMVTTemplate";
+		}else if(v.getViewtype().equals("Component & Connector Viewtype")) {
+			m.addAttribute("view", v);
+			m.addAttribute("views", d.getViewSet());
+			m.addAttribute("components", d.getComponentSet());
+			m.addAttribute("connectors", d.getConnectorSet());
+			m.addAttribute("used", new UsedIds());
+			return "viewCCTemplate";
+		}
+		return null;
+	}	
+\end{lstlisting}
+\caption{Request to see a View's Template in the ViewController}
+\label{figure:ViewControllerViewTemplates}
+\end{figure}
+
+After the user selects a set of Modules, Components or Connectors to add to a view, a request is sent to the ViewController, which handles the association of these elements with the respective view.
+
+Figure \ref{figure:ViewControllerAddModules} shows how Modules are associated with a View, but these methods are similar for the Components and Connectors. 
+\begin{figure}[h]
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/addModulesToView/{docId}/{viewId}", method = RequestMethod.POST)
+	public RedirectView addModulesToView(@PathVariable String docId,
+			@PathVariable String viewId, @ModelAttribute UsedIds modules) {
+		View v = FenixFramework.getDomainObject(viewId);
+		if(v.getViewtype().equals("Module Viewtype")) {
+			addModulesToView(v, modules);
+		}
+		RedirectView rv = new RedirectView("/viewView/" + docId + "/" + viewId);
+		return rv;
+	}
+	@Atomic(mode = TxMode.WRITE)
+	private void addModulesToView(View v, UsedIds modules) {
+		for (String id : modules.getUsed()) {
+			Module m = FenixFramework.getDomainObject(id);
+			v.addModule(m);
+		}
+	}	
+\end{lstlisting}
+\caption{How Modules are added to a View in ViewController}
+\label{figure:ViewControllerAddModules}
+\end{figure}
+A POST request is sent to \textit{/addModulesToView/\{docId\}/\{viewId\}}, containing in its body the instance of the \textit{UsedIds} class that was added as model attribute (see Figure \ref{figure:ViewControllerViewTemplates}), with the \textit{ids} of the selected elements saved in the list. Method \textit{addModulesToView()} makes sure the view has the correct viewtype for the elements to be added, and then method \textit{addModulesToView(View v, UsedIds modules)} iterates over the list of selected \textit{ids} and associates the Modules with the respective \textit{ids} to the view.
+
+\section{Views}
+\label{section:Views}
+This section describes how the information from the Model is displayed to the user. The developed application uses Thymeleaf\footnote{http://www.thymeleaf.org/}, a Java template engine for displaying dynamic templates. Tymeleaf can be fully integrated with the Spring Framework. In each template, it is possible to use the Thymeleaf syntax to access and display the Model Attributes added by the Controllers. 
+
+\subsection{Concepts Templates}
+It was developed an unique template for each of the main Concepts of the Domain Model: The View, Scenario, Module, Component and Connector.
+
+Each template displays the information about the concepts contained in the respective java objects, which were added as Model Attributes by the Controllers. They are roughly structured as follows:
+\begin{enumerate}
+\item Header with the concept name and type (if it is a Module, a Component, etc.). Figure \ref{figure:ScenarioTemplateName} shows how this is implemented in the template for the Scenarios, however the implementation in the other concept templates is very similar.
+ 
+\begin{figure}[h]
+\lstset{style=customhtml}
+\begin{lstlisting}
+<div class="panel-heading">
+	<span id="scenarioName">
+		<b><span th:text="'Scenario for '
+			+${scenario.getQualityRequirement().getName()}+': '">
+		</span>
+		<span th:text="${scenario.getName()}"></span></b>
+	</span>
+	<!-- ... -->
+</div>	
+\end{lstlisting}
+\caption{Header with the Scenario name and Quality Requirement in the Scenario Template}
+\label{figure:ScenarioTemplateName}
+\end{figure}
+
+The \textit{th:text} is a Thymeleaf attribute which sets the text of the HTML element to what is defined inside it. In this case, the attribute concatenates a piece of text with \textit{\$\{scenario. getQualityRequirement(). getName()\}}. The \textit{\$\{\}} syntax is used to access a variable, in this case the ``scenario'', which is a Java object added to the Model Attributes by the ScenarioController. This example accesses the Scenario's quality attribute and name to display.
+
+
+\item Annotations associated with the concept. Figure \ref{figure:ScenarioTemplateAnnotations} shows how Thymeleaf is used to iterate over the annotations associated with the scenario instance and display their information in the template.
+\begin{figure}[h]
+\lstset{style=customhtml}
+\begin{lstlisting}
+<div>
+	<ul class="list-group" style="margin-top:10px">
+		<li class="list-group-item" th:each=" ann : ${scenario.getJsonAnnotations()}">
+			<p> <b> Document Quote: </b> <i> <span th:text="'(...)' +
+			 ${ann.quote} + '(...)'"> </span> </i> </p>
+			<p> <b> Comment: </b> <span th:text="${ann.text}"> </span> </p>
+			<p> <b> Tag: </b> <span th:text="${ann.tag}"> </span> </p>
+		</li>
+	</ul>
+</div>	
+\end{lstlisting}
+\caption{Annotations represented in the Scenario Template}
+\label{figure:ScenarioTemplateAnnotations}
+\end{figure}
+
+\item Other information about the concept, if there is any. In the Module template, it is necessary to show the relations of that Module with other Modules. Figure \ref{} shows how this Module information is implemented for the ``Is-Part-Of'' relation. As a Module can only have a ``Is-Part-Of'' relation with one other Module, there is a verification if the relation already exists. If it doesn't, a link to open a Modal window is available in the template (...)
+\begin{figure}[h]
+\lstset{style=customhtml}
+\begin{lstlisting}
+<p>
+	<span class="h4">
+		Is-Part-Of:
+	</span>
+	<a href="#" data-toggle="modal" th:if="${module.getParent() == null}>
+		<span data-toggle="tooltip" title="Add Parent"></span>
+	</a>
+	<section layout:include="@{/setParentModal} :: setParentModal" 
+		th:if="${module.getParent() == null}></section>
+		
+	<div th:if="${module.getParent() != null}" 
+		th:with="parent=${module.getParent()}">
+		<a href="# th:href="@{/viewModule/} th:text="${parent.getName()}">
+		</a>
+		<a href="#" th:href="@{/removeModuleParent/}>
+			<small>x</small>
+		</a>
+	</div>  
+</p>	
+\end{lstlisting}
+\caption{Representation of the ``Is-Part-Of'' relation in the Module Template}
+\label{figure:ModuleTemplateRelation}
+\end{figure}
+
+
+\item Concept's description text, if existent, and tools for adding or editing this text. Figure \ref{figure:ScenarioTemplateDescriptionText} shows how the text and the editor are represented in the Scenario Template. The editor is inside a collapsible \textit{$<$div$>$}, which is initially hidden but can be toggled by clicking the ``Add/Edit Text'' link.
+
+When the user clicks the ``Submit'' button, the added/edited text is retrieved from the \textit{textarea} element using javascript. To note that it is possible to add inline thymeleaf expressions to javascript code. The retrieved text is sent in an Ajax POST request to the respective Controller. When the request is finished, the window is reloaded to show the updated text.
+\begin{figure}[h]
+\lstset{style=customhtml}
+\begin{lstlisting}
+<div id="EditText">
+	<a href="#toggleEditor" data-toggle="collapse"> 
+		<span data-toggle="tooltip" data-original-title="Add/Edit Text">
+		</span>
+	</a>
+	<div th:id="'textViewer'+${element.getExternalId()}" 
+		th:text="${element.getText()}">
+	</div>
+	<div class="collapse">
+		<textarea  th:id="'text'+${element.getExternalId()}" 
+			th:text="${element.getText()}"></textarea>
+		<button th:id="'submitText'+${element.getExternalId()}" type="submit">
+			Submit
+		</button>
+	</div>
+</div>
+	
+<script type="text/javascript" th:inline="javascript">
+	$("#submitText"+/*[[${element.getExternalId()}]]*/).click(function(){
+		var elemtext = document.getElementById("text"
+				+/*[[${element.getExternalId()}]]*/).value;
+		var ident = /*[[${element.getIdentifier()}]]*/;
+		var loc = /*[[@{/setScenarioText/} + ${docId} 
+				+ '/'+${element.getExternalId()}]]*/;
+		var content = {text: elemtext}
+		$.ajax(loc,{
+			method: "POST",
+			data: content
+		}).done(function(data, textStatus, jqXHR){
+			window.location.hash="#"+ident;
+			window.location.reload(true);
+		});
+	});
+</script>		
+\end{lstlisting}
+\caption{Description text display and edition tools in the Scenario Template}
+\label{figure:ScenarioTemplateDescriptionText}
+\end{figure}
+
+\item 
+\end{enumerate} 
+
+
+
+
+
+
+
+
