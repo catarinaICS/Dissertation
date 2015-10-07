@@ -40,14 +40,13 @@
 \contentsline {subsection}{\numberline {8.1.4}Components and Connectors}{38}{subsection.8.1.4}
 \contentsline {subsection}{\numberline {8.1.5}Views}{39}{subsection.8.1.5}
 \contentsline {section}{\numberline {8.2}Controller}{40}{section.8.2}
-\contentsline {subsection}{\numberline {8.2.1}Annotation Controller}{41}{subsection.8.2.1}
-\contentsline {subsection}{\numberline {8.2.2}Document Controller}{42}{subsection.8.2.2}
-\contentsline {subsection}{\numberline {8.2.3}Scenario Controller}{44}{subsection.8.2.3}
-\contentsline {subsection}{\numberline {8.2.4}Module Controller}{46}{subsection.8.2.4}
-\contentsline {subsection}{\numberline {8.2.5}Component and Connector Controllers}{47}{subsection.8.2.5}
-\contentsline {subsection}{\numberline {8.2.6}View Controller}{48}{subsection.8.2.6}
-\contentsline {section}{\numberline {8.3}Views}{50}{section.8.3}
-\contentsline {subsection}{\numberline {8.3.1}Concepts Templates}{50}{subsection.8.3.1}
-\contentsline {chapter}{\numberline {9}Evaluation}{53}{chapter.9}
-\contentsline {chapter}{\numberline {10}Future Work}{54}{chapter.10}
-\contentsline {chapter}{\numberline {11}Conclusion}{55}{chapter.11}
+\contentsline {subsection}{\numberline {8.2.1}Annotation Controller}{40}{subsection.8.2.1}
+\contentsline {subsection}{\numberline {8.2.2}Document Controller}{41}{subsection.8.2.2}
+\contentsline {subsection}{\numberline {8.2.3}Scenario Controller}{43}{subsection.8.2.3}
+\contentsline {subsection}{\numberline {8.2.4}Module Controller}{45}{subsection.8.2.4}
+\contentsline {subsection}{\numberline {8.2.5}Component and Connector Controllers}{46}{subsection.8.2.5}
+\contentsline {subsection}{\numberline {8.2.6}View Controller}{47}{subsection.8.2.6}
+\contentsline {section}{\numberline {8.3}Views}{48}{section.8.3}
+\contentsline {chapter}{\numberline {9}Evaluation}{51}{chapter.9}
+\contentsline {chapter}{\numberline {10}Future Work}{52}{chapter.10}
+\contentsline {chapter}{\numberline {11}Conclusion}{53}{chapter.11}

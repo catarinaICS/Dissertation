@@ -42,7 +42,7 @@ As the main purpose of this application is to create a structured representation
 
 \begin{tikzpicture}
 \tikzstyle{every node}=[font=\footnotesize]
-\begin{class}[text width=2cm ]{Concept}{5,0}
+\begin{class}[text width=2cm ]{Template Concept}{5,0}
 	\attribute{}
 \end{class}
 
@@ -52,7 +52,7 @@ As the main purpose of this application is to create a structured representation
 	\attribute { content : String }
 \end{class}
 
-\association{Document}{}{1}{Concept}{}{*}
+\association{Document}{}{1}{Template Concept}{}{*}
 \end{tikzpicture}
 \caption{Association between Document and Concept entities}
 \label{figure:documentConcept}
@@ -103,12 +103,12 @@ Annotations are added to the system by selecting a portion of text in the parsed
 	\attribute { tag : String }
 \end{class}
 
-\begin{class}[text width=2cm ]{Concept}{4,-0.5}
+\begin{class}[text width=2cm ]{Template Concept}{4,-0.5}
 	\attribute{}
 \end{class}
 
 \begin{class}[text width=2cm ]{Scenario}{4,-3}
-	\inherit{Concept}
+	\inherit{Template Concept}
 	\attribute{}
 \end{class}
 
@@ -116,9 +116,9 @@ Annotations are added to the system by selecting a portion of text in the parsed
 	\attribute{}
 \end{class}
 
-\association{Document}{}{1}{Concept}{}{*}
-\association{Document}{}{0..1}{Annotation}{}{*}
-\association{Concept}{}{0..1}{Annotation}{}{*}
+\association{Document}{}{1}{Template Concept}{}{*}
+\association{Document}{}{1}{Annotation}{}{*}
+\association{Template Concept}{}{0..1}{Annotation}{}{*}
 \association{Scenario}{}{1}{Source Of Stimulus}{}{*}
 \association{Source Of Stimulus}{}{0..1}{Annotation}{}{*}
 
@@ -131,7 +131,7 @@ Annotations are used to enrich the templates described in Section \ref{section:t
 
 As mentioned in the previous section, an annotation can partially or fully describe a concept, therefore a concept can be associated with multiple annotations. 
 
-Figure \ref{figure:documentAnnotationConcepts} shows how the Annotation is associated with the domain concepts. There is an association not only with the main concepts of the domain model, but also all the other concepts represented in \ref{figure:abstractDomainModel}. The figure exemplifies these associations with only the Scenario and the Source of Stimulus, but all the other concepts have similar associations.  
+Figure \ref{figure:documentAnnotationConcepts} shows how the Annotation is associated with the domain concepts. There is an association not only with the main concepts of the domain model, but also all the other concepts represented in \ref{figure:abstractDomainModel}. The figure exemplifies these associations with the Scenario, which is a main concept, and the Source of Stimulus, but all the other concepts and main concepts - all the Scenario Elements, Modules, Components, etc. - have similar associations.  
 
 \section{Interface Flow}
 \label{section:interfaceFlow}

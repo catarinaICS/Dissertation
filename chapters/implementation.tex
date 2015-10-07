@@ -78,7 +78,7 @@ The Scenario is a main concept of the domain, and therefore is connected to the 
 
 Scenarios are represented in the implemented model in a very similar way to what is shown in Figure \ref{figure:abstractDomainModel}. However, there is a difference in the implemented model regarding how Quality Requirements and Tactics are represented.
 
-In Figure \ref{figure:abstractDomainModel},  it is shown an association between Scenario and Quality Requirement, Scenario and Tactic and Tactic and Quality Requirement. The meaning of these associations is to represent what is explained in Section \ref{subsection:SAConceptsScenarios}: A Scenario has a Quality Requirement from a set of pre-existent ones, and a set of Tactics also from a set of existent ones, which are specific for the Quality Requirement.
+In Figure \ref{figure:abstractDomainModel}, it is shown an association between Scenario and Quality Requirement, Scenario and Tactic and Tactic and Quality Requirement. The meaning of these associations is to represent what is explained in Section \ref{subsection:SAConceptsScenarios}: A Scenario has a Quality Requirement from a set of pre-existent ones, and a set of Tactics also from a set of existent ones, which are specific for the Quality Requirement.
 
 However, in the implemented model, there are no pre-existent Tactics nor Quality Requirements. The existent Quality Requirements and their specific Tactics are specified in a Java class, which returns them as necessary. Figure \ref{figure:modelQRTactics} shows the Scenario, Tactic and Quality Requirement entities, and how they are related in the implemented model.
 
@@ -113,7 +113,7 @@ However, in the implemented model, there are no pre-existent Tactics nor Quality
 \label{figure:modelQRTactics}
 \end{figure}
 
-To create a Scenario, it is necessary to select a Quality Requirement from a list, which is retrieved from the class mentioned. When the Scenario is created, a new Quality Requirement is also created, with the selected one stored into the ``name'' attribute, and associated with that Scenario. Inside the Scenario template, Tactics can be added. To add a tactic it is necessary to select it from a list of specific tactics for the quality requirement. That list is, again, retrieved from the class mentioned before. When a specific tactic is selected, a new Tactic is created in the model with the specific tactic name stored in the ``identifier'' attribute. Given these implementation details, there was no need to create the association between Tactic and QualityRequirement nor to have a Quality Requirement associated with many Scenarios.
+To create a Scenario, it is necessary to select a Quality Requirement from a list, which is retrieved from the class mentioned. When the Scenario is created, a new Quality Requirement is also created, with the selected one stored into the ``name'' attribute, and associated with that Scenario. Tactics can be added once inside the Scenario Template. To add a tactic it is necessary to select it from a list of specific tactics for the quality requirement. That list is, again, retrieved from the class mentioned before. When a specific tactic is selected, a new Tactic is created in the model with the specific tactic name stored in the ``identifier'' attribute. Given these implementation details, there was no need to create the association between Tactic and QualityRequirement nor to have a Quality Requirement associated with many Scenarios.
 
 To facilitate programming, all Scenario elements are a subclass of a ``ScenarioElement'' class, as seen in the example in Figure \ref{figure:modelScenarioElement}. This superclass aggregates all the methods common to the Scenario elements, making it easier to perform actions such as updating the text, associating annotations or presenting the elements in a view. A few of those methods are shown in the figure. However, this class is not associated with the Scenario entity. Its purpose is only to facilitate programming by aggregating common methods. 
 
@@ -150,7 +150,7 @@ To facilitate programming, all Scenario elements are a subclass of a ``ScenarioE
 \label{figure:modelScenarioElement}
 \end{figure}
 
-The ``identifier'' parameter of the entities, seen in  Figures \ref{figure:modelQRTactics} and \ref{figure:modelScenarioElement} stores the name of the concept that corresponds to that entity, and often corresponds to the name of the entity itself. For example, the identifier in all instances of Scenario is ``Scenario'' and the identifier in all instances of ``SrcOfStimulus'' is ``Source Of Stimulus''. This was done to facilitate certain programming issues such as getting the concept name from a ``ScenarioElement'' instance. The ``name'' attribute in the Scenario gives it an identification other than just the quality attribute, and the ``text'' attribute in the Scenario and ScenarioElement corresponds to the description text that can be added to the templates.
+The ``identifier'' parameter of the entities, seen in Figures \ref{figure:modelQRTactics} and \ref{figure:modelScenarioElement} stores the name of the concept that corresponds to that entity, and often corresponds to the name of the entity itself. For example, the identifier in all instances of Scenario is ``Scenario'' and the identifier in all instances of ``SrcOfStimulus'' is ``Source Of Stimulus''. This was done to facilitate certain programming issues such as getting the concept name from a ``ScenarioElement'' instance. The ``name'' attribute in the Scenario gives it an identification other than just the quality attribute, and the ``text'' attribute in the Scenario and ScenarioElement corresponds to the description text that can be added to the templates.
 
 All domain entities have associated annotations, as it was mentioned previously in Section \ref{section:annotation}. The implemented model is similar to what is shown in Figure \ref{figure:documentAnnotationConcepts}, with the Scenario and ScenarioElement entities being associated with the Annotation.
 
@@ -216,60 +216,11 @@ relation moduleUsesModule {
 \label{figure:modelUsesRelation}
 \end{figure}
 
-\item \textit{Is-A} - a relation of generalization, in which a Module is a generalization, or parent, of other modules. Implementation is shown in Figure \ref{figure:modelIsARelation}; 
-\begin{figure}[h]
-\lstset{style=customjava}
-\begin{lstlisting}
-relation moduleIsAModule {
-	Module playsRole isA { multiplicity 0..*; }
-	
-	Module playsRole superModule { multiplicity 0..*; }
-}
-\end{lstlisting}
-\caption{Uses relation between Modules in the implemented model}
-\label{figure:modelIsARelation}
-\end{figure}
+\item \textit{Is-A} - a relation of generalization, in which a Module is a generalization, similar to a superclass, of other modules. The implementation of this relation is similar to the implementation of the ``Uses'' relation in Figure \ref{figure:modelUsesRelation}, as a Module can be a generalization of many Modules and a specialization of many others (multiple inheritance).
 
-\item \textit{Crosscuts} - an Aspect Module, which implements a crosscutting concern of the system, is bound to a Module that is affected by that crosscutting concern. Implementation is shown in Figure \ref{figure:modelCrosscutsRelation};
+\item \textit{Crosscuts} - an Aspect Module, which implements a crosscutting concern of the system, is bound to a Module that is affected by that crosscutting concern. The Implementation of this relation is similar to the one shown in Figure \ref{figure:modelUsesRelation}, as a Module can be a crosscutting concern of many Modules, and be crosscutted by other Aspect Modules.
 
-\begin{figure}[h]
-\lstset{style=customjava}
-\begin{lstlisting}
-relation moduleCrosscutsModule {
-	Module playsRole crossCuts { multiplicity 0..*; }
-	
-	Module playsRole crossCuttedBy { multiplicity 0..*; }
-}
-\end{lstlisting}
-\caption{Uses relation between Modules in the implemented model}
-\label{figure:modelCrosscutsRelation}
-\end{figure}
-
-\item \textit{One-To-One, One-To-Many, Many-to-Many} - logical associations between Data Entity Modules, similar to the UML associations. Implementation of these relations is shown in Figure \ref{figure:modelDataModelRelations}.
-
-\begin{figure}[h]
-\lstset{style=customjava}
-\begin{lstlisting}
-relation moduleOneToOneModule {
-	Module playsRole oneToOne {	multiplicity 0..*; }
-	Module playsRole oneRelation { multiplicity 0..*; }
-}
-
-relation moduleOneToManyModule {
-	Module playsRole oneToMany { multiplicity 0..*; }
-	Module playsRole oneToManyRelations { multiplicity 0..*; }
-}
-
-relation moduleManyToManyModule {
-	Module playsRole manyToMany { multiplicity 0..*; }
-	Module playsRole manyToManyRelations { multiplicity 0..*; }
-}
-\end{lstlisting}
-\caption{One-to-One, One-To-Many and Many-To-Many relation between Modules in the implemented model}
-\label{figure:modelDataModelRelations}
-\end{figure}
-
-\textbf{To note:} the '0..*' cardinality in the one-to-one, one-to-many and many-to-many relations means that a Module can have several relations of this type in a Data Model Style view. For example, if a Module instance with name ``Department'' has a ``One-To-Many'' relation with Modules ``Employee'' and ``Room'', it means that a visual representation of these Modules would be the one in figure \ref{figure:modelOneToManyExample}.
+\item \textit{One-To-One, One-To-Many, Many-to-Many} - logical associations between Data Entity Modules, similar to the UML associations. The implementation of these relations is, again, similar to the implementation of the ``Uses'' relation in Figure \ref{figure:modelUsesRelation}. The '0..*' cardinality in the one-to-one, one-to-many and many-to-many relations means that a Module can have several relations of this type in a Data Model Style view. For example, if a Module instance with name ``Department'' has a ``One-To-Many'' relation with Modules ``Employee'' and ``Room'', it means that a visual representation of these Modules would be the one in figure \ref{figure:modelOneToManyExample}.
 \begin{figure}[h]
 \centering
 \renewcommand {\umltextcolor}{black}
@@ -296,22 +247,7 @@ relation moduleManyToManyModule {
 \label{figure:modelOneToManyExample}
 \end{figure}
 
-\item \textit{Aggregation} - an aggregation relation. Figure \ref{figure:modelAggregationRelation} shows how this relation is implemented. A Module can be an aggregator of other several Modules, and be aggregated by many others;
-
-\begin{figure}[h]
-\centering
-\lstset{style=customjava}
-\begin{lstlisting}
-relation moduleAggregatesModule {
-	Module playsRole aggregator { multiplicity 0..*; }
-	
-	Module playsRole aggregated { multiplicity 0..*; }
-}
-\end{lstlisting}
-\caption{Aggregation relation between Modules in the implemented model}
-\label{figure:modelAggregationRelation}
-\end{figure}
-
+\item \textit{Aggregation} - an aggregation relation. The implementation of this relation is similar to Figure \ref{figure:modelUsesRelation}, as a Module can be an aggregator of other several Modules, and be aggregated by many others;
 \end{itemize}
 
 \subsection{Components and Connectors}
@@ -356,7 +292,7 @@ Components and Connectors are the elements of the Component \& Connector Viewtyp
  
 A Component has a set of Ports, and a Connector as a set of Roles. The Ports of a Component are connected to the Roles of a Connector by the \textit{Attachment} relation explained in Section \ref{section:SAConcepts} of Chapter \ref{chapter:domainModel}. The implementation of this relation will be explained further on. The ``name'' and ``text'' attributes in the entities correspond to the identification name of the entity and the descriptive text that can be added, respectively. The ``style'' attribute in the Connector refers to the Component \& Connector styles. Each style has a unique type of connector. Specifying the style of a connector will make it easier to figure which Components will attach to it.
 
-The Component and Connector are main concepts of the system, and therefore are associated with the corresponding document upon creation. They and their respective Ports and Roles are also associated to a set of Annotations that describe them. The associations of the Component and Connector to the Document and Annotation are similar to the ones in the example of Figure \ref{figure:documentAnnotationConcepts}.
+The Component and Connector are main concepts of the system, and therefore are associated with the corresponding document upon creation. Both the Component and Connector entities and also the Port and Role are associated to a set of Annotations that describe them. The associations of these entities to the Document and Annotation are similar to the ones in the example of Figure \ref{figure:documentAnnotationConcepts}.
 
 Components are related with Connectors by the \textit{Attachment} relation. A Component has, as mentioned, a set of ports, and these ports can be attached to roles of Connectors.
 
@@ -474,7 +410,7 @@ The endpoints provided by this controller are described in Table \ref{table:endp
   \label{table:endpoints}
 \end{table}
 
-The \textbf{INDEX} endpoint has the particularity of iterating through all the Annotations in the system. If the annotation is associated to another domain entity besides the Document (for example, a Scenario, or a Module), information about the domain entity will be added to the annotation body, and will be shown in the interface. This way, it is possible to have some information about the domain entity even before checking its template. 
+The \textbf{INDEX} endpoint has the particularity of iterating through all the Annotations associated with the Document with id \textit{docId}. If the annotation is associated to another domain entity besides the Document (for example, a Scenario, or a Module), information about the domain entity will be added to the annotation body, and will be shown in the interface. This way, it is possible to have some information about the domain entity even before checking its template. 
 
 Figure \ref{figure:annotationControllerIndex} shows an example of how information is added to the annotation in the \textit{INDEX} endpoint. The method \textit{getAnnotations()}, which receives the requests for this endpoint, iterates over the annotations associated with the document with id \textit{docId}, parses the JSON of each annotation into an instance of the AnnotationJS class, checks which domain element is associated with the annotation and adds information accordingly to the field ``text'' of the annotation. The example in the figure shows how information about the viewtype is added to annotations connected with a View. The list of all retrieved AnnotationJS instances is then parsed into a JSON string and sent as response.
 
@@ -494,9 +430,7 @@ Figure \ref{figure:annotationControllerIndex} shows an example of how informatio
 				View v = a.getView();
 				ann.setText("View: " + v.getViewtype());
 			}
-
-			//...
-			
+			//...			
 			anns.add(ann);
 		}
 		String resp = g.toJson(anns);
@@ -618,29 +552,17 @@ The Scenario Controller provides means to add and remove Scenarios from the docu
 \begin{lstlisting}
 	@RequestMapping(value = "/addNewScenario/{docId}/{annotationId}/{scenarioName}/
 	{qualityRequirement}")
-	public RedirectView addNewScenario(@PathVariable String docId, 
-	@PathVariable String annotationId, @PathVariable String scenarioName, 
-			@PathVariable String qualityRequirement,@RequestParam String move) {
-		Document d = FenixFramework.getDomainObject(docId);
-		addScenarioToDocument(d,qualityRequirement ,scenarioName);		
+	public RedirectView addNewScenario(/*...*/) {
+		addScenarioToDocument(document,qualityRequirement ,scenarioName);		
 		//...
 	}
 		@Atomic(mode = TxMode.WRITE)
-	private void addScenarioToDocument(Document d, String qualityRequirement, String scenarioName) {
+	private void addScenarioToDocument(Document d, String qualityRequirement, 
+	String scenarioName) {
 		Scenario s = new Scenario();
-		s.setName(scenarioName);
-		s.setIdentifier("Scenario");
 		QualityRequirement qr = new QualityRequirement();
-		qr.setName(qualityRequirement);
 		s.setQualityRequirement(qr);
-		SrcOfStimulus src = new SrcOfStimulus();
-		src.setIdentifier("Source Of Stimulus");
-		//...
-		ResponseMeasure rm = new ResponseMeasure();
-		rm.setIdentifier("Response Measure");
-		s.setSrcOfStimulus(src);
-		//...
-		s.setResponseMeasure(rm);
+		//...		
 		d.addScenario(s);
 	}	
 \end{lstlisting}
@@ -663,13 +585,10 @@ Figure \ref{figure:scenarioControllerLinkAnnotation} shows the method \textit{ad
 	private void addAnnotationToScenario(Scenario s, Annotation a) {
 		String tag = a.getTag();
 		if (tag.equals("Scenario Description") || tag.equals("Tactic")) {
-			updateAnnotation(s.getExternalId(), a);
-			s.addAnnotation(a);
+			//associate annotation with the Scenario s
 		}
 		if (s.getElements().get(tag) != null) {
-			ScenarioElement em = s.getElements().get(tag);
-			updateAnnotation(s.getExternalId(), a);
-			em.addAnnotation(a);
+			//associate annotation with a ScenarioElement
 		}
 	}	
 \end{lstlisting}
@@ -679,24 +598,17 @@ Figure \ref{figure:scenarioControllerLinkAnnotation} shows the method \textit{ad
 
 A Scenario is initially created without any tactics. These are added in the Scenario Template, and their creation is handled by the Scenario Controller. Upon receiving the corresponding request, a new ``Tactic'' is added to the database containing the tactic's name, and is associated with the corresponding Scenario. When an Annotation with the tag ``Tactic'' is added to a Scenario, it is initially associated with the ``Scenario'' entity, as it can be seen in Figure \ref{figure:scenarioControllerLinkAnnotation}. 
 
-Inside the template, these annotations can be associated with the added tactics. Figure \ref{figure:scenarioControllerLinkToTactic} shows how a request to associate an Annotation with a specific Tactic is handled. To note, in the \textit{linkAnnotationToTactic()} method, the association between the Scenario and the Annotation is removed to create the new association with the Tactic.
+Inside the template, these annotations can be associated with the added tactics. Figure \ref{figure:scenarioControllerLinkToTactic} shows how a request to associate an Annotation with a specific Tactic is handled. In the \textit{linkAnnotationToTactic()} method, the association between the Scenario and the Annotation is removed to create the new association with the Tactic.
 
 \begin{figure}[h]
 \lstset{style=customjava}
 \begin{lstlisting}
-	@RequestMapping(value = "/linkToTactic/{docId}/{scenarioId}/{tacticId}/{annotationId}")
-	public RedirectView addAnnotationToTactic(@PathVariable String docId,
-			@PathVariable String scenarioId, @PathVariable String tacticId,
-			@PathVariable String annotationId) {
+	@RequestMapping(value = "/linkToTactic/{docId}/{scenarioId}/{tacticId}/
+		{annotationId}")
+	public RedirectView addAnnotationToTactic(/*...*/) {
 		//...
 		linkAnnotationToTactic(s, t, a);
 		//...
-	}
-	
-	@Atomic(mode = TxMode.WRITE)
-	private void linkAnnotationToTactic(Scenario s, Tactic t, Annotation a) {
-		s.removeAnnotation(a);
-		t.addAnnotation(a);
 	}
 \end{lstlisting}
 \caption{Associating an Annotation with a specific Tactic in ScenarioController}
@@ -710,14 +622,11 @@ Figure \ref{figure:scenarioControllerText} shows how the Scenario \textit{text} 
 \begin{figure}[h]
 \lstset{style=customjava}
 \begin{lstlisting}
-	@RequestMapping(value = "/setScenarioText/{docId}/{scenarioId}", method = RequestMethod.POST)
-	public RedirectView setScenarioText(@RequestParam String text,
-			@PathVariable String docId, @PathVariable String scenarioId) {
-		Scenario scen = FenixFramework.getDomainObject(scenarioId);
-		updateText(scen, text);
-		RedirectView rv = new RedirectView("/viewScenario/" + docId + "/"
-				+ scenarioId + "#" + scen.getName() );
-		return rv;
+	@RequestMapping(value = "/setScenarioText/{docId}/{scenarioId}", 
+		method = RequestMethod.POST)
+	public RedirectView setScenarioText(/*...*/) {
+		updateText(scenario, text);
+		//...
 	}
 	
 	@Atomic(mode=TxMode.WRITE)
@@ -742,18 +651,13 @@ The Module Controller handles adding and removing other Modules to/from the poss
 \lstset{style=customjava}
 \begin{lstlisting}
 	@RequestMapping(value = "/setModuleParent/{docId}/{moduleId}/{parentId}")
-	public RedirectView addModuleParent(@PathVariable String moduleId,
-			@PathVariable String parentId, @PathVariable String docId) {
-		Module mod = FenixFramework.getDomainObject(moduleId);
-		Module parent = FenixFramework.getDomainObject(parentId);
-		addParent(mod, parent);
-		RedirectView rv = new RedirectView("/viewModule/" + docId + "/"
-				+ moduleId+"#isPartOf");
-		return rv;
+	public RedirectView addModuleParent(/*...*/) {
+		addParent(module, parent);
+		//...
 	}
 	@Atomic(mode = TxMode.WRITE)
-	private void addParent(Module mod, Module parent) {
-		mod.setParent(parent);
+	private void addParent(Module module, Module parent) {
+		module.setParent(parent);
 	}	
 \end{lstlisting}
 \caption{Example of adding a ``Is-Part-Of'' relation between two modules}
@@ -771,19 +675,14 @@ A Component has a set of Ports, which can be attached to Connector Roles. Adding
 \lstset{style=customjava}
 \begin{lstlisting}
 	@RequestMapping(value = "/addPortToComponent/{docId}/{componentId}/{portName}")
-	public RedirectView addPortToComponent(@PathVariable String docId,
-			@PathVariable String componentId, @PathVariable String portName) {
-		Component comp = FenixFramework.getDomainObject(componentId);
-		addPortToComponent(comp, portName);
-		RedirectView rv = new RedirectView("/viewComponent/" + docId + "/"
-				+ componentId + "#" + comp.getName());
-		return rv;
+	public RedirectView addPortToComponent(/*...*/) {		
+		addPortToComponent(component, portName);
+		//...
 	}
 
 	@Atomic(mode = TxMode.WRITE)
 	private void addPortToComponent(Component comp, String portName) {
 		Port p = new Port();
-		p.setName(portName);
 		comp.addPort(p);
 	}
 \end{lstlisting}
@@ -796,24 +695,12 @@ Annotations with the tag ``Component Port'' are initially associated with the Mo
 \begin{figure}[h]
 \lstset{style=customjava}
 \begin{lstlisting}
-	@RequestMapping(value = "/moveAnnotationToPort/{docId}/{componentId}/{portId}/{annotationId}")
-	public RedirectView moveAnnotationToPort(@PathVariable String docId,
-			@PathVariable String componentId, @PathVariable String portId,
-			@PathVariable String annotationId) {
-		Component comp = FenixFramework.getDomainObject(componentId);
-		Port p = FenixFramework.getDomainObject(portId);
-		Annotation a = FenixFramework.getDomainObject(annotationId);
-		moveAnnotationToPort(comp, p, a);
-		RedirectView rv = new RedirectView("/viewComponent/" + docId + "/"
-				+ componentId + "#" + comp.getName());
-		return rv;
-	}
-	
-	@Atomic(mode = TxMode.WRITE)
-	private void moveAnnotationToPort(Component comp, Port p, Annotation a) {
-		comp.removeAnnotation(a);
-		p.addAnnotation(a);
-
+	@RequestMapping(value = "/moveAnnotationToPort/{docId}/{componentId}/
+		{portId}/{annotationId}")
+	public RedirectView moveAnnotationToPort(/*...*/) {
+		
+		moveAnnotationToPort(component, port, annotation);
+		//...
 	}	
 \end{lstlisting}
 \caption{Associating an Annotation with a Port in the ComponentController}
@@ -830,16 +717,10 @@ Figure \ref{figure:ComponentControllerAttachment} shows how an attachment relati
 \lstset{style=customjava}
 \begin{lstlisting}
 	@RequestMapping(value = "/attachPortToConnectorRole/{docId}/{portId}/{roleId}")
-	public RedirectView attachPortToRole(@PathVariable String docId,
-			@PathVariable String portId, @PathVariable String roleId) {
-		Port p = FenixFramework.getDomainObject(portId);
-		Role r = FenixFramework.getDomainObject(roleId);
-		attachPortToRole(p,r);
-		RedirectView rv = new RedirectView("/viewComponent/" + docId + "/"
-				+ p.getComponent().getExternalId() + "#" + p.getName());
-		return rv;
+	public RedirectView attachPortToRole(/*...*/) {
+		attachPortToRole(port,role);
+		//...
 	}
-	
 	@Atomic(mode=TxMode.WRITE)
 	private void attachPortToRole(Port p, Role r) {
 		p.setRole(r);
@@ -860,19 +741,10 @@ Similar to the other domain entities, a new View is created when the user wants 
 \lstset{style=customjava}
 \begin{lstlisting}
 	@RequestMapping(value = "/addNewView/{docId}/{annotationId}/Module Viewtype/{viewName}")
-	public RedirectView addNewModuleViewTypeView(@PathVariable String docId,
-			@PathVariable String annotationId, @PathVariable String viewName,
-			@RequestParam String move) {
-		Document d = FenixFramework.getDomainObject(docId);
-		addModuleViewtypeToDocument(d, viewName, "Module Viewtype");
-		RedirectView rv = new RedirectView();
-		if (move.equals("yes")) {
-			rv.setUrl("/moveAnnotationView/" + docId + "/" + annotationId);
-		} else {
-			rv.setUrl("/addAnnotationToViewTemplate/" + docId + "/"
-					+ annotationId);
-		}
-		return rv;
+	public RedirectView addNewModuleViewTypeView(/*...*/) {
+	
+		addModuleViewtypeToDocument(document, viewName, "Module Viewtype");
+		//...
 	}
 \end{lstlisting}
 \caption{Adding a new View in the ViewController}
@@ -881,30 +753,21 @@ Similar to the other domain entities, a new View is created when the user wants 
 
 As there are two possible viewtypes for the views added to the application, the ViewController distinguishes between two different templates when receiving a request to view the View's template: One for views from the Module Viewtype, to which only Modules can be added, and one for views from the Component \& Connector Viewtype, to which only Components and Connectors can be added. This distinction is done inside the method \textit{viewViewTemplate()} of the ViewController class. 
 
-Figure \ref{figure:ViewControllerViewTemplates} shows how the method checks the \textit{viewtype} attribute of a View object to add the correct attributes to the template model and return the correct template. The controller adds the existent Modules, Component and Connectors as template model attributes so the template can show them to the user who wants to add elements to a view. The set of existent Views is also added as attribute, to show in case the user wishes to move an annotation to other view. The UsedIds instance added as attribute is a class containing an empty \textit{List$<$String$>$}, which will be used to save the \textit{ids} of the elements selected to add to a view. 
-
+Figure \ref{figure:ViewControllerViewTemplates} shows how the method checks the \textit{viewtype} attribute of a View object to add the correct attributes to the template model and return the correct template.
 \begin{figure}[h]
 \lstset{style=customjava}
 \begin{lstlisting}
 	@RequestMapping(value = "/viewView/{docId}/{viewId}")
-	public String viewViewTemplate(Model m, @PathVariable String docId,
-			@PathVariable String viewId) {
-		m.addAttribute("docId", docId);
-		View v = FenixFramework.getDomainObject(viewId);
-		Document d = FenixFramework.getDomainObject(docId);
-		if(v.getViewtype().equals("Module Viewtype")) {
+	public String viewViewTemplate(/*...*/) {
+		//...
+		if(view.getViewtype().equals("Module Viewtype")) {
 			m.addAttribute("view", v);
 			m.addAttribute("views", d.getViewSet());
 			m.addAttribute("modules", d.getModuleSet());
 			m.addAttribute("used", new UsedIds());
 			return "viewMVTTemplate";
 		}else if(v.getViewtype().equals("Component & Connector Viewtype")) {
-			m.addAttribute("view", v);
-			m.addAttribute("views", d.getViewSet());
-			m.addAttribute("components", d.getComponentSet());
-			m.addAttribute("connectors", d.getConnectorSet());
-			m.addAttribute("used", new UsedIds());
-			return "viewCCTemplate";
+			//add components and connectors information
 		}
 		return null;
 	}	
@@ -912,28 +775,26 @@ Figure \ref{figure:ViewControllerViewTemplates} shows how the method checks the 
 \caption{Request to see a View's Template in the ViewController}
 \label{figure:ViewControllerViewTemplates}
 \end{figure}
-
+The controller adds the existent Modules, Component and Connectors as template model attributes so the template can show them to the user who wants to add elements to a view. The set of existent Views is also added as attribute, to show in case the user wishes to move an annotation to other view. The UsedIds instance added as attribute is a class containing an empty \textit{List$<$String$>$}, which will be used to save the \textit{ids} of the elements selected to add to a view. 
+ 
 After the user selects a set of Modules, Components or Connectors to add to a view, a request is sent to the ViewController, which handles the association of these elements with the respective view.
 
 Figure \ref{figure:ViewControllerAddModules} shows how Modules are associated with a View, but these methods are similar for the Components and Connectors. 
 \begin{figure}[h]
 \lstset{style=customjava}
 \begin{lstlisting}
-	@RequestMapping(value = "/addModulesToView/{docId}/{viewId}", method = RequestMethod.POST)
-	public RedirectView addModulesToView(@PathVariable String docId,
-			@PathVariable String viewId, @ModelAttribute UsedIds modules) {
-		View v = FenixFramework.getDomainObject(viewId);
-		if(v.getViewtype().equals("Module Viewtype")) {
+	@RequestMapping(value = "/addModulesToView/{docId}/{viewId}", 
+		method = RequestMethod.POST)
+	public RedirectView addModulesToView(/*...*/@ModelAttribute UsedIds modules) {
+		if(view.getViewtype().equals("Module Viewtype")) {
 			addModulesToView(v, modules);
 		}
-		RedirectView rv = new RedirectView("/viewView/" + docId + "/" + viewId);
-		return rv;
+		//...
 	}
 	@Atomic(mode = TxMode.WRITE)
 	private void addModulesToView(View v, UsedIds modules) {
 		for (String id : modules.getUsed()) {
-			Module m = FenixFramework.getDomainObject(id);
-			v.addModule(m);
+			//associate module with the view
 		}
 	}	
 \end{lstlisting}
@@ -944,130 +805,102 @@ A POST request is sent to \textit{/addModulesToView/\{docId\}/\{viewId\}}, conta
 
 \section{Views}
 \label{section:Views}
-This section describes how the information from the Model is displayed to the user. The developed application uses Thymeleaf\footnote{http://www.thymeleaf.org/}, a Java template engine for displaying dynamic templates. Tymeleaf can be fully integrated with the Spring Framework and in each template, it is possible to use the its syntax to access and display the Model Attributes added by the Controllers. 
+This section describes how the information from the Model is displayed to the user. The developed application uses Thymeleaf\footnote{http://www.thymeleaf.org/}, a Java template engine for displaying dynamic templates. Tymeleaf can be fully integrated with the Spring Framework and, in each template, it is possible to use the its syntax to access and display the Model Attributes added by the Controllers. 
 
-\subsection{Concepts Templates}
-It was developed an unique template for each of the main Concepts of the Domain Model: The View, Scenario, Module, Component and Connector.
-
-Each template displays the information about the concepts contained in the respective java objects, which were added as Model Attributes by the Controllers. They are roughly structured as follows:
-\begin{enumerate}
-\item Header with the concept name and type (if it is a Module, a Component, etc.). Figure \ref{figure:ScenarioTemplateName} shows how this is implemented in the template for the Scenarios, however the implementation in the other concept templates is very similar.
- 
+A great advantage of Thymeleaf is the possibility of defining template fragments, which are pieces of code that can be defined in a separate file and be included in any template as desired. One of the main uses of fragments for the developed application is the page header, which is included in all templates and contains a small menu and the logout link. Figure \ref{figure:viewsHeaderFragment} shows how a fragment is defined, in this case with the example of the header. Each fragment must have a unique name, which is ``headerFragment'' in this example. All html code of that fragment is then defined inside the \textit{section} tags.
 \begin{figure}[h]
 \lstset{style=customhtml}
 \begin{lstlisting}
-<div class="panel-heading">
-	<span id="scenarioName">
-		<b><span th:text="'Scenario for '
-			+${scenario.getQualityRequirement().getName()}+': '">
-		</span>
-		<span th:text="${scenario.getName()}"></span></b>
-	</span>
-	<!-- ... -->
-</div>	
+<section layout:fragment="headerFragment">
+	<nav class="navbar navbar-inverse" id="headernavbar">
+		Header definition here	
+	</nav>
+</section>
 \end{lstlisting}
-\caption{Header with the Scenario name and Quality Requirement in the Scenario Template}
-\label{figure:ScenarioTemplateName}
+\caption{Defining the Header fragment in Thymeleaf syntax}
+\label{figure:viewsHeaderFragment}
 \end{figure}
 
-The \textit{th:text} is a Thymeleaf attribute which sets the text of the HTML element to what is defined inside it. In this case, the attribute concatenates a piece of text with \textit{\$\{scenario. getQualityRequirement(). getName()\}}. The \textit{\$\{\}} syntax is used to access a variable, in this case the ``scenario'', which is a Java object added to the Model Attributes by the ScenarioController. This example accesses the Scenario's quality attribute and name to display.
-
-
-\item Annotations associated with the concept. Figure \ref{figure:ScenarioTemplateAnnotations} shows how Thymeleaf is used to iterate over the annotations associated with the scenario instance and display their information in the template.
+Including a predefined fragment in a template is as easy as Figure \ref{figure:viewsIncludeFragment} shows. Sending a request to \textit{/headerFragment} will retrieve the whole file where the fragment was defined, and by specifying the fragment name, the html code defined inside \textit{section} tags in the separate files will be included. This means that several fragments can be developed in one single file, and included individually in the templates by specifying their unique name.
 \begin{figure}[h]
 \lstset{style=customhtml}
 \begin{lstlisting}
-<div>
-	<ul class="list-group" style="margin-top:10px">
-		<li class="list-group-item" th:each=" ann : ${scenario.getJsonAnnotations()}">
-			<p> <b> Document Quote: </b> <i> <span th:text="'(...)' +
-			 ${ann.quote} + '(...)'"> </span> </i> </p>
-			<p> <b> Comment: </b> <span th:text="${ann.text}"> </span> </p>
-			<p> <b> Tag: </b> <span th:text="${ann.tag}"> </span> </p>
+<section layout:include="@{/headerFragment} :: headerFragment"></section>
+\end{lstlisting}
+\caption{Including a fragment in Thymeleaf syntax}
+\label{figure:viewsIncludeFragment}
+\end{figure}
+
+The result of including the header fragment in a template is shown in Figure \ref{figure:viewsHeaderLooks}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.4]{images/header}
+\caption{How the header looks when included in a template}
+\label{figure:viewsHeaderLooks}
+\end{figure}
+
+Another use for this Thymeleaf feature is in the templates defined for the main concepts - View, Scenario, Module, Component and Connector. Each of these templates are defined in separate \textit{$<$section$>$} tags inside a file. This was done because there are other templates where the information about the concepts is included, and it is much easier to include a fragment containing the whole information than writing the code again. 
+
+For example, inside a View template, information about the Elements included in the View must be shown, which is simply a matter of including the template of each element. Other example of the usefulness of these fragments is when showing the structured representation of a document, which consists of showing all the templates of the concepts associated with it. Again, this is as simple as including all the necessary templates.
+
+Figure \ref{figure:viewScenarioTemplate} shows the Scenario template.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.3]{images/scenarioExample}
+\caption{Example of the Scenario Template}
+\label{figure:viewScenarioTemplate}
+\end{figure}
+The templates use the information added by the Controllers to the Model Attributes, as seen in Figure \ref{figure:documentControllerStructuredRepresentation} and display it in a structured way. The information added by the Controllers is actually Java objects retrieved from the Model. Thymeleaf allows to treat these attributes as Java objects, so it is possible to obtain the value of the class attributes, or call methods on that object. 
+
+For example, to obtain the Scenario title including the Quality Requirement and the Scenario name as it can be seen in Figure \ref{figure:viewScenarioTemplate}, it is used the Thymeleaf syntax seen in Figure \ref{figure:viewsCallingMethods}. The \textit{\$\{\}} syntax allows to access the variables, and the \textit{th:text} attribute is in fact a Thymeleaf attribute which will set the text inside the \textit{span} tag to the result of the variable access done inside the quotes. As it shown, it is also possible to concatenate the values returned with other static text to obtain the desired results.
+\begin{figure}[h]
+\lstset{style=customhtml}
+\begin{lstlisting}
+<span th:text="'Scenario for '+${scenario.getQualityRequirement().getName()}+': '">
+</span> 
+<span th:text="${scenario.getName()}"></span>
+\end{lstlisting}
+\caption{How Thymeleaf accesses variables}
+\label{figure:viewsCallingMethods}
+\end{figure}
+
+Thymeleaf also provides automatic binding of forms information to provided objects. For example, when a user wants to add Modules to a Module Viewtype View, a modal window is prompted, listing all the existent Modules associated with the respective Document, as it is shown in Figure \ref{figure:viewsModalFormExample}. The Modules are listed inside a form, with checkboxes that allow the user to select more than one Module to add. 
+
+\begin{figure}[h]
+\centering
+\includegraphics{images/modalExample}
+\caption{Example of a Modal window containing a form}
+\label{figure:viewsModalFormExample}
+\end{figure}
+
+In Figure \ref{figure:ViewControllerViewTemplates}, it is possible to see that the Controller creates and adds a new instance of the \textit{UsedIds} as a model attribute. This instance is used by Thymeleaf to bind the value of the selected checkboxes in the form to the \textit{List$<$String$>$} attribute of the class. Figure \ref{figure:viewFormBindingResult} shows how the form is created.
+\begin{figure}[h]
+\lstset{style=customhtml}
+\begin{lstlisting}
+<form action="#" th:action="@{/addModulesToView/}" method="post">
+	<ul>
+		<li th:each="module : ${modules}" th:object="${used}">
+			<input type="checkbox" th:field="*{used}" 
+				th:value="${module.getExternalId()}"></input>
+			<label th:text="${module.getName()}"></label>
 		</li>
 	</ul>
-</div>	
+</form>
 \end{lstlisting}
-\caption{Annotations represented in the Scenario Template}
-\label{figure:ScenarioTemplateAnnotations}
+\caption{Example of a form with object for binding results}
+\label{figure:viewFormBindingResult}
 \end{figure}
+A checkbox is added for each Module in the set. The \textit{th:object} attribute defines that the variable ``used'' is the object to which the results will be bound, and the \textit{th:field} attribute in the \textit{input} tag defines that the value of the checkbox, defined by the \textit{th:value} attribute, if it is chosen, must be bound to the field ``used'' of the class ``UsedIds'', which is the list of type String.
 
-\item Other information about the concept, if there is any. In the Module template, it is necessary to show the relations of that Module with other Modules. Figure \ref{figure:ModuleTemplateRelation} shows how this Module information is implemented for the ``Is-Part-Of'' relation. As a Module can only have a ``Is-Part-Of'' relation with one other Module, there is a verification if the relation already exists. If it does not, a link to open a modal window is available in the template. This modal window will list the other Modules available and allow the user to select one of them to be associated.
-\begin{figure}[h]
-\lstset{style=customhtml}
-\begin{lstlisting}
-<p>
-	<span class="h4">
-		Is-Part-Of:
-	</span>
-	<a href="#" data-toggle="modal" th:if="${module.getParent() == null}>
-		<span data-toggle="tooltip" title="Add Parent"></span>
-	</a>
-	<section layout:include="@{/setParentModal} :: setParentModal" 
-		th:if="${module.getParent() == null}></section>
-		
-	<div th:if="${module.getParent() != null}" 
-		th:with="parent=${module.getParent()}">
-		<a href="# th:href="@{/viewModule/} th:text="${parent.getName()}">
-		</a>
-		<a href="#" th:href="@{/removeModuleParent/}>
-			<small>x</small>
-		</a>
-	</div>  
-</p>	
-\end{lstlisting}
-\caption{Representation of the ``Is-Part-Of'' relation in the Module Template}
-\label{figure:ModuleTemplateRelation}
-\end{figure}
+When the form is submitted, Thymeleaf will add the selected values to the list, and send the object in the body of the POST request to the Controller, which will process them as seen in Figure \ref{figure:ViewControllerAddModules}.
+					
+					
 
 
-\item Concept's description text, if existent, and tools for adding or editing this text. Figure \ref{figure:ScenarioTemplateDescriptionText} shows how the text and the editor are represented in the Scenario Template. The editor is inside a collapsible \textit{$<$div$>$}, which is initially hidden but can be toggled by clicking the ``Add/Edit Text'' link.
 
-When the user clicks the ``Submit'' button, the added/edited text is retrieved from the \textit{textarea} element using javascript. To note that it is possible to add inline thymeleaf expressions to javascript code. The retrieved text is sent in an Ajax POST request to the respective Controller. When the request is finished, the window is reloaded to show the updated text.
-\begin{figure}[h]
-\lstset{style=customhtml}
-\begin{lstlisting}
-<div id="EditText">
-	<a href="#toggleEditor" data-toggle="collapse"> 
-		<span data-toggle="tooltip" data-original-title="Add/Edit Text">
-		</span>
-	</a>
-	<div th:id="'textViewer'+${element.getExternalId()}" 
-		th:text="${element.getText()}">
-	</div>
-	<div class="collapse">
-		<textarea  th:id="'text'+${element.getExternalId()}" 
-			th:text="${element.getText()}"></textarea>
-		<button th:id="'submitText'+${element.getExternalId()}" type="submit">
-			Submit
-		</button>
-	</div>
-</div>
-	
-<script type="text/javascript" th:inline="javascript">
-	$("#submitText"+/*[[${element.getExternalId()}]]*/).click(function(){
-		var elemtext = document.getElementById("text"
-				+/*[[${element.getExternalId()}]]*/).value;
-		var ident = /*[[${element.getIdentifier()}]]*/;
-		var loc = /*[[@{/setScenarioText/} + ${docId} 
-				+ '/'+${element.getExternalId()}]]*/;
-		var content = {text: elemtext}
-		$.ajax(loc,{
-			method: "POST",
-			data: content
-		}).done(function(data, textStatus, jqXHR){
-			window.location.hash="#"+ident;
-			window.location.reload(true);
-		});
-	});
-</script>		
-\end{lstlisting}
-\caption{Description text display and edition tools in the Scenario Template}
-\label{figure:ScenarioTemplateDescriptionText}
-\end{figure}
 
-\item 
-\end{enumerate} 
+
 
 
 
