@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2015.4.6)  7 OCT 2015 19:17
+This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2015.4.6)  10 OCT 2015 13:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -485,6 +485,10 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \tymax=\dimen143
 \TY@tablewidth=\dimen144
 )
+(/usr/share/texlive/texmf-dist/tex/latex/pgfplots/pgfplots.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
+Package: pgfplots 2013/10/03 v1.9 Data Visualization (1.9)
+
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
@@ -747,6 +751,144 @@ File: pgfmodulematrix.code.tex 2010/08/24  (rcs-revision 1.4)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v2.10 (rcs-revision 1.2)
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
+\t@pgfplots@toka=\toks44
+\t@pgfplots@tokb=\toks45
+\t@pgfplots@tokc=\toks46
+\pgfplots@tmpa=\dimen188
+\c@pgfplots@coordindex=\count164
+\c@pgfplots@scanlineindex=\count165
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code
+.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_loader.code.tex
+Package pgfplots: loading complementary code for your PGF version...
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_misc.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks47
+\pgfkeys@temptoks=\toks48
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_pgfkeysfiltered.code.tex
+\pgfkeys@tmptoks=\toks49
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count166
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2012/09/11 v2.10 (rcs-revision 1.17)
+\pgf@plot@mark@count=\count167
+\pgfplotmarksize=\dimen189
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_pgflibraryfpu.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2012/11/30  (rcs-revision 1.38)
+\pgfpic=\box42
+\pgf@hbox=\box43
+\pgf@layerbox@main=\box44
+\pgf@picture@serial@count=\count168
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldp
+gfsupp_pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2012/11/07  (rcs-revision 1.5)
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotslists
+tructure.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotslists
+tructureext.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray
+.code.tex
+\c@pgfplotsarray@tmp=\count169
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatri
+x.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshare
+d.code.tex
+\c@pgfplotstable@counta=\count170
+\t@pgfplotstable@a=\toks50
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.code.te
+x
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.data.co
+de.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.sur
+fshading.code.tex
+\c@pgfplotslibrarysurf@no=\count171
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surf
+shading.pgfsys-pdftex.def)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.code.
+tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.code.tex
+))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.code.t
+ex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandler.cod
+e.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessing.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarydecorations.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.cod
+e.tex
+\pgfdecoratedcompleteddistance=\dimen190
+\pgfdecoratedremainingdistance=\dimen191
+\pgfdecoratedinputsegmentcompleteddistance=\dimen192
+\pgfdecoratedinputsegmentremainingdistance=\dimen193
+\pgf@decorate@distancetomove=\dimen194
+\pgf@decorate@repeatstate=\count172
+\pgfdecorationsegmentamplitude=\dimen195
+\pgfdecorationsegmentlength=\dimen196
+)
+\tikz@lib@dec@box=\box45
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarydecorations.pathmorphing.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
+decorations.pathmorphing.code.tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarydecorations.pathreplacing.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
+decorations.pathreplacing.code.tex))
+\pgfplots@numplots=\count173
+\pgfplots@xmin@reg=\dimen197
+\pgfplots@xmax@reg=\dimen198
+\pgfplots@ymin@reg=\dimen199
+\pgfplots@ymax@reg=\dimen200
+\pgfplots@zmin@reg=\dimen201
+\pgfplots@zmax@reg=\dimen202
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryplotmarks.code.tex
+File: tikzlibraryplotmarks.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.co
+de.tex
+File: pgflibraryplotmarks.code.tex 2010/10/15 v2.10 (rcs-revision 1.12)
 ))) (./pgf-umlcd.sty
 Package: pgf-umlcd 2011/10/01 v0.3dev Some LaTeX macros for UML Class Diagrams.
 
@@ -758,7 +900,7 @@ File: tikzlibraryarrows.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.
 tex
 File: pgflibraryarrows.code.tex 2008/10/27 v2.10 (rcs-revision 1.9)
-\arrowsize=\dimen188
+\arrowsize=\dimen203
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibraryshapes.multipart.code.tex
@@ -767,66 +909,64 @@ File: tikzlibraryshapes.multipart.code.tex 2008/01/09 v2.10 (rcs-revision 1.1)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshape
 s.multipart.code.tex
 File: pgflibraryshapes.multipart.code.tex 2010/01/07 v2.10 (rcs-revision 1.2)
-\pgfnodepartlowerbox=\box42
-\pgfnodeparttwobox=\box43
-\pgfnodepartthreebox=\box44
-\pgfnodepartfourbox=\box45
-\pgfnodeparttwentybox=\box46
-\pgfnodepartnineteenbox=\box47
-\pgfnodeparteighteenbox=\box48
-\pgfnodepartseventeenbox=\box49
-\pgfnodepartsixteenbox=\box50
-\pgfnodepartfifteenbox=\box51
-\pgfnodepartfourteenbox=\box52
-\pgfnodepartthirteenbox=\box53
-\pgfnodeparttwelvebox=\box54
-\pgfnodepartelevenbox=\box55
-\pgfnodeparttenbox=\box56
-\pgfnodepartninebox=\box57
-\pgfnodeparteightbox=\box58
-\pgfnodepartsevenbox=\box59
-\pgfnodepartsixbox=\box60
-\pgfnodepartfivebox=\box61
+\pgfnodepartlowerbox=\box46
+\pgfnodeparttwobox=\box47
+\pgfnodepartthreebox=\box48
+\pgfnodepartfourbox=\box49
+\pgfnodeparttwentybox=\box50
+\pgfnodepartnineteenbox=\box51
+\pgfnodeparteighteenbox=\box52
+\pgfnodepartseventeenbox=\box53
+\pgfnodepartsixteenbox=\box54
+\pgfnodepartfifteenbox=\box55
+\pgfnodepartfourteenbox=\box56
+\pgfnodepartthirteenbox=\box57
+\pgfnodeparttwelvebox=\box58
+\pgfnodepartelevenbox=\box59
+\pgfnodeparttenbox=\box60
+\pgfnodepartninebox=\box61
+\pgfnodeparteightbox=\box62
+\pgfnodepartsevenbox=\box63
+\pgfnodepartsixbox=\box64
+\pgfnodepartfivebox=\box65
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarybackgrounds.code.tex
 File: tikzlibrarybackgrounds.code.tex 2010/02/08 v2.10 (rcs-revision 1.2)
-\pgf@layerbox@background=\box62
-\pgf@layerboxsaved@background=\box63
+\pgf@layerbox@background=\box66
+\pgf@layerboxsaved@background=\box67
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibraryfit.code.tex
 File: tikzlibraryfit.code.tex 2008/06/21 v2.10 (rcs-revision 1.3)
 )
-\pgf@layerbox@background=\box64
-\pgf@layerboxsaved@background=\box65
-\pgf@layerbox@connectionlayers=\box66
-\pgf@layerboxsaved@connectionlayers=\box67
-\c@umlcdClassAttributesNum=\count164
-\c@umlcdClassOperationsNum=\count165
-\c@umlcdClassAbstractClassNum=\count166
-\c@umlcdClassInterfaceNum=\count167
-\c@umlcdClassSplitPartNum=\count168
+\pgf@layerbox@connectionlayers=\box68
+\pgf@layerboxsaved@connectionlayers=\box69
+\c@umlcdClassAttributesNum=\count174
+\c@umlcdClassOperationsNum=\count175
+\c@umlcdClassAbstractClassNum=\count176
+\c@umlcdClassInterfaceNum=\count177
+\c@umlcdClassSplitPartNum=\count178
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count169
-\lst@gtempboxa=\box68
-\lst@token=\toks44
-\lst@length=\count170
-\lst@currlwidth=\dimen189
-\lst@column=\count171
-\lst@pos=\count172
-\lst@lostspace=\dimen190
-\lst@width=\dimen191
-\lst@newlines=\count173
-\lst@lineno=\count174
-\lst@maxwidth=\dimen192
+\lst@mode=\count179
+\lst@gtempboxa=\box70
+\lst@token=\toks51
+\lst@length=\count180
+\lst@currlwidth=\dimen204
+\lst@column=\count181
+\lst@pos=\count182
+\lst@lostspace=\dimen205
+\lst@width=\dimen206
+\lst@newlines=\count183
+\lst@lineno=\count184
+\lst@maxwidth=\dimen207
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
-\c@lstnumber=\count175
-\lst@skipnumbers=\count176
-\lst@framebox=\box69
+\c@lstnumber=\count185
+\lst@skipnumbers=\count186
+\lst@framebox=\box71
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2013/08/26 1.5b listings configuration
@@ -836,40 +976,37 @@ Package: listings 2013/08/26 1.5b (Carsten Heinz)
 \openout5 = `dissertation.glo'.
 
 Package glossaries Info: Writing glossary file dissertation.glo on input line 5
-2.
+3.
 \glo@acronym@file=\write6
 \openout6 = `dissertation.acn'.
 
 Package glossaries Info: Writing glossary file dissertation.acn on input line 5
-2.
+3.
 
 (./glossary/glossary.tex) (./acronyms/acronyms.tex) (./dissertation.aux
 (./cover.aux) (./chapters/introduction.aux) (./chapters/problemDescription.aux)
 (./chapters/objectives.aux) (./chapters/relatedWork.aux)
 (./chapters/solutionProposal.aux) (./chapters/domainModel.aux)
-(./chapters/architecture.aux) (./chapters/implementation.aux
-
-LaTeX Warning: Label `section:model' multiply defined.
-
-) (./chapters/evaluation.aux) (./chapters/futureWork.aux)
+(./chapters/architecture.aux) (./chapters/implementation.aux)
+(./chapters/evaluation.aux) (./chapters/futureWork.aux)
 (./chapters/conclusion.aux))
 \openout1 = `dissertation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 75.
-LaTeX Font Info:    ... okay on input line 75.
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 75.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 76.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
@@ -910,17 +1047,17 @@ File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count177
-\scratchdimen=\dimen193
-\scratchbox=\box70
-\nofMPsegments=\count178
-\nofMParguments=\count179
-\everyMPshowfont=\toks45
-\MPscratchCnt=\count180
-\MPscratchDim=\dimen194
-\MPnumerator=\count181
-\makeMPintoPDFobject=\count182
-\everyMPtoPDFconversion=\toks46
+\scratchcounter=\count187
+\scratchdimen=\dimen208
+\scratchbox=\box72
+\nofMPsegments=\count188
+\nofMParguments=\count189
+\everyMPshowfont=\toks52
+\MPscratchCnt=\count190
+\MPscratchDim=\dimen209
+\MPnumerator=\count191
+\makeMPintoPDFobject=\count192
+\everyMPtoPDFconversion=\toks53
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -936,8 +1073,8 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box71
-Package hyperref Info: Link coloring OFF on input line 75.
+\AtBeginShipoutBox=\box73
+Package hyperref Info: Link coloring OFF on input line 76.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -945,11 +1082,11 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count183
+\c@section@level=\count193
 )
-LaTeX Info: Redefining \ref on input line 75.
-LaTeX Info: Redefining \pageref on input line 75.
-LaTeX Info: Redefining \nameref on input line 75.
+LaTeX Info: Redefining \ref on input line 76.
+LaTeX Info: Redefining \pageref on input line 76.
+LaTeX Info: Redefining \nameref on input line 76.
 
 (./dissertation.out) (./dissertation.out)
 \@outlinefile=\write7
@@ -960,12 +1097,18 @@ LaTeX Info: Redefining \nameref on input line 75.
 English.dict
 Dictionary: glossaries-dictionary, Language: English 
 ) ABD: EveryShipout initializing macros
-\c@lstlisting=\count184
- (./variables.tex)
+
+Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
+ick labels; missing features). Consider writing \pgfplotsset{compat=1.9} into y
+our preamble.
+ on input line 76.
+
+\c@lstlisting=\count194
+(./variables.tex)
 \openout2 = `cover.aux'.
 
-
-(./cover.tex <images/Logo_IST_color.jpg, id=195, 2128.95375pt x 853.1875pt>
+ (./cover.tex
+<images/Logo_IST_color.jpg, id=195, 2128.95375pt x 853.1875pt>
 File: images/Logo_IST_color.jpg Graphic file (type jpg)
 
 <use images/Logo_IST_color.jpg>
@@ -980,8 +1123,6 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <17.28> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 15.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 23.
-Missing character: There is no Ã in font phvr7t!
-Missing character: There is no ³ in font phvr7t!
 [1
 
 \openout3 = `dissertation.ist'.
@@ -997,7 +1138,7 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <24.88> not available
 
 ]
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 5.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 6.
 ) (./abstract/abstract-en.tex [3
 
 ]
@@ -1030,7 +1171,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.88 \listoftables
+l.89 \listoftables
                    [3] (./dissertation.lot)
 \tf@lot=\write9
 \openout9 = `dissertation.lot'.
@@ -1060,12 +1201,12 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <20.74> not available
 
  (./chapters/problemDescription.tex
 Chapter 2.
-LaTeX Font Info:    Try loading font information for OMS+phv on input line 13.
+LaTeX Font Info:    Try loading font information for OMS+phv on input line 14.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsphv.fd
 File: omsphv.fd 
 )
 LaTeX Font Info:    Font shape `OMS/phv/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 13.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 14.
 ) [8
 
 
@@ -1295,21 +1436,21 @@ Overfull \hbox (13.96628pt too wide) in paragraph at lines 743--744
 [47]
 LaTeX Font Info:    Font shape `OMS/phv/m/it' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 804.
- [48] <images/header.png, id=1283, 1020.06094pt x 52.69687pt>
+ [48] <images/header.png, id=1284, 1020.06094pt x 52.69687pt>
 File: images/header.png Graphic file (type png)
 
 <use images/header.png>
 Package pdftex.def Info: images/header.png used on input line 838.
 (pdftex.def)             Requested size: 408.01715pt x 21.07837pt.
 
-<images/scenarioExample.png, id=1285, 1371.1225pt x 770.88pt>
+<images/scenarioExample.png, id=1286, 1371.1225pt x 770.88pt>
 File: images/scenarioExample.png Graphic file (type png)
 
 <use images/scenarioExample.png>
 Package pdftex.def Info: images/scenarioExample.png used on input line 850.
 (pdftex.def)             Requested size: 411.33992pt x 231.26578pt.
  [49 <./images/header.png> <./images/scenarioExample.png>] <images/modalExample
-.png, id=1297, 249.18094pt x 112.16907pt>
+.png, id=1298, 249.18094pt x 112.16907pt>
 File: images/modalExample.png Graphic file (type png)
 
 <use images/modalExample.png>
@@ -1325,12 +1466,12 @@ Chapter 9.
 
 
 
-]
+] [52]
 \openout2 = `chapters/futureWork.aux'.
 
  (./chapters/futureWork.tex
 Chapter 10.
-) [52
+) [53
 
 
 
@@ -1339,47 +1480,43 @@ Chapter 10.
 
  (./chapters/conclusion.tex
 Chapter 11.
-) [53
+) [54
 
 
 
-]) (./dissertation.bbl [54
+]) (./dissertation.bbl [55
 
 
-] [55]
+] [56]
 Underfull \hbox (badness 10000) in paragraph at lines 170--173
 []\OT1/phv/m/n/10 T. Coates, ``Two cul-tures of faux-onomies col-lide,'' \OT1/p
 hv/m/sl/10 http://www. plas-ticbag.
  []
 
-[56])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 106.
- [57]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 106.
+[57])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 107.
+ [58]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 107.
  (./dissertation.aux (./cover.aux) (./chapters/introduction.aux)
 (./chapters/problemDescription.aux) (./chapters/objectives.aux)
 (./chapters/relatedWork.aux) (./chapters/solutionProposal.aux)
 (./chapters/domainModel.aux) (./chapters/architecture.aux)
 (./chapters/implementation.aux) (./chapters/evaluation.aux)
 (./chapters/futureWork.aux) (./chapters/conclusion.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 106.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 106.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 107.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 107.
 Package rerunfilecheck Info: File `dissertation.out' has not changed.
 (rerunfilecheck)             Checksum: B52D18BECE9146AA052548DB2E778B7E;2957.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 106.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 107.
  ) 
 Here is how much of TeX's memory you used:
- 22718 strings out of 495034
- 395891 string characters out of 6181678
- 636684 words of memory out of 5000000
- 24623 multiletter control sequences out of 15000+600000
+ 30499 strings out of 495034
+ 644295 string characters out of 6181678
+ 922657 words of memory out of 5000000
+ 32255 multiletter control sequences out of 15000+600000
  31076 words of font info for 55 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 56i,13n,94p,1718b,1401s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 63i,13n,94p,1718b,1891s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.4} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -1395,14 +1532,15 @@ pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
-/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uh
-vr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on dissertation.pdf (61 pages, 452333 bytes).
+nts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvet
+ic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on dissertation.pdf (62 pages, 464075 bytes).
 PDF statistics:
- 1524 PDF objects out of 1728 (max. 8388607)
- 1435 compressed objects within 15 object streams
- 700 named destinations out of 1000 (max. 500000)
+ 1534 PDF objects out of 1728 (max. 8388607)
+ 1443 compressed objects within 15 object streams
+ 701 named destinations out of 1000 (max. 500000)
  409 words of extra memory for PDF output out of 10000 (max. 10000000)
 
