@@ -10,8 +10,8 @@
 \BOOKMARK [2][-]{subsection.4.2.4}{Recognition \(REC\)}{section.4.2}% 10
 \BOOKMARK [1][-]{section.4.3}{Roles in Social Networks}{chapter.4}% 11
 \BOOKMARK [1][-]{section.4.4}{Reputation Systems}{chapter.4}% 12
-\BOOKMARK [2][-]{subsection.4.4.1}{Motivation:}{section.4.4}% 13
-\BOOKMARK [2][-]{subsection.4.4.2}{Requirements and Features:}{section.4.4}% 14
+\BOOKMARK [2][-]{subsection.4.4.1}{Motivation for Reputation Systems:}{section.4.4}% 13
+\BOOKMARK [2][-]{subsection.4.4.2}{Requirements and Features of a Reputation System:}{section.4.4}% 14
 \BOOKMARK [2][-]{subsection.4.4.3}{Components of a Reputation System}{section.4.4}% 15
 \BOOKMARK [1][-]{section.4.5}{Collaborative Tagging}{chapter.4}% 16
 \BOOKMARK [1][-]{section.4.6}{Semi-Structured Content}{chapter.4}% 17
@@ -44,4 +44,7 @@
 \BOOKMARK [1][-]{section.8.3}{Views}{chapter.8}% 44
 \BOOKMARK [0][-]{chapter.9}{Evaluation}{}% 45
 \BOOKMARK [0][-]{chapter.10}{Future Work}{}% 46
-\BOOKMARK [0][-]{chapter.11}{Conclusion}{}% 47
+\BOOKMARK [1][-]{section.10.1}{Allocation Viewtype}{chapter.10}% 47
+\BOOKMARK [1][-]{section.10.2}{Graphical Representation of Views}{chapter.10}% 48
+\BOOKMARK [1][-]{section.10.3}{Social Elements}{chapter.10}% 49
+\BOOKMARK [0][-]{chapter.11}{Conclusion}{}% 50
