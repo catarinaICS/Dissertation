@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: resumo.aux
+The style file: plain.bst
+Database file #1: mybib.bib
+Warning--empty journal in liu2010evaluation
+Warning--empty journal in nadel1957theory
+You've used 38 entries,
+            2118 wiz_defined-function locations,
+            718 strings with 10733 characters,
+and the built_in function-call counts, 13511 in all, are:
+= -- 1393
+> -- 560
+< -- 12
++ -- 228
+- -- 182
+* -- 908
+:= -- 2175
+add.period$ -- 125
+call.type$ -- 38
+change.case$ -- 201
+chr.to.int$ -- 0
+cite$ -- 40
+duplicate$ -- 540
+empty$ -- 1083
+format.name$ -- 182
+if$ -- 2894
+int.to.chr$ -- 0
+int.to.str$ -- 38
+missing$ -- 38
+newline$ -- 192
+num.names$ -- 76
+pop$ -- 208
+preamble$ -- 1
+purify$ -- 166
+quote$ -- 0
+skip$ -- 393
+stack$ -- 0
+substring$ -- 927
+swap$ -- 142
+text.length$ -- 12
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 148
+warning$ -- 2
+while$ -- 144
+width$ -- 40
+write$ -- 423
+(There were 2 warnings)

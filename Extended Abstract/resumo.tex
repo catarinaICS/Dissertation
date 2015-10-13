@@ -1,0 +1,1742 @@
+	% This is based on the LLNCS.DEM the demonstration file of
+% the LaTeX macro package from Springer-Verlag
+% for Lecture Notes in Computer Science,
+% version 2.4 for LaTeX2e as of 16. April 2010
+%
+% See http://www.springer.com/computer/lncs/lncs+authors?SGWID=0-40209-0-0-0
+% for the full guidelines.
+%
+\documentclass{llncs}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{tabulary}
+%\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage[simplified]{pgf-umlcd}
+\usepackage{listings}
+\usepackage{array}
+\pgfplotsset{compat=1.12}
+\graphicspath{ {images/} }
+\lstdefinestyle{customhtml}{
+  language=HTML,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+  tabsize=2
+}
+
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+\definecolor{javaStringBlue}{rgb}{0.1647,0,1}
+
+\lstdefinestyle{customjava}{
+language=Java,
+basicstyle=\footnotesize\ttfamily,
+keywordstyle=\color{javapurple}\bfseries,
+stringstyle=\color{javaStringBlue},
+commentstyle=\color{javagreen},
+morecomment=[s][\color{javadocblue}]{/**}{*/},
+tabsize=4,
+showspaces=false,
+showstringspaces=false
+}
+
+\begin{document}
+
+\title{Collaborative Platform for Analysis of Software Systems}
+%
+\titlerunning{Collaborative Platform}  % abbreviated title (for running head)
+%                                     also used for the TOC unless
+%                                     \toctitle is used
+%
+\author{Catarina Isabel Carvalho Santana}
+%
+\authorrunning{Catarina Santana} % abbreviated author list (for running head)
+%
+%%%% list of authors for the TOC (use if author list has to be modified)
+\tocauthor{Catarina Santana}
+%
+\institute{Instituto Superior T\'{e}cnico,\\
+\email{catarina.santana@tecnico.ulisboa.pt}}
+% * <catarinasantana_3@hotmail.com> 2014-12-11T16:24:19.200Z:
+%
+%  kandlksrn
+%
+
+\maketitle              % typeset the title of the contribution
+
+\begin{abstract}
+The Software Architectures course at Instituto Superior T\'{e}cnico teaches students the most important concepts on design and architecture of software systems and helps students to apply these concepts to real and complex software systems. Organizing knowledge and applying theory to practice is not an easy task, and students often need to ask questions and discuss. State-of-the-art on collaborative, social software and knowledge structuring was analyzed and a social platform was developed to help solving these problems.
+
+\keywords{social software, knowledge structuring, collaborative platform, reputation systems, tagging systems, ontology, taxonomy}
+\end{abstract}
+%
+\section{Introduction}
+\label{introduction}
+Analyzing and discussing big, real, open-source and highly complex software system is a very important part of the Software Architectures course at Instituto Superior T\'{e}cnico. In the course context, students must apply concepts and techniques for design and analysis of software architectures to descriptions of real systems. 
+
+However, applying these concepts and techniques is not a very easy task, and often students have questions and doubts regarding these descriptions. These questions sometimes require not only consulting the course bibliography, but also discussing with peers or asking questions to teachers. This thesis focuses on providing a solution for this problem with the use of social software and knowledge structuring strategies.
+
+This document is organized as follows: Section \ref{problemdescription} gives a more detailed description about the problem of applying theoretical concepts to practical examples in the context of the Software Architectures course. Section \ref{objectives} elicits the main goals of this thesis. Section \ref{relatedwork} presents the state-of-the-art in the areas of Social Software and Knowledge Structuring. Section \ref{solution} gives a small description of the developed solution. Sections \ref{domainModel}, \ref{architecture} and \ref{implementation} describe the solution domain model, architectural details and implementation. Finally, Section \ref{evaluation} will show the assessment of the developed solution and \ref{futureWork} will describe what can still be added to it.
+
+\section{Problem Description}
+\label{problemDescription}
+The course of Software Architectures teaches students the most important concepts in the field of software architectures and applies these concepts to real-life software systems.
+
+The practical component of this course (where the theory is applied) is done by analyzing documents/articles that describe the architectures of real-life systems and applying the concepts learned in theory lessons: extracting stakeholders, scenarios, tactics, views, etc.
+This analysis is either done by students with the help of the teacher, during practical classes, or in work groups of usually three students, that read, discuss and analyze software descriptions together and present their results to both the teacher and the rest of the class.
+
+Understanding the analysis done and how it was done is very important, since it means students can apply the concepts learned not only in the written exam to pass the course, but also in the future, in other real-life software systems.
+However, there are several issues regarding the application of theory concepts in this course:
+\begin{itemize}
+\item Each year, there are around one-hundred students signed in the course. All these students have roughly the same Computer Science background knowledge. However, not all students have the same maturity: while some may quickly understand what is taught in theory lessons, others may need some more time to assimilate what was taught.
+
+\item The output of the analysis done to software descriptions (the scenarios, etc. extracted) is not available in a consistent way: the analysis done in class is available for students if they took their own notes, and the analysis done by groups is available if:
+\begin{enumerate}
+\item Students took notes of their colleagues' presentations 
+
+\item Groups share their presentation slides among them. Slides may include errors pointed out by the teacher, but not corrected.
+
+\end{enumerate} 
+\item The case description is usually a fairly long document (from ten to twenty pages approximately). The task of carefully reading and understanding all the text and do a mapping between the concrete descriptions in the text and the abstract concepts learned in theory classes is not easy, as the parts of the text that map to concepts are not always evident.
+\item The architectural elements extracted from a single software description are usually scattered along the whole text, and it is not evident the connection between all the elements.
+\end{itemize}
+
+\section{Objectives}
+\label{objectives}
+To solve the problems mentioned in Section \ref{problemdescription}, a collaborative platform was planned and developed, where students and teachers collaborate in the analysis and synthesis of the case descriptions, ending on a structured representation of the case descriptions, that is hooked on the concrete description. 
+
+The goal of the platform is to provide ways for annotating the text on the case descriptions, which will help students organizing their thoughts and creating the structure, and use elements of social software, as a way of promoting collaboration, mutual aid, learning and even some competition between students.
+ 
+The existence of this collaborative should provide not only a way for students to discuss, ask questions and consolidate their knowledge, but also a unique place where their study materials are stored and organized, facilitating their studies.
+
+\section{Related Work}
+\label{relatedWork}
+The platform to develop can be thought of a social software, where different people communicate and collaborate to provide a structured representation of a software description.
+The next sections provide an overview on the state-of-the-art of two main aspects:
+\begin{itemize}
+\item \textbf{Collaborative work}, presenting the state-of-the-art on social and collaborative aspects of software. This includes literature on:
+	\begin{itemize}
+		\item The Honeycomb Framework, a framework that generalizes the most important components of social software;
+		\item Persuasive Software, systems that have impact on users behavior and thoughts, which is the case of the platform to develop;
+		\item Roles in Social Networks, describing the types of users of social software;
+		\item Reputation Systems, which is the attribution of scores to users to provide a motivational component on the platform.
+	\end{itemize}
+	
+\item \textbf{Knowledge Structuring}, presenting the state-of-the-art on ways of structuring information. This includes literature on:
+	\begin{itemize}
+		\item Collaborative tagging systems, which consists of assigning keywords to documents or parts of documents;
+		\item Semi-structured content, which consists of providing a way for structuring knowledge without such strict rules as, for example, an ontology or a taxonomy;
+		\item Ontology Learning, extracting knowledge from text.
+	\end{itemize} 
+\end{itemize}
+
+
+\subsection{Honeycomb Framework}
+The definition of Social Software as ``systems that allow people, in their particularities and diversity, to communicate (interact, collaborate, exchange ideas and information) mediating and facilitating any kind of social relationship and favoring the emergence of a collective wisdom and a bottom-up organization'' \cite{pereira2010social} applies to our collaborative platform, in the sense that it should allow a large number of students, with different personalities and opinions, to ask questions to their colleagues, give opinions, receive feedback, etc, in order to correctly identify the architectural elements in a description of a software system, and therefore reach a complete and correct analysis of that system. 
+
+The Honeycomb Framework was proposed to illustrate the seven elements that give a functional definition for social software \cite{smith2007social}: \textbf{Identity}, the unique identifier of a user within the system; \textbf{Presence}, resources that allow knowing if certain identity is online; \textbf{Relationship}, way to determine how users can relate/are related to others; \textbf{Reputation}, way of knowing the status of a user in the system; \textbf{Groups}, possibility to form communities of users that have common interests; \textbf{Conversation}, resources for communication among the users (synchronous and/or asynchronous); \textbf{Sharing}, possibility of sharing objects that are important to the users (videos, images, etc);
+
+The Identity appears at the center of the framework, because it is the most basic requirement of any social system.
+In the platform to develop the following elements could be identifiable:
+\textbf{Identity:} Each student is a unique person and, therefore, must have a unique identification inside the platform.
+\textbf{Reputation:} To assess the quality and relevance of the participations in the platform, a reputation system should be used, as discussed in \ref{repsys}.
+\textbf{Groups:} Students have to perform group assignments for the Software Architectures course. The notion of these work groups with a restricted set of people should be present in the platform.
+\textbf{Relationship:} There is already an implicit relationship in the platform, as all students are colleagues of each others. But there is a specialization of this relationship, for students inside the work group. The teachers will also be members of the platform, and the relationship student-professor must always be present as well: a student does not have the same kind of interactions he has with a colleague when interacting with a teacher.
+\textbf{Conversation:} The existence of discussions around elements to add/already added to the platform provides a way of communication between the users.
+\textbf{Sharing:} Within the discussions around elements, it should be possible to share different kinds of objects (articles, links, etc) that may be helpful to understand or complement what is being discussed. There should be two levels of sharing: the Group level, where shares objects are only available for the work group, and a General level, where objects are shared with everyone.
+\textbf{Presence:} Considering that all communications are asynchronous, the notion of presence is not strictly necessary in the platform, but could be added, as a feature, a visible list of people logged in the platform.
+
+\subsection{Persuasive Software Design Patterns}
+The term ``persuasive technology'' is used to describe computer systems that have an impact on user's thoughts and may even lead to changes in their behavior \cite{fogg2002persuasive,oinas2009persuasive}.
+
+There are three different possible outcomes for a persuasive system: \textbf{Reinforcement}, making current attitudes resistant to change, \textbf{Changing Outcome }, changes in a person's response to an issue, and \textbf{Shaping Outcome}, formulate a pattern for a situation where one did not exist before \cite{oinas2008towards};
+
+Even though the students are familiar with some of the terms used in the course context, new terms are introduced. This platform is persuasive in the sense that it must change the way its users will look at a description of a Software System: reading is not enough, it is necessary to relate what is read with the terms and concepts learned in the classes.
+The most important outcome for this platform is the Changing Outcome: When a description of a system is presented, the students most not only read it, but also relate it to the concepts learned and use the platform to try and extract the correct scenarios and views from it.
+
+The concept of social influence describes a change in one's behavior (or attitudes or beliefs), caused by external pressures \cite{guadagno2010preference}. In our context, we want the students to contribute to the platform, by adding new elements (scenarios, views), discussing the elements added by their colleagues, or asking/answering questions. 
+The platform should provide a way to do this, by allowing insertion and edition of new elements to the conceptual structure, done by any student, Comments (and responses to comments) on an element inserted, Discussion Forums and Q\&A systems.
+
+Some students may start contributing to the platform right away, while others will not initially feel compelled to do that. However, as one's actions are somehow influenced by other people, they may start contributing as they see their friends and colleagues doing so.
+
+Four design patterns are proposed for persuasive systems, in order to introduce social influence in software features: Social Learning and Facilitation (SLF), Competition (COM), Cooperation (COO) and Recognition (REC) \cite{oduor2014persuasive}. 
+
+\subsection{Social Learning and Facilitation (SLF):}
+
+The Social Learning and Facilitation pattern has the main purpose of enabling and enhancing the design of software features that allow to visualize the presence of other people, with the motivation that it is easier for individuals to pursue their goals if there is a clear awareness of other people pursuing the same goal and facing the same issues \cite{oduor2014persuasive}. 
+
+In the context of our collaborative platform, it is necessary to persuade the students to add contributions as they may not feel confident enough to do so at first. The platform should provide a way to visualize recent contributions - as students see their colleagues contributing towards the same goal, they may want to add their own.
+
+\subsection{Competition (COM):}
+The Competition pattern has the main purpose of using competitive elements, such as ranks, scores and levels, that allow users to compare their performance with others, and adjust their target goals based on these. However, as some people might see competition as a motivational factor for improvement, other people may see it as a source of anxiety – therefore, participation in a competition must always be voluntary \cite{oduor2014persuasive}.
+
+Adding a score for each student and a rank hierarchy based on the range of scores will start a hopefully healthy competition between them. Each contribution should have a positive score, even when it is less correct, as trying and failing is also a way of learning. Anonimity should be an option in the platform, as even this kind of competition, that is supposed to be healthy and motivating, can be a source of anxiety for some people.
+
+\subsection{Cooperation (COO)}
+The Cooperation pattern has the main purpose of providing software features that allow users to engage in mutual goals and provide ways for them, supporting each other in reaching their goals. The motivation for this pattern is that it is easier to cooperate if there is a clear awareness of what needs to be done, what other people are doing, and how far they are in achieving their goals. Group discussion supports these needs and encourages giving and receiving support on the matter. However, some people prefer to perform alone, and therefore cooperation must not be forced \cite{oduor2014persuasive}. 
+
+The students that will use this platform will be working towards a main goal: correctly understanding and correlating what was learned in the Software Architectures classes with real examples of software systems. But concerning the analysis of a single software system, there are several concepts and structures to identify on a single description. Students may be having some trouble identifying these elements, and therefore the system could provide a way of defining goals. A goal, for example, could be ``Add a new scenario for Availability''. Discussions around goals would promote cooperation between students
+
+\subsection{Recognition (REC)}
+
+The Recognition pattern has the purpose of providing software features that enable users to get recognition from their peers. The motivation for this pattern is that users, when working towards a goal, they sometimes need a reason to focus on that same goal. Having their efforts recognized may be a good reason to keep the good work, and therefore systems should provide opportunities for public recognition of top achievers \cite{oduor2014persuasive}. 
+
+Since the system should have a score system, it could be used as a way of creating a weekly spotlight: by keeping track of the amount of points scored by each student along the week, the list of the Top 10 students with most points gathered in that week should be visible. Recognition is then achieved when students see their names in the spotlight.
+
+\subsection{Roles in Social Networks}
+A \textit{role}, in a social structure, is a set of expectations for an individual in a certain position. For example, the role of ``secretary'' is associated to what secretaries are expected to do \cite{forestier2012roles,nadel1957theory}.
+There are two categories of roles: \textit{Non-explicit roles}, which are not defined a-priori, and \textit{Explicit roles}, which are predefined types of actors in the social network, such as ``experts'' or ``influencers''.
+
+Methodologies for inferring \textit{non-explicit} roles analyze the structure of the social network and communications between users, in order to identify patterns in communication that allow the identification of roles. Common approaches are based on blockmodels \cite{borgatti1993two,breiger1975algorithm} and probabilistic bayesian models \cite{steyvers2004probabilistic,mccallum2007topic,daud2009generalized}.
+
+In the platform to develop, it is possible to define a priori the two main roles:
+\begin{itemize}
+\item Student: the most active users in the platform. Their contributions to the platform include tagging parts of the document, adding and editing parts of the semi-structure, asking and answering questions and rate other students' contributions.
+
+\item Teacher: this role is assigned to a very small number of users in the platform. Their number of contributions is smaller and they are mostly for adding correction to the contents added by the students to the platform..
+\end{itemize}
+
+The methodologies for identification of explicit roles in a social network \cite{zhang2007expertise,agarwal2008identifying} have in consideration social networks around the web, with hundreds or even thousands of users and where the roles cannot be easily assigned. Given the small amount of users expected in the platform, the roles of Student and Teacher will be assigned in the moment of registration, and there is no need for this methodologies.
+
+\subsection{Reputation Systems}
+\label{repsys}
+Reputation systems are of extreme importance for certain kinds of applications, namely e-commerce websites (Amazon, eBay, etc.). In these websites, buyers and sellers execute money transactions and therefore, the reputation of a seller will denote the degree of trust that possible buyers will have in them \cite{vavilis2014reference}.
+
+For the platform to develop, reputation does not play such an important role, but will add a motivational component to the platform: Students rate their colleagues' contributions, and their reputation score is calculated. Students should strive for getting and keeping a high reputation score.
+
+\subsubsection{Motivation:}
+
+A study was conducted \cite{dencheva2011dynamic}, concerning the lack of participation in Moknowpedia, a Wiki system: People were not motivated enough to overcome obstacles such as lack of time or lack of a structure for the article and start contributing to the wiki. A reputation system was added to the wiki in order to solve these problems and improve both content quality and quantity\cite{prause2008approach}. 
+
+Results show an increase of 62\% in the number of article revisions and an increase of 42\% in the number of viewed articles. Overall, the users accessed the wiki more often, read more articles and made more contributions. This shows the importance of a reputation system in a collaborative system, even if its role is only motivational.
+	
+\subsubsection{Requirements and Features:}
+
+A framework for analysis of reputation systems is proposed in \cite{vavilis2014reference}, where the general requirements for reputation systems are elicited and the corresponding features needed for their fulfillment. Given the context of the platform, the following requirements apply for its reputation system:
+
+\textbf{R1 (Ratings should discriminate user behavior)} and \textbf{R2 (Reputation should discriminate user behavior): } The rating is the score that a student assigns to a participation from other student, and the reputation score is the score assigned to a student after processing all ratings assigned. These scores should have a range of values that allows to identify students with very few and/or less relevant contributions and students with many and/or very relevant ones.
+
+\textbf{R3 (The reputation system should be able to discriminate ``incorrect'' ratings): } Malicious users are present everywhere. Intentionally inaccurate ratings can be given to contributions, in order to increase or decrease a user's reputation score. Therefore, some management for this kind of situations should be present in the platform.
+
+\textbf{R11 (Users should not be able to directly modify ratings)}, \textbf{R12 (Users should not be able to directly modify reputation values)} and \textbf{R13 (Users should not be responsible to directly calculate their own reputation): } When being processed, data should not be accessible to users. The reputation score of a student should be calculated by the system and neither this value, nor the values of the ratings attributed should be modifiable by the users.
+
+To satisfy the identified requirements, the reputation system should implement the following features:
+
+\textbf{F1 (Trust/Distrust):} A range of values should be used, where the lowest value represents, as said above, a student with very few and/or less relevant contributions, and the highest value represents a student with many and/or very relevant ones. 
+
+\textbf{F2 (Absolute Reputation Values):} The reputation score of a student should not be calculated with respect to another students. Scores should be absolute and calculated independently for each user by the reputation system.
+
+\textbf{F3 (Origin/Target):} To prevent students from self-rating themselves and to control malicious ratings (for example, a student with a lower reputation score could assign lower ratings to their colleagues' participation in order to lower their scores), the origin and the target (students) of each rating given should be identified in the system.
+
+\subsubsection{Components of a Reputation System}
+In \cite{liu2012systematic,liu2010evaluation}, reputation systems are divided in four components: \textbf{Input}, the process of collecting reputation information from information sources, \textbf{Processing}, the procedure of computing and aggregating the reputation information, \textbf{Output}, the dissemination of the reputation information and the \textbf{Feedback Loop}, the collection of feedback of the output (review of the review), which does not apply to the context of the platform.
+A set of evaluation criteria is defined for the evaluation of these components.
+
+Concerning \textbf{Input}, the following criteria apply to the platform:
+\textbf{Collection channel: }The collection channel is the way how a reputation system collects information. In this platform ratings are left directly in the platform.
+
+\textbf{Information Source: }The evaluators that provide the ratings to the system. The information source in this context are the students logged in the platform. Only registered students can assign ratings and there are no restrictions, every student can evaluate their colleagues.
+
+\textbf{Reputation Information: }The information collected is a single property, the rating assigned. The ratings are chosen from a rating scale, which provides a range of possible scores.
+
+\textbf{Collection Costs: }The time cost of collecting and processing a single rating. Since the reputation system is small and not a very relevant part of the whole platform, the time costs for collecting and processing ratings are not relevant.
+
+\textbf{Processing:}
+Concerning the Processing component, a set of criteria is defined for its evaluation \cite{liu2012systematic}, from which the following applies to the platform:
+\begin{itemize}
+\item \textit{Target rating algorithm}: The algorithm used to aggregate the ratings assigned to students. Given the simplicity of the reputation system to develop, a weighted average algorithm is the algorithm that fits best for the context.
+\item \textit{Update Frequency}: how often the system updates the reputation information. Again, give the simplicity and the small amount of users, information should be updated as soon as the ratings are assigned. 
+\item \textit{Algorithm complexity}: refers to the complexity of each algorithm. The weighted average algorithm is a very simple algorithm, with low complexity.
+\item \textit{System complexity}: refers to the complexity of the whole system. The reputation system to develop is, as mentioned before, very simple and therefore has very low complexity.
+\end{itemize}
+
+\textbf{Output:}
+Concerning the Output component, there is also a set of defined criteria \cite{liu2012systematic} for both the reporting and dissemination of reputation information
+For dissemination, the following criteria apply:
+\begin{itemize}
+\item \textbf{O1} (Set of end users): this refers to the users who will be able to see the reputation scores. In this case, those users are the students registered in the platform.
+\item \textbf{O2} (Access methods): this criteria focuses on whether reputation systems provide alternative ways for users to get the reputation information other than the website. In this platform there is no need for an alternate dissemination of information, since reputation is a minor component of the whole platform. Therefore, no other access methods should be provided.
+\end{itemize}
+Concerning information reporting, two kinds of information are defined \cite{liu2012systematic}: Aggregated (the results of the Processing component) and Individual (all individual ratings)
+ 
+Reporting individual information does not add anything relevant to the context of the reputation system to develop, since only a single rating value is collected. Therefore, only the criteria for aggregated information applies:
+\begin{itemize}
+\item \textbf{O4} (Descriptive dimensions): this criteria identifies how many dimensions are used to illustrate the aggregated information. Only a single dimension is used, the weighted average of the ratings, calculated by the Processing component of the reputation system.
+\end{itemize}
+
+\subsection{Collaborative Tagging}
+Collaborative tagging is the practice of allowing anyone to freely attach keywords or tags to content \cite{golder2006usage}.
+
+While in some document repositories or digital libraries there is an authority responsible for assigning and organizing documents by keywords, in collaborative tagging anyone is able to freely attach keywords or tags to the contents. This is very useful when there is no authority for organizing content or simply there is too much content for a single authority to organize: It is the case of the web \cite{golder2006usage}.
+
+Tagging-based systems contrast with taxonomies: while taxonomies organize contents into unambiguous categories that are within more general categories, tagging is neither exclusive nor hierarchical, and therefore it alows to identify content as being about a great variety of things simultaneously \cite{golder2006usage}. 
+
+However, both these methods of organizing information have problems with the word semantics, namely polysemous words (a single word with many, related, senses), synonyms (multiple words with the same/closely related sense), and the basic level variation: different people consider different levels of specificity for describing the same entity for example, a person may describe a dog as 'dog' or as 'beagle') \cite{tanaka1991object}. 
+
+The tags added to content may describe the content itself, or describe the category in which the content falls \cite{coates2005two}. It is possible to identify several functions for the tags, within the system that uses the tagging system \cite{golder2006usage}.
+
+In this platform we are aiming for using tagging as a way of identifying the main parts of a software system within a software description, namely stakeholders, scenarios and their parts, tactics, etc. 
+
+For that, and to avoid problems of word semantics, tags added to the text of the description must belong to a closed taxonomy of Software Architecture terms, which will contain all terms necessary to describe an Architecture, organized hierarchically. 
+
+It will be possible to elicit relationships between tags in the text (for example, two tags X and Y added to two different parts of the text might have some kind of relationship like is-tactic-for-scenario(X,Y)), which will then facilitate the construction of semi-structured contents.
+
+
+\subsection{Semi-Structured Content}
+Knowledge can be obtained from many different resources, ranging from unstructured (for example, language models obtained from plain text) to structured ones (for example, ontologies) \cite{hovy2013collaboratively}.
+
+Unstructured resources are as simple as collections of text, images and other media contents. Thanks to the Web, it is possible to collect huge amounts of unstructured information such as raw text, which allowed major advances in the Natural Language Processing field. However, unstructured knowledge has its limitations: the resources do not provide all the knowledge necessary for complex inference chains \cite{domingos2007toward} and the information is not ontologized – not included within a semantic network of unambiguously defined concepts and their semantic relations \cite{hovy2013collaboratively}.
+
+Structured resources are machine-readable, and there are several kinds, such as Thesauri (collections of related terms), Taxonomies (hierarchically structured classification of terms) and Ontologies (knowledge model that includes concepts, relations between them and even axioms and rules). These kinds of resources provide information of the highest quality, since their contents were developed with the contribution of experts. However, they require a huge amount of effort in creating and maintaining them, which is very difficult and time-consuming. Also not all topics are covered by the experts, and information might even be slightly culturally-biased. And since these resources are manually annotated, it is hard to keep updating them and they might not contain the lexicalizations of the concepts in different languages \cite{hovy2013collaboratively}.
+
+Semi-structured contents try to create a middle-ground between these two types. The most important example of their use is the Wikipedia. 
+
+Wikipedia consists of a repository of webpages, each of them containing an entry about a certain concept. There are relations between the different kinds of pages, for example, the redirections (several concepts that redirect for the same article), internal hyperlinks (links for articles about concepts that were included in the text), interlanguage links (links for the same article written in different languages) and category pages (used to classify entries). Pages can also contain infoboxes (tables summarizing the most important information).
+
+Wikipedia then relies on large amounts of mannually-input knowledge, provided via massive online collaboration. Information is ontologized with high quality thanks to the collaborative editing of articles and it's possible to keep information continuously updated and achieve a wide coverage for almost all domains. 
+
+To sum up, using semi-structured resources provides the best of both worlds: high quality information with wide coverage of almost all domains \cite{hovy2013collaboratively}.
+
+The main goal of this platform is to allow students to extract a semi-structured representation of a software system from a description in plain-text - have all the parts that constitute a software system (Stakeholders, Scenarios, Tactics, Views, etc) described in a semi-structure (similar to a Wikipedia page), instead of scattered along a ten or more pages article. 
+
+The idea is to create templates for all the possible entities that can be added to the semi-structured representation: a template for describing stakeholders, another for describing scenarios, views, styles and so long. Each template should, then, allow a correct description of a component. For example, a scenario, which captures and expresses quality requirements, is defined by a stimulus (a condition arriving at the system), a source of stimulus (entity that generates it), an artifact (the part of the system being stimulated, an environment (the conditions of the system), the response (activity after the stimulus) and a response measure (some way of measuring the response). Whilst the stimulus and the response are mandatory in a scenario, it may not contain all the parts described.
+
+When adding a component to the semi-structure, students will follow the template and fill it with their own words (for example, for describing each part of a scenario). However, all this information should be somehow linked with the parts of the text that describe the scenario.
+
+By using terms from a taxonomy to tag parts of the text and allowing elicitation of relationships between terms (described below) and linking from the semi-structure to a tag in the text, this problem is solved and people are able to create a bridge between the text in the description and the semi-structured content, even if the information for a single component is scattered along the text.  
+
+In the field of Artificial Intelligence and Natural Language Processing, there are methods for extraction of machine-readable information from semi-structured contents, namely thesauri and relationships extraction, and for enrichment of structured information with semi-structured content (that also extracts relationships for taxonomy and ontology induction) \cite{hovy2013collaboratively}. In this platform there is no need for Artificial Intelligence techniques, but the concept of relationship extraction is very important. As said before, students are allowed to tag parts of the text from the description with terms from a taxonomy of Software Architecture concepts - namely tag a part of the text as a scenario, a stimulus, a response measure, etc. But this tagged text may be related: a part of text tagged as 'stimulus' may be a stimulus for another part marked as 'scenario' (there is a relationship of the kind is-stimulus-of-scenario). Providing method for elicitation of these relationships allows for a more deep understanding of the description text, by linking the components added to the semi-structure with the tags and relationships elicited from the text.
+
+And since this is a collaborative platform, it is expected that having many people working together in semi-structuring a software description will increase the quality of the final product. 
+As students discuss and correct each others' work, the semi-structure extraction becomes more complete, and students also have an opportunity to learn from their mistakes - since sometimes it is not easy to relate the concepts learned in a classroom with real-life applications.
+
+
+	
+\subsection{Ontology Learning}
+Research on Ontology learning from text has evolved over the years and there are several open challenges for this field \cite{wong2012ontology}. Ontologies are defined as ``effectively formal and explicit specifications in the form of concepts and relations of shared conceptualizations'' \cite{gruber1993translation}, and can be thought of as a directed graph, with concepts as nodes and relations as edges.
+ 
+Techniques for ontology learning can be classified in statistics-based, linguistics-based, logic-based or hybrid. Over the years there was also an increased interest in techniques for ontology learning from social data. Existant literature investigates the problem of ontology learning from user-defined tags \cite{tang2009towards}, discusses the requirements for automatic ontology learning from social data \cite{kotis2011automated}, presents a tripartite ontology model \cite{mika2007ontologies}, and describes an approach to complement corpus-based ontology learning with tags \cite{weichselbraun2010augmenting}.
+
+Regarding the context of the platform, all the concepts used to tag the document contents (the concepts of Software Architectures) will be defined a priori and organized according to the relations between them (IS-A relations and others).
+
+Software descriptions analyzed in the platform do not contain these concepts. However, the students' motivation is to find parts of the text that correspond to the concepts predefined and tag them accordingly (for example, a single sentence of the text can identify a stakeholder, or a whole paragraph can identify the stimulus of a scenario). 
+
+Since the relations between concepts are already defined, it should be possible for students to elicit these relations between the tagged parts of the text. This facilitates the comprehension of the text contents and the creation of the semi-structure as mentioned previously.
+
+\section{Solution}
+\label{solution}
+To solve the problems elicited throughout this document, it was developed a Web Application to be used by students and teachers, both in class and home environments. This kind of application facilitates collaboration between its users, and therefore was the more adequate choice for the system to develop. The developed application features:
+\begin{itemize}
+\item An authentication system, where users can login into the system. This authentication system provides an unique identity for a user inside the application, and also provides distinction between types of users, as there are users of type STUDENT and users of type TEACHER, with different permissions.
+\item Document Management, only available for teachers, where software description articles can be added or removed;
+\item Document parsing into a view;
+\item Creation of annotations in the document text. As the name says, an annotation is a part of the text that is marked and highlighted. The AnnotatorJS \footnote{http://annotatorjs.org/} library provides tools not only to mark up parts of text, but also to associate tags and user text to that selected text. 
+\item Templates for a set of Software Architectures concepts. The parts of marked text described before can be associated to these templates, thus making it easier to co-relate the theoretical concepts with the practical applications. The concepts used in these templates are represented as entities of the domain model.
+
+\end{itemize}
+
+The next chapters will give an overview of the domain, and explain the architecture and implementation of the system.
+\section{Domain Model}
+\label{domainModel}
+To understand the architectural and implementation decisions taken during the solution development, it is necessary to understand the Software Architectures Domain Model. Section \ref{section:SAConcepts} lists and describes the concepts talked in the Software Architectures classes, Section \ref{section:domainModel} presents an abstract domain model where it is possible to see how these concepts relate and Section \ref{section:templates} gives an idea on how the information from the domain model can be represented in templates.
+
+\subsection{Concepts}
+\label{section:SAConcepts}
+Before describing the domain model of the developed solution, it is necessary to provide a small introduction to the most important concepts from the Software Architectures course.
+ 
+\subsubsection{Scenarios}
+\label{subsection:SAConceptsScenarios}
+A scenario is used to capture and express the quality requirements of a system. The considered qualities are:
+\begin{itemize}
+\item Availability - concerning the uptime of a system;
+\item Interoperability - how easily can the system interoperate with other system;
+\item Modifiability - the cost of changing the system;
+\item Performance - how fast the system responds to events;
+\item Security - resistance to unauthorized usage whilst providing service to legitimate users;
+\item Testability - how easy it is to check system faults through testing;
+\item Usability - how easy it is for a user to accomplish a task, and the kind of support offered by the system;
+\end{itemize}
+
+A scenario consists of six parts \cite{bass2003software}:
+\begin{itemize}
+\item \textbf{Source of Stimulus:} Some entity (a human, a computer or any other actuator) that generates the stimulus;
+\item \textbf{Stimulus:} A condition that arrives at the system;
+\item \textbf{Environment:} The system condition when the stimulus occurs;
+\item \textbf{Artifact:} Part of the system that was stimulated;
+\item \textbf{Response:} Activity undertaken after the arrival of the stimulus;
+\item \textbf{Response Measure:} when the response occurs, it should be measurable in some way, so the requirement can be tested;
+\end{itemize}
+
+Each Scenario uses a set of Tactics, which are design decisions used to achieve the quality requirements expressed in them. Each quality requirement has a set of commonly used tactics. For example, to assure the Security of a system, tactics such as detecting service denial or message delays (to detect attacks), or revoking access to the system (to react to an attack) are used.
+
+\subsubsection{Views}
+\label{subsection:domainModelViews}
+A view is a representation of a set of system elements and the relationships associated with them \cite{clements2003documenting}. This set of elements and relationships is constrained by viewtypes.
+
+A Viewtype defines the element types and relationship types used to describe the architecture of a software system from a particular perspective. Viewtypes refine into styles.
+
+An architectural style is a specialization of element and relation types, together with a set of constraints on how they can be used.
+
+Views can fall into three viewtype categories:
+\begin{itemize}
+\item \textbf{Module Viewtype:} document the system principal units of implementation. 
+
+The elements of this viewtype are the \textit{Modules}, which is are implementation units. 
+
+Relationships between modules can be of type \textit{``Is-part-of''}, which defines a part-whole relationship, \textit{``Depends on''}, which defines dependency relations, and \textit{``Is-a''}, which defines a generalization/specialization relationship.
+
+\item \textbf{Component \& Connector Viewtype:} document the system units of execution. 
+
+The elements are the Components, which are the principal processing units and data stores, and the Connectors, which are pathways of interaction between components. 
+
+The relationships can be of type \textit{``Attachment''}, which associate components to connectors, and \textit{``Interface''} Delegation, which associates component ports to other ports from an ``internal architecture''- and similarly for the connector.
+
+\item \textbf{Allocation Viewtype:} document the relationships between a system's software and its development and execution environments. 
+
+The elements are the \textit{Software Element} (elements from the Module and Component \& Connector viewtypes) and the \textit{Environmental Element}. 
+
+The relationships are of type \textit{``Allocated-to''}, which means that a software element is allocated to an environmental element. 
+\end{itemize}
+
+\subsection{Model}
+\label{section:domainModel}
+Figure \ref{figure:abstractDomainModel} shows the concepts and relations described in Section \ref{section:SAConcepts} in a Domain Model Diagram.
+ 
+\begin{figure}
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+
+\begin{tikzpicture}
+\tikzstyle{every node}=[font=\footnotesize]
+\begin{class}[text width=2cm]{Template Concept}{10,-4.5}
+\end{class}
+
+\begin{class}[text width=3cm ]{Source Of Stimulus}{0,0}
+
+\end{class}
+\begin{class}[text width=2cm ]{Stimulus}{0,-1.5}
+%\inherit{ScenarioElement}
+\end{class}
+\begin{class}[text width=2cm ]{Artifact}{0,-2.5}
+%\inherit{ScenarioElement}
+\end{class}
+\begin{class}[text width=2.5cm ]{Environment}{0,-3.5}
+%\inherit{ScenarioElement}
+\end{class}
+\begin{class}[text width=2cm ]{Response}{0,-4.5}
+%\inherit{ScenarioElement}
+\end{class}
+\begin{class}[text width=3.3cm ]{Response Measure}{0,-5.5}
+\end{class}
+\begin{class}[text width=2cm ]{Scenario}{4.5,-2.5}
+\inherit{Template Concept}
+\end{class}
+\begin{class}[text width=3cm ]{Quality Requirement}{0,3}
+\end{class}
+\begin{class}[text width=2cm ]{Tactic}{5,2}
+\end{class}
+
+\begin{class}[text width=2cm ]{View}{4,-7.5}
+\inherit{Template Concept}
+\end{class}
+\begin{class}[text width=2cm ]{Viewtype}{0,-7}
+\end{class}
+\begin{class}[text width=2cm ]{Style}{-1,-8.5}
+\end{class}
+\begin{class}[text width=2cm ]{Relation}{-2,-10}
+\end{class}
+
+\begin{class}[text width=2cm ]{Element}{5,-10}
+\inherit{Template Concept}
+\end{class}
+
+\begin{class}[text width=1.5cm]{Is Part Of}{-4,-11.5}
+\inherit{Relation}
+\end{class}
+
+\draw [umlcd style] (-2.5,-11.90) node {[...]};
+
+\begin{class}[text width=2cm]{Attachment}{-1,-11.5}
+\inherit{Relation}
+\end{class}
+
+\begin{class}[text width=2cm]{Allocated To}{1.5,-11.5}
+\inherit{Relation}
+\end{class}
+
+\begin{class}[text width=2cm]{Module}{4,-11.5}
+\inherit{Element}
+\end{class}
+
+\begin{class}[text width=2cm]{Component}{6.5,-11.5}
+\inherit{Element}
+\end{class}
+
+\begin{class}[text width=2.5cm]{Environmental Element}{9.5,-11.5}
+\inherit{Element}
+\end{class}
+
+\begin{class}[text width=2.5cm]{Connector}{10,-10}
+\inherit{Element}
+\end{class}
+
+\association{Source Of Stimulus}{}{0..1}{Scenario}{}{1}
+\association{Stimulus}{}{0..1}{Scenario}{}{1}
+\association{Artifact}{}{0..1}{Scenario}{}{1}
+\association{Environment}{}{0..1}{Scenario}{}{1}
+\association{Response}{}{0..1}{Scenario}{}{1}
+\association{Response Measure}{}{0..1}{Scenario}{}{1}
+\association{Quality Requirement}{}{1}{Scenario}{}{*}
+\association{Quality Requirement}{}{1}{Tactic}{}{*}
+\association{Scenario}{}{*}{Tactic}{}{*}
+\association{View}{}{*}{Viewtype}{}{1}
+\association{Viewtype}{}{1}{Style}{}{*}
+\association{Style}{}{*}{Element}{}{*}
+\association{Style}{}{*}{Relation}{}{*}
+\association{View}{}{*}{Element}{}{*}
+\association{Element}{}{*}{Relation}{}{*}
+
+
+
+\end{tikzpicture}
+\caption{Domain Model showing the Software Architectures concepts and how they are related}
+\label{figure:abstractDomainModel}
+\end{figure}
+
+The scenario elements are represented as the model entities 'Source of Stimulus', 'Stimulus', Artifact', 'Environment', 'Response' and 'Response Measure' respectively, and are associated to the Scenario entity. A Scenario can only have at most one instance of each element, hence the ``0..1'' cardinality. Similarly, each scenario element can only be associated with a single scenario, and therefore there is a ``1'' cardinality in the diagram. Each Scenario captures a single Quality Requirement and has a set of Tactics. As mentioned, each quality requirement has a set of commonly used tactics for its achievement.
+
+A View is associated with a Viewtype, which refines into a style. The View contains a set of elements, which are related to each other via specific relations.
+
+The Scenario, View and Element are considered the main concepts of the domain, and they have a dedicated template in the developed solution, as it will be described in the next section. These templates will contain information about the concept and how it is related with other concepts in the domain model.
+
+\subsection{Templates}
+\label{section:templates}
+The structured representation of the Software Architectures concepts described in Sections \ref{section:SAConcepts} and \ref{section:domainModel} is represented in the developed solution by using specific templates for these concepts.
+
+Although we can elicit a wide set of concepts, it does not make sense to have a template for each and every one of them. It is easier to see the relations between concepts if they are in the same template. 
+
+This is the case for the Scenarios. It makes sense to see all the elements of a Scenario together, so it is possible to see, for example, who/what generated the stimulus and what part of the system was stimulated. Therefore, the Scenario is considered one of the main concepts, and it has its own dedicated template, in which are present the quality attribute, the elements and the tactics. 
+
+Figure \ref{figure:scenarioTemplate} shows a Schema for the Scenario template. All the Scenario elements, the quality requirement and the tactics are present in the template, making it possible to see, as mentioned before, how all these concepts are related.
+
+\begin{figure}
+\centering
+\lstinputlisting[language=HTML, style=customhtml]{scenarioSchema.html}
+\caption{Schema for the Scenario template}
+\label{figure:scenarioTemplate}
+\end{figure}
+
+The Views and their elements are also another case of main concepts. It makes sense to aggregate all the system elements and their relationships from a view in a separate template, representing the part of the system being described in that view. However, since a single element can be present in more than one view, it also makes sense to have a specific template for the elements, so their individual properties can be seen.
+
+Figure \ref{figure:moduleTemplate} shows a Schema for the Module template, which is the element from the Module Viewtype. Besides the element details, its relationships with other elements (other Modules, in this specific example) are present in the template.
+
+\begin{figure}
+\centering
+\lstinputlisting[language=HTML, style=customhtml]{moduleSchema.html}
+\caption{Schema for the Module template}
+\label{figure:moduleTemplate}
+\end{figure}
+
+Figure \ref{figure:viewTemplate} shows the schema for the Module Viewtype Views template. Although the template allows inserting a description for the view, its most important feature is the inclusion of other templates in it. As mentioned, a view aggregates a set of system elements and the relationships between them. As there is already a template for the element, the view will include a set of element templates - a template per element, with its respective information.
+
+\begin{figure}
+\centering
+\lstinputlisting[language=HTML, style=customhtml]{viewSchema.html}
+\caption{Schema for a Module Viewtype View template}
+\label{figure:viewTemplate}
+\end{figure}
+
+\section{Architecture Analysis}
+\label{architecture}
+Chapter \ref{chapter:domainModel} introduced the domain model of the Software Architectures concepts present in the developed solution, and the templates in which they are included.
+
+In this chapter, it is shown how these templates are filled with information extracted from a software description article.
+
+The next sections will present two entities from the system: the Document and the Annotation. These entities have a major role in the identification of Software Architectures concepts from the domain model, and the enrichment of the templates for those concepts.
+
+\subsection{Document}
+\label{section:document}
+
+The Document entity in this system corresponds to an article which describes a software system and is read and analysed in the practical classes of the Software Architectures course. This entity saves the article text and its source, so it can be parsed locally in the application
+
+Figure \ref{figure:documentEntity} shows the Document entity in the system. The ``title'' attribute corresponds to the title of the article, the ``url'' saves the article's original URL, and the ``content'' saves the article's contents.
+
+\begin{figure}
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+
+\begin{tikzpicture}
+\begin{class}[text width=3cm ]{Document}{0,0}
+	\attribute { title : String }
+	\attribute { url : String }
+	\attribute { content : String }
+\end{class}
+\end{tikzpicture}
+\caption{The Document Entity}
+\label{figure:documentEntity}
+\end{figure}
+
+As the main purpose of this application is to create a structured representation of the document using the templates described in Section \ref{section:templates}, the instances of the main concepts, from which the templates will be generated, must be associated to the Document, as shown in Figure \ref{figure:documentConcept}. This way, generating a structured representation of the document is as easy as extracting the main concepts that are connected to it and including their respecive templates in the structured representation. A concept describes a part of one and only one document, hence the '1' cardinality.  
+
+\begin{figure}
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+
+\begin{tikzpicture}
+\tikzstyle{every node}=[font=\footnotesize]
+\begin{class}[text width=2cm ]{Template Concept}{5,0}
+	\attribute{}
+\end{class}
+
+\begin{class}[text width=2cm ]{Document}{0,0}
+	\attribute { title : String }
+	\attribute { url : String }
+	\attribute { content : String }
+\end{class}
+
+\association{Document}{}{1}{Template Concept}{}{*}
+\end{tikzpicture}
+\caption{Association between Document and Concept entities}
+\label{figure:documentConcept}
+\end{figure}
+
+\subsection{Annotation}
+\label{section:annotation}
+
+An annotation consists of a portion of text selected from the article, enriched with a tag and other information. This selected text can correspond partially or totally to the specification of a Software Architecture concept. For example, the description of the Source of Stimulus of a Scenario may be found in a single paragraph of the article, or in a set of single sentences scattered along the whole article. 
+
+Figure \ref{figure:annotationEntity} shows the Annotation entity in the system. The ``annotation'' field saves a Json representation of the annotation data such as the quote from the text and the given tag. The ``tag'' field stores the tag given to the annotation. This tag corresponds to a Software Architectures concept, such as ``Stimulus'' or ``Module''.
+
+\begin{figure}
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+
+\begin{tikzpicture}
+\begin{class}[text width=4cm ]{Annotation}{0,0}
+	\attribute { annotation : String }
+	\attribute { tag : String }
+\end{class}
+\end{tikzpicture}
+\caption{The Annotation Entity}
+\label{figure:annotationEntity}
+\end{figure}
+
+Annotations are added to the system by selecting a portion of text in the parsed document and setting it as an annotation. Therefore, an annotation belongs to one, and only one document. In Figure \ref{figure:documentAnnotationConcepts} it is possible to see the association between the Annotation and Document entities, which reflects the mentioned constraints.
+
+\begin{figure}
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+
+\begin{tikzpicture}
+\tikzstyle{every node}=[font=\footnotesize]
+
+\begin{class}[text width=2cm ]{Document}{0,0}
+	\attribute { title : String }
+	\attribute { url : String }
+	\attribute { content : String }
+\end{class}
+
+\begin{class}[text width=3cm ]{Annotation}{-1,-3}
+	\attribute { annotation : String }
+	\attribute { tag : String }
+\end{class}
+
+\begin{class}[text width=2cm ]{Template Concept}{4,-0.5}
+	\attribute{}
+\end{class}
+
+\begin{class}[text width=2cm ]{Scenario}{4,-3}
+	\inherit{Template Concept}
+	\attribute{}
+\end{class}
+
+\begin{class}[text width=3cm ]{Source Of Stimulus}{5,-5}
+	\attribute{}
+\end{class}
+
+\association{Document}{}{1}{Template Concept}{}{*}
+\association{Document}{}{1}{Annotation}{}{*}
+\association{Template Concept}{}{0..1}{Annotation}{}{*}
+\association{Scenario}{}{1}{Source Of Stimulus}{}{*}
+\association{Source Of Stimulus}{}{0..1}{Annotation}{}{*}
+
+\end{tikzpicture}
+\caption{Associations between Document, Annotation and the domain model concepts}
+\label{figure:documentAnnotationConcepts}
+\end{figure}
+
+Annotations are used to enrich the templates described in Section \ref{section:templates}. Associating the annotations with the respective instances of the concepts allows for that enrichment. All the concepts, not only the main ones, can have associated annotations.
+
+As mentioned in the previous section, an annotation can partially or fully describe a concept, therefore a concept can be associated with multiple annotations. 
+
+Figure \ref{figure:documentAnnotationConcepts} shows how the Annotation is associated with the domain concepts. There is an association not only with the main concepts of the domain model, but also all the other concepts represented in \ref{figure:abstractDomainModel}. The figure exemplifies these associations with the Scenario, which is a main concept, and the Source of Stimulus, but all the other concepts and main concepts - all the Scenario Elements, Modules, Components, etc. - have similar associations.  
+
+\subsection{Interface Flow}
+\label{section:interfaceFlow}
+
+The associations between the entities described in the previous sections are created after a set of interactions with the system. These interactions are:
+
+\begin{enumerate}
+\item After navigation to the document page, a portion of text is selected. The AnnotatorJS interface is prompted, and the user selects a tag to describe the selected text;
+
+\item Upon submission, an instance of ``Annotation'' is created and associated with the instance of the document;
+
+\item By mouse hovering over the highlighted text, another AnnotatorJS interface is prompted, and the user can associate this annotation to a domain entity by clicking ``Add this annotation to the structured representation'';
+
+\item Upon clicking the link, a modal window is shown and, according to the tag given to the annotation, the user can select either an existant Scenario, View or Module to add this annotation to, or create a new instance. 
+
+Initially there are no created instances, and upon creation the instance is associated with the document. When a new Scenario is created, their elements are instantiated as well;
+
+\item After selection, the annotation is associated with the selected element. In the case of Scenarios, if the annotation describes any of the scenario elements, it will be associated with the instance of the corresponding element. 
+
+For example, an annotation tagged as ``Stimulus'' will be associated with the instance of the Stimulus entity that is associated with the selected Scenario.
+
+\item The user is then redirected to the template of the selected element. Inside the template, the user can delete the annotation, move it to other element, delete the element itself and add text descriptions to the template. 
+
+In the Scenario template the user can also add Tactics, in the Module template the user can add relations with other Modules, and in the View template the user can add elements to the view.
+\end{enumerate}
+
+Figures \ref{figure:scenarioTemplate2}, \ref{figure:moduleTemplate2} and \ref{figure:viewTemplate2} show the Schemas presented in Section \ref{section:templates} of Chapter \ref{chapter:domainModel}, now including the annotations and the user text.
+
+\begin{figure}
+\centering
+\lstinputlisting[language=HTML, style=customhtml]{scenarioSchema2.html}
+\caption{Scenario Schema enriched with annotations and user text}
+\label{figure:scenarioTemplate2}
+\end{figure}
+
+\begin{figure}
+\centering
+\lstinputlisting[language=HTML, style=customhtml]{moduleSchema2.html}
+\caption{Module Schema enriched with annotations and user text}
+\label{figure:moduleTemplate2}
+\end{figure}
+
+\begin{figure}
+\centering
+\lstinputlisting[language=HTML, style=customhtml]{viewSchema2.html}
+\caption{Module Viewtype view Schema enriched with annotations and user text}
+\label{figure:viewTemplate2}
+\end{figure}
+
+%!TEX root = ../dissertation.tex
+
+\section{Implementation}
+\label{implementation}
+
+The application developed follows a Model-View-Controller architecture.
+
+This architecture is composed of three elements \cite{krasner1988description}:
+\begin{itemize}
+\item The Model, which captures and stores information about the application domain;
+\item The View, which generates output based on the model state;
+\item The Controller, which provides interaction between the Views and the Model. It is able to modify the Model and update the corresponding View.
+\end{itemize}
+
+The standard interaction cycle in this architecture is the following \cite{krasner1988description,reenskaug2009dci}:
+\begin{itemize}
+\item A user interacting with the application sends a request to the Controller.
+
+\item The Controller communicates with the Model to apply the desired changes.
+
+\item The Model is updated.
+
+\item The Controller notifies the corresponding View so it can be updated with the new version of the Model.
+\end{itemize}
+
+The next sections will describe the solution implementation based on these three elements.
+
+
+\subsection{Model}
+\label{section:model}
+The Model of the implemented system is based on the Domain Model presented in chapter \ref{chapter:domainModel}, but a few modifications were made to facilitate programming.
+
+The developed application uses the F\'{e}nix Framework, which allows the creation of a transactional and persistent domain model for applications \cite{cachopo2006combining,cachopo2007development}. The domain model is specified in the Domain Modeling Language, which is a domain-specific language created for this framework. The framework completely hides the database from the programmer, who can focus on the application development in Java. 
+
+\subsubsection{Annotations}
+\label{subsection:modelAnnotations}
+As seen in Chapter \ref{chapter:architecture}, the Document is one of the most important entities, because it aggregates all the annotations created over the text and all the Software Architectures concepts elicited.
+
+Similarly to what is shown in Figure \ref{figure:documentAnnotationConcepts} of Chapter \ref{chapter:architecture}, in the implemented model, the Document entity is connected to the Annotation. However, an annotation is created by an user authenticated in the system, and this information is also present in the domain, as shown in figure \ref{figure:modelDocUserAnnot}. The ``User'' entity saves users registered in the system. When a user creates an annotation, it is associated to him.
+
+\begin{figure}
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+
+\begin{tikzpicture}
+\tikzstyle{every node}=[font=\footnotesize]
+\begin{class}[text width=3cm ]{Document}{0,0}
+	\attribute { title : String }
+	\attribute { url : String }
+	\attribute { content : String }
+\end{class}
+
+\begin{class}[text width=3.5cm ]{Annotation}{-2,-5}
+	\attribute { annotation : String }
+	\attribute { tag : String }
+\end{class}
+
+\begin{class}[text width=3.5cm ]{User}{-6,0}
+	\attribute { username : String }
+	\attribute { password : String }
+	\attribute { firstName : String }
+	\attribute { lastName : String}
+	\attribute { type : String}
+\end{class}
+\association {Document}{document}{1}{Annotation}{annotation}{0..*}
+\association {User}{owner}{1}{Annotation}{annotation}{0..*}
+
+\end{tikzpicture}
+\caption{Document, Annotations and Users in the implemented Model}
+\label{figure:modelDocUserAnnot}
+\end{figure} 
+ 
+\subsubsection{Scenarios}
+\label{subsection:modelScenarios}
+The Scenario is a main concept of the domain, and therefore is connected to the Document, as seen in Figure \ref{figure:documentConcept}. 
+
+Scenarios are represented in the implemented model in a very similar way to what is shown in Figure \ref{figure:abstractDomainModel}. However, there is a difference in the implemented model regarding how Quality Requirements and Tactics are represented.
+
+In Figure \ref{figure:abstractDomainModel}, it is shown an association between Scenario and Quality Requirement, Scenario and Tactic and Tactic and Quality Requirement. The meaning of these associations is to represent what is explained in Section \ref{subsection:SAConceptsScenarios}: A Scenario has a Quality Requirement from a set of pre-existent ones, and a set of Tactics also from a set of existent ones, which are specific for the Quality Requirement.
+
+However, in the implemented model, there are no pre-existent Tactics nor Quality Requirements. The existent Quality Requirements and their specific Tactics are specified in a Java class, which returns them as necessary. Figure \ref{figure:modelQRTactics} shows the Scenario, Tactic and Quality Requirement entities, and how they are related in the implemented model.
+
+\begin{figure}
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+
+\begin{tikzpicture}
+\tikzstyle{every node}=[font=\footnotesize]
+\begin{class}[text width=3cm ]{Scenario}{0,0}
+	\attribute { name : String}
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}
+
+\begin{class}[text width=3cm ]{QualityRequirement}{-5,0}
+	\attribute { name : String}
+\end{class}
+
+\begin{class}[text width=3cm ]{Tactic}{-5,-2}
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}
+
+\association {Scenario}{}{1}{Tactic}{}{*}
+\association {Scenario}{}{0..1}{QualityRequirement}{}{0..1}
+
+\end{tikzpicture}
+\caption{Quality Requirements and Tactics detail in the implemented Model}
+\label{figure:modelQRTactics}
+\end{figure}
+
+To create a Scenario, it is necessary to select a Quality Requirement from a list, which is retrieved from the class mentioned. When the Scenario is created, a new Quality Requirement is also created, with the selected one stored into the ``name'' attribute, and associated with that Scenario. Tactics can be added once inside the Scenario Template. To add a tactic it is necessary to select it from a list of specific tactics for the quality requirement. That list is, again, retrieved from the class mentioned before. When a specific tactic is selected, a new Tactic is created in the model with the specific tactic name stored in the ``identifier'' attribute. Given these implementation details, there was no need to create the association between Tactic and QualityRequirement nor to have a Quality Requirement associated with many Scenarios.
+
+To facilitate programming, all Scenario elements are a subclass of a ``ScenarioElement'' class, as seen in the example in Figure \ref{figure:modelScenarioElement}. This superclass aggregates all the methods common to the Scenario elements, making it easier to perform actions such as updating the text, associating annotations or presenting the elements in a view. A few of those methods are shown in the figure. However, this class is not associated with the Scenario entity. Its purpose is only to facilitate programming by aggregating common methods. 
+
+\begin{figure}
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+
+\begin{tikzpicture}
+\tikzstyle{every node}=[font=\footnotesize]
+\begin{class}[text width=3cm ]{ScenarioElement}{0,0}
+	\attribute { identifier : String }
+	\attribute { text : String }
+	\operation { getIdentifier() : String }
+	\operation { getText() : String}
+	\operation { (...)}
+\end{class}
+
+\begin{class}[text width=2.5cm ]{SrcOfStimulus}{-2.1,-4}
+	\inherit{ScenarioElement}
+	\attribute{}
+\end{class}
+
+\draw [umlcd style] (0,-4.3) node {[...]};
+
+\begin{class}[text width=3cm ]{ResponseMeasure}{2.2,-4}
+	\inherit{ScenarioElement}
+	\attribute{}
+\end{class}		
+	
+\end{tikzpicture}
+\caption{The ScenarioElement entity}
+\label{figure:modelScenarioElement}
+\end{figure}
+
+The ``identifier'' parameter of the entities, seen in Figures \ref{figure:modelQRTactics} and \ref{figure:modelScenarioElement} stores the name of the concept that corresponds to that entity, and often corresponds to the name of the entity itself. For example, the identifier in all instances of Scenario is ``Scenario'' and the identifier in all instances of ``SrcOfStimulus'' is ``Source Of Stimulus''. This was done to facilitate certain programming issues such as getting the concept name from a ``ScenarioElement'' instance. The ``name'' attribute in the Scenario gives it an identification other than just the quality attribute, and the ``text'' attribute in the Scenario and ScenarioElement corresponds to the description text that can be added to the templates.
+
+All domain entities have associated annotations, as it was mentioned previously in Section \ref{section:annotation}. The implemented model is similar to what is shown in Figure \ref{figure:documentAnnotationConcepts}, with the Scenario and ScenarioElement entities being associated with the Annotation.
+
+
+\subsubsection{Modules}
+\label{subsection:modules}
+
+The Modules are the elements of the Module Viewtype Views. Figure \ref{figure:modelModule} shows how a Module is represented in the implemented model.
+
+\begin{figure}
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+
+\begin{tikzpicture}
+\begin{class}[text width=3cm ]{Module}{0,0}
+	\attribute { name : String }	
+	\attribute { identifier : String }
+	\attribute { text : String }
+\end{class}			
+\end{tikzpicture}
+\caption{The Module entity}
+\label{figure:modelModule}
+\end{figure}
+
+The Module entity has a ``name'' attribute, which provides identification and also gives an idea on what are the Module functions, an ``identifier'', as explained in the previous section, and a ``text'' attribute, which corresponds to text added to the template.
+
+As it is one of the main concepts of the system, the Module is associated with the corresponding document upon its creation as demonstrated in the example in Figure \ref{figure:documentAnnotationConcepts}. The Module is also associated with the set of Annotations that describe it.
+
+As seen in the abstract domain model present in Figure \ref{figure:abstractDomainModel} of Chapter \ref{chapter:domainModel}, the elements of a view have a certain type of relationship with each others. Although the abstract domain model in Figure \ref{figure:abstractDomainModel} contains an entity ``Relation'' to represent how the view elements are connected, in the case of the Modules, these relations have no other information than the Modules connected. 
+
+Therefore, in the implemented model, there are no entities representing the relationships between modules. Instead, there were defined different associations of the Module entity to itself, in order to represent the different relations.
+
+Each Module Viewtype Style specifies relation types refined from the ones presented in \ref{subsection:domainModelViews}. There are, then, eight types of relations between Modules\cite{clements2003documenting} defined in the Domain Modeling Language:
+\begin{itemize}
+\item \textit{Is-Part-Of} - a Module can be part of one and only one parent Module. Figure \ref{figure:modelIsPartOfRelation} shows how this relation was implemented. A Module can have only one other Module set as parent, but can have many children Modules;
+\begin{figure}
+\centering
+\lstset{style=customjava}
+\begin{lstlisting}
+relation moduleIsPartOfModule {
+	Module playsRole parent{ multiplicity 0..1; }
+	
+	Module playsRole child{ multiplicity 0..*; }
+}
+\end{lstlisting}
+\caption{Is-Part-Of relation between Modules in the implemented model}
+\label{figure:modelIsPartOfRelation}
+\end{figure}
+
+\item \textit{Uses} - a specialization of the \textit{depends-on} relation, where a Module depends on the correct functioning of other Modules to satisfy its own requirements. The implementation is shown in Figure \ref{figure:modelUsesRelation}. A Module can use and be used by many other Modules;
+\begin{figure}
+\lstset{style=customjava}
+\begin{lstlisting}
+relation moduleUsesModule {
+	Module playsRole uses{ multiplicity 0..*; }
+	
+	Module playsRole usedBy{ multiplicity 0..*; }
+}
+\end{lstlisting}
+\caption{Uses relation between Modules in the implemented model}
+\label{figure:modelUsesRelation}
+\end{figure}
+
+\item \textit{Is-A} - a relation of generalization, in which a Module is a generalization, similar to a superclass, of other modules. The implementation of this relation is similar to the implementation of the ``Uses'' relation in Figure \ref{figure:modelUsesRelation}, as a Module can be a generalization of many Modules and a specialization of many others (multiple inheritance).
+
+\item \textit{Crosscuts} - an Aspect Module, which implements a crosscutting concern of the system, is bound to a Module that is affected by that crosscutting concern. The Implementation of this relation is similar to the one shown in Figure \ref{figure:modelUsesRelation}, as a Module can be a crosscutting concern of many Modules, and be crosscutted by other Aspect Modules.
+
+\item \textit{One-To-One, One-To-Many, Many-to-Many} - logical associations between Data Entity Modules, similar to the UML associations. The implementation of these relations is, again, similar to the implementation of the ``Uses'' relation in Figure \ref{figure:modelUsesRelation}. The '0..*' cardinality in the one-to-one, one-to-many and many-to-many relations means that a Module can have several relations of this type in a Data Model Style view. For example, if a Module instance with name ``Department'' has a ``One-To-Many'' relation with Modules ``Employee'' and ``Room'', it means that a visual representation of these Modules would be the one in figure \ref{figure:modelOneToManyExample}.
+\begin{figure}
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+\begin{tikzpicture}
+\tikzstyle{every node}=[font=\footnotesize]
+\begin{class}[text width=2.5cm ]{Department}{0,0}
+	\attribute {}
+\end{class}
+
+\begin{class}[text width=2cm ]{Room}{-2.5,-2}
+	\attribute {}
+\end{class}
+
+\begin{class}[text width=2cm ]{Employee}{2.5,-2}
+	\attribute {}
+\end{class}
+
+\association{Department}{}{1}{Room}{}{*}
+\association{Department}{}{1}{Employee}{}{*}
+\end{tikzpicture}
+\caption{Example of the One-To-Many relation between Modules}
+\label{figure:modelOneToManyExample}
+\end{figure}
+
+\item \textit{Aggregation} - an aggregation relation. The implementation of this relation is similar to Figure \ref{figure:modelUsesRelation}, as a Module can be an aggregator of other several Modules, and be aggregated by many others;
+\end{itemize}
+
+\subsubsection{Components and Connectors}
+\label{subsection:modelComponentsConnectors}
+Components and Connectors are the elements of the Component \& Connector Viewtype Views. Figure \ref{figure:modelComponentConnector} shows how these concepts are represented in the implemented model.
+
+\begin{figure}
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+\begin{tikzpicture}
+\tikzstyle{every node}=[font=\footnotesize]
+\begin{class}[text width=2cm ]{Component}{0,0}
+	\attribute {name : String}
+	\attribute {text : String}
+\end{class}
+
+\begin{class}[text width=2cm ]{Connector}{3,0}
+	\attribute {name : String}
+	\attribute {style : String}
+	\attribute {text : String}
+\end{class}
+
+\begin{class}[text width=2cm ]{Port}{0,-3}
+	\attribute {name : String}
+	\attribute {text : String}
+\end{class}
+
+\begin{class}[text width=2cm ]{Role}{3,-3}
+	\attribute {name : String}
+	\attribute {text : String}
+\end{class}
+
+\association{Component}{}{0..1}{Port}{}{*}
+\association{Connector}{}{0..1}{Role}{}{*}
+\end{tikzpicture}
+\caption{Component and Connector entities in the implemented model}
+\label{figure:modelComponentConnector}
+\end{figure}
+ 
+A Component has a set of Ports, and a Connector as a set of Roles. The Ports of a Component are connected to the Roles of a Connector by the \textit{Attachment} relation explained in Section \ref{section:SAConcepts} of Chapter \ref{chapter:domainModel}. The implementation of this relation will be explained further on. The ``name'' and ``text'' attributes in the entities correspond to the identification name of the entity and the descriptive text that can be added, respectively. The ``style'' attribute in the Connector refers to the Component \& Connector styles. Each style has a unique type of connector. Specifying the style of a connector will make it easier to figure which Components will attach to it.
+
+The Component and Connector are main concepts of the system, and therefore are associated with the corresponding document upon creation. Both the Component and Connector entities and also the Port and Role are associated to a set of Annotations that describe them. The associations of these entities to the Document and Annotation are similar to the ones in the example of Figure \ref{figure:documentAnnotationConcepts}.
+
+Components are related with Connectors by the \textit{Attachment} relation. A Component has, as mentioned, a set of ports, and these ports can be attached to roles of Connectors.
+
+Similar to the Module relations, the \textit{Attachment} relation in the implemented model has no more information than the Port and Role involved. Therefore, it did not make sense to create an entity to represent this relation. Instead, a new relation between the Port and Role entity is created in the Domain Modeling language, as shown in Figure \ref{figure:modelAttachmentRelation}.
+
+\begin{figure}
+\lstset{style=customjava}
+\begin{lstlisting}
+relation portIsAttachedToRole {
+	Port playsRole port { multiplicity 0..1; }
+	
+	Role playsRole role { multiplicity 0..1; }
+}
+\end{lstlisting}
+\caption{Attachment relation between Component Ports and Connector Roles in the implemented model}
+\label{figure:modelAttachmentRelation}
+\end{figure}
+
+
+\subsubsection{Views}
+\label{subsection:modelViews}
+
+The abstract domain model presented in Figure \ref{figure:abstractDomainModel} of Chapter \ref{chapter:domainModel} shows how a View is related to the Viewtype, the Styles and the elements. 
+
+A View is, as the Scenario, the Element and the Relation, considered a main concept, and therefore has its own dedicated template. Figure \ref{figure:modelView} shows how the View is represented in the implemented model.
+
+\begin{figure}
+\centering
+\renewcommand {\umltextcolor}{black}
+\renewcommand {\umlfillcolor}{none}
+\renewcommand {\umldrawcolor}{black}
+\begin{tikzpicture}
+\begin{class}[text width=3cm ]{View}{0,0}
+	\attribute {name : String}
+	\attribute {viewtype : String}
+	\attribute {text : String}
+\end{class}
+\end{tikzpicture}
+\caption{View entity in the implemented model}
+\label{figure:modelView}
+\end{figure}
+
+In the abstract domain model of Figure \ref{figure:abstractDomainModel} the View is associated with the Viewtype entity which, in turn, is associated with a Style entity. Similar to what was explained for the Scenarios with the Quality Requirements and Tactics, the abstract domain model assumes there are a set of pre-defined Viewtype entities, each associated with a pre-defined set of Styles. 
+
+In the implemented domain model, however, there are no pre-defined Styles nor Viewtypes. When a view is added to the system, a viewtype must be chosen, and it is stored in the ``viewtype'' attribute. This attribute is used to distinguish what kind of elements can be added to the view. For example, if the ``viewtype'' attribute of a View is set to ``Module Viewtype'', then only Modules are added to that View. 
+
+The styles of a view are not explicitly stated, but they are implicit by the elements that are added to the View. For example, a Module Viewtype View containing a set of Modules with ``uses'' relations between each others implies that there is a \textit{Uses} style in the view, and a Component \& Connector Viewtype View containing Components attached to Connectors with a certain style implies that that style is present in the view. This verification is done by the Controller, as described in Subsection \ref{substection:viewController}.
+
+A View is composed by a set of Elements, as seen in Figure \ref{figure:abstractDomainModel}. In the implemented domain model, the View has a similar association with the Module, Component and Connector entities. Figure \ref{figure:modelviewelements} shows how these relations are implemented in the Domain Modeling Language.
+
+\begin{figure}
+\lstset{style=customjava}
+\begin{lstlisting}
+relation viewHasModules {
+	View playsRole view { multiplicity 0..*; }
+	Module playsRole module { multiplicity 0..*;}
+}
+
+relation viewHasComponents {
+	Component playsRole component { multiplicity 0..*; }
+	View playsRole view { multiplicity 0..*; }
+}
+
+relation viewHasConnectors {
+	Connector playsRole connector { multiplicity 0..*; }
+	View playsRole view { multiplicity 0..*; }
+}
+\end{lstlisting}
+\caption{Relation between View and the view elements: Module, Component and Connector}
+\label{figure:modelviewelements}
+\end{figure}
+
+A View is created by associating an Annotation with it and, as it is a main concept, it is associated with the respective Document, as demonstrated in the example in Figure \ref{figure:documentAnnotationConcepts}.
+
+\subsection{Controller}
+
+This section describes the Controller part of the implemented system. The application developed uses the Spring\footnote{https://spring.io/} Framework, which allows the definition of one or more Java classes to act as Controllers and handle requests.
+
+A Java class is set to be a Controller by annotating it with the \textit{@Controller} annotation, or \textit{@RestController} if the controller's goal is to provide a REST API. Figure \ref{figure:springController} shows an example from the Document Controller described in \ref{subsection:documentController}, with a method that handles requests for the URL \textit{'/selectDoc/{id}'}. Method \textit{showDocument()} retrieves the Document from the domain model with the specified \textit{id} and adds it and the \textit{id} itself as Model attributes, so the template will be able to use them. The template ``docTemplate'' will be then showed to the user.
+
+\begin{figure}
+\lstset{style=customjava}
+\begin{lstlisting}
+@Controller
+public class DocumentController {
+	// ...
+	@RequestMapping(value = "/selectDoc/{id}", method = RequestMethod.GET)
+	public String showDocument(@PathVariable String id, Model m) throws IOException {
+		m.addAttribute("docId", id);
+		Document d = FenixFramework.getDomainObject(id);
+		m.addAttribute("doc", d);
+		return "docTemplate";
+	}
+}	
+\end{lstlisting}
+\caption{Example of a Controller class defined using the Spring Framework} 
+\label{figure:springController}
+\end{figure}
+
+\subsubsection{Annotation Controller}
+The AnnotationController class provides a way to manage the annotations added to a document. It communicates with the Domain Model to create, remove or update Annotations. This controller is in fact a RestController, which means it provides a REST API, used to retrieve a JSON representation of the annotations stored in the model and display it along with the document text. 
+The endpoints provided by this controller are described in Table \ref{table:endpoints}.
+	
+\begin{table}
+\begin{tabular}{ | c | m{1.5cm} | m{3.5cm} |m{7.7cm}|}
+    \hline
+    \textbf{Name} & \textbf{Request} \textbf{Method }& \textbf{Endpoint} & \textbf{Description}\\ \hline
+	INDEX & GET & \parbox[c][1.5cm]{3.5cm}{/selectDoc/\{docId\}/\\store/annotations} & \parbox[c]{8cm}{Returns the set of annotations associated with the \\document with id \textit{docId} }\\ \hline
+   	READ & GET & \parbox[c][1.5cm]{3.5cm}{/selectDoc/\{docId\}/\\store/annotations/\{id\}} & Returns the annotation with the specific \textit{id} \\ \hline
+    CREATE & POST & \parbox[c]{3.5cm}{/selectDoc/\{docId\}/\\store/annotations} & \parbox[c][1.5cm]{8cm}{Creates a new annotation, stores it in the model \\associated with the document with id \textit{docId}, \\ and redirects to the Read endpoint} \\ \hline
+    UPDATE & PUT & \parbox[c][1.5cm]{3.5cm}{/selectDoc/\{docId\}/\\store/annotations/\{id\}} & \parbox[c]{8cm}{Updates the annotation with the given \textit{id} and \\redirects to the READ endpoint} \\ \hline
+    DELETE & DELETE & \parbox[t]{3.5cm}{/selectDoc/\{docId\}/\\store/annotations/\{id\}} & \parbox[c][2cm]{8cm}{Removes the association between the \\ annotation with the given id and the document \\ with id \textit{docId}. The response is a HTTP/1.0 204 \\ NO CONTENT.} \\ \hline
+  \end{tabular}
+  \caption{REST API provided by the Annotation Controller}
+  \label{table:endpoints}
+\end{table}
+
+The \textbf{INDEX} endpoint has the particularity of iterating through all the Annotations associated with the Document with id \textit{docId}. If the annotation is associated to another domain entity besides the Document (for example, a Scenario, or a Module), information about the domain entity will be added to the annotation body, and will be shown in the interface. This way, it is possible to have some information about the domain entity even before checking its template. 
+
+Figure \ref{figure:annotationControllerIndex} shows an example of how information is added to the annotation in the \textit{INDEX} endpoint. The method \textit{getAnnotations()}, which receives the requests for this endpoint, iterates over the annotations associated with the document with id \textit{docId}, parses the JSON of each annotation into an instance of the AnnotationJS class, checks which domain element is associated with the annotation and adds information accordingly to the field ``text'' of the annotation. The example in the figure shows how information about the viewtype is added to annotations connected with a View. The list of all retrieved AnnotationJS instances is then parsed into a JSON string and sent as response.
+
+\begin{figure}
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/selectDoc/{docId}/store/annotations", 
+	method = RequestMethod.GET)
+	
+	public String getAnnotations(@PathVariable String docId) {
+		Document d = FenixFramework.getDomainObject(docId);
+		List<AnnotationJ> anns = new ArrayList<AnnotationJ>();
+		Gson g = new Gson();
+		for(Annotation a : d.getAnnotationSet()) {
+			AnnotationJ ann = g.fromJson(a.getAnnotation(), AnnotationJ.class);
+			if(a.isViewAnnotation() && a.getView() != null) {
+				View v = a.getView();
+				ann.setText("View: " + v.getViewtype());
+			}
+			//...			
+			anns.add(ann);
+		}
+		String resp = g.toJson(anns);
+		return resp;
+	}		
+\end{lstlisting}
+\caption{Example of how the INDEX endpoint adds information to the annotation body}
+\label{figure:annotationControllerIndex}
+\end{figure}
+
+\subsubsection{Document Controller}
+\label{subsection:documentController}
+The DocumentController class handles the requests to view, add or remove a document from the system.
+
+Adding and removing documents from the system is a feature that only Teachers are authorized to use. The controller receives a POST request containing the URL to the article. The Java library JSoup\footnote{http://jsoup.org/} extracts the HTML from the given URL and the controller processes it and stores a Document in the database. Processing of the extracted HTML includes turning relative URLs into absolute ones for href and src attributes.
+The Controller will also check if the database already contains a document with the given URL before adding a new entry. 
+
+When a teacher removes a Document from the system, all Annotations and Domain Model entities associated with that Document such as Scenarios or Views are removed from the system as well.
+
+Upon Document visualization, there are three other operations handled by this controller:
+
+\begin{itemize}
+\item When a user wants to associate an Annotation with a domain entity such as a Scenario, a request is sent to the Document Controller containing information about the annotation unique ID and its tag. Based on the tag, the controller then redirects to another controller, which will provide means for the user to add and/or select an entity to associate with the annotation.
+
+The reason for this redirect is the existent of a logic division of the Controllers. Each Controller class handles a set of requests related with a certain entity of the domain model. The AnnotationController class handles operations over Annotations, the ScenarioController handles operations over Scenarios and their elements, etc. 
+
+Therefore, it's only logical to redirect this request to the Controller that handles operations over the respective domain entity. Figure \ref{figure:documentControllerLinkAnnotation} shows the method in DocumentController that performs the redirect.
+
+\begin{figure}
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/addAnnotationToStructure/{docId}/{annotationId}/{tag}")
+	public RedirectView addAnnotationModal(@PathVariable String docId,
+			@PathVariable String annotationId, @PathVariable String tag) {
+		RedirectView rv = null;
+		if (Utils.allScenarioConcepts().contains(tag)) {
+			rv= new RedirectView("/addAnnotationToScenarioStructure/" + docId + "/"
+					+ annotationId);
+		} else if (tag.contains("Module")) {
+			rv = new RedirectView("/addAnnotationToModuleTemplate/" + docId + "/"
+					+ annotationId);
+		}else if (tag.contains("View")) {
+			rv = new RedirectView("/addAnnotationToViewTemplate/" + docId + "/"
+					+ annotationId);
+		}else if (tag.contains("Component")) {
+			rv = new RedirectView("/addAnnotationToComponentTemplate/" + docId + "/"
+					+ annotationId);
+		}else if (tag.contains("Connector")) {
+			rv = new RedirectView("/addAnnotationToConnectorTemplate/" + docId + "/"
+					+ annotationId);
+		}
+		return rv;
+	}	
+\end{lstlisting}
+\caption{Redirecting requests to associate annotations with domain entities in the DocumentController}
+\label{figure:documentControllerLinkAnnotation}
+\end{figure}
+
+\item When visualizing the Annotation information in the document, it is possible to navigate to the template of the entity to which this annotation is associated by clicking in a link. A request is then sent to the Document Controller, which again checks the Annotation tag, and redirects to the correct Controller. Figure \ref{figure:documentControllerViewTemplate} shows the DocumentController class method which performs the redirect according to the annotation tag.
+
+\begin{figure}
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping("/viewTemplate/{docId}/{connectedId}/{annotationId}")
+	public RedirectView viewTemplate(@PathVariable String docId,
+			@PathVariable String connectedId, @PathVariable String annotationId) {
+		Annotation a = FenixFramework.getDomainObject(annotationId);
+		RedirectView rv = new RedirectView();
+		if(a.isScenarioAnnotation()) {
+			rv.setUrl("/viewScenario/"+docId+"/"+connectedId+"#"+annotationId);
+		}else if( a.getTag().contains("Module")) {
+			rv.setUrl("/viewModule/"+docId+"/"+connectedId+"#"+annotationId);
+		}else if(a.getTag().contains("View")) {
+			rv.setUrl("/viewView/"+docId+"/"+connectedId+"#"+annotationId);
+		}else if(a.getTag().contains("Component")) {
+			rv.setUrl("/viewComponent/"+docId+"/"+connectedId+"#"+annotationId);
+		}else if(a.getTag().contains("Connector")) {
+			rv.setUrl("/viewConnector/"+docId+"/"+connectedId+"#"+annotationId);
+		}
+		return rv;
+	}	
+\end{lstlisting}
+\caption{Redirecting a request to visualize an entity template in the DocumentController}
+\label{figure:documentControllerViewTemplate}
+\end{figure}
+
+\item The Document interface also allows the user to navigate to the structured representation of the document, which is an aggregation of all the templates of all the entities added to the system. When the link to navigate to the structured representation is clicked, a request is sent to the Controller, which retrieves information about Scenarios, Views and Elements to be presented to the user. 
+
+Figure \ref{figure:documentControllerStructuredRepresentation} shows the method \textit{viewStructuredRepresentation()}, which handles the request to see the Structured Representation of the Document. This method retrieves all the main elements from the database (scenarios, views, modules, components and connectors) and adds them as model attributes, so they can be used by the template. The template ``structuredRepresentation'' is then returned and showed to the user.
+
+\begin{figure}
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping("/viewStructuredRepresentation/{docId}")
+	public String viewStructuredRepresentation(@PathVariable String docId,
+			Model m) {
+		Document d = FenixFramework.getDomainObject(docId);
+		m.addAttribute("scenarios", d.getScenarioSet());
+		m.addAttribute("views", d.getViewSet());
+		m.addAttribute("modules", d.getModuleSet());
+		m.addAttribute("components", d.getComponentSet());
+		m.addAttribute("connectors", d.getConnectorSet());
+		m.addAttribute("docId", docId);
+		m.addAttribute("title", d.getTitle());
+		return "structuredRepresentation";
+	}
+\end{lstlisting}
+\caption{Retrieving the Structured Representation template in the DocumentController}
+\label{figure:documentControllerStructuredRepresentation}
+\end{figure}
+\end{itemize}
+
+\subsubsection{Scenario Controller}
+
+The Scenario Controller provides means to add and remove Scenarios from the document and link or unlink annotations from a Scenario or its elements.A Scenario is created when a user wants to link an Annotation to a Scenario and is prompted the interface to add a new or choose an existing one. When the Controller receives the request to add a new Scenario, it does not only adds a new Scenario to the database, but also adds a new SrcOfStimulus, Stimulus, Artifact, Environment, Response and ResponseMeasure to the databse, all associated with the newly created Scenario. 
+
+\begin{figure}
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/addNewScenario/{docId}/{annotationId}/{scenarioName}/
+	{qualityRequirement}")
+	public RedirectView addNewScenario(/*...*/) {
+		addScenarioToDocument(document,qualityRequirement ,scenarioName);		
+		//...
+	}
+		@Atomic(mode = TxMode.WRITE)
+	private void addScenarioToDocument(Document d, String qualityRequirement, 
+	String scenarioName) {
+		Scenario s = new Scenario();
+		QualityRequirement qr = new QualityRequirement();
+		s.setQualityRequirement(qr);
+		//...		
+		d.addScenario(s);
+	}	
+\end{lstlisting}
+\caption{Creating a new Scenario in ScenarioController}
+\label{figure:scenarioControllerNewScenario}
+\end{figure}
+
+Figure \ref{figure:scenarioControllerNewScenario} shows the method \textit{addNewScenario}, which handles the request for adding a new Scenario to the Document and calls the method \textit{addScenarioToDocument()}, which creates the new Scenario with the given name, creates and associates with it the selected Quality Requirement and the Scenario elements and associates it with the respective document.
+
+When the user chooses which Scenario to link the Annotation with, the Controller receives a request containing both the unique ID of the Scenario and the unique ID of the Annotation. With these IDs, it can verify the tag associated with the Annotation, and add the Annotation either to the Scenario or to the corresponding element. 
+
+For example, if the tag associated with the Annotation is ``Source Of Stimulus'', then it will be linked to the ``SrcOfStimulus'' instance that is associated with the Scenario with the specified ID.
+
+Figure \ref{figure:scenarioControllerLinkAnnotation} shows the method \textit{addAnnotationToScenario()}, which associates an Annotation with a Scenario or one of its elements accordingly.
+
+\begin{figure}
+\lstset{style=customjava}
+\begin{lstlisting}
+	@Atomic(mode = TxMode.WRITE)
+	private void addAnnotationToScenario(Scenario s, Annotation a) {
+		String tag = a.getTag();
+		if (tag.equals("Scenario Description") || tag.equals("Tactic")) {
+			//associate annotation with the Scenario s
+		}
+		if (s.getElements().get(tag) != null) {
+			//associate annotation with a ScenarioElement
+		}
+	}	
+\end{lstlisting}
+\caption{Associating an Annotation with a Scenario in ScenarioController}
+\label{figure:scenarioControllerLinkAnnotation}
+\end{figure}
+
+A Scenario is initially created without any tactics. These are added in the Scenario Template, and their creation is handled by the Scenario Controller. Upon receiving the corresponding request, a new ``Tactic'' is added to the database containing the tactic's name, and is associated with the corresponding Scenario. When an Annotation with the tag ``Tactic'' is added to a Scenario, it is initially associated with the ``Scenario'' entity, as it can be seen in Figure \ref{figure:scenarioControllerLinkAnnotation}. 
+
+Inside the template, these annotations can be associated with the added tactics. Figure \ref{figure:scenarioControllerLinkToTactic} shows how a request to associate an Annotation with a specific Tactic is handled. In the \textit{linkAnnotationToTactic()} method, the association between the Scenario and the Annotation is removed to create the new association with the Tactic.
+
+\begin{figure}
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/linkToTactic/{docId}/{scenarioId}/{tacticId}/
+		{annotationId}")
+	public RedirectView addAnnotationToTactic(/*...*/) {
+		//...
+		linkAnnotationToTactic(s, t, a);
+		//...
+	}
+\end{lstlisting}
+\caption{Associating an Annotation with a specific Tactic in ScenarioController}
+\label{figure:scenarioControllerLinkToTactic}
+\end{figure}
+
+When user text is added to a Scenario or one of its elements, a request is sent to this Controller. It will then update the Model accordingly and show the updated Model in the corresponding View.
+
+Figure \ref{figure:scenarioControllerText} shows how the Scenario \textit{text} field is updated. The methods for updating the Scenario elements (including Tactics) are very similar to the example in the Figure.
+
+\begin{figure}
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/setScenarioText/{docId}/{scenarioId}", 
+		method = RequestMethod.POST)
+	public RedirectView setScenarioText(/*...*/) {
+		updateText(scenario, text);
+		//...
+	}
+	
+	@Atomic(mode=TxMode.WRITE)
+	private void updateText(Scenario scen, String text) {
+		scen.setText(text);
+	}	
+\end{lstlisting}
+\caption{Updating the Scenario text in the ScenarioController}
+\label{figure:scenarioControllerText}
+\end{figure}
+
+\subsubsection{Module Controller}
+
+Similarly to the Scenario Controller, the Module Controller handles the creation and deletion of Modules, which are the elements of Module Viewtype Views. It also handles the linkage of Annotations to existent Modules and the addition of user text to a Module. 
+
+The implementation of the methods that handle these operations is similar to the implementation done in the Scenario Controller. But unlike the Scenario, the Module has no other elements, therefore creating a Module only creates a Module in the database, and annotations are always linked to that Module.
+
+As explained in Chapter \ref{chapter:domainModel}, the Elements of a View are related to each others, and in the Subsection \ref{subsection:modules}, we can see that, since the relations between Modules have no information other than the Modules involved, they are represented in the model as different associations of the ``Module'' entity to itself. 
+
+The Module Controller handles adding and removing other Modules to/from the possible relations. The requests are unique for each relation, meaning the request to add a Module to the \textit{Uses} relation of a certain Module will be in the form \textit{/setModuleUses/...} and the request to add \textit{One-To-One} relations with other Modules to a certain Module will be in the form \textit{/setModuleOneToOne/...}. Each request modifies the corresponding association accordingly.
+\begin{figure}
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/setModuleParent/{docId}/{moduleId}/{parentId}")
+	public RedirectView addModuleParent(/*...*/) {
+		addParent(module, parent);
+		//...
+	}
+	@Atomic(mode = TxMode.WRITE)
+	private void addParent(Module module, Module parent) {
+		module.setParent(parent);
+	}	
+\end{lstlisting}
+\caption{Example of adding a ``Is-Part-Of'' relation between two modules}
+\label{figure:ModuleControllerIsPartOf}
+\end{figure} 
+
+Figure \ref{figure:ModuleControllerIsPartOf} shows how the ModuleController class adds a ``Is-Part-Of'' relation between two modules. Inside a Module template it is possible to select another Module to be the parent and associate them with a ``Is-Part-Of'' relation. The \textit{addModuleParent()} method handles the request to create this association. The request contains the \textit{id} of the module in which the relation will be created, and the \textit{id} of the Module chosen to be the parent. After setting the relation, the user is redirected to the Module template.
+
+\subsubsection{Component and Connector Controllers}
+
+Components and Connectors are the elements of the Component \& Connector Viewtype Views. The ComponentController and ConnectorController classes handle the creation and deletion of Components and Connectors from the system. The two classes have very similar methods.
+
+A Component has a set of Ports, which can be attached to Connector Roles. Adding and removing Ports to a component is very similar to the methods implemented to adding and removing tactics from a Scenario. Initially a Component has no Ports, and these can be created inside the Component template, as shown in Figure \ref{figure:ComponentControllerAddingPorts}. 
+\begin{figure}
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/addPortToComponent/{docId}/{componentId}/{portName}")
+	public RedirectView addPortToComponent(/*...*/) {		
+		addPortToComponent(component, portName);
+		//...
+	}
+
+	@Atomic(mode = TxMode.WRITE)
+	private void addPortToComponent(Component comp, String portName) {
+		Port p = new Port();
+		comp.addPort(p);
+	}
+\end{lstlisting}
+\caption{Adding Ports to a Component in ComponentController}
+\label{figure:ComponentControllerAddingPorts}
+\end{figure}
+
+Annotations with the tag ``Component Port'' are initially associated with the Module, but can be associated with a specific port, as seen in Figure \ref{figure:ComponentControllerLinkToPort}. 
+
+\begin{figure}
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/moveAnnotationToPort/{docId}/{componentId}/
+		{portId}/{annotationId}")
+	public RedirectView moveAnnotationToPort(/*...*/) {
+		
+		moveAnnotationToPort(component, port, annotation);
+		//...
+	}	
+\end{lstlisting}
+\caption{Associating an Annotation with a Port in the ComponentController}
+\label{figure:ComponentControllerLinkToPort}
+\end{figure}
+
+The Connector has a set of Roles, which are attached to the Component Ports. The implementation of the Roles in a Connector is similar to the implementation of the Ports: Initially a Connector has no Roles, which can be added inside the template, and annotations can be associated with the created Roles. The methods for creating Roles and linking annotations to them in the ConnectorController class are very similar to the ones represented in the Figures \ref{figure:ComponentControllerAddingPorts} and \ref{figure:ComponentControllerLinkToPort}, but the requests are sent to \textit{/addRoleToConnector} and \textit{/moveAnnotationToRole/} and instead of Component and Port instances there are Connectors and Roles.
+
+As mentioned in Section \ref{subsection:modelComponentsConnectors}, component ports can be associated with the connector roles by a relation of \textit{attachment}. Inside a Component template, it is possible to attach each of the ports to a Role from an existent Connector.
+
+Figure \ref{figure:ComponentControllerAttachment} shows how an attachment relation is created between a Port and a Role.
+
+\begin{figure}
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/attachPortToConnectorRole/{docId}/{portId}/{roleId}")
+	public RedirectView attachPortToRole(/*...*/) {
+		attachPortToRole(port,role);
+		//...
+	}
+	@Atomic(mode=TxMode.WRITE)
+	private void attachPortToRole(Port p, Role r) {
+		p.setRole(r);
+	}
+\end{lstlisting}
+\caption{Attachment of Component Ports to Connector Roles in the ComponentController}
+\label{figure:ComponentControllerAttachment}
+\end{figure}
+
+\subsubsection{View Controller}
+\label{substection:viewController}
+
+The ViewController class handles the creation and deletion of Views from two possible Viewtypes: Module and Component \& Connector. 
+
+Similar to the other domain entities, a new View is created when the user wants to associate an annotation with the tag ``View'' with a domain entity. Figure \ref{figure:ViewControllerAddModuleViewtype} shows how a request to add a new Module Viewtype View is handled.
+
+\begin{figure}
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/addNewView/{docId}/{annotationId}/Module Viewtype/{viewName}")
+	public RedirectView addNewModuleViewTypeView(/*...*/) {
+	
+		addModuleViewtypeToDocument(document, viewName, "Module Viewtype");
+		//...
+	}
+\end{lstlisting}
+\caption{Adding a new View in the ViewController}
+\label{figure:ViewControllerAddModuleViewtype}
+\end{figure}
+
+As there are two possible viewtypes for the views added to the application, the ViewController distinguishes between two different templates when receiving a request to view the View's template: One for views from the Module Viewtype, to which only Modules can be added, and one for views from the Component \& Connector Viewtype, to which only Components and Connectors can be added. This distinction is done inside the method \textit{viewViewTemplate()} of the ViewController class. 
+
+Figure \ref{figure:ViewControllerViewTemplates} shows how the method checks the \textit{viewtype} attribute of a View object to add the correct attributes to the template model and return the correct template.
+\begin{figure}
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/viewView/{docId}/{viewId}")
+	public String viewViewTemplate(/*...*/) {
+		//...
+		if(view.getViewtype().equals("Module Viewtype")) {
+			m.addAttribute("view", v);
+			m.addAttribute("views", d.getViewSet());
+			m.addAttribute("modules", d.getModuleSet());
+			m.addAttribute("used", new UsedIds());
+			return "viewMVTTemplate";
+		}else if(v.getViewtype().equals("Component & Connector Viewtype")) {
+			//add components and connectors information
+		}
+		return null;
+	}	
+\end{lstlisting}
+\caption{Request to see a View's Template in the ViewController}
+\label{figure:ViewControllerViewTemplates}
+\end{figure}
+The controller adds the existent Modules, Component and Connectors as template model attributes so the template can show them to the user who wants to add elements to a view. The set of existent Views is also added as attribute, to show in case the user wishes to move an annotation to other view. The UsedIds instance added as attribute is a class containing an empty \textit{List$<$String$>$}, which will be used to save the \textit{ids} of the elements selected to add to a view. 
+ 
+After the user selects a set of Modules, Components or Connectors to add to a view, a request is sent to the ViewController, which handles the association of these elements with the respective view.
+
+Figure \ref{figure:ViewControllerAddModules} shows how Modules are associated with a View, but these methods are similar for the Components and Connectors. 
+\begin{figure}
+\lstset{style=customjava}
+\begin{lstlisting}
+	@RequestMapping(value = "/addModulesToView/{docId}/{viewId}", 
+		method = RequestMethod.POST)
+	public RedirectView addModulesToView(/*...*/@ModelAttribute UsedIds modules) {
+		if(view.getViewtype().equals("Module Viewtype")) {
+			addModulesToView(v, modules);
+		}
+		//...
+	}
+	@Atomic(mode = TxMode.WRITE)
+	private void addModulesToView(View v, UsedIds modules) {
+		for (String id : modules.getUsed()) {
+			//associate module with the view
+		}
+	}	
+\end{lstlisting}
+\caption{How Modules are added to a View in ViewController}
+\label{figure:ViewControllerAddModules}
+\end{figure}
+A POST request is sent to \textit{/addModulesToView/\{docId\}/\{viewId\}}, containing in its body the instance of the \textit{UsedIds} class that was added as model attribute (see Figure \ref{figure:ViewControllerViewTemplates}), with the \textit{ids} of the selected elements saved in the list. Method \textit{addModulesToView()} makes sure the view has the correct viewtype for the elements to be added, and then method \textit{addModulesToView(View v, UsedIds modules)} iterates over the list of selected \textit{ids} and associates the Modules with the respective \textit{ids} to the view.
+
+\subsection{Views}
+\label{section:Views}
+This section describes how the information from the Model is displayed to the user. The developed application uses Thymeleaf\footnote{http://www.thymeleaf.org/}, a Java template engine for displaying dynamic templates. Tymeleaf can be fully integrated with the Spring Framework and, in each template, it is possible to use the its syntax to access and display the Model Attributes added by the Controllers. 
+
+A great advantage of Thymeleaf is the possibility of defining template fragments, which are pieces of code that can be defined in a separate file and be included in any template as desired. One of the main uses of fragments for the developed application is the page header, which is included in all templates and contains a small menu and the logout link. Figure \ref{figure:viewsHeaderFragment} shows how a fragment is defined, in this case with the example of the header. Each fragment must have a unique name, which is ``headerFragment'' in this example. All html code of that fragment is then defined inside the \textit{section} tags.
+\begin{figure}
+\lstset{style=customhtml}
+\begin{lstlisting}
+<section layout:fragment="headerFragment">
+	<nav class="navbar navbar-inverse" id="headernavbar">
+		Header definition here	
+	</nav>
+</section>
+\end{lstlisting}
+\caption{Defining the Header fragment in Thymeleaf syntax}
+\label{figure:viewsHeaderFragment}
+\end{figure}
+
+Including a predefined fragment in a template is as easy as Figure \ref{figure:viewsIncludeFragment} shows. Sending a request to \textit{/headerFragment} will retrieve the whole file where the fragment was defined, and by specifying the fragment name, the html code defined inside \textit{section} tags in the separate files will be included. This means that several fragments can be developed in one single file, and included individually in the templates by specifying their unique name.
+\begin{figure}
+\lstset{style=customhtml}
+\begin{lstlisting}
+<section layout:include="@{/headerFragment} :: headerFragment"></section>
+\end{lstlisting}
+\caption{Including a fragment in Thymeleaf syntax}
+\label{figure:viewsIncludeFragment}
+\end{figure}
+
+The result of including the header fragment in a template is shown in Figure \ref{figure:viewsHeaderLooks}.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{images/header}
+\caption{How the header looks when included in a template}
+\label{figure:viewsHeaderLooks}
+\end{figure}
+
+Another use for this Thymeleaf feature is in the templates defined for the main concepts - View, Scenario, Module, Component and Connector. Each of these templates are defined in separate \textit{$<$section$>$} tags inside a file. This was done because there are other templates where the information about the concepts is included, and it is much easier to include a fragment containing the whole information than writing the code again. 
+
+For example, inside a View template, information about the Elements included in the View must be shown, which is simply a matter of including the template of each element. Other example of the usefulness of these fragments is when showing the structured representation of a document, which consists of showing all the templates of the concepts associated with it. Again, this is as simple as including all the necessary templates.
+
+Figure \ref{figure:viewScenarioTemplate} shows the Scenario template.
+\begin{figure}
+\centering
+\includegraphics[scale=0.3]{images/scenarioExample}
+\caption{Example of the Scenario Template}
+\label{figure:viewScenarioTemplate}
+\end{figure}
+The templates use the information added by the Controllers to the Model Attributes, as seen in Figure \ref{figure:documentControllerStructuredRepresentation} and display it in a structured way. The information added by the Controllers is actually Java objects retrieved from the Model. Thymeleaf allows to treat these attributes as Java objects, so it is possible to obtain the value of the class attributes, or call methods on that object. 
+
+For example, to obtain the Scenario title including the Quality Requirement and the Scenario name as it can be seen in Figure \ref{figure:viewScenarioTemplate}, it is used the Thymeleaf syntax seen in Figure \ref{figure:viewsCallingMethods}. The \textit{\$\{\}} syntax allows to access the variables, and the \textit{th:text} attribute is in fact a Thymeleaf attribute which will set the text inside the \textit{span} tag to the result of the variable access done inside the quotes. As it shown, it is also possible to concatenate the values returned with other static text to obtain the desired results.
+\begin{figure}
+\lstset{style=customhtml}
+\begin{lstlisting}
+<span th:text="'Scenario for '+${scenario.getQualityRequirement().getName()}+': '">
+</span> 
+<span th:text="${scenario.getName()}"></span>
+\end{lstlisting}
+\caption{How Thymeleaf accesses variables}
+\label{figure:viewsCallingMethods}
+\end{figure}
+
+Thymeleaf also provides automatic binding of forms information to provided objects. For example, when a user wants to add Modules to a Module Viewtype View, a modal window is prompted, listing all the existent Modules associated with the respective Document, as it is shown in Figure \ref{figure:viewsModalFormExample}. The Modules are listed inside a form, with checkboxes that allow the user to select more than one Module to add. 
+
+\begin{figure}
+\centering
+\includegraphics{images/modalExample}
+\caption{Example of a Modal window containing a form}
+\label{figure:viewsModalFormExample}
+\end{figure}
+
+In Figure \ref{figure:ViewControllerViewTemplates}, it is possible to see that the Controller creates and adds a new instance of the \textit{UsedIds} as a model attribute. This instance is used by Thymeleaf to bind the value of the selected checkboxes in the form to the \textit{List$<$String$>$} attribute of the class. Figure \ref{figure:viewFormBindingResult} shows how the form is created.
+\begin{figure}
+\lstset{style=customhtml}
+\begin{lstlisting}
+<form action="#" th:action="@{/addModulesToView/}" method="post">
+	<ul>
+		<li th:each="module : ${modules}" th:object="${used}">
+			<input type="checkbox" th:field="*{used}" 
+				th:value="${module.getExternalId()}"></input>
+			<label th:text="${module.getName()}"></label>
+		</li>
+	</ul>
+</form>
+\end{lstlisting}
+\caption{Example of a form with object for binding results}
+\label{figure:viewFormBindingResult}
+\end{figure}
+A checkbox is added for each Module in the set. The \textit{th:object} attribute defines that the variable ``used'' is the object to which the results will be bound, and the \textit{th:field} attribute in the \textit{input} tag defines that the value of the checkbox, defined by the \textit{th:value} attribute, if it is chosen, must be bound to the field ``used'' of the class ``UsedIds'', which is the list of type String.
+
+When the form is submitted, Thymeleaf will add the selected values to the list, and send the object in the body of the POST request to the Controller, which will process them as seen in Figure \ref{figure:ViewControllerAddModules}.
+
+%!TEX root = ../dissertation.tex
+
+\section{Evaluation}
+\label{evaluation}
+
+The success of a software system is often dependent on the opinion of the people that will use it. Systems attractive and easy to use according to the target audience background are more likely to be highly used.
+
+The developed system tries to make the task of reading, understanding and structuring a software description article into an easy one, providing a simple and clean interface.
+
+As the main goal of the developed application is to be used by students and teachers, in both classroom and home environments, it was asked to the students enrolled in the Software Architectures course to test the application, namely the features for annotating text and structuring Scenarios from the annotations created.
+
+The participating students were asked to fill a small survey afterwards to register their opinions.
+This survey consisted of two questions asking to evaluate the Usability and the adequacy of the application regarding Scenario creation in a scale of one to ten, and three open and optional questions, asking what did the student like the most about the application, what improvements could be done to it, and to register any other feedback the student may had.
+
+A total of [NUMBER] students tested and evaluated the application. 
+
+Regarding the usability of the application, Figure ... shows the graph containing the ratings given by the students.
+
+Conclusions....
+
+Regarding the adequacy of the application to create Scenarios, Figure ... shows the graph with the ratings given by the students.
+
+Conclusions...
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+colormap/blackwhite,
+x tick label style={
+/pgf/number format/1000 sep=},
+ylabel=Number of Students,
+xlabel=Rating Given,
+enlargelimits=0.15,
+legend style={at={(0.5,-0.15)},
+anchor=north,legend columns=-1},
+ybar,
+bar width=7pt,
+]
+\addplot 
+	coordinates {(1,1) (2,2) 
+		(3,3) (4,4) (5,5) (6,6)};
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+
+Regarding the open questions... Introduzir conclusoes se as houver.
+ 
+%!TEX root = ../dissertation.tex
+
+\section{Future Work}
+\label{futureWork}
+
+The analysis of the state-of-the-art on Social Software and Knowledge Structuring done in Chapter \ref{chapter:relatedwork} elicits a set of features that should be present in the solution.
+
+However, developing a platform that provides structuring knowledge from an unstructured source and all the described social features was a very ambitious goal for the time span available. 
+
+The most important feature for this platform was, in fact, the knowledge structuring part, as the main goal of this thesis is to provide a solution to facilitate the analysis of the software description article and help the students to find the correlation between the concepts learned in the theoretical classes and these articles analyzed in the practical ones.
+
+Therefore, the developed solution focused on the association of tags from a closed vocabulary to parts of text, and the creation of a semi-structured representation of the software description articles, where the elements of the Software Architectures are clearly distinguished and described by the corresponding parts of text and user text.
+
+Finding the correct way to make these associations and representations was not a easy task, and there are still details of the developed solution that could be improved and new features that could be added in the future.
+
+\subsection{Allocation Viewtype}
+
+The Module and Component \& Connector Viewtypes are the most common views present in a software description article, and were the ones that got most attention during development.
+
+Allocation viewtype elements should be added to the platform in a future version, so Allocation Viewtype Views can be added to the structured representation of the article.
+
+\subsection{Graphical Representation of Views}
+
+The developed solution allows for the creation and representation of Modules, Components, Connectors and the Views that include these elements. 
+
+Module and Component \& Connector Viewtypes are only represented textually in the platform. However, a good way to represent these views so that the relations between the elements are visible is to represent them in graphical diagrams. 
+
+Features to create or upload graphical representations of Views would be very useful for the platform as a way to improve comprehension about the Views and their elements.
+
+\subsection{Social Elements}
+
+Sections \ref{section:relatedWorkHoneycomb}, \ref{section:relatedWorkPersuasive} and  \ref{section:relatedWorkRepSys} of Chapter \ref{chapter:relatedwork} describing the Related Work list a series of social features that could be useful in the platform.
+
+The developed platform contains social elements and allows for collaboration, as students are individually identified within the system and work together over a shared article. However, there are several other social software elements that could enrich the platform as a social system:
+
+\begin{itemize}
+\item \textbf{Groups:} This is the most important social aspect that could be added to the platform, as besides reading and analyzing articles in the practical classes, students must also read and analyze other articles for Group Assignments. The existence of features for the registration of work groups and having articles with group-access only could make it easier for the students to work on their group assignments.
+
+\item \textbf{Q\&A and/or Discussion Forums:} It may not always be clear for a student which parts of the text correspond to which concepts. Although they can simply ask the teacher or a colleague, it could also be very useful to have a central place to ask questions and discuss decisions. Having a discussion forum and/or a Q\&A system could also improve collaboration between students.
+
+\item \textbf{Reputation System: } Although its role would only be motivational, it is important that students feel motivated to participate in the platform, and a reputation system, assigning scores to, for example, annotations or comments, could be useful in this platform.
+
+\item \textbf{Spotlight: } Having a spotlight of the students with most participations and/or the highest reputation scores would provide not only extra motivation, but also promote some healthy competition between students.
+\end{itemize}
+
+
+\section{Conclusions}
+
+In the context of the Software Architectures course, relating theory concepts with descriptions of real systems is a very hard job, specially for students that are learning these concepts for the first time. It is clear that a way for students to discuss and collaboratively structure their knowledge is needed.
+
+This document presents the state-of-the-art on Social Software and Knowledge Structuring: The Honeycomb Framework for social software, design patterns for persuasive software, the roles of users in social software, reputation systems, collaborative tagging, semi-structured contents and ontology learning.
+
+Based on the state-of-the-art presented and the context of the Software Architectures course, this document presents an architecture for a collaborative platform where students can create a structure to relate the theory concepts with the text from systems descriptions.
+
+The main goal for this work is to develop the platform with the knowledge structuring elements and discussion methods, to allow students to discuss and organize thoughts. Additionally, other social software elements will be added, such as reputation systems, in order to boost motivation and encourage participation. 
+
+%
+% ---- Bibliography ----
+%
+\bibliography{mybib}
+\bibliographystyle{plain}
+\end{document}
