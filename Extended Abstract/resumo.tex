@@ -7,7 +7,6 @@
 % for the full guidelines.
 %
 \documentclass{llncs}
-\usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{tabulary}
 %\usepackage{tikz}
@@ -15,12 +14,12 @@
 \usepackage[simplified]{pgf-umlcd}
 \usepackage{listings}
 \usepackage{array}
-\pgfplotsset{compat=1.12}
+\usepackage[left=1.2cm,right=1.2cm,top=2cm,bottom=2cm]{geometry}
 \graphicspath{ {images/} }
 \lstdefinestyle{customhtml}{
   language=HTML,
   showstringspaces=false,
-  basicstyle=\footnotesize\ttfamily,
+  basicstyle=\scriptsize\ttfamily,
   keywordstyle=\bfseries\color{green!40!black},
   commentstyle=\itshape\color{purple!40!black},
   identifierstyle=\color{blue},
@@ -45,6 +44,9 @@ tabsize=4,
 showspaces=false,
 showstringspaces=false
 }
+
+\linespread{0.97}
+\renewcommand{\baselinestretch}{0.89}
 
 \begin{document}
 
@@ -78,33 +80,28 @@ The Software Architectures course at Instituto Superior T\'{e}cnico teaches stud
 %
 \section{Introduction}
 \label{introduction}
-Analyzing and discussing big, real, open-source and highly complex software system is a very important part of the Software Architectures course at Instituto Superior T\'{e}cnico. In the course context, students must apply concepts and techniques for design and analysis of software architectures to descriptions of real systems. 
+Analyzing and discussing big, real, open-source and highly complex software system is a very important part of the Software Architectures course at Instituto Superior T\'{e}cnico. In the course context, students must apply concepts and techniques for design and analysis of software architectures to descriptions of real systems. However, applying these concepts and techniques is not a very easy task, and often students have questions and doubts regarding these descriptions. These questions sometimes require not only consulting the course bibliography, but also discussing with peers or asking questions to teachers. This thesis focuses on providing a solution for this problem with the use of social software and knowledge structuring strategies.
 
-However, applying these concepts and techniques is not a very easy task, and often students have questions and doubts regarding these descriptions. These questions sometimes require not only consulting the course bibliography, but also discussing with peers or asking questions to teachers. This thesis focuses on providing a solution for this problem with the use of social software and knowledge structuring strategies.
-
-This document is organized as follows: Section \ref{problemdescription} gives a more detailed description about the problem of applying theoretical concepts to practical examples in the context of the Software Architectures course. Section \ref{objectives} elicits the main goals of this thesis. Section \ref{relatedwork} presents the state-of-the-art in the areas of Social Software and Knowledge Structuring. Section \ref{solution} gives a small description of the developed solution. Sections \ref{domainModel}, \ref{architecture} and \ref{implementation} describe the solution domain model, architectural details and implementation. Finally, Section \ref{evaluation} will show the assessment of the developed solution and \ref{futureWork} will describe what can still be added to it.
+This document is organized as follows: Section \ref{problemDescription} gives a more detailed description about the problem of applying theoretical concepts to practical examples in the context of the Software Architectures course. Section \ref{objectives} elicits the main goals of this thesis. Section \ref{relatedWork} presents the state-of-the-art in the areas of Social Software and Knowledge Structuring. Section \ref{solution} gives a small description of the developed solution. Sections \ref{domainModel}, \ref{architecture} and \ref{implementation} describe the solution domain model, architectural details and implementation. Finally, Section \ref{evaluation} will show the assessment of the developed solution and \ref{futureWork} will describe what can still be added to it.
 
 \section{Problem Description}
 \label{problemDescription}
 The course of Software Architectures teaches students the most important concepts in the field of software architectures and applies these concepts to real-life software systems.
 
 The practical component of this course (where the theory is applied) is done by analyzing documents/articles that describe the architectures of real-life systems and applying the concepts learned in theory lessons: extracting stakeholders, scenarios, tactics, views, etc.
-This analysis is either done by students with the help of the teacher, during practical classes, or in work groups of usually three students, that read, discuss and analyze software descriptions together and present their results to both the teacher and the rest of the class.
+This analysis is either done by students with the help of the teacher, during practical classes, or in work groups where they read, discuss and analyze software descriptions together and present their results to both the teacher and the rest of the class.
 
 Understanding the analysis done and how it was done is very important, since it means students can apply the concepts learned not only in the written exam to pass the course, but also in the future, in other real-life software systems.
 However, there are several issues regarding the application of theory concepts in this course:
 \begin{itemize}
 \item Each year, there are around one-hundred students signed in the course. All these students have roughly the same Computer Science background knowledge. However, not all students have the same maturity: while some may quickly understand what is taught in theory lessons, others may need some more time to assimilate what was taught.
 
-\item The output of the analysis done to software descriptions (the scenarios, etc. extracted) is not available in a consistent way: the analysis done in class is available for students if they took their own notes, and the analysis done by groups is available if:
-\begin{enumerate}
-\item Students took notes of their colleagues' presentations 
+\item The output of the analysis done to software descriptions (the scenarios, etc. extracted) is not available in a consistent way: the analysis done in class is available for students if they took their own notes, and the analysis done by groups is available if students took notes of their colleagues' presentations or groups share their presentation slides among them. Slides may include errors pointed out by the teacher, but not corrected.
 
-\item Groups share their presentation slides among them. Slides may include errors pointed out by the teacher, but not corrected.
-
-\end{enumerate} 
 \item The case description is usually a fairly long document (from ten to twenty pages approximately). The task of carefully reading and understanding all the text and do a mapping between the concrete descriptions in the text and the abstract concepts learned in theory classes is not easy, as the parts of the text that map to concepts are not always evident.
+
 \item The architectural elements extracted from a single software description are usually scattered along the whole text, and it is not evident the connection between all the elements.
+
 \end{itemize}
 
 \section{Objectives}
@@ -120,306 +117,109 @@ The existence of this collaborative should provide not only a way for students t
 The platform to develop can be thought of a social software, where different people communicate and collaborate to provide a structured representation of a software description.
 The next sections provide an overview on the state-of-the-art of two main aspects:
 \begin{itemize}
-\item \textbf{Collaborative work}, presenting the state-of-the-art on social and collaborative aspects of software. This includes literature on:
-	\begin{itemize}
-		\item The Honeycomb Framework, a framework that generalizes the most important components of social software;
-		\item Persuasive Software, systems that have impact on users behavior and thoughts, which is the case of the platform to develop;
-		\item Roles in Social Networks, describing the types of users of social software;
-		\item Reputation Systems, which is the attribution of scores to users to provide a motivational component on the platform.
-	\end{itemize}
+\item \textbf{Collaborative work}, presenting the state-of-the-art on social and collaborative aspects of software. This includes literature on the \textbf{Honeycomb Framework}, a framework that generalizes the most important components of social software, \textbf{Persuasive Software}, systems that have impact on users behavior and thoughts, which is the case of the platform to develop, \textbf{Roles in Social Networks}, describing the types of users of social software and \textbf{Reputation Systems}, which is the attribution of scores to users to provide a motivational component on the platform.
 	
-\item \textbf{Knowledge Structuring}, presenting the state-of-the-art on ways of structuring information. This includes literature on:
-	\begin{itemize}
-		\item Collaborative tagging systems, which consists of assigning keywords to documents or parts of documents;
-		\item Semi-structured content, which consists of providing a way for structuring knowledge without such strict rules as, for example, an ontology or a taxonomy;
-		\item Ontology Learning, extracting knowledge from text.
-	\end{itemize} 
+\item \textbf{Knowledge Structuring}, presenting the state-of-the-art on ways of structuring information. This includes literature on \textbf{Collaborative tagging }systems, which consists of assigning keywords to documents or parts of documents, \textbf{Semi-structured content}, which consists of providing a way for structuring knowledge without such strict rules as, for example, an ontology or a taxonomy and \textbf{Ontology Learning}, extracting knowledge from text.
 \end{itemize}
 
-
 \subsection{Honeycomb Framework}
-The definition of Social Software as ``systems that allow people, in their particularities and diversity, to communicate (interact, collaborate, exchange ideas and information) mediating and facilitating any kind of social relationship and favoring the emergence of a collective wisdom and a bottom-up organization'' \cite{pereira2010social} applies to our collaborative platform, in the sense that it should allow a large number of students, with different personalities and opinions, to ask questions to their colleagues, give opinions, receive feedback, etc, in order to correctly identify the architectural elements in a description of a software system, and therefore reach a complete and correct analysis of that system. 
+The definition of Social Software as ``systems that allow people, in their particularities and diversity, to communicate (interact, collaborate, exchange ideas and information) mediating and facilitating any kind of social relationship and favoring the emergence of a collective wisdom and a bottom-up organization'' \cite{pereira2010social} applies to our collaborative platform, as it should allow students with different personalities and opinions to participate by identifying architectural elements, asking questions, etc. in order to reach a complete and correct analysis of that system. 
 
-The Honeycomb Framework was proposed to illustrate the seven elements that give a functional definition for social software \cite{smith2007social}: \textbf{Identity}, the unique identifier of a user within the system; \textbf{Presence}, resources that allow knowing if certain identity is online; \textbf{Relationship}, way to determine how users can relate/are related to others; \textbf{Reputation}, way of knowing the status of a user in the system; \textbf{Groups}, possibility to form communities of users that have common interests; \textbf{Conversation}, resources for communication among the users (synchronous and/or asynchronous); \textbf{Sharing}, possibility of sharing objects that are important to the users (videos, images, etc);
-
-The Identity appears at the center of the framework, because it is the most basic requirement of any social system.
-In the platform to develop the following elements could be identifiable:
-\textbf{Identity:} Each student is a unique person and, therefore, must have a unique identification inside the platform.
-\textbf{Reputation:} To assess the quality and relevance of the participations in the platform, a reputation system should be used, as discussed in \ref{repsys}.
-\textbf{Groups:} Students have to perform group assignments for the Software Architectures course. The notion of these work groups with a restricted set of people should be present in the platform.
-\textbf{Relationship:} There is already an implicit relationship in the platform, as all students are colleagues of each others. But there is a specialization of this relationship, for students inside the work group. The teachers will also be members of the platform, and the relationship student-professor must always be present as well: a student does not have the same kind of interactions he has with a colleague when interacting with a teacher.
-\textbf{Conversation:} The existence of discussions around elements to add/already added to the platform provides a way of communication between the users.
-\textbf{Sharing:} Within the discussions around elements, it should be possible to share different kinds of objects (articles, links, etc) that may be helpful to understand or complement what is being discussed. There should be two levels of sharing: the Group level, where shares objects are only available for the work group, and a General level, where objects are shared with everyone.
-\textbf{Presence:} Considering that all communications are asynchronous, the notion of presence is not strictly necessary in the platform, but could be added, as a feature, a visible list of people logged in the platform.
+The Honeycomb Framework was proposed to illustrate the seven elements that give a functional definition for social software \cite{smith2007social}: \textbf{Identity}, the unique identifier of a user within the system, which applies to the platform to develop in the sense that each student is a unique person and must have a unique identification in the platform; \textbf{Presence}, resources that allow knowing if certain identity is online, which are not strictly necessary in the platform; \textbf{Relationship}, way to determine how users can relate/are related to others, which applies to the platform as students are related to each other both as colleagues as and group elements, and to the teachers; \textbf{Reputation}, way of knowing the status of a user in the system, which could be used to assess the quality and relevance of the contributions to the platform; \textbf{Groups}, possibility to form communities of users that have common interests, which applies to the platform as students form work groups; \textbf{Conversation}, resources for communication among the users (synchronous and/or asynchronous). In the context of the platform, conversation should be done asynchronously with comments and discussions; \textbf{Sharing}, possibility of sharing objects that are important to the users (videos, images, etc), which applies to this context as students may want to share documentation or other media with their colleagues or their group;
 
 \subsection{Persuasive Software Design Patterns}
 The term ``persuasive technology'' is used to describe computer systems that have an impact on user's thoughts and may even lead to changes in their behavior \cite{fogg2002persuasive,oinas2009persuasive}.
 
-There are three different possible outcomes for a persuasive system: \textbf{Reinforcement}, making current attitudes resistant to change, \textbf{Changing Outcome }, changes in a person's response to an issue, and \textbf{Shaping Outcome}, formulate a pattern for a situation where one did not exist before \cite{oinas2008towards};
+There are three different possible outcomes for a persuasive system: \textbf{Reinforcement}, making current attitudes resistant to change, \textbf{Changing Outcome }, changes in a person's response to an issue, and \textbf{Shaping Outcome}, formulate a pattern for a situation where one did not exist before \cite{oinas2008towards}. The most important outcome for this platform is the Changing Outcome: When a description of a system is presented, the students most not only read it, but also relate it to the concepts learned and use the platform to try and extract the correct scenarios and views from it.
 
-Even though the students are familiar with some of the terms used in the course context, new terms are introduced. This platform is persuasive in the sense that it must change the way its users will look at a description of a Software System: reading is not enough, it is necessary to relate what is read with the terms and concepts learned in the classes.
-The most important outcome for this platform is the Changing Outcome: When a description of a system is presented, the students most not only read it, but also relate it to the concepts learned and use the platform to try and extract the correct scenarios and views from it.
+The concept of social influence describes a change in one's behavior (or attitudes or beliefs), caused by external pressures \cite{guadagno2010preference}. In our context, students may not contribute to the platform at first, but may feel compelled to when seeing their colleagues' contributions. Four design patterns are proposed for persuasive systems, in order to introduce social influence in software features: Social Learning and Facilitation (SLF), Competition (COM), Cooperation (COO) and Recognition (REC) \cite{oduor2014persuasive}. 
 
-The concept of social influence describes a change in one's behavior (or attitudes or beliefs), caused by external pressures \cite{guadagno2010preference}. In our context, we want the students to contribute to the platform, by adding new elements (scenarios, views), discussing the elements added by their colleagues, or asking/answering questions. 
-The platform should provide a way to do this, by allowing insertion and edition of new elements to the conceptual structure, done by any student, Comments (and responses to comments) on an element inserted, Discussion Forums and Q\&A systems.
+The \textbf{Social Learning and Facilitation} pattern has the main purpose of using software features that allow to visualize the presence of other people, with the motivation that it is easier for individuals to pursue their goals if there is a clear awareness of other people pursuing the same goal and facing the same issues \cite{oduor2014persuasive}. In the context of our collaborative platform, students may not contribute at first, but may feel compelled to as they see their colleagues contributing.
 
-Some students may start contributing to the platform right away, while others will not initially feel compelled to do that. However, as one's actions are somehow influenced by other people, they may start contributing as they see their friends and colleagues doing so.
+The \textbf{Competition} pattern has the main purpose of using competitive elements, such as ranks, scores and levels, that allow users to compare their performance with others, and adjust their target goals based on these. Some people may see this competition as a source of anxiety, so participation must be voluntary \cite{oduor2014persuasive}. Adding a score for each student and a rank hierarchy based on the range of scores will start a hopefully healthy competition between them. Anonymity should be an option in the platform, to remove sources of anxiety.
 
-Four design patterns are proposed for persuasive systems, in order to introduce social influence in software features: Social Learning and Facilitation (SLF), Competition (COM), Cooperation (COO) and Recognition (REC) \cite{oduor2014persuasive}. 
+The \textbf{Cooperation} pattern has the main purpose of providing software features that allow users to engage in mutual goals and support each other. The motivation for this pattern is that it is easier to cooperate if people are engaged in mutual objectives. However, some people prefer to perform alone, so cooperation must not be forced \cite{oduor2014persuasive}. The students in the platform will be working towards a main goal: correctly understanding and correlating what was learned in the Software Architectures classes with real examples of software systems. But there are several concepts and structures to identify on a single description and students may have difficulties in identifying them, so dividing the main goal in several smaller goals and have discussions around them would be useful.
 
-\subsection{Social Learning and Facilitation (SLF):}
-
-The Social Learning and Facilitation pattern has the main purpose of enabling and enhancing the design of software features that allow to visualize the presence of other people, with the motivation that it is easier for individuals to pursue their goals if there is a clear awareness of other people pursuing the same goal and facing the same issues \cite{oduor2014persuasive}. 
-
-In the context of our collaborative platform, it is necessary to persuade the students to add contributions as they may not feel confident enough to do so at first. The platform should provide a way to visualize recent contributions - as students see their colleagues contributing towards the same goal, they may want to add their own.
-
-\subsection{Competition (COM):}
-The Competition pattern has the main purpose of using competitive elements, such as ranks, scores and levels, that allow users to compare their performance with others, and adjust their target goals based on these. However, as some people might see competition as a motivational factor for improvement, other people may see it as a source of anxiety – therefore, participation in a competition must always be voluntary \cite{oduor2014persuasive}.
-
-Adding a score for each student and a rank hierarchy based on the range of scores will start a hopefully healthy competition between them. Each contribution should have a positive score, even when it is less correct, as trying and failing is also a way of learning. Anonimity should be an option in the platform, as even this kind of competition, that is supposed to be healthy and motivating, can be a source of anxiety for some people.
-
-\subsection{Cooperation (COO)}
-The Cooperation pattern has the main purpose of providing software features that allow users to engage in mutual goals and provide ways for them, supporting each other in reaching their goals. The motivation for this pattern is that it is easier to cooperate if there is a clear awareness of what needs to be done, what other people are doing, and how far they are in achieving their goals. Group discussion supports these needs and encourages giving and receiving support on the matter. However, some people prefer to perform alone, and therefore cooperation must not be forced \cite{oduor2014persuasive}. 
-
-The students that will use this platform will be working towards a main goal: correctly understanding and correlating what was learned in the Software Architectures classes with real examples of software systems. But concerning the analysis of a single software system, there are several concepts and structures to identify on a single description. Students may be having some trouble identifying these elements, and therefore the system could provide a way of defining goals. A goal, for example, could be ``Add a new scenario for Availability''. Discussions around goals would promote cooperation between students
-
-\subsection{Recognition (REC)}
-
-The Recognition pattern has the purpose of providing software features that enable users to get recognition from their peers. The motivation for this pattern is that users, when working towards a goal, they sometimes need a reason to focus on that same goal. Having their efforts recognized may be a good reason to keep the good work, and therefore systems should provide opportunities for public recognition of top achievers \cite{oduor2014persuasive}. 
-
-Since the system should have a score system, it could be used as a way of creating a weekly spotlight: by keeping track of the amount of points scored by each student along the week, the list of the Top 10 students with most points gathered in that week should be visible. Recognition is then achieved when students see their names in the spotlight.
+The \textbf{Recognition} pattern has the purpose of providing software features that enable users to get recognition from their peers. The motivation for this pattern is that users sometimes need a reason to focus on reaching their goals. Having their efforts recognized may be a good reason to keep the good work\cite{oduor2014persuasive}. As the system should have a score system, it could be used as a way of creating a weekly top ten of the students who achieved most points in that week. Recognition is then achieved when students see their names highlighted.
 
 \subsection{Roles in Social Networks}
-A \textit{role}, in a social structure, is a set of expectations for an individual in a certain position. For example, the role of ``secretary'' is associated to what secretaries are expected to do \cite{forestier2012roles,nadel1957theory}.
-There are two categories of roles: \textit{Non-explicit roles}, which are not defined a-priori, and \textit{Explicit roles}, which are predefined types of actors in the social network, such as ``experts'' or ``influencers''.
+A \textit{role}, in a social structure, is a set of expectations for an individual in a certain position. For example, the role of ``secretary'' is associated to what secretaries are expected to do \cite{forestier2012roles,nadel1957theory}. There are two categories of roles: \textit{Non-explicit roles}, which are not defined a-priori but can be inferred, and \textit{Explicit roles}, which are predefined types of actors in the social network, such as ``experts'' or ``influencers''.
 
-Methodologies for inferring \textit{non-explicit} roles analyze the structure of the social network and communications between users, in order to identify patterns in communication that allow the identification of roles. Common approaches are based on blockmodels \cite{borgatti1993two,breiger1975algorithm} and probabilistic bayesian models \cite{steyvers2004probabilistic,mccallum2007topic,daud2009generalized}.
-
-In the platform to develop, it is possible to define a priori the two main roles:
-\begin{itemize}
-\item Student: the most active users in the platform. Their contributions to the platform include tagging parts of the document, adding and editing parts of the semi-structure, asking and answering questions and rate other students' contributions.
-
-\item Teacher: this role is assigned to a very small number of users in the platform. Their number of contributions is smaller and they are mostly for adding correction to the contents added by the students to the platform..
-\end{itemize}
-
-The methodologies for identification of explicit roles in a social network \cite{zhang2007expertise,agarwal2008identifying} have in consideration social networks around the web, with hundreds or even thousands of users and where the roles cannot be easily assigned. Given the small amount of users expected in the platform, the roles of Student and Teacher will be assigned in the moment of registration, and there is no need for this methodologies.
+In the platform to develop, it is possible to define a priori the two main roles: the \textbf{Students}, which are the most active users in the platform as they contribute to the analysis of the software descriptions, and the \textbf{Teachers} which corresponds to a very small number of users in the platform. Their number of contributions is smaller and they are mostly for adding correction to the contents added by the students to the platform.
 
 \subsection{Reputation Systems}
 \label{repsys}
-Reputation systems are of extreme importance for certain kinds of applications, namely e-commerce websites (Amazon, eBay, etc.). In these websites, buyers and sellers execute money transactions and therefore, the reputation of a seller will denote the degree of trust that possible buyers will have in them \cite{vavilis2014reference}.
+Reputation systems are of extreme importance for certain kinds of applications, namely e-commerce websites, where money transactions are executed and the reputation of a seller will denote the degree of trust that possible buyers will have in them \cite{vavilis2014reference}.
 
-For the platform to develop, reputation does not play such an important role, but will add a motivational component to the platform: Students rate their colleagues' contributions, and their reputation score is calculated. Students should strive for getting and keeping a high reputation score.
-
-\subsubsection{Motivation:}
-
-A study was conducted \cite{dencheva2011dynamic}, concerning the lack of participation in Moknowpedia, a Wiki system: People were not motivated enough to overcome obstacles such as lack of time or lack of a structure for the article and start contributing to the wiki. A reputation system was added to the wiki in order to solve these problems and improve both content quality and quantity\cite{prause2008approach}. 
-
-Results show an increase of 62\% in the number of article revisions and an increase of 42\% in the number of viewed articles. Overall, the users accessed the wiki more often, read more articles and made more contributions. This shows the importance of a reputation system in a collaborative system, even if its role is only motivational.
+For the platform to develop, reputation does not play such an important role, but will add a motivational component to the platform: Students rate their colleagues' contributions and should try to get and keep a high reputation score. The motivation behind the importance of including a reputation system in the platform is the study conducted \cite{dencheva2011dynamic}, concerning the lack of participation in Moknowpedia, a Wiki system. A reputation system was added to the wiki in order to solve these problems and improve both content quality and quantity\cite{prause2008approach}, and results showed an increase of 62\% in the number of article revisions and an increase of 42\% in the number of viewed articles.
 	
-\subsubsection{Requirements and Features:}
+\subsubsection{Requirements and Features of the Reputation System:}
 
-A framework for analysis of reputation systems is proposed in \cite{vavilis2014reference}, where the general requirements for reputation systems are elicited and the corresponding features needed for their fulfillment. Given the context of the platform, the following requirements apply for its reputation system:
+A framework for analysis of reputation systems is proposed in \cite{vavilis2014reference}, where the general requirements for reputation systems are elicited and the corresponding features needed for their fulfillment. Given the context of the platform, its reputation system requires that \textbf{Ratings and Reputation should discriminate user behavior}, as these scores should allow to identify students with few and/or less relevant contributions and students with many and/or very relevant ones, \textbf{the reputation system should be able to discriminate ``incorrect'' ratings}, as malicious users are present everywhere and can give intentionally inaccurate ratings, \textbf{Users should not be able to modify ratings, reputation values and calculate their own reputation}, as this data should not be accessible to them, and the score should be calculated by the reputation system.
 
-\textbf{R1 (Ratings should discriminate user behavior)} and \textbf{R2 (Reputation should discriminate user behavior): } The rating is the score that a student assigns to a participation from other student, and the reputation score is the score assigned to a student after processing all ratings assigned. These scores should have a range of values that allows to identify students with very few and/or less relevant contributions and students with many and/or very relevant ones.
+To satisfy the identified requirements, the reputation system should feature a range of values to represent \textbf{trust and distrust}, where low values indicate students with few and/or less relevant contributions and high values indicate students with many and/or very relevant ones, \textbf{absolute reputation values}, calculated independently for each user, and identification of \textbf{origin and target} of the ratings, to prevent self-ratings and identify potential malicious users
 
-\textbf{R3 (The reputation system should be able to discriminate ``incorrect'' ratings): } Malicious users are present everywhere. Intentionally inaccurate ratings can be given to contributions, in order to increase or decrease a user's reputation score. Therefore, some management for this kind of situations should be present in the platform.
+\subsubsection{Components of a Reputation System:}
+Reputation systems are divided in four components\cite{liu2012systematic,liu2010evaluation}, and each have a set of defined criteria for their evalutation: \textbf{Input}, the process of collecting reputation information from information sources, \textbf{Processing}, the procedure of computing and aggregating the reputation information, \textbf{Output}, the dissemination of the reputation information and the \textbf{Feedback Loop}, the collection of feedback of the output (review of the review), which does not apply to the context of the platform.
 
-\textbf{R11 (Users should not be able to directly modify ratings)}, \textbf{R12 (Users should not be able to directly modify reputation values)} and \textbf{R13 (Users should not be responsible to directly calculate their own reputation): } When being processed, data should not be accessible to users. The reputation score of a student should be calculated by the system and neither this value, nor the values of the ratings attributed should be modifiable by the users.
-
-To satisfy the identified requirements, the reputation system should implement the following features:
-
-\textbf{F1 (Trust/Distrust):} A range of values should be used, where the lowest value represents, as said above, a student with very few and/or less relevant contributions, and the highest value represents a student with many and/or very relevant ones. 
-
-\textbf{F2 (Absolute Reputation Values):} The reputation score of a student should not be calculated with respect to another students. Scores should be absolute and calculated independently for each user by the reputation system.
-
-\textbf{F3 (Origin/Target):} To prevent students from self-rating themselves and to control malicious ratings (for example, a student with a lower reputation score could assign lower ratings to their colleagues' participation in order to lower their scores), the origin and the target (students) of each rating given should be identified in the system.
-
-\subsubsection{Components of a Reputation System}
-In \cite{liu2012systematic,liu2010evaluation}, reputation systems are divided in four components: \textbf{Input}, the process of collecting reputation information from information sources, \textbf{Processing}, the procedure of computing and aggregating the reputation information, \textbf{Output}, the dissemination of the reputation information and the \textbf{Feedback Loop}, the collection of feedback of the output (review of the review), which does not apply to the context of the platform.
-A set of evaluation criteria is defined for the evaluation of these components.
-
-Concerning \textbf{Input}, the following criteria apply to the platform:
-\textbf{Collection channel: }The collection channel is the way how a reputation system collects information. In this platform ratings are left directly in the platform.
-
-\textbf{Information Source: }The evaluators that provide the ratings to the system. The information source in this context are the students logged in the platform. Only registered students can assign ratings and there are no restrictions, every student can evaluate their colleagues.
-
-\textbf{Reputation Information: }The information collected is a single property, the rating assigned. The ratings are chosen from a rating scale, which provides a range of possible scores.
-
-\textbf{Collection Costs: }The time cost of collecting and processing a single rating. Since the reputation system is small and not a very relevant part of the whole platform, the time costs for collecting and processing ratings are not relevant.
-
-\textbf{Processing:}
-Concerning the Processing component, a set of criteria is defined for its evaluation \cite{liu2012systematic}, from which the following applies to the platform:
-\begin{itemize}
-\item \textit{Target rating algorithm}: The algorithm used to aggregate the ratings assigned to students. Given the simplicity of the reputation system to develop, a weighted average algorithm is the algorithm that fits best for the context.
-\item \textit{Update Frequency}: how often the system updates the reputation information. Again, give the simplicity and the small amount of users, information should be updated as soon as the ratings are assigned. 
-\item \textit{Algorithm complexity}: refers to the complexity of each algorithm. The weighted average algorithm is a very simple algorithm, with low complexity.
-\item \textit{System complexity}: refers to the complexity of the whole system. The reputation system to develop is, as mentioned before, very simple and therefore has very low complexity.
-\end{itemize}
-
-\textbf{Output:}
-Concerning the Output component, there is also a set of defined criteria \cite{liu2012systematic} for both the reporting and dissemination of reputation information
-For dissemination, the following criteria apply:
-\begin{itemize}
-\item \textbf{O1} (Set of end users): this refers to the users who will be able to see the reputation scores. In this case, those users are the students registered in the platform.
-\item \textbf{O2} (Access methods): this criteria focuses on whether reputation systems provide alternative ways for users to get the reputation information other than the website. In this platform there is no need for an alternate dissemination of information, since reputation is a minor component of the whole platform. Therefore, no other access methods should be provided.
-\end{itemize}
-Concerning information reporting, two kinds of information are defined \cite{liu2012systematic}: Aggregated (the results of the Processing component) and Individual (all individual ratings)
- 
-Reporting individual information does not add anything relevant to the context of the reputation system to develop, since only a single rating value is collected. Therefore, only the criteria for aggregated information applies:
-\begin{itemize}
-\item \textbf{O4} (Descriptive dimensions): this criteria identifies how many dimensions are used to illustrate the aggregated information. Only a single dimension is used, the weighted average of the ratings, calculated by the Processing component of the reputation system.
-\end{itemize}
+Concerning the \textbf{Input} component, ratings are collected in the platform and are given by the students that are logged in. Only a single property is collected, the rating assigned.Concerning the \textbf{Processing} component, a weighted average algorithm is the best choice to aggregate ratings in this simple system, and information should be updated as soon as the ratings are assigned. Both the algorithm and the system have a very low complexity. Concerning the \textbf{Output} component, the end users of the information are the students registered in the platform, and this information is only available inside the platform. The reputation information consists in the result of the weighted average algorithm.
 
 \subsection{Collaborative Tagging}
-Collaborative tagging is the practice of allowing anyone to freely attach keywords or tags to content \cite{golder2006usage}.
+Collaborative tagging is the practice of allowing anyone to freely attach keywords or tags to content \cite{golder2006usage}. Tagging-based systems contrast with taxonomies as they are neither exclusive nor hierarchical, and allow to identify content as being about a great variety of things simultaneously \cite{golder2006usage}. The tags added to content may describe the content itself, or describe the category in which the content falls \cite{coates2005two}. It is possible to identify several functions for the tags, within the system that uses the tagging system \cite{golder2006usage}.
 
-While in some document repositories or digital libraries there is an authority responsible for assigning and organizing documents by keywords, in collaborative tagging anyone is able to freely attach keywords or tags to the contents. This is very useful when there is no authority for organizing content or simply there is too much content for a single authority to organize: It is the case of the web \cite{golder2006usage}.
-
-Tagging-based systems contrast with taxonomies: while taxonomies organize contents into unambiguous categories that are within more general categories, tagging is neither exclusive nor hierarchical, and therefore it alows to identify content as being about a great variety of things simultaneously \cite{golder2006usage}. 
-
-However, both these methods of organizing information have problems with the word semantics, namely polysemous words (a single word with many, related, senses), synonyms (multiple words with the same/closely related sense), and the basic level variation: different people consider different levels of specificity for describing the same entity for example, a person may describe a dog as 'dog' or as 'beagle') \cite{tanaka1991object}. 
-
-The tags added to content may describe the content itself, or describe the category in which the content falls \cite{coates2005two}. It is possible to identify several functions for the tags, within the system that uses the tagging system \cite{golder2006usage}.
-
-In this platform we are aiming for using tagging as a way of identifying the main parts of a software system within a software description, namely stakeholders, scenarios and their parts, tactics, etc. 
-
-For that, and to avoid problems of word semantics, tags added to the text of the description must belong to a closed taxonomy of Software Architecture terms, which will contain all terms necessary to describe an Architecture, organized hierarchically. 
-
-It will be possible to elicit relationships between tags in the text (for example, two tags X and Y added to two different parts of the text might have some kind of relationship like is-tactic-for-scenario(X,Y)), which will then facilitate the construction of semi-structured contents.
-
+In this platform we are aiming for using tags from a closed taxonomy as a way of identifying the main parts of a software system within a software description, namely stakeholders, scenarios and their parts, tactics, etc., and use the tagged text to create a structured description of the document.
 
 \subsection{Semi-Structured Content}
-Knowledge can be obtained from many different resources, ranging from unstructured (for example, language models obtained from plain text) to structured ones (for example, ontologies) \cite{hovy2013collaboratively}.
-
-Unstructured resources are as simple as collections of text, images and other media contents. Thanks to the Web, it is possible to collect huge amounts of unstructured information such as raw text, which allowed major advances in the Natural Language Processing field. However, unstructured knowledge has its limitations: the resources do not provide all the knowledge necessary for complex inference chains \cite{domingos2007toward} and the information is not ontologized – not included within a semantic network of unambiguously defined concepts and their semantic relations \cite{hovy2013collaboratively}.
-
-Structured resources are machine-readable, and there are several kinds, such as Thesauri (collections of related terms), Taxonomies (hierarchically structured classification of terms) and Ontologies (knowledge model that includes concepts, relations between them and even axioms and rules). These kinds of resources provide information of the highest quality, since their contents were developed with the contribution of experts. However, they require a huge amount of effort in creating and maintaining them, which is very difficult and time-consuming. Also not all topics are covered by the experts, and information might even be slightly culturally-biased. And since these resources are manually annotated, it is hard to keep updating them and they might not contain the lexicalizations of the concepts in different languages \cite{hovy2013collaboratively}.
-
-Semi-structured contents try to create a middle-ground between these two types. The most important example of their use is the Wikipedia. 
-
-Wikipedia consists of a repository of webpages, each of them containing an entry about a certain concept. There are relations between the different kinds of pages, for example, the redirections (several concepts that redirect for the same article), internal hyperlinks (links for articles about concepts that were included in the text), interlanguage links (links for the same article written in different languages) and category pages (used to classify entries). Pages can also contain infoboxes (tables summarizing the most important information).
-
-Wikipedia then relies on large amounts of mannually-input knowledge, provided via massive online collaboration. Information is ontologized with high quality thanks to the collaborative editing of articles and it's possible to keep information continuously updated and achieve a wide coverage for almost all domains. 
-
-To sum up, using semi-structured resources provides the best of both worlds: high quality information with wide coverage of almost all domains \cite{hovy2013collaboratively}.
-
-The main goal of this platform is to allow students to extract a semi-structured representation of a software system from a description in plain-text - have all the parts that constitute a software system (Stakeholders, Scenarios, Tactics, Views, etc) described in a semi-structure (similar to a Wikipedia page), instead of scattered along a ten or more pages article. 
-
-The idea is to create templates for all the possible entities that can be added to the semi-structured representation: a template for describing stakeholders, another for describing scenarios, views, styles and so long. Each template should, then, allow a correct description of a component. For example, a scenario, which captures and expresses quality requirements, is defined by a stimulus (a condition arriving at the system), a source of stimulus (entity that generates it), an artifact (the part of the system being stimulated, an environment (the conditions of the system), the response (activity after the stimulus) and a response measure (some way of measuring the response). Whilst the stimulus and the response are mandatory in a scenario, it may not contain all the parts described.
-
-When adding a component to the semi-structure, students will follow the template and fill it with their own words (for example, for describing each part of a scenario). However, all this information should be somehow linked with the parts of the text that describe the scenario.
-
-By using terms from a taxonomy to tag parts of the text and allowing elicitation of relationships between terms (described below) and linking from the semi-structure to a tag in the text, this problem is solved and people are able to create a bridge between the text in the description and the semi-structured content, even if the information for a single component is scattered along the text.  
-
-In the field of Artificial Intelligence and Natural Language Processing, there are methods for extraction of machine-readable information from semi-structured contents, namely thesauri and relationships extraction, and for enrichment of structured information with semi-structured content (that also extracts relationships for taxonomy and ontology induction) \cite{hovy2013collaboratively}. In this platform there is no need for Artificial Intelligence techniques, but the concept of relationship extraction is very important. As said before, students are allowed to tag parts of the text from the description with terms from a taxonomy of Software Architecture concepts - namely tag a part of the text as a scenario, a stimulus, a response measure, etc. But this tagged text may be related: a part of text tagged as 'stimulus' may be a stimulus for another part marked as 'scenario' (there is a relationship of the kind is-stimulus-of-scenario). Providing method for elicitation of these relationships allows for a more deep understanding of the description text, by linking the components added to the semi-structure with the tags and relationships elicited from the text.
-
-And since this is a collaborative platform, it is expected that having many people working together in semi-structuring a software description will increase the quality of the final product. 
-As students discuss and correct each others' work, the semi-structure extraction becomes more complete, and students also have an opportunity to learn from their mistakes - since sometimes it is not easy to relate the concepts learned in a classroom with real-life applications.
-
-
+Knowledge can be obtained from many different resources, ranging from unstructured (for example, language models obtained from plain text) to structured ones (for example, ontologies) \cite{hovy2013collaboratively}. However, unstructured resources do not allow for complex inference chains\cite{domingos2007toward} and information is not ontologized\cite{hovy2013collaboratively}, and structured resources require a huge amount of effort to create and maintain\cite{hovy2013collaboratively}. Semi-structured contents try to create a middle-ground between these two types. The most important example of their use is the Wikipedia, which is a repository of webpages, related with each other by links. Massive online collaboration allow for updated high quality and wide coverage of contents. To sum up, using semi-structured resources provides the best of both worlds: high quality information with wide coverage of almost all domains \cite{hovy2013collaboratively}.
+ 
+The main goal of this platform is to allow students to extract a semi-structured representation of a software system from a description in plain text, and have all the parts that constitute a software system described in a structure similar to a Wikipedia, instead of scattered along a ten or more pages article. This will be accomplished by creating templates for the concepts and associating information from the document to them. Student collaboration in the platform will lead to good quality structured descriptions of the articles.
 	
 \subsection{Ontology Learning}
-Research on Ontology learning from text has evolved over the years and there are several open challenges for this field \cite{wong2012ontology}. Ontologies are defined as ``effectively formal and explicit specifications in the form of concepts and relations of shared conceptualizations'' \cite{gruber1993translation}, and can be thought of as a directed graph, with concepts as nodes and relations as edges.
- 
-Techniques for ontology learning can be classified in statistics-based, linguistics-based, logic-based or hybrid. Over the years there was also an increased interest in techniques for ontology learning from social data. Existant literature investigates the problem of ontology learning from user-defined tags \cite{tang2009towards}, discusses the requirements for automatic ontology learning from social data \cite{kotis2011automated}, presents a tripartite ontology model \cite{mika2007ontologies}, and describes an approach to complement corpus-based ontology learning with tags \cite{weichselbraun2010augmenting}.
+Research on Ontology learning from text has evolved over the years and there are several open challenges for this field \cite{wong2012ontology}. Ontologies are defined as ``effectively formal and explicit specifications in the form of concepts and relations of shared conceptualizations'' \cite{gruber1993translation}, and can be thought of as a directed graph, with concepts as nodes and relations as edges. Techniques for ontology learning can be classified in statistics-based, linguistics-based, logic-based or hybrid.
 
-Regarding the context of the platform, all the concepts used to tag the document contents (the concepts of Software Architectures) will be defined a priori and organized according to the relations between them (IS-A relations and others).
-
-Software descriptions analyzed in the platform do not contain these concepts. However, the students' motivation is to find parts of the text that correspond to the concepts predefined and tag them accordingly (for example, a single sentence of the text can identify a stakeholder, or a whole paragraph can identify the stimulus of a scenario). 
-
-Since the relations between concepts are already defined, it should be possible for students to elicit these relations between the tagged parts of the text. This facilitates the comprehension of the text contents and the creation of the semi-structure as mentioned previously.
+Regarding the context of the platform, all the concepts used to tag the document contents (the concepts of Software Architectures) and their will be defined a priori. Software description documents do not contain these concepts, but the students' motivation is to find parts of the text that correspond to the concepts predefined and tag them accordingly. This facilitates the comprehension of the text contents and the creation of the semi-structure as mentioned previously.
 
 \section{Solution}
 \label{solution}
-To solve the problems elicited throughout this document, it was developed a Web Application to be used by students and teachers, both in class and home environments. This kind of application facilitates collaboration between its users, and therefore was the more adequate choice for the system to develop. The developed application features:
-\begin{itemize}
-\item An authentication system, where users can login into the system. This authentication system provides an unique identity for a user inside the application, and also provides distinction between types of users, as there are users of type STUDENT and users of type TEACHER, with different permissions.
-\item Document Management, only available for teachers, where software description articles can be added or removed;
-\item Document parsing into a view;
-\item Creation of annotations in the document text. As the name says, an annotation is a part of the text that is marked and highlighted. The AnnotatorJS \footnote{http://annotatorjs.org/} library provides tools not only to mark up parts of text, but also to associate tags and user text to that selected text. 
-\item Templates for a set of Software Architectures concepts. The parts of marked text described before can be associated to these templates, thus making it easier to co-relate the theoretical concepts with the practical applications. The concepts used in these templates are represented as entities of the domain model.
+To solve the problems elicited throughout this document, it was developed a Web Application to be used by students and teachers, both in class and home environments. This kind of application facilitates collaboration between its users, and therefore was the more adequate choice for the system to develop. The developed application features an \textbf{authentication system}, where users can login into the system, \textbf{document management}, only available for teachers, where software description articles can be added or removed, \textbf{document parsing } into a view, creation of \textbf{annotations} in the document text, which are parts of selected text annotated with tags, and \textbf{templates }for a set of Software Architectures concepts, which aggregate the corresponding annotations and describe the concepts.
 
-\end{itemize}
-
-The next chapters will give an overview of the domain, and explain the architecture and implementation of the system.
+The next sections will give an overview of the domain, and explain the architecture and implementation of the system.
 \section{Domain Model}
 \label{domainModel}
-To understand the architectural and implementation decisions taken during the solution development, it is necessary to understand the Software Architectures Domain Model. Section \ref{section:SAConcepts} lists and describes the concepts talked in the Software Architectures classes, Section \ref{section:domainModel} presents an abstract domain model where it is possible to see how these concepts relate and Section \ref{section:templates} gives an idea on how the information from the domain model can be represented in templates.
+To understand the architectural and implementation decisions taken during the solution development, it is necessary to understand the Software Architectures Domain Model. Section \ref{domainModel:SAConcepts} lists and describes the concepts talked in the Software Architectures classes, Section \ref{section:domainModel} presents an abstract domain model where it is possible to see how these concepts relate and Section \ref{section:templates} gives an idea on how the information from the domain model can be represented in templates.
 
 \subsection{Concepts}
-\label{section:SAConcepts}
+\label{domainModel:SAConcepts}
 Before describing the domain model of the developed solution, it is necessary to provide a small introduction to the most important concepts from the Software Architectures course.
- 
-\subsubsection{Scenarios}
-\label{subsection:SAConceptsScenarios}
-A scenario is used to capture and express the quality requirements of a system. The considered qualities are:
-\begin{itemize}
-\item Availability - concerning the uptime of a system;
-\item Interoperability - how easily can the system interoperate with other system;
-\item Modifiability - the cost of changing the system;
-\item Performance - how fast the system responds to events;
-\item Security - resistance to unauthorized usage whilst providing service to legitimate users;
-\item Testability - how easy it is to check system faults through testing;
-\item Usability - how easy it is for a user to accomplish a task, and the kind of support offered by the system;
-\end{itemize}
+\subsubsection{Scenarios:}
+\label{SAConcepts:Scenarios}
+A scenario is used to capture and express the quality requirements of a system. The considered qualities are \textbf{Availability}, \textbf{Interoperability}, \textbf{Modifiability}, \textbf{Performance}, \textbf{Security}, \textbf{Testability} and \textbf{Usability}.
 
-A scenario consists of six parts \cite{bass2003software}:
-\begin{itemize}
-\item \textbf{Source of Stimulus:} Some entity (a human, a computer or any other actuator) that generates the stimulus;
-\item \textbf{Stimulus:} A condition that arrives at the system;
-\item \textbf{Environment:} The system condition when the stimulus occurs;
-\item \textbf{Artifact:} Part of the system that was stimulated;
-\item \textbf{Response:} Activity undertaken after the arrival of the stimulus;
-\item \textbf{Response Measure:} when the response occurs, it should be measurable in some way, so the requirement can be tested;
-\end{itemize}
+A scenario consists of six parts\cite{bass2003software}: The \textbf{Source of Stimulus}, an entity that generates the stimulus; The \textbf{Stimulus}, a condition that arrives at the system; The \textbf{Environment}, the system condition when the stimulus occurs; The \textbf{Artifact}, the part of the system stimulated; The \textbf{Response}, what is done in response to the stimulus; And the \textbf{Response Measure}, the way of measuring the response. Each Scenario uses a set of \textbf{Tactics}, which are design decisions used to achieve the quality requirements expressed in them. Each quality requirement has a set of commonly used tactics.
 
-Each Scenario uses a set of Tactics, which are design decisions used to achieve the quality requirements expressed in them. Each quality requirement has a set of commonly used tactics. For example, to assure the Security of a system, tactics such as detecting service denial or message delays (to detect attacks), or revoking access to the system (to react to an attack) are used.
-
-\subsubsection{Views}
-\label{subsection:domainModelViews}
+\subsubsection{Views:}
+\label{SAConcepts:Views}
 A view is a representation of a set of system elements and the relationships associated with them \cite{clements2003documenting}. This set of elements and relationships is constrained by viewtypes.
+A Viewtype defines the element types and relationship types used to describe the architecture of a software system from a particular perspective. Viewtypes refine into styles, which are specializations of element and relation types, together with a set of constraints on how they can be used.Views can fall into three viewtype categories: 
 
-A Viewtype defines the element types and relationship types used to describe the architecture of a software system from a particular perspective. Viewtypes refine into styles.
-
-An architectural style is a specialization of element and relation types, together with a set of constraints on how they can be used.
-
-Views can fall into three viewtype categories:
-\begin{itemize}
-\item \textbf{Module Viewtype:} document the system principal units of implementation. 
-
-The elements of this viewtype are the \textit{Modules}, which is are implementation units. 
-
-Relationships between modules can be of type \textit{``Is-part-of''}, which defines a part-whole relationship, \textit{``Depends on''}, which defines dependency relations, and \textit{``Is-a''}, which defines a generalization/specialization relationship.
-
-\item \textbf{Component \& Connector Viewtype:} document the system units of execution. 
-
-The elements are the Components, which are the principal processing units and data stores, and the Connectors, which are pathways of interaction between components. 
-
-The relationships can be of type \textit{``Attachment''}, which associate components to connectors, and \textit{``Interface''} Delegation, which associates component ports to other ports from an ``internal architecture''- and similarly for the connector.
-
-\item \textbf{Allocation Viewtype:} document the relationships between a system's software and its development and execution environments. 
-
-The elements are the \textit{Software Element} (elements from the Module and Component \& Connector viewtypes) and the \textit{Environmental Element}. 
-
-The relationships are of type \textit{``Allocated-to''}, which means that a software element is allocated to an environmental element. 
-\end{itemize}
+The \textbf{Module Viewtype}, which documents the system principal units of implementation. The elements are the \textit{Modules} and relationships between them can be of type part-whole, dependency and generalization/specialization; The \textbf{Component \& Connector Viewtype}, which documents the system units of execution. The elements are the Components and the Connectors, and the relationships can be of type \textit{``Attachment''}, associating components to connectors, and \textit{``Interface''} Delegation, associating component ports and connector roles to other ports and roles, respectively; and the \textbf{Allocation Viewtype}, which documents the relationships between a system's software and its development and execution environments. The elements are the \textit{Software Element} (Module, Components and Connector) and the \textit{Environmental Element}. The relationships are of type \textit{``Allocated-to''}, where software element is allocated to an environmental element. 
 
 \subsection{Model}
 \label{section:domainModel}
-Figure \ref{figure:abstractDomainModel} shows the concepts and relations described in Section \ref{section:SAConcepts} in a Domain Model Diagram.
+Figure \ref{figure:abstractDomainModel} shows the concepts and relations described in Section \ref{domainModel:SAConcepts} in a Domain Model Diagram.
  
-\begin{figure}
+\begin{figure}[ht]
 \centering
 \renewcommand {\umltextcolor}{black}
 \renewcommand {\umlfillcolor}{none}
 \renewcommand {\umldrawcolor}{black}
 
 \begin{tikzpicture}
-\tikzstyle{every node}=[font=\footnotesize]
-\begin{class}[text width=2cm]{Template Concept}{10,-4.5}
+\tikzstyle{every node}=[font=\scriptsize]
+\begin{class}[text width=2cm]{Template Concept}{8,-4.5}
 \end{class}
 
-\begin{class}[text width=3cm ]{Source Of Stimulus}{0,0}
+\begin{class}[text width=2cm ]{Source Of Stimulus}{0,0}
 
 \end{class}
 \begin{class}[text width=2cm ]{Stimulus}{0,-1.5}
@@ -434,57 +234,57 @@ Figure \ref{figure:abstractDomainModel} shows the concepts and relations describ
 \begin{class}[text width=2cm ]{Response}{0,-4.5}
 %\inherit{ScenarioElement}
 \end{class}
-\begin{class}[text width=3.3cm ]{Response Measure}{0,-5.5}
+\begin{class}[text width=2cm ]{Response Measure}{0,-5.5}
 \end{class}
 \begin{class}[text width=2cm ]{Scenario}{4.5,-2.5}
 \inherit{Template Concept}
 \end{class}
-\begin{class}[text width=3cm ]{Quality Requirement}{0,3}
+\begin{class}[text width=2cm ]{Quality Requirement}{1,1}
 \end{class}
-\begin{class}[text width=2cm ]{Tactic}{5,2}
+\begin{class}[text width=2cm ]{Tactic}{5,0}
 \end{class}
 
-\begin{class}[text width=2cm ]{View}{4,-7.5}
+\begin{class}[text width=1cm ]{View}{4,-5}
 \inherit{Template Concept}
 \end{class}
 \begin{class}[text width=2cm ]{Viewtype}{0,-7}
 \end{class}
-\begin{class}[text width=2cm ]{Style}{-1,-8.5}
+\begin{class}[text width=1cm ]{Style}{3,-7.5}
 \end{class}
-\begin{class}[text width=2cm ]{Relation}{-2,-10}
+\begin{class}[text width=2cm ]{Relation}{-2,-9}
 \end{class}
 
-\begin{class}[text width=2cm ]{Element}{5,-10}
+\begin{class}[text width=2cm ]{Element}{5,-9}
 \inherit{Template Concept}
 \end{class}
 
-\begin{class}[text width=1.5cm]{Is Part Of}{-4,-11.5}
+\begin{class}[text width=1.5cm]{Is Part Of}{-4,-10}
 \inherit{Relation}
 \end{class}
 
-\draw [umlcd style] (-2.5,-11.90) node {[...]};
+\draw [umlcd style] (-2.5,-10.90) node {[...]};
 
-\begin{class}[text width=2cm]{Attachment}{-1,-11.5}
+\begin{class}[text width=2cm]{Attachment}{-1,-10}
 \inherit{Relation}
 \end{class}
 
-\begin{class}[text width=2cm]{Allocated To}{1.5,-11.5}
+\begin{class}[text width=1.5cm]{Allocated To}{1.5,-10}
 \inherit{Relation}
 \end{class}
 
-\begin{class}[text width=2cm]{Module}{4,-11.5}
+\begin{class}[text width=1cm]{Module}{4,-10}
 \inherit{Element}
 \end{class}
 
-\begin{class}[text width=2cm]{Component}{6.5,-11.5}
+\begin{class}[text width=2cm]{Component}{6.5,-10}
 \inherit{Element}
 \end{class}
 
-\begin{class}[text width=2.5cm]{Environmental Element}{9.5,-11.5}
+\begin{class}[text width=2.5cm]{Environmental Element}{8,-9}
 \inherit{Element}
 \end{class}
 
-\begin{class}[text width=2.5cm]{Connector}{10,-10}
+\begin{class}[text width=1.5cm]{Connector}{8,-7.5}
 \inherit{Element}
 \end{class}
 
@@ -503,29 +303,20 @@ Figure \ref{figure:abstractDomainModel} shows the concepts and relations describ
 \association{Style}{}{*}{Relation}{}{*}
 \association{View}{}{*}{Element}{}{*}
 \association{Element}{}{*}{Relation}{}{*}
-
-
-
 \end{tikzpicture}
 \caption{Domain Model showing the Software Architectures concepts and how they are related}
 \label{figure:abstractDomainModel}
 \end{figure}
 
-The scenario elements are represented as the model entities 'Source of Stimulus', 'Stimulus', Artifact', 'Environment', 'Response' and 'Response Measure' respectively, and are associated to the Scenario entity. A Scenario can only have at most one instance of each element, hence the ``0..1'' cardinality. Similarly, each scenario element can only be associated with a single scenario, and therefore there is a ``1'' cardinality in the diagram. Each Scenario captures a single Quality Requirement and has a set of Tactics. As mentioned, each quality requirement has a set of commonly used tactics for its achievement.
-
-A View is associated with a Viewtype, which refines into a style. The View contains a set of elements, which are related to each other via specific relations.
-
-The Scenario, View and Element are considered the main concepts of the domain, and they have a dedicated template in the developed solution, as it will be described in the next section. These templates will contain information about the concept and how it is related with other concepts in the domain model.
+The scenario elements are associated to the Scenario, and each Scenario captures a single Quality Requirement and has a set of Tactics. A View is associated with a Viewtype, which refines into a style. The View contains a set of elements, which have relations with each other. The Scenario, View and Element are considered the main concepts of the domain, and they have a dedicated template in the developed solution. These templates will contain information about the concept and how it is related with other concepts in the domain model.
 
 \subsection{Templates}
 \label{section:templates}
-The structured representation of the Software Architectures concepts described in Sections \ref{section:SAConcepts} and \ref{section:domainModel} is represented in the developed solution by using specific templates for these concepts.
+The structured representation of the Software Architectures concepts described in Sections \ref{domainModel:SAConcepts} and \ref{section:domainModel} is represented in the developed solution by using specific templates for these concepts.
 
-Although we can elicit a wide set of concepts, it does not make sense to have a template for each and every one of them. It is easier to see the relations between concepts if they are in the same template. 
+It did not make sense to have a template for each and every one of them, as it is easier to see the relations between concepts if they are in the same template. This is the case for the Scenarios. It makes sense to see all the elements of a Scenario together, so it is considered one of the main concepts and has its own dedicated template, in which are present the quality attribute, the elements and the tactics. 
 
-This is the case for the Scenarios. It makes sense to see all the elements of a Scenario together, so it is possible to see, for example, who/what generated the stimulus and what part of the system was stimulated. Therefore, the Scenario is considered one of the main concepts, and it has its own dedicated template, in which are present the quality attribute, the elements and the tactics. 
-
-Figure \ref{figure:scenarioTemplate} shows a Schema for the Scenario template. All the Scenario elements, the quality requirement and the tactics are present in the template, making it possible to see, as mentioned before, how all these concepts are related.
+Figure \ref{figure:scenarioTemplate} shows a Schema example for the Scenario template. All the Scenario elements, the quality requirement and the tactics are present in the template, making it possible to see, as mentioned before, how all these concepts are related.
 
 \begin{figure}
 \centering
@@ -534,33 +325,13 @@ Figure \ref{figure:scenarioTemplate} shows a Schema for the Scenario template. A
 \label{figure:scenarioTemplate}
 \end{figure}
 
-The Views and their elements are also another case of main concepts. It makes sense to aggregate all the system elements and their relationships from a view in a separate template, representing the part of the system being described in that view. However, since a single element can be present in more than one view, it also makes sense to have a specific template for the elements, so their individual properties can be seen.
-
-Figure \ref{figure:moduleTemplate} shows a Schema for the Module template, which is the element from the Module Viewtype. Besides the element details, its relationships with other elements (other Modules, in this specific example) are present in the template.
-
-\begin{figure}
-\centering
-\lstinputlisting[language=HTML, style=customhtml]{moduleSchema.html}
-\caption{Schema for the Module template}
-\label{figure:moduleTemplate}
-\end{figure}
-
-Figure \ref{figure:viewTemplate} shows the schema for the Module Viewtype Views template. Although the template allows inserting a description for the view, its most important feature is the inclusion of other templates in it. As mentioned, a view aggregates a set of system elements and the relationships between them. As there is already a template for the element, the view will include a set of element templates - a template per element, with its respective information.
-
-\begin{figure}
-\centering
-\lstinputlisting[language=HTML, style=customhtml]{viewSchema.html}
-\caption{Schema for a Module Viewtype View template}
-\label{figure:viewTemplate}
-\end{figure}
+The Views and their elements are also another case of main concepts. It makes sense to aggregate all the system elements and their relationships from a view in a separate template, representing the part of the system being described in that view. However, since a single element can be present in more than one view, it also makes sense to have a specific template for the elements, so their individual properties can be seen. The templates for the View and View Elements follow the same idea of the Scenario schema. The template for the elements represents the element information and also its relations with other elements. The View template has the particularity that, besides including information about the view, also includes the templates of the elements present in it.
 
 \section{Architecture Analysis}
 \label{architecture}
-Chapter \ref{chapter:domainModel} introduced the domain model of the Software Architectures concepts present in the developed solution, and the templates in which they are included.
+Chapter \ref{domainModel} introduced the domain model of the Software Architectures concepts present in the developed solution, and the templates in which they are included.
 
-In this chapter, it is shown how these templates are filled with information extracted from a software description article.
-
-The next sections will present two entities from the system: the Document and the Annotation. These entities have a major role in the identification of Software Architectures concepts from the domain model, and the enrichment of the templates for those concepts.
+In this section, it is shown how these templates are filled with information extracted from a software description article. The next subsections will present two entities from the system: the Document and the Annotation. These entities have a major role in the identification of Software Architectures concepts from the domain model, and the enrichment of the templates for those concepts.
 
 \subsection{Document}
 \label{section:document}
@@ -815,7 +586,7 @@ The Scenario is a main concept of the domain, and therefore is connected to the 
 
 Scenarios are represented in the implemented model in a very similar way to what is shown in Figure \ref{figure:abstractDomainModel}. However, there is a difference in the implemented model regarding how Quality Requirements and Tactics are represented.
 
-In Figure \ref{figure:abstractDomainModel}, it is shown an association between Scenario and Quality Requirement, Scenario and Tactic and Tactic and Quality Requirement. The meaning of these associations is to represent what is explained in Section \ref{subsection:SAConceptsScenarios}: A Scenario has a Quality Requirement from a set of pre-existent ones, and a set of Tactics also from a set of existent ones, which are specific for the Quality Requirement.
+In Figure \ref{figure:abstractDomainModel}, it is shown an association between Scenario and Quality Requirement, Scenario and Tactic and Tactic and Quality Requirement. The meaning of these associations is to represent what is explained in Section \ref{SAConcepts:Scenarios}: A Scenario has a Quality Requirement from a set of pre-existent ones, and a set of Tactics also from a set of existent ones, which are specific for the Quality Requirement.
 
 However, in the implemented model, there are no pre-existent Tactics nor Quality Requirements. The existent Quality Requirements and their specific Tactics are specified in a Java class, which returns them as necessary. Figure \ref{figure:modelQRTactics} shows the Scenario, Tactic and Quality Requirement entities, and how they are related in the implemented model.
 
@@ -922,7 +693,7 @@ As seen in the abstract domain model present in Figure \ref{figure:abstractDomai
 
 Therefore, in the implemented model, there are no entities representing the relationships between modules. Instead, there were defined different associations of the Module entity to itself, in order to represent the different relations.
 
-Each Module Viewtype Style specifies relation types refined from the ones presented in \ref{subsection:domainModelViews}. There are, then, eight types of relations between Modules\cite{clements2003documenting} defined in the Domain Modeling Language:
+Each Module Viewtype Style specifies relation types refined from the ones presented in \ref{SAConcepts:Views}. There are, then, eight types of relations between Modules\cite{clements2003documenting} defined in the Domain Modeling Language:
 \begin{itemize}
 \item \textit{Is-Part-Of} - a Module can be part of one and only one parent Module. Figure \ref{figure:modelIsPartOfRelation} shows how this relation was implemented. A Module can have only one other Module set as parent, but can have many children Modules;
 \begin{figure}
@@ -1026,7 +797,7 @@ Components and Connectors are the elements of the Component \& Connector Viewtyp
 \label{figure:modelComponentConnector}
 \end{figure}
  
-A Component has a set of Ports, and a Connector as a set of Roles. The Ports of a Component are connected to the Roles of a Connector by the \textit{Attachment} relation explained in Section \ref{section:SAConcepts} of Chapter \ref{chapter:domainModel}. The implementation of this relation will be explained further on. The ``name'' and ``text'' attributes in the entities correspond to the identification name of the entity and the descriptive text that can be added, respectively. The ``style'' attribute in the Connector refers to the Component \& Connector styles. Each style has a unique type of connector. Specifying the style of a connector will make it easier to figure which Components will attach to it.
+A Component has a set of Ports, and a Connector as a set of Roles. The Ports of a Component are connected to the Roles of a Connector by the \textit{Attachment} relation explained in Section \ref{domainModel:SAConcepts} of Chapter \ref{chapter:domainModel}. The implementation of this relation will be explained further on. The ``name'' and ``text'' attributes in the entities correspond to the identification name of the entity and the descriptive text that can be added, respectively. The ``style'' attribute in the Connector refers to the Component \& Connector styles. Each style has a unique type of connector. Specifying the style of a connector will make it easier to figure which Components will attach to it.
 
 The Component and Connector are main concepts of the system, and therefore are associated with the corresponding document upon creation. Both the Component and Connector entities and also the Port and Role are associated to a set of Annotations that describe them. The associations of these entities to the Document and Annotation are similar to the ones in the example of Figure \ref{figure:documentAnnotationConcepts}.
 

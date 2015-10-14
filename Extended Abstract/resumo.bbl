@@ -1,26 +1,9 @@
 \begin{thebibliography}{10}
 
-\bibitem{agarwal2008identifying}
-Nitin Agarwal, Huan Liu, Lei Tang, and Philip~S Yu.
-\newblock Identifying the influential bloggers in a community.
-\newblock In {\em Proceedings of the 2008 International Conference on Web
-  Search and Data Mining}, pages 207--218. ACM, 2008.
-
 \bibitem{bass2003software}
 L.~Bass, P.~Clements, and R.~Kazman.
 \newblock {\em Software Architecture in Practice}.
 \newblock SEI series in software engineering. Addison-Wesley, 2003.
-
-\bibitem{borgatti1993two}
-Stephen~P Borgatti and Martin~G Everett.
-\newblock Two algorithms for computing regular equivalence.
-\newblock {\em Social Networks}, 15(4):361--376, 1993.
-
-\bibitem{breiger1975algorithm}
-Ronald~L Breiger, Scott~A Boorman, and Phipps Arabie.
-\newblock An algorithm for clustering relational data with applications to
-  social network analysis and comparison with multidimensional scaling.
-\newblock {\em Journal of Mathematical Psychology}, 12(3):328--383, 1975.
 
 \bibitem{cachopo2006combining}
 Jo{\~a}o Cachopo and Ant{\'o}nio Rito-Silva.
@@ -45,12 +28,6 @@ Tom Coates.
 \newblock {\em http://www. plasticbag.
   org/archives/2005/06/two\_cultures\_of\_fauxonomies\_collide/. Last access:
   May}, 8:2008, 2005.
-
-\bibitem{daud2009generalized}
-Ali Daud, Juanzi Li, Lizhu Zhou, and Faqir Muhammad.
-\newblock A generalized topic modeling approach for maven search.
-\newblock In {\em Advances in Data and Web Management}, pages 138--149.
-  Springer, 2009.
 
 \bibitem{dencheva2011dynamic}
 Silviya Dencheva, Christian~R Prause, and Wolfgang Prinz.
@@ -98,12 +75,6 @@ Eduard Hovy, Roberto Navigli, and Simone~Paolo Ponzetto.
   intelligence: The story so far.
 \newblock {\em Artificial Intelligence}, 194:2--27, 2013.
 
-\bibitem{kotis2011automated}
-Konstantinos Kotis and Andreas Papasalouros.
-\newblock Automated learning of social ontologies.
-\newblock {\em Ontology Learning and Knowledge Discovery Using the Web:
-  Challenges and Recent Advances}, 2011.
-
 \bibitem{krasner1988description}
 Glenn~E Krasner, Stephen~T Pope, et~al.
 \newblock A description of the model-view-controller user interface paradigm in
@@ -120,18 +91,6 @@ Ling Liu, Malcolm Munro, and William Song.
 \newblock Evaluation of collecting reviews in centralized online reputation
   systems.
 \newblock 2010.
-
-\bibitem{mccallum2007topic}
-Andrew McCallum, Xuerui Wang, and Andr{\'e}s Corrada-Emmanuel.
-\newblock Topic and role discovery in social networks with experiments on enron
-  and academic email.
-\newblock {\em J. Artif. Intell. Res.(JAIR)}, 30:249--272, 2007.
-
-\bibitem{mika2007ontologies}
-Peter Mika.
-\newblock Ontologies are us: A unified model of social networks and semantics.
-\newblock {\em Web Semantics: Science, Services and Agents on the World Wide
-  Web}, 5(1):5--15, 2007.
 
 \bibitem{nadel1957theory}
 SF~Nadel.
@@ -179,44 +138,14 @@ Gene Smith.
 \newblock Social software building blocks.
 \newblock {\em Retrieved November}, 5:2010, 2007.
 
-\bibitem{steyvers2004probabilistic}
-Mark Steyvers, Padhraic Smyth, Michal Rosen-Zvi, and Thomas Griffiths.
-\newblock Probabilistic author-topic models for information discovery.
-\newblock In {\em Proceedings of the tenth ACM SIGKDD international conference
-  on Knowledge discovery and data mining}, pages 306--315. ACM, 2004.
-
-\bibitem{tanaka1991object}
-James~W Tanaka and Marjorie Taylor.
-\newblock Object categories and expertise: Is the basic level in the eye of the
-  beholder?
-\newblock {\em Cognitive psychology}, 23(3):457--482, 1991.
-
-\bibitem{tang2009towards}
-Jie Tang, Ho-fung Leung, Qiong Luo, Dewei Chen, and Jibin Gong.
-\newblock Towards ontology learning from folksonomies.
-\newblock In {\em IJCAI}, volume~9, pages 2089--2094, 2009.
-
 \bibitem{vavilis2014reference}
 Sokratis Vavilis, Milan Petkovi{\'c}, and Nicola Zannone.
 \newblock A reference model for reputation systems.
 \newblock {\em Decision Support Systems}, 61:147--154, 2014.
 
-\bibitem{weichselbraun2010augmenting}
-Albert Weichselbraun, Gerhard Wohlgenannt, and Arno Scharl.
-\newblock Augmenting lightweight domain ontologies with social evidence
-  sources.
-\newblock In {\em Database and Expert Systems Applications (DEXA), 2010
-  Workshop on}, pages 193--197. IEEE, 2010.
-
 \bibitem{wong2012ontology}
 Wilson Wong, Wei Liu, and Mohammed Bennamoun.
 \newblock Ontology learning from text: A look back and into the future.
 \newblock {\em ACM Computing Surveys (CSUR)}, 44(4):20, 2012.
-
-\bibitem{zhang2007expertise}
-Jun Zhang, Mark~S Ackerman, and Lada Adamic.
-\newblock Expertise networks in online communities: structure and algorithms.
-\newblock In {\em Proceedings of the 16th international conference on World
-  Wide Web}, pages 221--230. ACM, 2007.
 
 \end{thebibliography}
