@@ -1,0 +1,59 @@
+This is BibTeX, Version 0.99d (TeX Live 2014/dev)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: resumo.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: mybib.bib
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in nadel1957theory
+Warning--empty journal in liu2010evaluation
+
+Done.
+You've used 24 entries,
+            4087 wiz_defined-function locations,
+            965 strings with 11393 characters,
+and the built_in function-call counts, 17062 in all, are:
+= -- 1457
+> -- 320
+< -- 147
++ -- 176
+- -- 50
+* -- 808
+:= -- 2678
+add.period$ -- 53
+call.type$ -- 24
+change.case$ -- 22
+chr.to.int$ -- 312
+cite$ -- 26
+duplicate$ -- 1244
+empty$ -- 1354
+format.name$ -- 66
+if$ -- 3965
+int.to.chr$ -- 0
+int.to.str$ -- 24
+missing$ -- 202
+newline$ -- 99
+num.names$ -- 24
+pop$ -- 423
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 1354
+stack$ -- 0
+substring$ -- 774
+swap$ -- 1010
+text.length$ -- 43
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 24
+warning$ -- 2
+while$ -- 85
+width$ -- 26
+write$ -- 262
+(There were 2 warnings)

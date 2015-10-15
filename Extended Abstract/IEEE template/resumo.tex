@@ -1,12 +1,6 @@
-% This is based on the LLNCS.DEM the demonstration file of
-% the LaTeX macro package from Springer-Verlag
-% for Lecture Notes in Computer Science,
-% version 2.4 for LaTeX2e as of 16. April 2010
-%
-% See http://www.springer.com/computer/lncs/lncs+authors?SGWID=0-40209-0-0-0
-% for the full guidelines.
-%
-\documentclass{llncs}
+
+\documentclass[conference]{IEEEtran}
+\usepackage{blindtext}
 \usepackage{graphicx}
 \usepackage{tabulary}
 %\usepackage{tikz}
@@ -45,45 +39,57 @@ showspaces=false,
 showstringspaces=false
 }
 
-\linespread{0.97}
-\renewcommand{\baselinestretch}{0.89}
- \setlength{\abovecaptionskip}{1ex}
- \setlength{\belowcaptionskip}{1ex}
- \setlength{\floatsep}{1ex}
- \setlength{\textfloatsep}{1ex}
+\ifCLASSINFOpdf
+  % \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
 
 \begin{document}
-
-\end{document}
-
+%
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
 \title{Collaborative Platform for Analysis of Software Systems}
-%
-\titlerunning{Collaborative Platform}  % abbreviated title (for running head)
-%                                     also used for the TOC unless
-%                                     \toctitle is used
-%
-\author{Catarina Isabel Carvalho Santana}
-%
-\authorrunning{Catarina Santana} % abbreviated author list (for running head)
-%
-%%%% list of authors for the TOC (use if author list has to be modified)
-\tocauthor{Catarina Santana}
-%
-\institute{Instituto Superior T\'{e}cnico,\\
-\email{catarina.santana@tecnico.ulisboa.pt}}
-% * <catarinasantana_3@hotmail.com> 2014-12-11T16:24:19.200Z:
-%
-%  kandlksrn
-%
 
-\maketitle              % typeset the title of the contribution
+
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+\author{\IEEEauthorblockN{Catarina Isabel Carvalho Santana}
+\IEEEauthorblockA{Instituto Superior T\'{e}cnico\\
+Email: catarina.santana@tecnico.ulisboa.pt}}
+
+% make the title area
+\maketitle
+
 
 \begin{abstract}
 The Software Architectures course at Instituto Superior T\'{e}cnico teaches students the most important concepts on design and architecture of software systems and helps students to apply these concepts to real and complex software systems. Organizing knowledge and applying theory to practice is not an easy task, and students often need to ask questions and discuss. State-of-the-art on collaborative, social software and knowledge structuring was analyzed and a social platform was developed to help solving these problems.
-
-\keywords{social software, knowledge structuring, collaborative platform, reputation systems, tagging systems, ontology, taxonomy}
 \end{abstract}
-%
+
+% Note that keywords are not normally used for peerreview papers.
+\begin{IEEEkeywords}
+social software, knowledge structuring, collaborative platform, reputation systems, tagging systems, ontology, taxonomy.
+\end{IEEEkeywords}
+
 \section{Introduction}
 \label{introduction}
 Analyzing and discussing big, real, open-source and highly complex software system is a very important part of the Software Architectures course at Instituto Superior T\'{e}cnico. In the course context, students must apply concepts and techniques for design and analysis of software architectures to descriptions of real systems. However, applying these concepts and techniques is not a very easy task, and often students have questions and doubts regarding these descriptions. These questions sometimes require not only consulting the course bibliography, but also discussing with peers or asking questions to teachers. This thesis focuses on providing a solution for this problem with the use of social software and knowledge structuring strategies.
@@ -212,75 +218,75 @@ Figure \ref{figure:abstractDomainModel} shows the concepts and relations describ
 
 \begin{tikzpicture}
 \tikzstyle{every node}=[font=\scriptsize]
-\begin{class}[text width=2cm]{Template Concept}{8,-4.5}
+\begin{class}[text width=2cm]{Template Concept}{2.5,-3.5}
 \end{class}
 
-\begin{class}[text width=2cm ]{Source Of Stimulus}{-3, -0.5}
+\begin{class}[text width=2cm ]{Source Of Stimulus}{-4, -0.5}
 
 \end{class}
-\begin{class}[text width=2cm ]{Stimulus}{-3,-1.5}
+\begin{class}[text width=2cm ]{Stimulus}{-4,-1.5}
 %\inherit{ScenarioElement}
 \end{class}
-\begin{class}[text width=2cm ]{Artifact}{-3,-2}
+\begin{class}[text width=2cm ]{Artifact}{-4,-2}
 %\inherit{ScenarioElement}
 \end{class}
-\begin{class}[text width=2.5cm ]{Environment}{-3,-2.5}
+\begin{class}[text width=2cm ]{Environment}{-4,-2.5}
 %\inherit{ScenarioElement}
 \end{class}
-\begin{class}[text width=2cm ]{Response}{-3,-3}
+\begin{class}[text width=2cm ]{Response}{-4,-3}
 %\inherit{ScenarioElement}
 \end{class}
-\begin{class}[text width=2cm ]{Response Measure}{-3,-3.5}
+\begin{class}[text width=2cm ]{Response Measure}{-4	,-3.5}
 \end{class}
-\begin{class}[text width=2cm ]{Scenario}{4.5,-2.5}
+\begin{class}[text width=2cm ]{Scenario}{0,-2.5}
 \inherit{Template Concept}
 \end{class}
-\begin{class}[text width=2cm ]{Quality Requirement}{1,0}
+\begin{class}[text width=2cm ]{Quality Requirement}{-1,0}
 \end{class}
-\begin{class}[text width=2cm ]{Tactic}{5,0}
+\begin{class}[text width=2cm ]{Tactic}{1,-1.5}
 \end{class}
 
-\begin{class}[text width=1cm ]{View}{4,-4}
+\begin{class}[text width=1cm ]{View}{0,-4.5}
 \inherit{Template Concept}
 \end{class}
-\begin{class}[text width=2cm ]{Viewtype}{0,-5}
+\begin{class}[text width=2cm ]{Viewtype}{0,-3.5}
 \end{class}
-\begin{class}[text width=1cm ]{Style}{-3,-6}
+\begin{class}[text width=1cm ]{Style}{-4,-4.5}
 \end{class}
-\begin{class}[text width=2cm ]{Relation}{-1,-7}
+\begin{class}[text width=2cm ]{Relation}{-3,-5.5}
 \end{class}
 
-\begin{class}[text width=2cm ]{Element}{4,-6}
+\begin{class}[text width=2cm ]{Element}{0,-5.5}
 \inherit{Template Concept}
 \end{class}
 
-\begin{class}[text width=1.5cm]{Is Part Of}{-4,-8}
+\begin{class}[text width=2cm]{Is Part Of}{-4,-6.5}
 \inherit{Relation}
 \end{class}
 
-\draw [umlcd style] (-2.5,-8) node {[...]};
+\draw [umlcd style] (-4,-7.5) node {[...]};
 
-\begin{class}[text width=2cm]{Attachment}{-1,-8}
+\begin{class}[text width=2cm]{Attachment}{-4,-8}
 \inherit{Relation}
 \end{class}
 
-\begin{class}[text width=1.5cm]{Allocated To}{1.5,-8}
+\begin{class}[text width=1.5cm]{Allocated To}{-2,-7.5}
 \inherit{Relation}
 \end{class}
 
-\begin{class}[text width=1cm]{Module}{4,-8}
+\begin{class}[text width=1cm]{Module}{-1,-6.5}
 \inherit{Element}
 \end{class}
 
-\begin{class}[text width=2cm]{Component}{6.5,-8}
+\begin{class}[text width=2cm]{Component}{0.5,-8}
 \inherit{Element}
 \end{class}
 
-\begin{class}[text width=2.5cm]{Environmental Element}{8,-7}
+\begin{class}[text width=2.5cm]{Environmental Element}{2,-7}
 \inherit{Element}
 \end{class}
 
-\begin{class}[text width=1.5cm]{Connector}{8,-6}
+\begin{class}[text width=1.5cm]{Connector}{2,-6}
 \inherit{Element}
 \end{class}
 
@@ -465,7 +471,7 @@ Regarding \textbf{Views}, a View is considered a main concept, and therefore has
 \renewcommand {\umldrawcolor}{black}
 \begin{tikzpicture}
 \tikzstyle{every node}=[font=\scriptsize]
-\begin{class}[text width=3cm ]{View}{0,0}
+\begin{class}[text width=2cm ]{View}{0,0}
 	\attribute {name : String}
 	\attribute {viewtype : String}
 	\attribute {text : String}
@@ -500,17 +506,18 @@ The endpoints provided by this controller are described in Table \ref{table:endp
 \begin{table}[ht]
 \scriptsize
 \centering
-\begin{tabular}{ | c | m{1.5cm} | m{3.5cm} |m{7.7cm}|}
+\begin{tabular}{ | m{1cm} | c | m{2cm} |m{4cm}|}
     \hline
     \textbf{Name} & \parbox[c][0.8cm]{1cm}{\textbf{Request}\\\textbf{Method }}& \textbf{Endpoint} & \textbf{Description}\\ \hline
-	INDEX & GET & \parbox[c][0.8cm]{3.5cm}{/selectDoc/\{docId\}/\\store/annotations} & \parbox[c]{8cm}{Returns the set of annotations associated with the \\document with id \textit{docId} }\\ \hline
+	INDEX & GET & \parbox[c][0.8cm]{3.5cm}{/selectDoc/\{docId\}/\\store/annotations} & \parbox[c]{8cm}{Returns the set of annotations associated\\with the document with id \textit{docId} }\\ \hline
    	READ & GET & \parbox[c][0.8cm]{3.5cm}{/selectDoc/\{docId\}/\\store/annotations/\{id\}} & Returns the annotation with the specific \textit{id} \\ \hline
-    CREATE & POST & \parbox[c]{3.5cm}{/selectDoc/\{docId\}/\\store/annotations} & \parbox[c][0.8cm]{8cm}{Creates a new annotation, stores it in the model \\associated with the document with id \textit{docId}, \\ and redirects to the Read endpoint} \\ \hline
-    UPDATE & PUT & \parbox[c][0.8cm]{3.5cm}{/selectDoc/\{docId\}/\\store/annotations/\{id\}} & \parbox[c]{8cm}{Updates the annotation with the given \textit{id} and \\redirects to the READ endpoint} \\ \hline
-    DELETE & DELETE & \parbox[t]{3.5cm}{/selectDoc/\{docId\}/\\store/annotations/\{id\}} & \parbox[c][1cm]{8cm}{Removes the association between the \\ annotation with the given id and the document \\ with id \textit{docId}. The response is a HTTP/1.0 204 \\ NO CONTENT.} \\ \hline
+    CREATE & POST & \parbox[c]{4cm}{/selectDoc/\{docId\}/\\store/annotations} & \parbox[c][1.5cm]{8cm}{Creates a new annotation, stores it in the \\model associated with the document with\\id \textit{docId}, and redirects to the READ\\endpoint} \\ \hline
+    UPDATE & PUT & \parbox[c][0.8cm]{3.5cm}{/selectDoc/\{docId\}/\\store/annotations/\{id\}} & \parbox[c]{8cm}{Updates the annotation with the given \textit{id}\\and redirects to the READ endpoint} \\ \hline
+    DELETE & DELETE & \parbox[t]{3.5cm}{/selectDoc/\{docId\}/\\store/annotations/\{id\}} & \parbox[c][1.5cm]{8cm}{Removes the association between the \\ annotation with the given id and the\\document with id \textit{docId}. The response is\\a HTTP/1.0 204 NO CONTENT.} \\ \hline
   \end{tabular}
-  \caption{REST API provided by the Annotation Controller}
-  \label{table:endpoints}
+\\
+\caption{REST API provided by the Annotation Controller}
+ \label{table:endpoints}
 \end{table}
 
 The \textbf{DocumentController} class handles the requests to view, add or remove a document from the system.
@@ -521,7 +528,7 @@ To add a new document, the controller checks if the database already contains a 
 Upon Document visualization, there are other operations handled by this controller, such as redirecting operations to other controllers upon receiving a request to visualize the template of a concept or to associate annotations with domain entities as seen in Figure \ref{figure:documentControllerLinkAnnotation}, and navigation to the page containing the structured representation of the document.
 
 \begin{figure}
-\lstset{style=customjava}
+\lstset{style=customjava, basicstyle=\tiny}
 \begin{lstlisting}
 	@RequestMapping(value = "/addAnnotationToStructure/{docId}/{annotationId}/{tag}")
 	public RedirectView addAnnotationModal(@PathVariable String docId,
@@ -598,7 +605,8 @@ Including a predefined fragment in a template is as easy as Figure \ref{figure:v
 \begin{figure}
 \lstset{style=customhtml}
 \begin{lstlisting}
-<section layout:include="@{/headerFragment} :: headerFragment"></section>
+<section layout:include="@{/headerFragment} :: headerFragment">
+</section>
 \end{lstlisting}
 \caption{Including a fragment in Thymeleaf syntax}
 \label{figure:viewsIncludeFragment}
@@ -609,7 +617,9 @@ The templates use the information added by the Controllers to the Model Attribut
 \begin{figure}
 \lstset{style=customhtml}
 \begin{lstlisting}
-<span th:text="'Scenario for '+${scenario.getQualityRequirement().getName()}+': '">
+<span th:text="'Scenario for '+
+	${scenario.getQualityRequirement().getName()}
+	+ ': '">
 </span> 
 <span th:text="${scenario.getName()}"></span>
 \end{lstlisting}
@@ -620,12 +630,12 @@ The templates use the information added by the Controllers to the Model Attribut
 Thymeleaf also provides automatic binding of forms information to provided objects. For example, Figure \ref{figure:viewsModalFormExample} shows a form with checkboxes, to select Modules.
 \begin{figure}
 \centering
-\includegraphics{images/modalExample}
+\includegraphics[scale=0.7]{/modalExample}
 \caption{Example of a Modal window containing a form}
 \label{figure:viewsModalFormExample}
 \end{figure}
 
-When the form is submitted, Thymeleaf will bind the selected values to an object passed, and send that object in the body of the POST request to the Controller, which will process them as seen in Figure \ref{figure:ViewControllerAddModules}.
+When the form is submitted, Thymeleaf will bind the selected values to an object passed, and send that object in the body of the POST request to the Controller.
 
 \section{Evaluation}
 \label{evaluation}
@@ -703,9 +713,10 @@ Based on the state-of-the-art presented and the context of the Software Architec
 
 The main goal for this work is to develop the platform with the knowledge structuring elements and discussion methods, to allow students to discuss and organize thoughts. Additionally, other social software elements will be added, such as reputation systems, in order to boost motivation and encourage participation. 
 
-%
-% ---- Bibliography ----
-%
-\bibliography{mybib}
-\bibliographystyle{plain}
+\bibliographystyle{IEEEtran}  
+\bibliography{mybib}  
+
+% that's all folks
 \end{document}
+
+
