@@ -5,45 +5,45 @@ The style file: plain.bst
 Database file #1: mybib.bib
 Warning--empty journal in liu2010evaluation
 Warning--empty journal in nadel1957theory
-You've used 26 entries,
+You've used 24 entries,
             2118 wiz_defined-function locations,
-            651 strings with 8340 characters,
-and the built_in function-call counts, 8441 in all, are:
-= -- 862
-> -- 345
+            642 strings with 8004 characters,
+and the built_in function-call counts, 7861 in all, are:
+= -- 807
+> -- 314
 < -- 5
-+ -- 142
-- -- 110
-* -- 562
-:= -- 1400
-add.period$ -- 84
-call.type$ -- 26
-change.case$ -- 129
++ -- 128
+- -- 100
+* -- 524
+:= -- 1303
+add.period$ -- 79
+call.type$ -- 24
+change.case$ -- 119
 chr.to.int$ -- 0
-cite$ -- 28
-duplicate$ -- 334
-empty$ -- 686
-format.name$ -- 110
-if$ -- 1782
+cite$ -- 26
+duplicate$ -- 316
+empty$ -- 639
+format.name$ -- 100
+if$ -- 1663
 int.to.chr$ -- 0
-int.to.str$ -- 26
-missing$ -- 26
-newline$ -- 132
-num.names$ -- 52
-pop$ -- 129
+int.to.str$ -- 24
+missing$ -- 25
+newline$ -- 123
+num.names$ -- 48
+pop$ -- 116
 preamble$ -- 1
-purify$ -- 106
+purify$ -- 98
 quote$ -- 0
-skip$ -- 234
+skip$ -- 217
 stack$ -- 0
-substring$ -- 549
-swap$ -- 68
+substring$ -- 518
+swap$ -- 66
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 100
+type$ -- 92
 warning$ -- 2
-while$ -- 92
-width$ -- 28
-write$ -- 286
+while$ -- 86
+width$ -- 26
+write$ -- 267
 (There were 2 warnings)

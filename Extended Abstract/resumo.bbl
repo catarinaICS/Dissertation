@@ -75,12 +75,6 @@ Eduard Hovy, Roberto Navigli, and Simone~Paolo Ponzetto.
   intelligence: The story so far.
 \newblock {\em Artificial Intelligence}, 194:2--27, 2013.
 
-\bibitem{krasner1988description}
-Glenn~E Krasner, Stephen~T Pope, et~al.
-\newblock A description of the model-view-controller user interface paradigm in
-  the smalltalk-80 system.
-\newblock {\em Journal of object oriented programming}, 1(3):26--49, 1988.
-
 \bibitem{liu2012systematic}
 Ling Liu and Malcolm Munro.
 \newblock Systematic analysis of centralized online reputation systems.
@@ -127,11 +121,6 @@ Christian~R Prause and Stefan Apelt.
 \newblock An approach for continuous inspection of source code.
 \newblock In {\em Proceedings of the 6th international workshop on Software
   quality}, pages 17--22. ACM, 2008.
-
-\bibitem{reenskaug2009dci}
-T~Reenskaug and J~Coplien.
-\newblock The dci architecture: A new vision of object-oriented programming.
-  artima developer, 2009.
 
 \bibitem{smith2007social}
 Gene Smith.
