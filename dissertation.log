@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2015.4.6)  15 OCT 2015 19:17
+This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2015.4.6)  16 OCT 2015 00:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1236,9 +1236,6 @@ Overfull \hbox (4.5618pt too wide) in paragraph at lines 39--40
 n among the users (syn-chronous and/or asyn-chronous); 
  []
 
-
-LaTeX Warning: Reference `repsys' on page 11 undefined on input line 55.
-
 Missing character: There is no â in font phvr7t!
 Missing character: There is no € in font phvr7t!
 Missing character: There is no “ in font phvr7t!
@@ -1439,21 +1436,21 @@ Overfull \hbox (13.96628pt too wide) in paragraph at lines 743--744
 [47]
 LaTeX Font Info:    Font shape `OMS/phv/m/it' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 804.
- [48] <images/header.png, id=1302, 1020.06094pt x 52.69687pt>
+ [48] <images/header.png, id=1303, 1020.06094pt x 52.69687pt>
 File: images/header.png Graphic file (type png)
 
 <use images/header.png>
 Package pdftex.def Info: images/header.png used on input line 838.
 (pdftex.def)             Requested size: 408.01715pt x 21.07837pt.
 
-<images/scenarioExample.png, id=1304, 1371.1225pt x 770.88pt>
+<images/scenarioExample.png, id=1305, 1371.1225pt x 770.88pt>
 File: images/scenarioExample.png Graphic file (type png)
 
 <use images/scenarioExample.png>
 Package pdftex.def Info: images/scenarioExample.png used on input line 850.
 (pdftex.def)             Requested size: 411.33992pt x 231.26578pt.
  [49 <./images/header.png> <./images/scenarioExample.png>] <images/modalExample
-.png, id=1316, 249.18094pt x 112.16907pt>
+.png, id=1317, 249.18094pt x 112.16907pt>
 File: images/modalExample.png Graphic file (type png)
 
 <use images/modalExample.png>
@@ -1510,17 +1507,13 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 107.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 107.
 Package rerunfilecheck Info: File `dissertation.out' has not changed.
 (rerunfilecheck)             Checksum: AA20A6F7C6BBF0A377F0EF37442DCF49;3217.
-
-
-LaTeX Warning: There were undefined references.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 107.
  ) 
 Here is how much of TeX's memory you used:
- 30576 strings out of 495034
- 645652 string characters out of 6181678
- 922028 words of memory out of 5000000
- 32326 multiletter control sequences out of 15000+600000
+ 30575 strings out of 495034
+ 645644 string characters out of 6181678
+ 922991 words of memory out of 5000000
+ 32325 multiletter control sequences out of 15000+600000
  31076 words of font info for 55 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  63i,20n,94p,1718b,2089s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1545,10 +1538,10 @@ c/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8
 a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on dissertation.pdf (63 pages, 479547 bytes).
+Output written on dissertation.pdf (63 pages, 480117 bytes).
 PDF statistics:
- 1568 PDF objects out of 1728 (max. 8388607)
- 1475 compressed objects within 15 object streams
+ 1569 PDF objects out of 1728 (max. 8388607)
+ 1476 compressed objects within 15 object streams
  707 named destinations out of 1000 (max. 500000)
  433 words of extra memory for PDF output out of 10000 (max. 10000000)
 

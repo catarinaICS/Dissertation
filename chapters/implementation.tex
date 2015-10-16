@@ -545,7 +545,7 @@ Figure \ref{figure:documentControllerStructuredRepresentation} shows the method 
 
 \subsection{Scenario Controller}
 
-The Scenario Controller provides means to add and remove Scenarios from the document and link or unlink annotations from a Scenario or its elements.A Scenario is created when a user wants to link an Annotation to a Scenario and is prompted the interface to add a new or choose an existing one. When the Controller receives the request to add a new Scenario, it does not only adds a new Scenario to the database, but also adds a new SrcOfStimulus, Stimulus, Artifact, Environment, Response and ResponseMeasure to the databse, all associated with the newly created Scenario. 
+The Scenario Controller provides means to add and remove Scenarios from the document and link or unlink annotations from a Scenario or its elements.A Scenario is created when a user wants to link an Annotation to a Scenario and is prompted the interface to add a new or choose an existing one. When the Controller receives the request to add a new Scenario, it does not only adds a new Scenario to the database, but also adds a new SrcOfStimulus, Stimulus, Artifact, Environment, Response and ResponseMeasure to the database, all associated with the newly created Scenario. 
 
 \begin{figure}[h]
 \lstset{style=customjava}
@@ -805,7 +805,7 @@ A POST request is sent to \textit{/addModulesToView/\{docId\}/\{viewId\}}, conta
 
 \section{Views}
 \label{section:Views}
-This section describes how the information from the Model is displayed to the user. The developed application uses Thymeleaf\footnote{http://www.thymeleaf.org/}, a Java template engine for displaying dynamic templates. Tymeleaf can be fully integrated with the Spring Framework and, in each template, it is possible to use the its syntax to access and display the Model Attributes added by the Controllers. 
+This section describes how the information from the Model is displayed to the user. The developed application uses Thymeleaf\footnote{http://www.thymeleaf.org/}, a Java template engine for displaying dynamic templates. Thymeleaf can be fully integrated with the Spring Framework and, in each template, it is possible to use the its syntax to access and display the Model Attributes added by the Controllers. 
 
 A great advantage of Thymeleaf is the possibility of defining template fragments, which are pieces of code that can be defined in a separate file and be included in any template as desired. One of the main uses of fragments for the developed application is the page header, which is included in all templates and contains a small menu and the logout link. Figure \ref{figure:viewsHeaderFragment} shows how a fragment is defined, in this case with the example of the header. Each fragment must have a unique name, which is ``headerFragment'' in this example. All html code of that fragment is then defined inside the \textit{section} tags.
 \begin{figure}[h]

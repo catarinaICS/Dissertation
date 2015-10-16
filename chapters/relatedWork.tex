@@ -52,7 +52,7 @@ In the platform to develop the following elements could be identifiable:
 \begin{itemize}
 \item \textbf{Identity:} The identity is the central element of the framework and it is essential to the platform, as each student is a unique person and, therefore, must have a unique identification inside the platform. Since each student has already got a unique student number inside the whole university, the student number should be used for identification. The name of the student should also be added for purposes of identification, since it helps other users knowing who are they communicating with (it is easier to know who a student is if his name is available).
 
-\item \textbf{Reputation:} To assess the quality and relevance of the participations in the platform, a reputation system should be used, as discussed in \ref{repsys}.
+\item \textbf{Reputation:} To assess the quality and relevance of the contributions in the platform, a reputation system should be used, as discussed in \ref{section:relatedWorkRepSys}.
 
 \item \textbf{Groups:} One of the evaluation methods of the Software Architectures' course is the realization of group works, where students form work groups, and each group will have to identify architectural elements in a description of a software system. The notion of these work groups must be present in the platform, since each group is a restricted set of people that are working towards the same goal: Correctly understand and identify the architectural elements in the description. 
 
@@ -152,7 +152,7 @@ The survey divides the roles in two categories:
 \item \textit{Explicit roles}: predefined types of actors in the social network, such as ``experts'' or ``influencers''.
 \end{itemize}
 
-Methodologies for inferring \textit{non-explicit} roles analyze the structure of the social network and communications between users, in order to identify patterns in communication that allow the identification of roles. Common approaches are based on blockmodels \cite{borgatti1993two,breiger1975algorithm} and probabilistic bayesian models \cite{steyvers2004probabilistic,mccallum2007topic,daud2009generalized}.
+Methodologies for inferring \textit{non-explicit} roles analyze the structure of the social network and communications between users, in order to identify patterns in communication that allow the identification of roles. Common approaches are based on blockmodels \cite{borgatti1993two,breiger1975algorithm} and probabilistic Bayesian models \cite{steyvers2004probabilistic,mccallum2007topic,daud2009generalized}.
 
 Methodologies for identifying \textit{explicit} roles in a social network compare the activity of the user inside a social network against the criteria that characterizes each role. For example, techniques for identification of ``experts'' (users that answer correctly to questions asked) inside forums \cite{zhang2007expertise} analyze, among other criteria, the number of answers given by the user and how many different people a user answers.
 
@@ -281,7 +281,7 @@ Collaborative tagging is the practice of allowing anyone to freely attach keywor
 
 While in some document repositories or digital libraries there is an authority responsible for assigning and organizing documents by keywords, in collaborative tagging anyone is able to freely attach keywords or tags to the contents. This is very useful when there is no authority for organizing content or simply there is too much content for a single authority to organize: It is the case of the web \cite{golder2006usage}.
 
-Tagging-based systems contrast with taxonomies: while taxonomies organize contents into unambiguous categories that are within more general categories, tagging is neither exclusive nor hierarchical, and therefore it alows to identify content as being about a great variety of things simultaneously \cite{golder2006usage}. 
+Tagging-based systems contrast with taxonomies: while taxonomies organize contents into unambiguous categories that are within more general categories, tagging is neither exclusive nor hierarchical, and therefore it allows to identify content as being about a great variety of things simultaneously \cite{golder2006usage}. 
 
 However, both these methods of organizing information have problems with the word semantics, namely polysemous words (a single word with many, related, senses), synonyms (multiple words with the same/closely related sense), and the basic level variation: different people consider different levels of specificity for describing the same entity for example, a person may describe a dog as 'dog' or as 'beagle') \cite{tanaka1991object}. 
 
@@ -303,9 +303,9 @@ Structured resources are machine-readable, and there are several kinds, such as 
 
 Semi-structured contents try to create a middle-ground between these two types. The most important example of their use is the Wikipedia. 
 
-Wikipedia consists of a repository of webpages, each of them containing an entry about a certain concept. There are relations between the different kinds of pages, for example, the redirections (several concepts that redirect for the same article), internal hyperlinks (links for articles about concepts that were included in the text), interlanguage links (links for the same article written in different languages) and category pages (used to classify entries). Pages can also contain infoboxes (tables summarizing the most important information).
+Wikipedia consists of a repository of web pages, each of them containing an entry about a certain concept. There are relations between the different kinds of pages, for example, the redirections (several concepts that redirect for the same article), internal hyperlinks (links for articles about concepts that were included in the text), inter-language links (links for the same article written in different languages) and category pages (used to classify entries). Pages can also contain info-boxes (tables summarizing the most important information).
 
-Wikipedia then relies on large amounts of mannually-input knowledge, provided via massive online collaboration. Information is ontologized with high quality thanks to the collaborative editing of articles and it's possible to keep information continuously updated and achieve a wide coverage for almost all domains. 
+Wikipedia then relies on large amounts of manually-input knowledge, provided via massive online collaboration. Information is ontologized with high quality thanks to the collaborative editing of articles and it's possible to keep information continuously updated and achieve a wide coverage for almost all domains. 
 
 To sum up, using semi-structured resources provides the best of both worlds: high quality information with wide coverage of almost all domains \cite{hovy2013collaboratively}.
 
@@ -325,7 +325,7 @@ As students discuss and correct each others' work, the semi-structure extraction
 \section{Ontology Learning}
 Research on Ontology learning from text has evolved over the years and there are several open challenges for this field \cite{wong2012ontology}. Ontologies are defined as ``effectively formal and explicit specifications in the form of concepts and relations of shared conceptualizations'' \cite{gruber1993translation}, and can be thought of as a directed graph, with concepts as nodes and relations as edges.
  
-Techniques for ontology learning can be classified in statistics-based, linguistics-based, logic-based or hybrid. Over the years there was also an increased interest in techniques for ontology learning from social data. Existant literature investigates the problem of ontology learning from user-defined tags \cite{tang2009towards}, discusses the requirements for automatic ontology learning from social data \cite{kotis2011automated}, presents a tripartite ontology model \cite{mika2007ontologies}, and describes an approach to complement corpus-based ontology learning with tags \cite{weichselbraun2010augmenting}.
+Techniques for ontology learning can be classified in statistics-based, linguistics-based, logic-based or hybrid. Over the years there was also an increased interest in techniques for ontology learning from social data. Existent literature investigates the problem of ontology learning from user-defined tags \cite{tang2009towards}, discusses the requirements for automatic ontology learning from social data \cite{kotis2011automated}, presents a tripartite ontology model \cite{mika2007ontologies}, and describes an approach to complement corpus-based ontology learning with tags \cite{weichselbraun2010augmenting}.
 
 Regarding the context of the platform, all the concepts used to tag the document contents (the concepts of Software Architectures) will be defined a priori and organized according to the relations between them (IS-A relations and others).
 

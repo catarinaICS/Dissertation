@@ -58,11 +58,6 @@ showstringspaces=false
   % \DeclareGraphicsExtensions{.eps}
 \fi
 
-
-% correct bad hyphenation here
-\hyphenation{op-tical net-works semi-conduc-tor}
-
-
 \begin{document}
 %
 % paper title
@@ -162,14 +157,14 @@ Reputation systems are of extreme importance for certain kinds of applications, 
 
 For the platform to develop, reputation does not play such an important role, but will add a motivational component to the platform: Students rate their colleagues' contributions and should try to get and keep a high reputation score. The motivation behind the importance of including a reputation system in the platform is the study conducted \cite{dencheva2011dynamic}, concerning the lack of participation in Moknowpedia, a Wiki system. A reputation system was added to the wiki in order to solve these problems and improve both content quality and quantity\cite{prause2008approach}, and results showed an increase of 62\% in the number of article revisions and an increase of 42\% in the number of viewed articles.
 	
-\subsubsection{Requirements and Features of the Reputation System:}
+\subsubsection{Requirements and Features of the Reputation System}
 
 A framework for analysis of reputation systems is proposed in \cite{vavilis2014reference}, where the general requirements for reputation systems are elicited and the corresponding features needed for their fulfillment. Given the context of the platform, its reputation system requires that \textbf{Ratings and Reputation should discriminate user behavior}, as these scores should allow to identify students with few and/or less relevant contributions and students with many and/or very relevant ones, \textbf{the reputation system should be able to discriminate ``incorrect'' ratings}, as malicious users are present everywhere and can give intentionally inaccurate ratings, \textbf{Users should not be able to modify ratings, reputation values and calculate their own reputation}, as this data should not be accessible to them, and the score should be calculated by the reputation system.
 
 To satisfy the identified requirements, the reputation system should feature a range of values to represent \textbf{trust and distrust}, where low values indicate students with few and/or less relevant contributions and high values indicate students with many and/or very relevant ones, \textbf{absolute reputation values}, calculated independently for each user, and identification of \textbf{origin and target} of the ratings, to prevent self-ratings and identify potential malicious users
 
-\subsubsection{Components of a Reputation System:}
-Reputation systems are divided in four components\cite{liu2012systematic,liu2010evaluation}, and each have a set of defined criteria for their evalutation: \textbf{Input}, the process of collecting reputation information from information sources, \textbf{Processing}, the procedure of computing and aggregating the reputation information, \textbf{Output}, the dissemination of the reputation information and the \textbf{Feedback Loop}, the collection of feedback of the output (review of the review), which does not apply to the context of the platform.
+\subsubsection{Components of a Reputation System}
+Reputation systems are divided in four components\cite{liu2012systematic,liu2010evaluation}, and each have a set of defined criteria for their evaluation: \textbf{Input}, the process of collecting reputation information from information sources, \textbf{Processing}, the procedure of computing and aggregating the reputation information, \textbf{Output}, the dissemination of the reputation information and the \textbf{Feedback Loop}, the collection of feedback of the output (review of the review), which does not apply to the context of the platform.
 
 Concerning the \textbf{Input} component, ratings are collected in the platform and are given by the students that are logged in. Only a single property is collected, the rating assigned.Concerning the \textbf{Processing} component, a weighted average algorithm is the best choice to aggregate ratings in this simple system, and information should be updated as soon as the ratings are assigned. Both the algorithm and the system have a very low complexity. Concerning the \textbf{Output} component, the end users of the information are the students registered in the platform, and this information is only available inside the platform. The reputation information consists in the result of the weighted average algorithm.
 
@@ -179,7 +174,7 @@ Collaborative tagging is the practice of allowing anyone to freely attach keywor
 In this platform we are aiming for using tags from a closed taxonomy as a way of identifying the main parts of a software system within a software description, namely stakeholders, scenarios and their parts, tactics, etc., and use the tagged text to create a structured description of the document.
 
 \subsection{Semi-Structured Content}
-Knowledge can be obtained from many different resources, ranging from unstructured (for example, language models obtained from plain text) to structured ones (for example, ontologies) \cite{hovy2013collaboratively}. However, unstructured resources do not allow for complex inference chains\cite{domingos2007toward} and information is not ontologized\cite{hovy2013collaboratively}, and structured resources require a huge amount of effort to create and maintain\cite{hovy2013collaboratively}. Semi-structured contents try to create a middle-ground between these two types. The most important example of their use is the Wikipedia, which is a repository of webpages, related with each other by links. Massive online collaboration allow for updated high quality and wide coverage of contents. To sum up, using semi-structured resources provides the best of both worlds: high quality information with wide coverage of almost all domains \cite{hovy2013collaboratively}.
+Knowledge can be obtained from many different resources, ranging from unstructured (for example, language models obtained from plain text) to structured ones (for example, ontologies) \cite{hovy2013collaboratively}. However, unstructured resources do not allow for complex inference chains\cite{domingos2007toward} and information is not ontologized\cite{hovy2013collaboratively}, and structured resources require a huge amount of effort to create and maintain\cite{hovy2013collaboratively}. Semi-structured contents try to create a middle-ground between these two types. The most important example of their use is the Wikipedia, which is a repository of web pages, related with each other by links. Massive online collaboration allow for updated high quality and wide coverage of contents. To sum up, using semi-structured resources provides the best of both worlds: high quality information with wide coverage of almost all domains \cite{hovy2013collaboratively}.
  
 The main goal of this platform is to allow students to extract a semi-structured representation of a software system from a description in plain text, and have all the parts that constitute a software system described in a structure similar to a Wikipedia, instead of scattered along a ten or more pages article. This will be accomplished by creating templates for the concepts and associating information from the document to them. Student collaboration in the platform will lead to good quality structured descriptions of the articles.
 	
@@ -389,7 +384,7 @@ The Model of the implemented system is based on the Domain Model from Section \r
 
 Regarding \textbf{Annotations}, similarly to what is described in \ref{architecture:annotation}, in the implemented model Annotations are associated with the Document in which they were created, and to the User that created it.
 
-\textbf{Scenarios} are represented in the implemented model in a very similar way to what is shown in Figure \ref{figure:abstractDomainModel}. However, the Quality Requirement is not associated with the Tactic, as the set of Quality Requirements and Tactics are not pre-defined in the implemented database, they are added upon Scenario creation. The Scenario is associated with the respective Document and the Annotations that describe it. Scenario elements are also associated with their respective annotations.
+\textbf{Scenarios} are represented in the implemented model in a very similar way to what is shown in Figure \ref{figure:abstractDomainModel}. However, the Quality Requirement is not associated with the Tactic, as the set of Quality Requirements and Tactics are not predefined in the implemented database, they are added upon Scenario creation. The Scenario is associated with the respective Document and the Annotations that describe it. Scenario elements are also associated with their respective annotations.
 
 The \textbf{Modules} are the elements of the Module Viewtype Views. The Module entity in the implemented domain model is associated with the corresponding document upon its creation, and with the set of Annotations that describe it, as described in Section \ref{architecture}.
 
@@ -587,7 +582,7 @@ When, inside the template, the user selects a set of Modules, Components or Conn
 \label{section:Views}
 This section describes how the information from the Model is displayed to the user. The developed application uses Thymeleaf\footnote{http://www.thymeleaf.org/}, a Java template engine for displaying dynamic templates.
 
-Thymeleaf allows the definition of template fragments, which are pieces of code that can be defined in a separate file and be included in any template as desired. Fragments are used in the developed application in the page header, which is included in all templates, and in the concept templates. Figure \ref{figure:viewsHeaderFragment} shows how a fragment is defined. Each fragment must have a unique name and all html code of that fragment is then defined inside the \textit{section} tags.
+Thymeleaf allows the definition of template fragments, which are pieces of code that can be defined in a separate file and be included in any template as desired. Fragments are used in the developed application in the page header, which is included in all templates, and in the concept templates. Figure \ref{figure:viewsHeaderFragment} shows how a fragment is defined. Each fragment must have a unique name and all HTML code of that fragment is then defined inside the \textit{section} tags.
 \begin{figure}
 \lstset{style=customhtml}
 \begin{lstlisting}
@@ -639,7 +634,6 @@ When the form is submitted, Thymeleaf will bind the selected values to an object
 
 \section{Evaluation}
 \label{evaluation}
-
 The success of a software system is often dependent on the opinion of the people that will use it. Systems attractive and easy to use according to the target audience background are more likely to be highly used.
 
 The developed system tries to make the task of reading, understanding and structuring a software description article into an easy one, providing a simple and clean interface.
@@ -647,42 +641,116 @@ The developed system tries to make the task of reading, understanding and struct
 As the main goal of the developed application is to be used by students and teachers, in both classroom and home environments, it was asked to the students enrolled in the Software Architectures course to test the application, namely the features for annotating text and structuring Scenarios from the annotations created.
 
 The participating students were asked to fill a small survey afterwards to register their opinions.
-This survey consisted of two questions asking to evaluate the Usability and the adequacy of the application regarding Scenario creation in a scale of one to ten, and three open and optional questions, asking what did the student like the most about the application, what improvements could be done to it, and to register any other feedback the student may had.
+This survey consisted of a grid question to evaluate aspects of the application usability in a scale from one to ten, three questions asking to evaluate the usefulness of the application in a scale of one to ten, and three open and optional questions, asking what did the student like the most about the application, what improvements could be done to it, and to register any other feedback the student may had.
 
-A total of [NUMBER] students tested and evaluated the application. 
+A total of eight students volunteered to test the application. From these eight, five answered the survey. Due to the small number of participants and little feedback, the results shown are merely indicative, as it is impossible to take valuable conclusions from such a small sample.
 
-Regarding the usability of the application, Figure ... shows the graph containing the ratings given by the students.
+Regarding the usability of the application, Figure \ref{figure:usabilityEvaluation} shows the graph containing the ratings given by the students.
 
-Conclusions....
-
-Regarding the adequacy of the application to create Scenarios, Figure ... shows the graph with the ratings given by the students.
-
-Conclusions...
-\begin{figure}
+\begin{figure}[h]
 \centering
+\begin{normalsize}
+\textbf{Usability of the Application's Features}\\
+\end{normalsize}
+\scriptsize
 \begin{tikzpicture}
 \begin{axis}[
-colormap/blackwhite,
+small,
 x tick label style={
 /pgf/number format/1000 sep=},
 ylabel=Number of Students,
+ylabel style={font=\scriptsize},
 xlabel=Rating Given,
+xlabel style={font=\scriptsize},
 enlargelimits=0.15,
-legend style={at={(0.5,-0.15)},
-anchor=north,legend columns=-1},
+legend style={at={(0.5,-0.3)},
+anchor=north,legend columns=2},
 ybar,
 bar width=7pt,
 ]
 \addplot 
-	coordinates {(1,1) (2,2) 
-		(3,3) (4,4) (5,5) (6,6)};
+	coordinates {(7,1) (4,1) (10,3)};
+\addplot 
+	coordinates {(9,2) (10,1) (8,2)};
+\addplot
+	coordinates {(8,2) (10,2) (7,1)};	
+\legend{Creating Annotations, Creating Scenarios, Associating Annotations with Scenarios}
 \end{axis}
 \end{tikzpicture}
+\begin{tikzpicture}
+\begin{axis}[
+small,
+x tick label style={
+/pgf/number format/1000 sep=},
+ylabel=Number of Students,
+ylabel style={font=\scriptsize},
+xlabel=Rating Given,
+xlabel style={font=\scriptsize},
+enlargelimits=0.15,
+legend style={at={(0.5,-0.3)},
+anchor=north,legend columns=2},
+ybar,
+bar width=7pt,
+]
+
+\addplot
+	coordinates {(5,1) (7,2) (9,1) (8,1)};
+\addplot
+	coordinates {(4,1) (6,1) (9,2) (8,1)};
+\addplot
+	coordinates {(5,1) (6,2) (9,1) (7,1)};  	
+\legend{Scenario Template, Editing Scenarios, Structured Representation}
+\end{axis}
+\end{tikzpicture}
+\caption{Evaluation results regarding the usability of the application}
+\label{figure:usabilityEvaluation}
 \end{figure}
 
-Regarding the open questions... Introduzir conclusoes se as houver.
- 
-%!TEX root = ../dissertation.tex
+Overall students thought the application is easy to use regarding creating Scenarios and associating annotations with them. However, there were complaints about the AnnotatorJS interface, such as \textit{``I had trouble when trying annotate a sequence of letters when that sequence overlapped with another annotation''}, which implies that it is not very intuitive when trying to create multiple annotations in the same piece of text.
+
+Improvements suggested in the survey include \textit{``There should be a way to ``view'' the scenario itself, with the diagram that is showed in the lectures. Also, the system needs to be more intuitive, particularly when it comes to selecting sentences for the scenarios''} and \textit{``Make multiple copies of the article to be only seen by each group so that one group doesn't get confused or get influenced by others.''}. This reinforces the idea that the AnnotatorJS interface is not very intuitive sometimes, and the need of creating groups in the platform, which is explained in \ref{futureWork}.
+
+When asked what did they like the most about the application, students pointed that \textit{``It is possible for different people to analyze the same document, and its easy to use''} and \textit{``It provides a quick and convenient way of constructing scenarios''}. These opinions help conclude that the platform satisfies the requirement of providing collaboration among students, and facilitates understanding the Software Architectures concepts.
+
+Regarding the usefulness of the application, the survey asked to rate how much the application facilitates the application of theoretical concepts to practical examples, and how useful would it be in the context of the Group Assignments and Practical Classes. Figure \ref{figure:usefulnessEvaluation}
+
+\begin{figure}[h]
+\centering
+\begin{normalsize}
+\textbf{Application Usefulness}\\
+\end{normalsize}
+\scriptsize
+\begin{tikzpicture}
+\begin{axis}[
+small,
+x tick label style={
+/pgf/number format/1000 sep=},
+ylabel=Number of Students,
+ylabel style={font=\scriptsize},
+xlabel=Rating Given,
+xlabel style={font=\scriptsize},
+enlargelimits=0.15,
+legend style={at={(0.5,-0.3)},
+anchor=north,legend columns=2},
+ybar,
+bar width=7pt,
+]
+\addplot 
+	coordinates {(7,2) (8,1) (9,1) (10,1)};
+\addplot 
+	coordinates {(9,3) (7,1) (10,1)};
+\addplot
+	coordinates {(7,1) (9,2) (10,2)};	
+\legend{Correlation theory-practice, Group assignments, Practical classes}
+\end{axis}
+\end{tikzpicture}
+\caption{Evaluation of the usefulness of the application}
+\label{figure:usefulnessEvaluation}
+\end{figure}
+
+Overall, students would like to use this application for both their Group Assignments and when discussing a description article in the Practical classes. 
+
+In conclusion, the evaluation of the platform, despite the small number of testers, provided positive feedback. The platform proved to provide collaboration, and students appreciated how the information from the text can be extracted into a single template. 
 
 \section{Future Work}
 \label{futureWork}
@@ -704,14 +772,13 @@ Sections \ref{relatedWorkHoneycomb}, \ref{relatedWorkPersuasive} and  \ref{relat
 The developed platform contains social elements and allows for collaboration, as students are individually identified within the system and work together over a shared article. However, there are several other social software elements that could enrich the platform as a social system, such as \textbf{Groups}, so students can work on their group assignments, \textbf{Discussion Forums} to provide communication and cooperation, a \textbf{Reputation System} to motivate students to contribute, and a \textbf{Spotlight} with the students with highest reputation scores, to provide recognition of their efforts.
 
 \section{Conclusions}
+The success of social software is very dependent on the people that use it, since it is focused on the interactions and collaboration between their users.
 
-In the context of the Software Architectures course, relating theory concepts with descriptions of real systems is a very hard job, specially for students that are learning these concepts for the first time. It is clear that a way for students to discuss and collaboratively structure their knowledge is needed.
+Developing a platform including not only a way to structure knowledge but also a set of social features is a very ambitious task, and the focus of this thesis was the knowledge structuring part, which is very important for the context of the Software Architectures course.
 
-This document presents the state-of-the-art on Social Software and Knowledge Structuring: The Honeycomb Framework for social software, design patterns for persuasive software, the roles of users in social software, reputation systems, collaborative tagging, semi-structured contents and ontology learning.
+Although the main feature of the developed solution is the possibility of extracting structured information from an unstructured source, this is done by a set of users authenticated within the system, which can collaboratively read and work over the same text.
 
-Based on the state-of-the-art presented and the context of the Software Architectures course, this document presents an architecture for a collaborative platform where students can create a structure to relate the theory concepts with the text from systems descriptions.
-
-The main goal for this work is to develop the platform with the knowledge structuring elements and discussion methods, to allow students to discuss and organize thoughts. Additionally, other social software elements will be added, such as reputation systems, in order to boost motivation and encourage participation. 
+Despite its simplicity and the lack of volunteers to test it, overall the platform proved that it provides a way for students to work together. However, there are still many features that could be added to make it more collaborative and more social.
 
 \bibliographystyle{IEEEtran}  
 \bibliography{mybib}  

@@ -11,7 +11,7 @@ The next sections will present two entities from the system: the Document and th
 \section{Document}
 \label{section:document}
 
-The Document entity in this system corresponds to an article which describes a software system and is read and analysed in the practical classes of the Software Architectures course. This entity saves the article text and its source, so it can be parsed locally in the application
+The Document entity in this system corresponds to an article which describes a software system and is read and analyzed in the practical classes of the Software Architectures course. This entity saves the article text and its source, so it can be parsed locally in the application
 
 Figure \ref{figure:documentEntity} shows the Document entity in the system. The ``title'' attribute corresponds to the title of the article, the ``url'' saves the article's original URL, and the ``content'' saves the article's contents.
 
@@ -32,7 +32,7 @@ Figure \ref{figure:documentEntity} shows the Document entity in the system. The 
 \label{figure:documentEntity}
 \end{figure}
 
-As the main purpose of this application is to create a structured representation of the document using the templates described in Section \ref{section:templates}, the instances of the main concepts, from which the templates will be generated, must be associated to the Document, as shown in Figure \ref{figure:documentConcept}. This way, generating a structured representation of the document is as easy as extracting the main concepts that are connected to it and including their respecive templates in the structured representation. A concept describes a part of one and only one document, hence the '1' cardinality.  
+As the main purpose of this application is to create a structured representation of the document using the templates described in Section \ref{section:templates}, the instances of the main concepts, from which the templates will be generated, must be associated to the Document, as shown in Figure \ref{figure:documentConcept}. This way, generating a structured representation of the document is as easy as extracting the main concepts that are connected to it and including their respective templates in the structured representation. A concept describes a part of one and only one document, hence the '1' cardinality.  
 
 \begin{figure}[h]
 \centering
@@ -63,7 +63,7 @@ As the main purpose of this application is to create a structured representation
 
 An annotation consists of a portion of text selected from the article, enriched with a tag and other information. This selected text can correspond partially or totally to the specification of a Software Architecture concept. For example, the description of the Source of Stimulus of a Scenario may be found in a single paragraph of the article, or in a set of single sentences scattered along the whole article. 
 
-Figure \ref{figure:annotationEntity} shows the Annotation entity in the system. The ``annotation'' field saves a Json representation of the annotation data such as the quote from the text and the given tag. The ``tag'' field stores the tag given to the annotation. This tag corresponds to a Software Architectures concept, such as ``Stimulus'' or ``Module''.
+Figure \ref{figure:annotationEntity} shows the Annotation entity in the system. The ``annotation'' field saves a JSON representation of the annotation data such as the quote from the text and the given tag. The ``tag'' field stores the tag given to the annotation. This tag corresponds to a Software Architectures concept, such as ``Stimulus'' or ``Module''.
 
 \begin{figure}[h]
 \centering
@@ -145,7 +145,7 @@ The associations between the entities described in the previous sections are cre
 
 \item By mouse hovering over the highlighted text, another AnnotatorJS interface is prompted, and the user can associate this annotation to a domain entity by clicking ``Add this annotation to the structured representation'';
 
-\item Upon clicking the link, a modal window is shown and, according to the tag given to the annotation, the user can select either an existant Scenario, View or Module to add this annotation to, or create a new instance. 
+\item Upon clicking the link, a modal window is shown and, according to the tag given to the annotation, the user can select either an existent Scenario, View or Module to add this annotation to, or create a new instance. 
 
 Initially there are no created instances, and upon creation the instance is associated with the document. When a new Scenario is created, their elements are instantiated as well;
 
