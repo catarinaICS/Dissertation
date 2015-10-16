@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2015.4.6)  16 OCT 2015 00:59
+This is pdfTeX, Version 3.1415926-2.6-1.40.14 (TeX Live 2014/dev) (format=pdflatex 2015.4.6)  16 OCT 2015 02:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1370,35 +1370,36 @@ Underfull \hbox (badness 1668) in paragraph at lines 66--66
 [35] [36] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
-[37] [38]
+[37]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[38]
 
-Underfull \vbox (badness 4441) has occurred while \output is active []
+LaTeX Warning: `h' float specifier changed to `ht'.
 
- [39]
-Underfull \hbox (badness 10000) in paragraph at lines 402--402
+[39]
+Underfull \hbox (badness 10000) in paragraph at lines 416--416
 []|\OT1/phv/b/n/10 Request
  []
 
 
-Overfull \hbox (8.53592pt too wide) in paragraph at lines 403--403
+Overfull \hbox (8.53592pt too wide) in paragraph at lines 417--417
 []|$[]$| 
  []
 
 
-Overfull \hbox (8.53592pt too wide) in paragraph at lines 405--405
+Overfull \hbox (8.53592pt too wide) in paragraph at lines 419--419
 []|$[]$| 
  []
 
 
-Overfull \hbox (8.53592pt too wide) in paragraph at lines 406--406
+Overfull \hbox (8.53592pt too wide) in paragraph at lines 420--420
 []|$[]$| 
  []
 
 
-Overfull \hbox (8.53592pt too wide) in paragraph at lines 407--407
+Overfull \hbox (8.53592pt too wide) in paragraph at lines 421--421
 []|$[]$| 
  []
 
@@ -1418,49 +1419,47 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+Underfull \vbox (badness 3826) has occurred while \output is active []
 
-[44] [45]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \vbox (badness 1466) has occurred while \output is active []
+ [44]
+[45]
+Underfull \vbox (badness 5036) has occurred while \output is active []
 
  [46]
-Overfull \hbox (13.96628pt too wide) in paragraph at lines 743--744
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][][][] 
- []
-
-[47]
 LaTeX Font Info:    Font shape `OMS/phv/m/it' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 804.
- [48] <images/header.png, id=1303, 1020.06094pt x 52.69687pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 863.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[47] <images/header.png, id=1278, 1020.06094pt x 52.69687pt>
 File: images/header.png Graphic file (type png)
 
 <use images/header.png>
-Package pdftex.def Info: images/header.png used on input line 838.
+Package pdftex.def Info: images/header.png used on input line 903.
 (pdftex.def)             Requested size: 408.01715pt x 21.07837pt.
 
-<images/scenarioExample.png, id=1305, 1371.1225pt x 770.88pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[48] <images/scenarioExample.png, id=1309, 1371.1225pt x 770.88pt>
 File: images/scenarioExample.png Graphic file (type png)
 
 <use images/scenarioExample.png>
-Package pdftex.def Info: images/scenarioExample.png used on input line 850.
+Package pdftex.def Info: images/scenarioExample.png used on input line 915.
 (pdftex.def)             Requested size: 411.33992pt x 231.26578pt.
- [49 <./images/header.png> <./images/scenarioExample.png>] <images/modalExample
-.png, id=1317, 249.18094pt x 112.16907pt>
+
+<images/modalExample.png, id=1314, 249.18094pt x 112.16907pt>
 File: images/modalExample.png Graphic file (type png)
 
 <use images/modalExample.png>
-Package pdftex.def Info: images/modalExample.png used on input line 872.
+Package pdftex.def Info: images/modalExample.png used on input line 940.
 (pdftex.def)             Requested size: 249.18031pt x 112.16878pt.
-) [50 <./images/modalExample.png>]
+ [49 <./images/header.png> <./images/scenarioExample.png>]) [50 <./images/modal
+Example.png>]
 \openout2 = `chapters/evaluation.aux'.
 
-
-(./chapters/evaluation.tex
+ (./chapters/evaluation.tex
 Chapter 9.
 [51
 
@@ -1510,8 +1509,8 @@ Package rerunfilecheck Info: File `dissertation.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 107.
  ) 
 Here is how much of TeX's memory you used:
- 30575 strings out of 495034
- 645644 string characters out of 6181678
+ 30576 strings out of 495034
+ 645659 string characters out of 6181678
  922991 words of memory out of 5000000
  32325 multiletter control sequences out of 15000+600000
  31076 words of font info for 55 fonts, out of 8000000 for 9000
@@ -1538,10 +1537,10 @@ c/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8
 a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on dissertation.pdf (63 pages, 480117 bytes).
+Output written on dissertation.pdf (63 pages, 479967 bytes).
 PDF statistics:
- 1569 PDF objects out of 1728 (max. 8388607)
- 1476 compressed objects within 15 object streams
- 707 named destinations out of 1000 (max. 500000)
+ 1570 PDF objects out of 1728 (max. 8388607)
+ 1477 compressed objects within 15 object streams
+ 708 named destinations out of 1000 (max. 500000)
  433 words of extra memory for PDF output out of 10000 (max. 10000000)
 

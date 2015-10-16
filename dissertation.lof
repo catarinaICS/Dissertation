@@ -40,20 +40,20 @@
 \contentsline {figure}{\numberline {8.16}{\ignorespaces Retrieving the Structured Representation template in the DocumentController}}{43}{figure.8.16}
 \contentsline {figure}{\numberline {8.17}{\ignorespaces Creating a new Scenario in ScenarioController}}{44}{figure.8.17}
 \contentsline {figure}{\numberline {8.18}{\ignorespaces Associating an Annotation with a Scenario in ScenarioController}}{44}{figure.8.18}
-\contentsline {figure}{\numberline {8.19}{\ignorespaces Associating an Annotation with a specific Tactic in ScenarioController}}{45}{figure.8.19}
+\contentsline {figure}{\numberline {8.19}{\ignorespaces Associating an Annotation with a specific Tactic in ScenarioController}}{44}{figure.8.19}
 \contentsline {figure}{\numberline {8.20}{\ignorespaces Updating the Scenario text in the ScenarioController}}{45}{figure.8.20}
 \contentsline {figure}{\numberline {8.21}{\ignorespaces Example of adding a ``Is-Part-Of'' relation between two modules}}{45}{figure.8.21}
 \contentsline {figure}{\numberline {8.22}{\ignorespaces Adding Ports to a Component in ComponentController}}{46}{figure.8.22}
 \contentsline {figure}{\numberline {8.23}{\ignorespaces Associating an Annotation with a Port in the ComponentController}}{46}{figure.8.23}
-\contentsline {figure}{\numberline {8.24}{\ignorespaces Attachment of Component Ports to Connector Roles in the ComponentController}}{47}{figure.8.24}
+\contentsline {figure}{\numberline {8.24}{\ignorespaces Attachment of Component Ports to Connector Roles in the ComponentController}}{46}{figure.8.24}
 \contentsline {figure}{\numberline {8.25}{\ignorespaces Adding a new View in the ViewController}}{47}{figure.8.25}
 \contentsline {figure}{\numberline {8.26}{\ignorespaces Request to see a View's Template in the ViewController}}{47}{figure.8.26}
 \contentsline {figure}{\numberline {8.27}{\ignorespaces How Modules are added to a View in ViewController}}{48}{figure.8.27}
 \contentsline {figure}{\numberline {8.28}{\ignorespaces Defining the Header fragment in Thymeleaf syntax}}{48}{figure.8.28}
-\contentsline {figure}{\numberline {8.29}{\ignorespaces Including a fragment in Thymeleaf syntax}}{49}{figure.8.29}
+\contentsline {figure}{\numberline {8.29}{\ignorespaces Including a fragment in Thymeleaf syntax}}{48}{figure.8.29}
 \contentsline {figure}{\numberline {8.30}{\ignorespaces How the header looks when included in a template}}{49}{figure.8.30}
 \contentsline {figure}{\numberline {8.31}{\ignorespaces Example of the Scenario Template}}{49}{figure.8.31}
-\contentsline {figure}{\numberline {8.32}{\ignorespaces How Thymeleaf accesses variables}}{50}{figure.8.32}
+\contentsline {figure}{\numberline {8.32}{\ignorespaces How Thymeleaf accesses variables}}{49}{figure.8.32}
 \contentsline {figure}{\numberline {8.33}{\ignorespaces Example of a Modal window containing a form}}{50}{figure.8.33}
 \contentsline {figure}{\numberline {8.34}{\ignorespaces Example of a form with object for binding results}}{50}{figure.8.34}
 \addvspace {10\p@ }

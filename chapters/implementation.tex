@@ -191,6 +191,7 @@ Each Module Viewtype Style specifies relation types refined from the ones presen
 \begin{figure}[h]
 \centering
 \lstset{style=customjava}
+\begin{tabular}{c}
 \begin{lstlisting}
 relation moduleIsPartOfModule {
 	Module playsRole parent{ multiplicity 0..1; }
@@ -198,13 +199,16 @@ relation moduleIsPartOfModule {
 	Module playsRole child{ multiplicity 0..*; }
 }
 \end{lstlisting}
+\end{tabular}
 \caption{Is-Part-Of relation between Modules in the implemented model}
 \label{figure:modelIsPartOfRelation}
 \end{figure}
 
 \item \textit{Uses} - a specialization of the \textit{depends-on} relation, where a Module depends on the correct functioning of other Modules to satisfy its own requirements. The implementation is shown in Figure \ref{figure:modelUsesRelation}. A Module can use and be used by many other Modules;
 \begin{figure}[h]
+\centering
 \lstset{style=customjava}
+\begin{tabular}{c}
 \begin{lstlisting}
 relation moduleUsesModule {
 	Module playsRole uses{ multiplicity 0..*; }
@@ -212,6 +216,7 @@ relation moduleUsesModule {
 	Module playsRole usedBy{ multiplicity 0..*; }
 }
 \end{lstlisting}
+\end{tabular}
 \caption{Uses relation between Modules in the implemented model}
 \label{figure:modelUsesRelation}
 \end{figure}
@@ -299,7 +304,9 @@ Components are related with Connectors by the \textit{Attachment} relation. A Co
 Similar to the Module relations, the \textit{Attachment} relation in the implemented model has no more information than the Port and Role involved. Therefore, it did not make sense to create an entity to represent this relation. Instead, a new relation between the Port and Role entity is created in the Domain Modeling language, as shown in Figure \ref{figure:modelAttachmentRelation}.
 
 \begin{figure}[h]
+\centering
 \lstset{style=customjava}
+\begin{tabular}{c}
 \begin{lstlisting}
 relation portIsAttachedToRole {
 	Port playsRole port { multiplicity 0..1; }
@@ -307,6 +314,7 @@ relation portIsAttachedToRole {
 	Role playsRole role { multiplicity 0..1; }
 }
 \end{lstlisting}
+\end{tabular}
 \caption{Attachment relation between Component Ports and Connector Roles in the implemented model}
 \label{figure:modelAttachmentRelation}
 \end{figure}
@@ -344,7 +352,9 @@ The styles of a view are not explicitly stated, but they are implicit by the ele
 A View is composed by a set of Elements, as seen in Figure \ref{figure:abstractDomainModel}. In the implemented domain model, the View has a similar association with the Module, Component and Connector entities. Figure \ref{figure:modelviewelements} shows how these relations are implemented in the Domain Modeling Language.
 
 \begin{figure}[h]
+\centering
 \lstset{style=customjava}
+\begin{tabular}{c}
 \begin{lstlisting}
 relation viewHasModules {
 	View playsRole view { multiplicity 0..*; }
@@ -361,6 +371,7 @@ relation viewHasConnectors {
 	View playsRole view { multiplicity 0..*; }
 }
 \end{lstlisting}
+\end{tabular}
 \caption{Relation between View and the view elements: Module, Component and Connector}
 \label{figure:modelviewelements}
 \end{figure}
@@ -374,7 +385,9 @@ This section describes the Controller part of the implemented system. The applic
 A Java class is set to be a Controller by annotating it with the \textit{@Controller} annotation, or \textit{@RestController} if the controller's goal is to provide a REST API. Figure \ref{figure:springController} shows an example from the Document Controller described in \ref{subsection:documentController}, with a method that handles requests for the URL \textit{'/selectDoc/{id}'}. Method \textit{showDocument()} retrieves the Document from the domain model with the specified \textit{id} and adds it and the \textit{id} itself as Model attributes, so the template will be able to use them. The template ``docTemplate'' will be then showed to the user.
 
 \begin{figure}[h]
+\centering
 \lstset{style=customjava}
+\begin{tabular}{c}
 \begin{lstlisting}
 @Controller
 public class DocumentController {
@@ -388,6 +401,7 @@ public class DocumentController {
 	}
 }	
 \end{lstlisting}
+\end{tabular}
 \caption{Example of a Controller class defined using the Spring Framework} 
 \label{figure:springController}
 \end{figure}
@@ -415,7 +429,9 @@ The \textbf{INDEX} endpoint has the particularity of iterating through all the A
 Figure \ref{figure:annotationControllerIndex} shows an example of how information is added to the annotation in the \textit{INDEX} endpoint. The method \textit{getAnnotations()}, which receives the requests for this endpoint, iterates over the annotations associated with the document with id \textit{docId}, parses the JSON of each annotation into an instance of the AnnotationJS class, checks which domain element is associated with the annotation and adds information accordingly to the field ``text'' of the annotation. The example in the figure shows how information about the viewtype is added to annotations connected with a View. The list of all retrieved AnnotationJS instances is then parsed into a JSON string and sent as response.
 
 \begin{figure}[h]
+\centering
 \lstset{style=customjava}
+\begin{tabular}{c}
 \begin{lstlisting}
 	@RequestMapping(value = "/selectDoc/{docId}/store/annotations", 
 	method = RequestMethod.GET)
@@ -437,6 +453,7 @@ Figure \ref{figure:annotationControllerIndex} shows an example of how informatio
 		return resp;
 	}		
 \end{lstlisting}
+\end{tabular}
 \caption{Example of how the INDEX endpoint adds information to the annotation body}
 \label{figure:annotationControllerIndex}
 \end{figure}
@@ -460,7 +477,9 @@ The reason for this redirect is the existent of a logic division of the Controll
 Therefore, it's only logical to redirect this request to the Controller that handles operations over the respective domain entity. Figure \ref{figure:documentControllerLinkAnnotation} shows the method in DocumentController that performs the redirect.
 
 \begin{figure}[h]
+\centering
 \lstset{style=customjava}
+\begin{tabular}{c}
 \begin{lstlisting}
 	@RequestMapping(value = "/addAnnotationToStructure/{docId}/{annotationId}/{tag}")
 	public RedirectView addAnnotationModal(@PathVariable String docId,
@@ -485,6 +504,7 @@ Therefore, it's only logical to redirect this request to the Controller that han
 		return rv;
 	}	
 \end{lstlisting}
+\end{tabular}
 \caption{Redirecting requests to associate annotations with domain entities in the DocumentController}
 \label{figure:documentControllerLinkAnnotation}
 \end{figure}
@@ -492,7 +512,9 @@ Therefore, it's only logical to redirect this request to the Controller that han
 \item When visualizing the Annotation information in the document, it is possible to navigate to the template of the entity to which this annotation is associated by clicking in a link. A request is then sent to the Document Controller, which again checks the Annotation tag, and redirects to the correct Controller. Figure \ref{figure:documentControllerViewTemplate} shows the DocumentController class method which performs the redirect according to the annotation tag.
 
 \begin{figure}[h]
+\centering
 \lstset{style=customjava}
+\begin{tabular}{c}
 \begin{lstlisting}
 	@RequestMapping("/viewTemplate/{docId}/{connectedId}/{annotationId}")
 	public RedirectView viewTemplate(@PathVariable String docId,
@@ -513,6 +535,7 @@ Therefore, it's only logical to redirect this request to the Controller that han
 		return rv;
 	}	
 \end{lstlisting}
+\end{tabular}
 \caption{Redirecting a request to visualize an entity template in the DocumentController}
 \label{figure:documentControllerViewTemplate}
 \end{figure}
@@ -522,7 +545,9 @@ Therefore, it's only logical to redirect this request to the Controller that han
 Figure \ref{figure:documentControllerStructuredRepresentation} shows the method \textit{viewStructuredRepresentation()}, which handles the request to see the Structured Representation of the Document. This method retrieves all the main elements from the database (scenarios, views, modules, components and connectors) and adds them as model attributes, so they can be used by the template. The template ``structuredRepresentation'' is then returned and showed to the user.
 
 \begin{figure}[h]
+\centering
 \lstset{style=customjava}
+\begin{tabular}{c}
 \begin{lstlisting}
 	@RequestMapping("/viewStructuredRepresentation/{docId}")
 	public String viewStructuredRepresentation(@PathVariable String docId,
@@ -538,6 +563,7 @@ Figure \ref{figure:documentControllerStructuredRepresentation} shows the method 
 		return "structuredRepresentation";
 	}
 \end{lstlisting}
+\end{tabular}
 \caption{Retrieving the Structured Representation template in the DocumentController}
 \label{figure:documentControllerStructuredRepresentation}
 \end{figure}
@@ -548,7 +574,9 @@ Figure \ref{figure:documentControllerStructuredRepresentation} shows the method 
 The Scenario Controller provides means to add and remove Scenarios from the document and link or unlink annotations from a Scenario or its elements.A Scenario is created when a user wants to link an Annotation to a Scenario and is prompted the interface to add a new or choose an existing one. When the Controller receives the request to add a new Scenario, it does not only adds a new Scenario to the database, but also adds a new SrcOfStimulus, Stimulus, Artifact, Environment, Response and ResponseMeasure to the database, all associated with the newly created Scenario. 
 
 \begin{figure}[h]
+\centering
 \lstset{style=customjava}
+\begin{tabular}{c}
 \begin{lstlisting}
 	@RequestMapping(value = "/addNewScenario/{docId}/{annotationId}/{scenarioName}/
 	{qualityRequirement}")
@@ -566,6 +594,7 @@ The Scenario Controller provides means to add and remove Scenarios from the docu
 		d.addScenario(s);
 	}	
 \end{lstlisting}
+\end{tabular}
 \caption{Creating a new Scenario in ScenarioController}
 \label{figure:scenarioControllerNewScenario}
 \end{figure}
@@ -579,7 +608,9 @@ For example, if the tag associated with the Annotation is ``Source Of Stimulus''
 Figure \ref{figure:scenarioControllerLinkAnnotation} shows the method \textit{addAnnotationToScenario()}, which associates an Annotation with a Scenario or one of its elements accordingly.
 
 \begin{figure}[h]
+\centering
 \lstset{style=customjava}
+\begin{tabular}{c}
 \begin{lstlisting}
 	@Atomic(mode = TxMode.WRITE)
 	private void addAnnotationToScenario(Scenario s, Annotation a) {
@@ -592,6 +623,7 @@ Figure \ref{figure:scenarioControllerLinkAnnotation} shows the method \textit{ad
 		}
 	}	
 \end{lstlisting}
+\end{tabular}
 \caption{Associating an Annotation with a Scenario in ScenarioController}
 \label{figure:scenarioControllerLinkAnnotation}
 \end{figure}
@@ -601,7 +633,9 @@ A Scenario is initially created without any tactics. These are added in the Scen
 Inside the template, these annotations can be associated with the added tactics. Figure \ref{figure:scenarioControllerLinkToTactic} shows how a request to associate an Annotation with a specific Tactic is handled. In the \textit{linkAnnotationToTactic()} method, the association between the Scenario and the Annotation is removed to create the new association with the Tactic.
 
 \begin{figure}[h]
+\centering
 \lstset{style=customjava}
+\begin{tabular}{c}
 \begin{lstlisting}
 	@RequestMapping(value = "/linkToTactic/{docId}/{scenarioId}/{tacticId}/
 		{annotationId}")
@@ -611,6 +645,7 @@ Inside the template, these annotations can be associated with the added tactics.
 		//...
 	}
 \end{lstlisting}
+\end{tabular}
 \caption{Associating an Annotation with a specific Tactic in ScenarioController}
 \label{figure:scenarioControllerLinkToTactic}
 \end{figure}
@@ -620,7 +655,9 @@ When user text is added to a Scenario or one of its elements, a request is sent 
 Figure \ref{figure:scenarioControllerText} shows how the Scenario \textit{text} field is updated. The methods for updating the Scenario elements (including Tactics) are very similar to the example in the Figure.
 
 \begin{figure}[h]
+\centering
 \lstset{style=customjava}
+\begin{tabular}{c}
 \begin{lstlisting}
 	@RequestMapping(value = "/setScenarioText/{docId}/{scenarioId}", 
 		method = RequestMethod.POST)
@@ -634,6 +671,7 @@ Figure \ref{figure:scenarioControllerText} shows how the Scenario \textit{text} 
 		scen.setText(text);
 	}	
 \end{lstlisting}
+\end{tabular}
 \caption{Updating the Scenario text in the ScenarioController}
 \label{figure:scenarioControllerText}
 \end{figure}
@@ -648,7 +686,9 @@ As explained in Chapter \ref{chapter:domainModel}, the Elements of a View are re
 
 The Module Controller handles adding and removing other Modules to/from the possible relations. The requests are unique for each relation, meaning the request to add a Module to the \textit{Uses} relation of a certain Module will be in the form \textit{/setModuleUses/...} and the request to add \textit{One-To-One} relations with other Modules to a certain Module will be in the form \textit{/setModuleOneToOne/...}. Each request modifies the corresponding association accordingly.
 \begin{figure}[h]
+\centering
 \lstset{style=customjava}
+\begin{tabular}{c}
 \begin{lstlisting}
 	@RequestMapping(value = "/setModuleParent/{docId}/{moduleId}/{parentId}")
 	public RedirectView addModuleParent(/*...*/) {
@@ -660,6 +700,7 @@ The Module Controller handles adding and removing other Modules to/from the poss
 		module.setParent(parent);
 	}	
 \end{lstlisting}
+\end{tabular}
 \caption{Example of adding a ``Is-Part-Of'' relation between two modules}
 \label{figure:ModuleControllerIsPartOf}
 \end{figure} 
@@ -672,7 +713,9 @@ Components and Connectors are the elements of the Component \& Connector Viewtyp
 
 A Component has a set of Ports, which can be attached to Connector Roles. Adding and removing Ports to a component is very similar to the methods implemented to adding and removing tactics from a Scenario. Initially a Component has no Ports, and these can be created inside the Component template, as shown in Figure \ref{figure:ComponentControllerAddingPorts}. 
 \begin{figure}[h]
+\centering
 \lstset{style=customjava}
+\begin{tabular}{c}
 \begin{lstlisting}
 	@RequestMapping(value = "/addPortToComponent/{docId}/{componentId}/{portName}")
 	public RedirectView addPortToComponent(/*...*/) {		
@@ -686,6 +729,7 @@ A Component has a set of Ports, which can be attached to Connector Roles. Adding
 		comp.addPort(p);
 	}
 \end{lstlisting}
+\end{tabular}
 \caption{Adding Ports to a Component in ComponentController}
 \label{figure:ComponentControllerAddingPorts}
 \end{figure}
@@ -693,7 +737,9 @@ A Component has a set of Ports, which can be attached to Connector Roles. Adding
 Annotations with the tag ``Component Port'' are initially associated with the Module, but can be associated with a specific port, as seen in Figure \ref{figure:ComponentControllerLinkToPort}. 
 
 \begin{figure}[h]
+\centering
 \lstset{style=customjava}
+\begin{tabular}{c}
 \begin{lstlisting}
 	@RequestMapping(value = "/moveAnnotationToPort/{docId}/{componentId}/
 		{portId}/{annotationId}")
@@ -703,6 +749,7 @@ Annotations with the tag ``Component Port'' are initially associated with the Mo
 		//...
 	}	
 \end{lstlisting}
+\end{tabular}
 \caption{Associating an Annotation with a Port in the ComponentController}
 \label{figure:ComponentControllerLinkToPort}
 \end{figure}
@@ -714,7 +761,9 @@ As mentioned in Section \ref{subsection:modelComponentsConnectors}, component po
 Figure \ref{figure:ComponentControllerAttachment} shows how an attachment relation is created between a Port and a Role.
 
 \begin{figure}[h]
+\centering
 \lstset{style=customjava}
+\begin{tabular}{c}
 \begin{lstlisting}
 	@RequestMapping(value = "/attachPortToConnectorRole/{docId}/{portId}/{roleId}")
 	public RedirectView attachPortToRole(/*...*/) {
@@ -726,27 +775,31 @@ Figure \ref{figure:ComponentControllerAttachment} shows how an attachment relati
 		p.setRole(r);
 	}
 \end{lstlisting}
+\end{tabular}
 \caption{Attachment of Component Ports to Connector Roles in the ComponentController}
 \label{figure:ComponentControllerAttachment}
 \end{figure}
 
 \subsection{View Controller}
 \label{substection:viewController}
-
 The ViewController class handles the creation and deletion of Views from two possible Viewtypes: Module and Component \& Connector. 
 
 Similar to the other domain entities, a new View is created when the user wants to associate an annotation with the tag ``View'' with a domain entity. Figure \ref{figure:ViewControllerAddModuleViewtype} shows how a request to add a new Module Viewtype View is handled.
 
 \begin{figure}[h]
+\centering
 \lstset{style=customjava}
+\begin{tabular}{c}
 \begin{lstlisting}
-	@RequestMapping(value = "/addNewView/{docId}/{annotationId}/Module Viewtype/{viewName}")
+	@RequestMapping(value = "/addNewView/{docId}/{annotationId}/Module Viewtype/"+
+		"{viewName}")
 	public RedirectView addNewModuleViewTypeView(/*...*/) {
 	
 		addModuleViewtypeToDocument(document, viewName, "Module Viewtype");
 		//...
 	}
 \end{lstlisting}
+\end{tabular}
 \caption{Adding a new View in the ViewController}
 \label{figure:ViewControllerAddModuleViewtype}
 \end{figure}
@@ -755,7 +808,9 @@ As there are two possible viewtypes for the views added to the application, the 
 
 Figure \ref{figure:ViewControllerViewTemplates} shows how the method checks the \textit{viewtype} attribute of a View object to add the correct attributes to the template model and return the correct template.
 \begin{figure}[h]
+\centering
 \lstset{style=customjava}
+\begin{tabular}{c}
 \begin{lstlisting}
 	@RequestMapping(value = "/viewView/{docId}/{viewId}")
 	public String viewViewTemplate(/*...*/) {
@@ -772,6 +827,7 @@ Figure \ref{figure:ViewControllerViewTemplates} shows how the method checks the 
 		return null;
 	}	
 \end{lstlisting}
+\end{tabular}
 \caption{Request to see a View's Template in the ViewController}
 \label{figure:ViewControllerViewTemplates}
 \end{figure}
@@ -781,7 +837,9 @@ After the user selects a set of Modules, Components or Connectors to add to a vi
 
 Figure \ref{figure:ViewControllerAddModules} shows how Modules are associated with a View, but these methods are similar for the Components and Connectors. 
 \begin{figure}[h]
+\centering
 \lstset{style=customjava}
+\begin{tabular}{c}
 \begin{lstlisting}
 	@RequestMapping(value = "/addModulesToView/{docId}/{viewId}", 
 		method = RequestMethod.POST)
@@ -798,6 +856,7 @@ Figure \ref{figure:ViewControllerAddModules} shows how Modules are associated wi
 		}
 	}	
 \end{lstlisting}
+\end{tabular}
 \caption{How Modules are added to a View in ViewController}
 \label{figure:ViewControllerAddModules}
 \end{figure}
@@ -809,7 +868,9 @@ This section describes how the information from the Model is displayed to the us
 
 A great advantage of Thymeleaf is the possibility of defining template fragments, which are pieces of code that can be defined in a separate file and be included in any template as desired. One of the main uses of fragments for the developed application is the page header, which is included in all templates and contains a small menu and the logout link. Figure \ref{figure:viewsHeaderFragment} shows how a fragment is defined, in this case with the example of the header. Each fragment must have a unique name, which is ``headerFragment'' in this example. All html code of that fragment is then defined inside the \textit{section} tags.
 \begin{figure}[h]
+\centering
 \lstset{style=customhtml}
+\begin{tabular}{c}
 \begin{lstlisting}
 <section layout:fragment="headerFragment">
 	<nav class="navbar navbar-inverse" id="headernavbar">
@@ -817,16 +878,20 @@ A great advantage of Thymeleaf is the possibility of defining template fragments
 	</nav>
 </section>
 \end{lstlisting}
+\end{tabular}
 \caption{Defining the Header fragment in Thymeleaf syntax}
 \label{figure:viewsHeaderFragment}
 \end{figure}
 
 Including a predefined fragment in a template is as easy as Figure \ref{figure:viewsIncludeFragment} shows. Sending a request to \textit{/headerFragment} will retrieve the whole file where the fragment was defined, and by specifying the fragment name, the html code defined inside \textit{section} tags in the separate files will be included. This means that several fragments can be developed in one single file, and included individually in the templates by specifying their unique name.
 \begin{figure}[h]
+\centering
 \lstset{style=customhtml}
+\begin{tabular}{c}
 \begin{lstlisting}
 <section layout:include="@{/headerFragment} :: headerFragment"></section>
 \end{lstlisting}
+\end{tabular}
 \caption{Including a fragment in Thymeleaf syntax}
 \label{figure:viewsIncludeFragment}
 \end{figure}
@@ -855,12 +920,15 @@ The templates use the information added by the Controllers to the Model Attribut
 
 For example, to obtain the Scenario title including the Quality Requirement and the Scenario name as it can be seen in Figure \ref{figure:viewScenarioTemplate}, it is used the Thymeleaf syntax seen in Figure \ref{figure:viewsCallingMethods}. The \textit{\$\{\}} syntax allows to access the variables, and the \textit{th:text} attribute is in fact a Thymeleaf attribute which will set the text inside the \textit{span} tag to the result of the variable access done inside the quotes. As it shown, it is also possible to concatenate the values returned with other static text to obtain the desired results.
 \begin{figure}[h]
+\centering
 \lstset{style=customhtml}
+\begin{tabular}{c}
 \begin{lstlisting}
 <span th:text="'Scenario for '+${scenario.getQualityRequirement().getName()}+': '">
 </span> 
 <span th:text="${scenario.getName()}"></span>
 \end{lstlisting}
+\end{tabular}
 \caption{How Thymeleaf accesses variables}
 \label{figure:viewsCallingMethods}
 \end{figure}
@@ -876,7 +944,9 @@ Thymeleaf also provides automatic binding of forms information to provided objec
 
 In Figure \ref{figure:ViewControllerViewTemplates}, it is possible to see that the Controller creates and adds a new instance of the \textit{UsedIds} as a model attribute. This instance is used by Thymeleaf to bind the value of the selected checkboxes in the form to the \textit{List$<$String$>$} attribute of the class. Figure \ref{figure:viewFormBindingResult} shows how the form is created.
 \begin{figure}[h]
+\centering
 \lstset{style=customhtml}
+\begin{tabular}{c}
 \begin{lstlisting}
 <form action="#" th:action="@{/addModulesToView/}" method="post">
 	<ul>
@@ -888,6 +958,7 @@ In Figure \ref{figure:ViewControllerViewTemplates}, it is possible to see that t
 	</ul>
 </form>
 \end{lstlisting}
+\end{tabular}
 \caption{Example of a form with object for binding results}
 \label{figure:viewFormBindingResult}
 \end{figure}
