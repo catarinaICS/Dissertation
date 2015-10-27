@@ -14,6 +14,8 @@ A level-1 auxiliary file: chapters/evaluation.aux
 A level-1 auxiliary file: chapters/futureWork.aux
 A level-1 auxiliary file: chapters/conclusion.aux
 The style file: ieeetr.bst
+A level-1 auxiliary file: appendix/appendixa.aux
+A level-1 auxiliary file: appendix/appendixb.aux
 Database file #1: bibliography/dissertation.bib
 Warning--empty journal in klamma2007social
 Warning--empty journal in bandura1977social
@@ -22,7 +24,7 @@ Warning--empty journal in nadel1957theory
 Warning--empty journal in liu2010evaluation
 You've used 50 entries,
             1876 wiz_defined-function locations,
-            768 strings with 12411 characters,
+            770 strings with 12455 characters,
 and the built_in function-call counts, 13730 in all, are:
 = -- 1398
 > -- 457
