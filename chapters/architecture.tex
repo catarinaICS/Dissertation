@@ -1,14 +1,14 @@
 %!TEX root = ../dissertation.tex
 
-\chapter{Architecture Analysis}
+\section{Architecture Analysis}
 \label{chapter:architecture}
-Chapter \ref{chapter:domainModel} introduced the domain model of the Software Architectures concepts present in the developed solution, and the templates in which they are included.
+Section \ref{chapter:domainModel} introduced the domain model of the Software Architectures concepts present in the developed solution, and the templates in which they are included.
 
-In this chapter, it is shown how these templates are filled with information extracted from a software description article.
+In this section, it is shown how these templates are filled with information extracted from a software description article.
 
 The next sections will present two entities from the system: the Document and the Annotation. These entities have a major role in the identification of Software Architectures concepts from the domain model, and the enrichment of the templates for those concepts.
 
-\section{Document}
+\subsection{Document}
 \label{section:document}
 
 The Document entity in this system corresponds to an article which describes a software system and is read and analyzed in the practical classes of the Software Architectures course. This entity saves the article text and its source, so it can be parsed locally in the application
@@ -32,7 +32,7 @@ Figure \ref{figure:documentEntity} shows the Document entity in the system. The 
 \label{figure:documentEntity}
 \end{figure}
 
-As the main purpose of this application is to create a structured representation of the document using the templates described in Section \ref{section:templates}, the instances of the main concepts, from which the templates will be generated, must be associated to the Document, as shown in Figure \ref{figure:documentConcept}. This way, generating a structured representation of the document is as easy as extracting the main concepts that are connected to it and including their respective templates in the structured representation. A concept describes a part of one and only one document, hence the '1' cardinality.  
+As the main purpose of this application is to create a structured representation of the document using the templates described in \ref{section:templates}, the instances of the main concepts, from which the templates will be generated, must be associated to the Document, as shown in Figure \ref{figure:documentConcept}. This way, generating a structured representation of the document is as easy as extracting the main concepts that are connected to it and including their respective templates in the structured representation. A concept describes a part of one and only one document, hence the '1' cardinality.  
 
 \begin{figure}[h]
 \centering
@@ -58,7 +58,7 @@ As the main purpose of this application is to create a structured representation
 \label{figure:documentConcept}
 \end{figure}
 
-\section{Annotation}
+\subsection{Annotation}
 \label{section:annotation}
 
 An annotation consists of a portion of text selected from the article, enriched with a tag and other information. This selected text can correspond partially or totally to the specification of a Software Architecture concept. For example, the description of the Source of Stimulus of a Scenario may be found in a single paragraph of the article, or in a set of single sentences scattered along the whole article. 
@@ -133,7 +133,7 @@ As mentioned in the previous section, an annotation can partially or fully descr
 
 Figure \ref{figure:documentAnnotationConcepts} shows how the Annotation is associated with the domain concepts. There is an association not only with the main concepts of the domain model, but also all the other concepts represented in \ref{figure:abstractDomainModel}. The figure exemplifies these associations with the Scenario, which is a main concept, and the Source of Stimulus, but all the other concepts and main concepts - all the Scenario Elements, Modules, Components, etc. - have similar associations.  
 
-\section{Interface Flow}
+\subsection{Interface Flow}
 \label{section:interfaceFlow}
 
 The associations between the entities described in the previous sections are created after a set of interactions with the system. These interactions are:
@@ -158,7 +158,7 @@ For example, an annotation tagged as ``Stimulus'' will be associated with the in
 In the Scenario template the user can also add Tactics, in the Module template the user can add relations with other Modules, and in the View template the user can add elements to the view.
 \end{enumerate}
 
-Figures \ref{figure:scenarioTemplate2}, \ref{figure:moduleTemplate2} and \ref{figure:viewTemplate2} show the Schemas presented in Section \ref{section:templates} of Chapter \ref{chapter:domainModel}, now including the annotations and the user text.
+Figures \ref{figure:scenarioTemplate2}, \ref{figure:moduleTemplate2} and \ref{figure:viewTemplate2} show the Schemas presented in \ref{section:templates}, now including the annotations and the user text.
 
 \begin{figure}[h]
 \centering

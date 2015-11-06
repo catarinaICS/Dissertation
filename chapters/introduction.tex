@@ -7,4 +7,38 @@ Analyzing and discussing big, real, open-source and highly complex software syst
 
 However, applying these concepts and techniques is not a very easy task, and often students have questions and doubts regarding these descriptions. These questions sometimes require not only consulting the course bibliography, but also discussing with peers or asking questions to teachers. This thesis focuses on providing a solution for this problem with the use of social software and knowledge structuring strategies.
 
-This document is organized as follows: Chapter \ref{chapter:problemdescription} gives a more detailed description about the problem of applying theoretical concepts to practical examples in the context of the Software Architectures course. Chapter \ref{chapter:objectives} elicits the main goals of this thesis. Chapter \ref{chapter:relatedwork} presents the state-of-the-art in the areas of Social Software and Knowledge Structuring. Chapter \ref{chapter:solution} gives a small description of the developed solution. Chapters \ref{chapter:domainModel}, \ref{chapter:architecture} and \ref{chapter:implementation} describe the solution domain model, architectural details and implementation. Finally, Chapter \ref{chapter:evaluation} will show the assessment of the developed solution and \ref{chapter:futureWork} will describe what can still be added to it.
+This document is organized as follows: Section \ref{chapter:problemdescription} gives a more detailed description about the problem of applying theoretical concepts to practical examples in the context of the Software Architectures course. Section \ref{chapter:objectives} elicits the main goals of this thesis. Chapter \ref{chapter:relatedwork} presents the state-of-the-art in the areas of Social Software and Knowledge Structuring. Chapter \ref{chapter:solution} presents the solution, its domain model and architecture. Chapter \ref{chapter:implementation} describes the implementation of the developed solution. Finally, Chapter \ref{chapter:evaluation} will show the assessment of the developed solution and Chapter \ref{chapter:conclusion} will present the conclusions retrieved from this work and present the future work that can be done to it.
+
+\section{Problem Description}
+\label{chapter:problemdescription}
+The course of Software Architectures at Instituto Superior T\'{e}cnico teaches students the most important concepts in the field of software architectures and applies these concepts to real-life software systems.
+
+The practical component of this course (where the theory is applied) is done by analyzing documents/articles that describe the architectures of real-life systems and applying the concepts learned in theory lessons.
+This analysis is either done by students with the help of the teacher, during practical classes, or in work groups of usually three students, that read, discuss and analyze software descriptions together and present their results to both the teacher and the rest of the class.
+
+Understanding the analysis done and how it was done is very important, since it means students can apply the concepts learned not only in the written exam to pass the course, but also in the future, in other real-life software systems.
+
+However, there are several issues regarding the application of theory concepts in this course:
+\begin{itemize}
+\item Each year, there are around one-hundred students signed in the course. All these students have roughly the same Computer Science background knowledge. However, not all students have the same maturity: while some may quickly understand what is taught in theory lessons, others may need some more time to assimilate what was taught.
+
+\item The output of the analysis done to software descriptions (the scenarios, etc. extracted) is not available in a consistent way: the analysis done in class is available for students if they took their own notes, and the analysis done by groups is available if:
+\begin{enumerate}
+\item Students took notes of their colleagues' presentations 
+
+\item Groups share their presentation slides among them. Slides may include errors pointed out by the teacher, but not corrected.
+\end{enumerate} 
+
+\item The case description is usually a fairly long document (from ten to twenty pages approximately). The task of carefully reading and understanding all the text and do a mapping between the concrete descriptions in the text and the abstract concepts learned in theory classes is not easy, as the parts of the text that map to concepts are not always evident.
+
+\item The architectural elements extracted from a single software description are usually scattered along the whole text, and it is not evident the connection between all the elements.
+\end{itemize}
+
+\section{Objectives}
+\label{chapter:objectives}
+
+To solve the problems mentioned in Chapter \ref{chapter:problemdescription}, a collaborative platform was planned and developed, where students and teachers collaborate in the analysis and synthesis of the case descriptions, ending on a structured representation of the case descriptions, that is hooked on the concrete description. 
+
+The goal of the platform is to provide ways for annotating the text on the case descriptions, which will help students organizing their thoughts and creating the structure, and use elements of social software, as a way of promoting collaboration, mutual aid, learning and even some competition between students.
+ 
+The existence of this collaborative should provide not only a way for students to discuss, ask questions and consolidate their knowledge, but also a unique place where their study materials are stored and organized, facilitating their studies.

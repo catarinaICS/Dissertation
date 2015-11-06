@@ -28,15 +28,15 @@ The next sections will describe the solution implementation based on these three
 
 \section{Model}
 \label{section:model}
-The Model of the implemented system is based on the Domain Model presented in chapter \ref{chapter:domainModel}, but a few modifications were made to facilitate programming.
+The Model of the implemented system is based on the Domain Model presented in Section \ref{chapter:domainModel}, but a few modifications were made to facilitate programming.
 
 The developed application uses the F\'{e}nix Framework, which allows the creation of a transactional and persistent domain model for applications \cite{cachopo2006combining,cachopo2007development}. The domain model is specified in the Domain Modeling Language, which is a domain-specific language created for this framework. The framework completely hides the database from the programmer, who can focus on the application development in Java. 
 
 \subsection{Annotations}
 \label{subsection:modelAnnotations}
-As seen in Chapter \ref{chapter:architecture}, the Document is one of the most important entities, because it aggregates all the annotations created over the text and all the Software Architectures concepts elicited.
+As seen in Section \ref{chapter:architecture}, the Document is one of the most important entities, because it aggregates all the annotations created over the text and all the Software Architectures concepts elicited.
 
-Similarly to what is shown in Figure \ref{figure:documentAnnotationConcepts} of Chapter \ref{chapter:architecture}, in the implemented model, the Document entity is connected to the Annotation. However, an annotation is created by an user authenticated in the system, and this information is also present in the domain, as shown in figure \ref{figure:modelDocUserAnnot}. The ``User'' entity saves users registered in the system. When a user creates an annotation, it is associated to him.
+Similarly to what is shown in Figure \ref{figure:documentAnnotationConcepts}, in the implemented model, the Document entity is connected to the Annotation. However, an annotation is created by an user authenticated in the system, and this information is also present in the domain, as shown in figure \ref{figure:modelDocUserAnnot}. The ``User'' entity saves users registered in the system. When a user creates an annotation, it is associated to him.
 
 \begin{figure}
 \centering
@@ -181,7 +181,7 @@ The Module entity has a ``name'' attribute, which provides identification and al
 
 As it is one of the main concepts of the system, the Module is associated with the corresponding document upon its creation as demonstrated in the example in Figure \ref{figure:documentAnnotationConcepts}. The Module is also associated with the set of Annotations that describe it.
 
-As seen in the abstract domain model present in Figure \ref{figure:abstractDomainModel} of Chapter \ref{chapter:domainModel}, the elements of a view have a certain type of relationship with each others. Although the abstract domain model in Figure \ref{figure:abstractDomainModel} contains an entity ``Relation'' to represent how the view elements are connected, in the case of the Modules, these relations have no other information than the Modules connected. 
+As seen in the abstract domain model present in Figure \ref{figure:abstractDomainModel}, the elements of a view have a certain type of relationship with each others. Although the abstract domain model in Figure \ref{figure:abstractDomainModel} contains an entity ``Relation'' to represent how the view elements are connected, in the case of the Modules, these relations have no other information than the Modules connected. 
 
 Therefore, in the implemented model, there are no entities representing the relationships between modules. Instead, there were defined different associations of the Module entity to itself, in order to represent the different relations.
 
@@ -295,7 +295,7 @@ Components and Connectors are the elements of the Component \& Connector Viewtyp
 \label{figure:modelComponentConnector}
 \end{figure}
  
-A Component has a set of Ports, and a Connector as a set of Roles. The Ports of a Component are connected to the Roles of a Connector by the \textit{Attachment} relation explained in Section \ref{section:SAConcepts} of Chapter \ref{chapter:domainModel}. The implementation of this relation will be explained further on. The ``name'' and ``text'' attributes in the entities correspond to the identification name of the entity and the descriptive text that can be added, respectively. The ``style'' attribute in the Connector refers to the Component \& Connector styles. Each style has a unique type of connector. Specifying the style of a connector will make it easier to figure which Components will attach to it.
+A Component has a set of Ports, and a Connector as a set of Roles. The Ports of a Component are connected to the Roles of a Connector by the \textit{Attachment} relation explained in Section \ref{section:SAConcepts}. The implementation of this relation will be explained further on. The ``name'' and ``text'' attributes in the entities correspond to the identification name of the entity and the descriptive text that can be added, respectively. The ``style'' attribute in the Connector refers to the Component \& Connector styles. Each style has a unique type of connector. Specifying the style of a connector will make it easier to figure which Components will attach to it.
 
 The Component and Connector are main concepts of the system, and therefore are associated with the corresponding document upon creation. Both the Component and Connector entities and also the Port and Role are associated to a set of Annotations that describe them. The associations of these entities to the Document and Annotation are similar to the ones in the example of Figure \ref{figure:documentAnnotationConcepts}.
 
@@ -323,7 +323,7 @@ relation portIsAttachedToRole {
 \subsection{Views}
 \label{subsection:modelViews}
 
-The abstract domain model presented in Figure \ref{figure:abstractDomainModel} of Chapter \ref{chapter:domainModel} shows how a View is related to the Viewtype, the Styles and the elements. 
+The abstract domain model presented in Figure \ref{figure:abstractDomainModel} shows how a View is related to the Viewtype, the Styles and the elements. 
 
 A View is, as the Scenario, the Element and the Relation, considered a main concept, and therefore has its own dedicated template. Figure \ref{figure:modelView} shows how the View is represented in the implemented model.
 
@@ -347,7 +347,7 @@ In the abstract domain model of Figure \ref{figure:abstractDomainModel} the View
 
 In the implemented domain model, however, there are no pre-defined Styles nor Viewtypes. When a view is added to the system, a viewtype must be chosen, and it is stored in the ``viewtype'' attribute. This attribute is used to distinguish what kind of elements can be added to the view. For example, if the ``viewtype'' attribute of a View is set to ``Module Viewtype'', then only Modules are added to that View. 
 
-The styles of a view are not explicitly stated, but they are implicit by the elements that are added to the View. For example, a Module Viewtype View containing a set of Modules with ``uses'' relations between each others implies that there is a \textit{Uses} style in the view, and a Component \& Connector Viewtype View containing Components attached to Connectors with a certain style implies that that style is present in the view. This verification is done by the Controller, as described in Subsection \ref{substection:viewController}.
+The styles of a view are not explicitly stated, but they are implicit by the elements that are added to the View. For example, a Module Viewtype View containing a set of Modules with ``uses'' relations between each others implies that there is a \textit{Uses} style in the view, and a Component \& Connector Viewtype View containing Components attached to Connectors with a certain style implies that that style is present in the view. This verification is done by the Controller, as described in \ref{substection:viewController}.
 
 A View is composed by a set of Elements, as seen in Figure \ref{figure:abstractDomainModel}. In the implemented domain model, the View has a similar association with the Module, Component and Connector entities. Figure \ref{figure:modelviewelements} shows how these relations are implemented in the Domain Modeling Language.
 
@@ -682,7 +682,7 @@ Similarly to the Scenario Controller, the Module Controller handles the creation
 
 The implementation of the methods that handle these operations is similar to the implementation done in the Scenario Controller. But unlike the Scenario, the Module has no other elements, therefore creating a Module only creates a Module in the database, and annotations are always linked to that Module.
 
-As explained in Chapter \ref{chapter:domainModel}, the Elements of a View are related to each others, and in the Subsection \ref{subsection:modules}, we can see that, since the relations between Modules have no information other than the Modules involved, they are represented in the model as different associations of the ``Module'' entity to itself. 
+As explained in Section \ref{chapter:domainModel}, the Elements of a View are related to each others, and in the \ref{subsection:modules}, we can see that, since the relations between Modules have no information other than the Modules involved, they are represented in the model as different associations of the ``Module'' entity to itself. 
 
 The Module Controller handles adding and removing other Modules to/from the possible relations. The requests are unique for each relation, meaning the request to add a Module to the \textit{Uses} relation of a certain Module will be in the form \textit{/setModuleUses/...} and the request to add \textit{One-To-One} relations with other Modules to a certain Module will be in the form \textit{/setModuleOneToOne/...}. Each request modifies the corresponding association accordingly.
 \begin{figure}[h]

@@ -1,12 +1,12 @@
-\chapter{Domain Model}
+\section{Domain Model}
 \label{chapter:domainModel}
 To understand the architectural and implementation decisions taken during the solution development, it is necessary to understand the Software Architectures Domain Model. Section \ref{section:SAConcepts} lists and describes the concepts talked in the Software Architectures classes, Section \ref{section:domainModel} presents an abstract domain model where it is possible to see how these concepts relate and Section \ref{section:templates} gives an idea on how the information from the domain model can be represented in templates.
 
-\section{Concepts}
+\subection{Concepts}
 \label{section:SAConcepts}
 Before describing the domain model of the developed solution, it is necessary to provide a small introduction to the most important concepts from the Software Architectures course.
  
-\subsection{Scenarios}
+\subsubsection{Scenarios}
 \label{subsection:SAConceptsScenarios}
 A scenario is used to capture and express the quality requirements of a system. The considered qualities are:
 \begin{itemize}
@@ -31,7 +31,7 @@ A scenario consists of six parts \cite{bass2003software}:
 
 Each Scenario uses a set of Tactics, which are design decisions used to achieve the quality requirements expressed in them. Each quality requirement has a set of commonly used tactics. For example, to assure the Security of a system, tactics such as detecting service denial or message delays (to detect attacks), or revoking access to the system (to react to an attack) are used.
 
-\subsection{Views}
+\subsubsection{Views}
 \label{subsection:domainModelViews}
 A view is a representation of a set of system elements and the relationships associated with them \cite{clements2003documenting}. This set of elements and relationships is constrained by viewtypes.
 
@@ -60,7 +60,7 @@ The elements are the \textit{Software Element} (elements from the Module and Com
 The relationships are of type \textit{``Allocated-to''}, which means that a software element is allocated to an environmental element. 
 \end{itemize}
 
-\section{Model}
+\subsection{Model}
 \label{section:domainModel}
 Figure \ref{figure:abstractDomainModel} shows the concepts and relations described in Section \ref{section:SAConcepts} in a Domain Model Diagram.
  
@@ -173,7 +173,7 @@ A View is associated with a Viewtype, which refines into a style. The View conta
 
 The Scenario, View and Element are considered the main concepts of the domain, and they have a dedicated template in the developed solution, as it will be described in the next section. These templates will contain information about the concept and how it is related with other concepts in the domain model.
 
-\section{Templates}
+\subsection{Templates}
 \label{section:templates}
 The structured representation of the Software Architectures concepts described in Sections \ref{section:SAConcepts} and \ref{section:domainModel} is represented in the developed solution by using specific templates for these concepts.
 

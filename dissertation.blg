@@ -1,17 +1,12 @@
-This is BibTeX, Version 0.99d (TeX Live 2014/dev)
+This is BibTeX, Version 0.99d (TeX Live 2015)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: dissertation.aux
 A level-1 auxiliary file: cover.aux
 A level-1 auxiliary file: chapters/introduction.aux
-A level-1 auxiliary file: chapters/problemDescription.aux
-A level-1 auxiliary file: chapters/objectives.aux
 A level-1 auxiliary file: chapters/relatedWork.aux
 A level-1 auxiliary file: chapters/solutionProposal.aux
-A level-1 auxiliary file: chapters/domainModel.aux
-A level-1 auxiliary file: chapters/architecture.aux
 A level-1 auxiliary file: chapters/implementation.aux
 A level-1 auxiliary file: chapters/evaluation.aux
-A level-1 auxiliary file: chapters/futureWork.aux
 A level-1 auxiliary file: chapters/conclusion.aux
 The style file: ieeetr.bst
 A level-1 auxiliary file: appendix/appendixa.aux
@@ -24,7 +19,7 @@ Warning--empty journal in nadel1957theory
 Warning--empty journal in liu2010evaluation
 You've used 50 entries,
             1876 wiz_defined-function locations,
-            770 strings with 12455 characters,
+            765 strings with 12329 characters,
 and the built_in function-call counts, 13730 in all, are:
 = -- 1398
 > -- 457
