@@ -79,7 +79,6 @@ The relationships are of type \textit{``Allocated-to''}, which means that a soft
 \subsection{Model}
 \label{section:domainModel}
 Figure \ref{figure:abstractDomainModel} shows the concepts and relations described in Section \ref{section:SAConcepts} in a Domain Model Diagram.
- 
 \begin{figure}[h]
 \centering
 \renewcommand {\umltextcolor}{black}
@@ -91,7 +90,7 @@ Figure \ref{figure:abstractDomainModel} shows the concepts and relations describ
 \begin{class}[text width=2cm]{Template Concept}{10,-4.5}
 \end{class}
 
-\begin{class}[text width=3cm ]{Source Of Stimulus}{0,0}
+\begin{class}[text width=3cm ]{Source Of Stimulus}{-1,0}
 
 \end{class}
 \begin{class}[text width=2cm ]{Stimulus}{0,-1.5}
@@ -111,52 +110,52 @@ Figure \ref{figure:abstractDomainModel} shows the concepts and relations describ
 \begin{class}[text width=2cm ]{Scenario}{4.5,-2.5}
 \inherit{Template Concept}
 \end{class}
-\begin{class}[text width=3cm ]{Quality Requirement}{0,3}
+\begin{class}[text width=3cm ]{Quality Requirement}{4,0}
 \end{class}
-\begin{class}[text width=2cm ]{Tactic}{5,2}
+\begin{class}[text width=2cm ]{Tactic}{7,-1.5}
 \end{class}
 
-\begin{class}[text width=2cm ]{View}{4,-7.5}
+\begin{class}[text width=2cm ]{View}{4.5,-5.5}
 \inherit{Template Concept}
 \end{class}
-\begin{class}[text width=2cm ]{Viewtype}{0,-7}
+\begin{class}[text width=2cm ]{Viewtype}{0,-6.5}
 \end{class}
-\begin{class}[text width=2cm ]{Style}{-1,-8.5}
+\begin{class}[text width=2cm ]{Style}{-1,-7.5}
 \end{class}
-\begin{class}[text width=2cm ]{Relation}{-2,-10}
+\begin{class}[text width=2cm ]{Relation}{-2,-8.8}
 \end{class}
 
-\begin{class}[text width=2cm ]{Element}{5,-10}
+\begin{class}[text width=2cm ]{Element}{5,-7}
 \inherit{Template Concept}
 \end{class}
 
-\begin{class}[text width=1.5cm]{Is Part Of}{-4,-11.5}
+\begin{class}[text width=1.5cm]{Is Part Of}{-4,-10}
 \inherit{Relation}
 \end{class}
 
-\draw [umlcd style] (-2.5,-11.90) node {[...]};
+\draw [umlcd style] (-2.5,-10.3) node {[...]};
 
-\begin{class}[text width=2cm]{Attachment}{-1,-11.5}
+\begin{class}[text width=2cm]{Attachment}{-1,-10}
 \inherit{Relation}
 \end{class}
 
-\begin{class}[text width=2cm]{Allocated To}{1.5,-11.5}
+\begin{class}[text width=2cm]{Allocated To}{1.5,-10}
 \inherit{Relation}
 \end{class}
 
-\begin{class}[text width=2cm]{Module}{4,-11.5}
+\begin{class}[text width=2cm]{Module}{4,-8}
 \inherit{Element}
 \end{class}
 
-\begin{class}[text width=2cm]{Component}{6.5,-11.5}
+\begin{class}[text width=2cm]{Component}{6.5,-8}
 \inherit{Element}
 \end{class}
 
-\begin{class}[text width=2.5cm]{Environmental Element}{9.5,-11.5}
+\begin{class}[text width=2.5cm]{Environmental Element}{9.5,-8}
 \inherit{Element}
 \end{class}
 
-\begin{class}[text width=2.5cm]{Connector}{10,-10}
+\begin{class}[text width=2cm]{Connector}{10,-7}
 \inherit{Element}
 \end{class}
 
@@ -175,9 +174,6 @@ Figure \ref{figure:abstractDomainModel} shows the concepts and relations describ
 \association{Style}{}{*}{Relation}{}{*}
 \association{View}{}{*}{Element}{}{*}
 \association{Element}{}{*}{Relation}{}{*}
-
-
-
 \end{tikzpicture}
 \caption{Domain Model showing the Software Architectures concepts and how they are related}
 \label{figure:abstractDomainModel}
@@ -193,12 +189,9 @@ The Scenario, View and Element are considered the main concepts of the domain, a
 \label{section:templates}
 The structured representation of the Software Architectures concepts described in \ref{section:SAConcepts} and \ref{section:domainModel} is represented in the developed solution by using specific templates for these concepts.
 
-Although we can elicit a wide set of concepts, it does not make sense to have a template for each and every one of them. It is easier to see the relations between concepts if they are in the same template. 
-
-This is the case for the Scenarios. It makes sense to see all the elements of a Scenario together, so it is possible to see, for example, who/what generated the stimulus and what part of the system was stimulated. Therefore, the Scenario is considered one of the main concepts, and it has its own dedicated template, in which are present the quality attribute, the elements and the tactics. 
+Although we can elicit a wide set of concepts, it does not make sense to have a template for each and every one of them. It is easier to see the relations between concepts if they are in the same template. This is the case for the Scenarios. It makes sense to see all the elements of a Scenario together, so it is possible to see, for example, who/what generated the stimulus and what part of the system was stimulated. Therefore, the Scenario is considered one of the main concepts, and it has its own dedicated template, in which are present the quality attribute, the elements and the tactics. 
 
 Figure \ref{figure:scenarioTemplate} shows a Schema for the Scenario template. All the Scenario elements, the quality requirement and the tactics are present in the template, making it possible to see, as mentioned before, how all these concepts are related.
-
 \begin{figure}[h]
 \centering
 \lstinputlisting[language=HTML, style=customhtml]{scenarioSchema.html}
@@ -209,7 +202,6 @@ Figure \ref{figure:scenarioTemplate} shows a Schema for the Scenario template. A
 The Views and their elements are also another case of main concepts. It makes sense to aggregate all the system elements and their relationships from a view in a separate template, representing the part of the system being described in that view. However, since a single element can be present in more than one view, it also makes sense to have a specific template for the elements, so their individual properties can be seen.
 
 Figure \ref{figure:moduleTemplate} shows a Schema for the Module template, which is the element from the Module Viewtype. Besides the element details, its relationships with other elements (other Modules, in this specific example) are present in the template.
-
 \begin{figure}[h]
 \centering
 \lstinputlisting[language=HTML, style=customhtml]{moduleSchema.html}
@@ -218,7 +210,6 @@ Figure \ref{figure:moduleTemplate} shows a Schema for the Module template, which
 \end{figure}
 
 Figure \ref{figure:viewTemplate} shows the schema for the Module Viewtype Views template. Although the template allows inserting a description for the view, its most important feature is the inclusion of other templates in it. As mentioned, a view aggregates a set of system elements and the relationships between them. As there is already a template for the element, the view will include a set of element templates - a template per element, with its respective information.
-
 \begin{figure}[h]
 \centering
 \lstinputlisting[language=HTML, style=customhtml]{viewSchema.html}

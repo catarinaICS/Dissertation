@@ -6,55 +6,55 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Domain Model showing the Software Architectures concepts and how they are related}}{25}{figure.3.1}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Schema for the Scenario template}}{26}{figure.3.2}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Schema for the Module template}}{27}{figure.3.3}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Schema for a Module Viewtype View template}}{28}{figure.3.4}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces The Document Entity}}{28}{figure.3.5}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Association between Document and Concept entities}}{29}{figure.3.6}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces The Annotation Entity}}{29}{figure.3.7}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Associations between Document, Annotation and the domain model concepts}}{30}{figure.3.8}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Scenario Schema enriched with annotations and user text}}{31}{figure.3.9}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Module Schema enriched with annotations and user text}}{32}{figure.3.10}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Module Viewtype view Schema enriched with annotations and user text}}{32}{figure.3.11}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Domain Model showing the Software Architectures concepts and how they are related}}{24}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Schema for the Scenario template}}{25}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Schema for the Module template}}{26}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Schema for a Module Viewtype View template}}{26}{figure.3.4}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces The Document Entity}}{27}{figure.3.5}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Association between Document and Concept entities}}{27}{figure.3.6}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces The Annotation Entity}}{28}{figure.3.7}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Associations between Document, Annotation and the domain model concepts}}{28}{figure.3.8}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Scenario Schema enriched with annotations and user text}}{30}{figure.3.9}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Module Schema enriched with annotations and user text}}{31}{figure.3.10}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Module Viewtype view Schema enriched with annotations and user text}}{31}{figure.3.11}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Document, Annotations and Users in the implemented Model}}{34}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Quality Requirements and Tactics detail in the implemented Model}}{34}{figure.4.2}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces The ScenarioElement entity}}{35}{figure.4.3}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces The Module entity}}{35}{figure.4.4}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Is-Part-Of relation between Modules in the implemented model}}{36}{figure.4.5}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Uses relation between Modules in the implemented model}}{36}{figure.4.6}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Example of the One-To-Many relation between Modules}}{37}{figure.4.7}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Component and Connector entities in the implemented model}}{37}{figure.4.8}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Attachment relation between Component Ports and Connector Roles in the implemented model}}{38}{figure.4.9}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces View entity in the implemented model}}{38}{figure.4.10}
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Relation between View and the view elements: Module, Component and Connector}}{39}{figure.4.11}
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Example of a Controller class defined using the Spring Framework}}{39}{figure.4.12}
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Example of how the INDEX endpoint adds information to the annotation body}}{40}{figure.4.13}
-\contentsline {figure}{\numberline {4.14}{\ignorespaces Redirecting requests to associate annotations with domain entities in the DocumentController}}{41}{figure.4.14}
-\contentsline {figure}{\numberline {4.15}{\ignorespaces Redirecting a request to visualize an entity template in the DocumentController}}{42}{figure.4.15}
-\contentsline {figure}{\numberline {4.16}{\ignorespaces Retrieving the Structured Representation template in the DocumentController}}{42}{figure.4.16}
-\contentsline {figure}{\numberline {4.17}{\ignorespaces Creating a new Scenario in ScenarioController}}{43}{figure.4.17}
-\contentsline {figure}{\numberline {4.18}{\ignorespaces Associating an Annotation with a Scenario in ScenarioController}}{43}{figure.4.18}
-\contentsline {figure}{\numberline {4.19}{\ignorespaces Associating an Annotation with a specific Tactic in ScenarioController}}{43}{figure.4.19}
-\contentsline {figure}{\numberline {4.20}{\ignorespaces Updating the Scenario text in the ScenarioController}}{44}{figure.4.20}
-\contentsline {figure}{\numberline {4.21}{\ignorespaces Example of adding a ``Is-Part-Of'' relation between two modules}}{44}{figure.4.21}
-\contentsline {figure}{\numberline {4.22}{\ignorespaces Adding Ports to a Component in ComponentController}}{45}{figure.4.22}
-\contentsline {figure}{\numberline {4.23}{\ignorespaces Associating an Annotation with a Port in the ComponentController}}{45}{figure.4.23}
-\contentsline {figure}{\numberline {4.24}{\ignorespaces Attachment of Component Ports to Connector Roles in the ComponentController}}{45}{figure.4.24}
-\contentsline {figure}{\numberline {4.25}{\ignorespaces Adding a new View in the ViewController}}{46}{figure.4.25}
-\contentsline {figure}{\numberline {4.26}{\ignorespaces Request to see a View's Template in the ViewController}}{46}{figure.4.26}
-\contentsline {figure}{\numberline {4.27}{\ignorespaces How Modules are added to a View in ViewController}}{47}{figure.4.27}
-\contentsline {figure}{\numberline {4.28}{\ignorespaces Defining the Header fragment in Thymeleaf syntax}}{47}{figure.4.28}
-\contentsline {figure}{\numberline {4.29}{\ignorespaces Including a fragment in Thymeleaf syntax}}{47}{figure.4.29}
-\contentsline {figure}{\numberline {4.30}{\ignorespaces How the header looks when included in a template}}{48}{figure.4.30}
-\contentsline {figure}{\numberline {4.31}{\ignorespaces Example of the Scenario Template}}{48}{figure.4.31}
-\contentsline {figure}{\numberline {4.32}{\ignorespaces How Thymeleaf accesses variables}}{48}{figure.4.32}
-\contentsline {figure}{\numberline {4.33}{\ignorespaces Example of a Modal window containing a form}}{49}{figure.4.33}
-\contentsline {figure}{\numberline {4.34}{\ignorespaces Example of a form with object for binding results}}{49}{figure.4.34}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Document, Annotations and Users in the implemented Model}}{33}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Quality Requirements and Tactics detail in the implemented Model}}{33}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces The ScenarioElement entity}}{34}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces The Module entity}}{34}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Is-Part-Of relation between Modules in the implemented model}}{35}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Uses relation between Modules in the implemented model}}{35}{figure.4.6}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Example of the One-To-Many relation between Modules}}{36}{figure.4.7}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Component and Connector entities in the implemented model}}{36}{figure.4.8}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Attachment relation between Component Ports and Connector Roles in the implemented model}}{37}{figure.4.9}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces View entity in the implemented model}}{37}{figure.4.10}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Relation between View and the view elements: Module, Component and Connector}}{38}{figure.4.11}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Example of a Controller class defined using the Spring Framework}}{38}{figure.4.12}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Example of how the INDEX endpoint adds information to the annotation body}}{39}{figure.4.13}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Redirecting requests to associate annotations with domain entities in the DocumentController}}{40}{figure.4.14}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Redirecting a request to visualize an entity template in the DocumentController}}{41}{figure.4.15}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Retrieving the Structured Representation template in the DocumentController}}{41}{figure.4.16}
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Creating a new Scenario in ScenarioController}}{42}{figure.4.17}
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Associating an Annotation with a Scenario in ScenarioController}}{42}{figure.4.18}
+\contentsline {figure}{\numberline {4.19}{\ignorespaces Associating an Annotation with a specific Tactic in ScenarioController}}{42}{figure.4.19}
+\contentsline {figure}{\numberline {4.20}{\ignorespaces Updating the Scenario text in the ScenarioController}}{43}{figure.4.20}
+\contentsline {figure}{\numberline {4.21}{\ignorespaces Example of adding a ``Is-Part-Of'' relation between two modules}}{43}{figure.4.21}
+\contentsline {figure}{\numberline {4.22}{\ignorespaces Adding Ports to a Component in ComponentController}}{44}{figure.4.22}
+\contentsline {figure}{\numberline {4.23}{\ignorespaces Associating an Annotation with a Port in the ComponentController}}{44}{figure.4.23}
+\contentsline {figure}{\numberline {4.24}{\ignorespaces Attachment of Component Ports to Connector Roles in the ComponentController}}{44}{figure.4.24}
+\contentsline {figure}{\numberline {4.25}{\ignorespaces Adding a new View in the ViewController}}{45}{figure.4.25}
+\contentsline {figure}{\numberline {4.26}{\ignorespaces Request to see a View's Template in the ViewController}}{45}{figure.4.26}
+\contentsline {figure}{\numberline {4.27}{\ignorespaces How Modules are added to a View in ViewController}}{46}{figure.4.27}
+\contentsline {figure}{\numberline {4.28}{\ignorespaces Defining the Header fragment in Thymeleaf syntax}}{46}{figure.4.28}
+\contentsline {figure}{\numberline {4.29}{\ignorespaces Including a fragment in Thymeleaf syntax}}{46}{figure.4.29}
+\contentsline {figure}{\numberline {4.30}{\ignorespaces How the header looks when included in a template}}{47}{figure.4.30}
+\contentsline {figure}{\numberline {4.31}{\ignorespaces Example of the Scenario Template}}{47}{figure.4.31}
+\contentsline {figure}{\numberline {4.32}{\ignorespaces How Thymeleaf accesses variables}}{47}{figure.4.32}
+\contentsline {figure}{\numberline {4.33}{\ignorespaces Example of a Modal window containing a form}}{48}{figure.4.33}
+\contentsline {figure}{\numberline {4.34}{\ignorespaces Example of a form with object for binding results}}{48}{figure.4.34}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Evaluation results regarding the usability of the application}}{51}{figure.5.1}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Evaluation of the usefulness of the application}}{52}{figure.5.2}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Evaluation results regarding the usability of the application}}{50}{figure.5.1}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Evaluation of the usefulness of the application}}{51}{figure.5.2}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
